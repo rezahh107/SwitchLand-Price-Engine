@@ -55,8 +55,8 @@ Bounded post-closure repair identity: `SLPE-P###-R##-<slug>`
 ## outcome
 `PASS | REPAIR_REQUIRED | BLOCKED | INSUFFICIENT_EVIDENCE | FAILED`
 
-## final_candidate_head
-`<exact candidate commit SHA>`
+## implementation_reviewed_head
+`<exact candidate commit SHA reviewed by the Independent Inspector>`
 
 ## scope_completed
 - `<what was actually completed>`
@@ -85,7 +85,7 @@ Bounded post-closure repair identity: `SLPE-P###-R##-<slug>`
 ## owner_input_result
 `<actual bounded owner input/acceptance or NONE>`
 
-## decision_escape_reference
+## decision_escape_ref
 `<path/ID or NONE>`
 
 ## final_closure_result

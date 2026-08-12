@@ -42,6 +42,10 @@ The Domain Engine must not depend on PDF, DOCX, GUI, filesystem layout, or WP Al
 
 Chat history, README text, and legacy LLM outputs are not Product/Business authority.
 
+### Pre-P001 Master transport boundary
+
+The current `SLPE-MASTER-SPEC-001_v1.2.0.parts/` + `MANIFEST.json` representation is **pre-P001 continuity transport only**. It does not amend `SLPE-PSS-001` or permanently replace its P001 canonical repository target. Before P001 closes, P001 must converge to the frozen target; if that target proves infeasible, the formal `DECISION_ESCAPE_REQUIRED` mechanism must be used rather than silently blessing the split transport as permanent.
+
 ## Current implementation status
 
 At this continuity baseline, application implementation has **not started**. All capabilities in `PROJECT_STATE.json` remain `NOT_IMPLEMENTED` / `NOT_TESTED`.

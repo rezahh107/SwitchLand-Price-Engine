@@ -27,6 +27,10 @@ Do not read old chats to reconstruct project truth.
 
 README, AGENTS, PR prose, Handoffs, and chat responses are explanatory/evidence carriers, not competing implementation-status authorities.
 
+## Pre-P001 Master transport boundary
+
+The current `SLPE-MASTER-SPEC-001_v1.2.0.parts/` + `MANIFEST.json` representation is **pre-P001 continuity transport only**. It does not amend `SLPE-PSS-001` or permanently replace its P001 canonical repository target. P001 must converge to the frozen target before closure; if that target proves infeasible, stop and use `DECISION_ESCAPE_REQUIRED` rather than treating the split transport as a permanent substitute.
+
 ## Scope vocabulary
 
 - **FROZEN** — five frozen authorities + `SLPE-PSS-001` + `SLPE-MIR-001`; ordinary Plans do not rewrite them.

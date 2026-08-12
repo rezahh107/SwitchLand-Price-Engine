@@ -5,38 +5,38 @@
     "bootstrap_id": "SLPE-REPOSITORY-CONTINUITY-BOOTSTRAP-v1",
     "status": "PRE_IMPLEMENTATION_CONTINUITY_BASELINE"
   },
-  "frozen_authorities": {
+  "frozen_contracts": {
     "master_specification": {
       "authority_id": "SLPE-MASTER-SPEC-001",
       "version": "1.2.0",
       "repository_path": "authorities/master/SLPE-MASTER-SPEC-001_v1.2.0.parts/MANIFEST.json",
       "storage_format": "ORDERED_UTF8_PARTS_WITH_LITERAL_SEPARATORS",
       "canonical_size_bytes": 186354,
-      "sha256": "4dcf348ef2b45225a14133f5c61a70861262edd01f698ae621b2df501290c846"
+      "content_hash": "4dcf348ef2b45225a14133f5c61a70861262edd01f698ae621b2df501290c846"
     },
     "implementation_architecture": {
       "authority_id": "IMPLEMENTATION_ARCHITECTURE_CONTRACT",
       "version": "IAC-v1",
       "repository_path": "authorities/contracts/IMPLEMENTATION_ARCHITECTURE_CONTRACT_IAC-v1.md",
-      "sha256": "bd218774bc4861d598ab180863dbef2007aaecb1f3b99bd21ff234d187595435"
+      "content_hash": "bd218774bc4861d598ab180863dbef2007aaecb1f3b99bd21ff234d187595435"
     },
     "technology_implementation": {
       "authority_id": "TECHNOLOGY_IMPLEMENTATION_CONTRACT",
       "version": "SLPE-TIC-v1",
       "repository_path": "authorities/contracts/TECHNOLOGY_IMPLEMENTATION_CONTRACT_SLPE-TIC-v1.md",
-      "sha256": "ef3831aa459158711914c81af3e1e53c4fa3d0e6e39acda6e8fc28ffeef06b42"
+      "content_hash": "ef3831aa459158711914c81af3e1e53c4fa3d0e6e39acda6e8fc28ffeef06b42"
     },
     "llm_execution_protocol": {
       "authority_id": "LLM_IMPLEMENTATION_EXECUTION_PROTOCOL_CONTRACT",
       "version": "SLPE-LIEP-v1",
       "repository_path": "authorities/contracts/LLM_IMPLEMENTATION_EXECUTION_PROTOCOL_SLPE-LIEP-v1.md",
-      "sha256": "638b61976fa8815eed728903a75f8c75b522b0b8b6c5a476cc00f724f71126a0"
+      "content_hash": "638b61976fa8815eed728903a75f8c75b522b0b8b6c5a476cc00f724f71126a0"
     },
     "legacy_migration": {
       "authority_id": "LEGACY_LLM_TO_PYTHON_MIGRATION_CONTRACT",
       "version": "SLPE-LLM-PY-MIGRATION-v1",
       "repository_path": "authorities/contracts/LEGACY_LLM_TO_PYTHON_MIGRATION_SLPE-LLM-PY-MIGRATION-v1.md",
-      "sha256": "802abade446c6e22ef0c1cf38f71aed471acbf2278565f5882a492a0f0d71d34"
+      "content_hash": "802abade446c6e22ef0c1cf38f71aed471acbf2278565f5882a492a0f0d71d34"
     }
   },
   "planning_baseline": {

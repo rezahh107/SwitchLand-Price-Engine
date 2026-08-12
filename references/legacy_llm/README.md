@@ -26,7 +26,9 @@ SHA-256:
 
 `NOT_EMBEDDED_IN_BOOTSTRAP_PR`
 
-The exact binary was available and inspected, but the active GitHub connector did not provide a safe direct local-binary-to-repository transfer path for this ZIP. The bootstrap therefore records the exact artifact identity and hashes instead of fabricating or re-encoding a different file. Re-supply/commit the exact binary before legacy-migration work that actually requires its bytes (no later than P003), unless an exact hash-matching copy is already recoverable from the owner's file library/archive.
+The exact binary was available and inspected, but the active GitHub connector did not provide a safe direct local-binary-to-repository transfer path for this ZIP. The bootstrap therefore records the exact artifact identity and hashes instead of fabricating or re-encoding a different file.
+
+Under the frozen `SLPE-PSS-001` / `SLPE-MIR-001`, **P001 owns the exact hash-matching legacy artifact archive/binding**. P001 may not close `VERIFIED` unless that exact artifact/evidence obligation is satisfied. If the exact artifact is unavailable when P001 executes, P001 must block or use the formal frozen-decision `DECISION_ESCAPE_REQUIRED` mechanism. Silent deferral to P003 is prohibited.
 
 ## Internal evidence hashes
 
