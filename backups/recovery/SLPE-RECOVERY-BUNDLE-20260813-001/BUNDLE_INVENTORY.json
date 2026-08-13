@@ -1,0 +1,190 @@
+{
+  "bundle_id": "SLPE-RECOVERY-BUNDLE-20260813-001",
+  "bundle_schema_version": "1.0.0",
+  "current_master_csv_sha256": "ab7d8eaf37ee5b4046f4b955822e6d63d1d147f83e6403e629425d5e9e469fd3",
+  "current_master_revision": "3004",
+  "inventory_sha256_without_self_field": "e336104b1304a65621da8b1db9c8ade3d33a32d182dca65073ac9dc2242bad51",
+  "object_count": 19,
+  "objects": [
+    {
+      "archive_path": "live_drive/WORKSPACE_MANIFEST.json",
+      "resource_id": "1Kk3XaJwaRJWl2UrzoZJA5-YvuQCRTSQB",
+      "sha256": "79904d15bcce1217bb8c43037c88cad751c905340e34ed3dc614ca468731a8a7",
+      "size_bytes": 6129,
+      "source_file": "WORKSPACE_MANIFEST.json",
+      "source_role": "DRIVE_LIVE_CURRENT_SELECTOR"
+    },
+    {
+      "archive_path": "live_drive/CURRENT_SET.json",
+      "resource_id": "1B1EWWkRwxhQAlWtOJeCpT2PtQq1B1LwS",
+      "sha256": "ccc29f8622faacf83a5ea7aab65ff5fe05ae8d5795f7e78a217542789a45edcd",
+      "size_bytes": 1763,
+      "source_file": "CURRENT_SET.json",
+      "source_role": "DRIVE_LIVE_CURRENT_SELECTOR"
+    },
+    {
+      "archive_path": "live_drive/Product_Pricing_State.json",
+      "resource_id": "18Gi8sHkW4jOXGM5cXpR9FnFHdpsAHaeK",
+      "sha256": "1bd5184ba2e15daad78e9f718b175780da31d834394921ea2410a66778aa5818",
+      "size_bytes": 1888188,
+      "source_file": "Product_Pricing_State.json",
+      "source_role": "DRIVE_LIVE_COMMITTED_STATE"
+    },
+    {
+      "archive_path": "live_drive/Current_Master_rev3004.csv",
+      "resource_id": "1vV2oVN4rDt6zzTNUDZToumoXgo4nePH7rRfUPRH2JBQ",
+      "sha256": "ab7d8eaf37ee5b4046f4b955822e6d63d1d147f83e6403e629425d5e9e469fd3",
+      "size_bytes": 2131362,
+      "source_file": "Import - Sheet1.csv",
+      "source_role": "DRIVE_LIVE_CURRENT_MASTER_EXPORT"
+    },
+    {
+      "archive_path": "authorities/SLPE_GOOGLE_WORKSPACE_OPERATIONAL_CONTRACT_v1.0.0.json",
+      "resource_id": "1EFMk6RDHJEVlLvhPLG6oD7EDGdLCCHdX",
+      "sha256": "4adc1133318ed9e961ba2d2b839b891b93058c86efd4e149f255d6aa27dc5e67",
+      "size_bytes": 5333,
+      "source_file": "SLPE_GOOGLE_WORKSPACE_OPERATIONAL_CONTRACT_v1.0.0.json",
+      "source_role": "DRIVE_HISTORICAL_AUTHORITY"
+    },
+    {
+      "archive_path": "authorities/SLPE_GOOGLE_WORKSPACE_OPERATIONAL_CONTRACT_v1.1.0.json",
+      "resource_id": "1HvcgSYg46uNtncIS1fhC3vL9-t5iughB",
+      "sha256": "7e80432863366721394856f284e2870a5e9ce51bc9ed135728d183165ab514f9",
+      "size_bytes": 6018,
+      "source_file": "SLPE_GOOGLE_WORKSPACE_OPERATIONAL_CONTRACT_v1.1.0.json",
+      "source_role": "DRIVE_ACTIVE_AUTHORITY"
+    },
+    {
+      "archive_path": "authorities/SWITCHLAND_PRICE_ENGINE_MASTER_SPECIFICATION_v1.2.0_2026-08-12.md",
+      "resource_id": "16EGmUpaZbSqtbI-LVWfPXjCOwPGcst9i",
+      "sha256": "4dcf348ef2b45225a14133f5c61a70861262edd01f698ae621b2df501290c846",
+      "size_bytes": 186354,
+      "source_file": "SWITCHLAND_PRICE_ENGINE_MASTER_SPECIFICATION_v1.2.0_2026-08-12.md",
+      "source_role": "DRIVE_FROZEN_AUTHORITY"
+    },
+    {
+      "archive_path": "authorities/SWITCHLAND_PRICE_ENGINE_RULEBOOK_v1.4.3.json",
+      "resource_id": "1quQ4wypI4xt6vEHLt9nlDHJp3ystNFwj",
+      "sha256": "1fb11539bd5f3148f68d3b90681c2fa9ae2d92485af26dc0ccf619b98391b443",
+      "size_bytes": 2215235,
+      "source_file": "SWITCHLAND_PRICE_ENGINE_RULEBOOK_v1.4.3.json",
+      "source_role": "DRIVE_FROZEN_AUTHORITY"
+    },
+    {
+      "archive_path": "authorities/SLPE_WP_ALL_IMPORT_CONTRACT_v1.0.0.json.txt",
+      "resource_id": "1jYTL1gbXxHXn3v2l8nBDmB2Y-ejoHYNv",
+      "sha256": "e5fd325bbb8c77d276ec8148b78417c2d681ab81949e974de0b9f489afe99431",
+      "size_bytes": 41462,
+      "source_file": "SLPE_WP_ALL_IMPORT_CONTRACT_v1.0.0.json.txt",
+      "source_role": "DRIVE_ACTIVE_AUTHORITY"
+    },
+    {
+      "archive_path": "authorities/Nestech_IRAN_Part_Number.xlsx",
+      "resource_id": "12a-2K89sUSuJH31CCEdO4IVBCLAmyLQF",
+      "sha256": "850cc76e2027030f269cb724775487d9ecacccff3b5bd993e8df8887541d25a9",
+      "size_bytes": 65861,
+      "source_file": "Nestech IRAN_Part Number.xlsx",
+      "source_role": "DRIVE_REFERENCE_AUTHORITY"
+    },
+    {
+      "archive_path": "authorities/Legacy_Product_and_SKU_Reference.xlsx",
+      "resource_id": "1c7KVlTgRGyF0-4b_EgmPEklPl_c7Dykh",
+      "sha256": "5d961deabe6ac2f509dff939c31b1cc5601d04c21185eb31def8c84ce8614e33",
+      "size_bytes": 105298,
+      "source_file": "محصولات شرکت.xlsx",
+      "source_role": "DRIVE_REFERENCE_AUTHORITY"
+    },
+    {
+      "archive_path": "project_sources/SWITCHLAND_PRICE_ENGINE_DRIVE_SAFETY_POLICY_v1.0.0.md",
+      "resource_id": null,
+      "sha256": "f7075b1a992309ac0cef083bc10b8305b6e5c72fc58402eccfc0b4d7a7de1160",
+      "size_bytes": 7101,
+      "source_file": "SWITCHLAND_PRICE_ENGINE_DRIVE_SAFETY_POLICY_v1.0.0.md",
+      "source_role": "GPT_PROJECT_SOURCE_SAFETY"
+    },
+    {
+      "archive_path": "project_sources/SWITCHLAND_PRICE_ENGINE_RECOVERY_CHECKPOINT_v1.0.0.json",
+      "resource_id": null,
+      "sha256": "0febb5921b8e1e44f77f1a851894255f567fd9b8c6ce159fc83b1d4f9f735e64",
+      "size_bytes": 4106,
+      "source_file": "SWITCHLAND_PRICE_ENGINE_RECOVERY_CHECKPOINT_v1.0.0.json",
+      "source_role": "GPT_PROJECT_SOURCE_HISTORICAL_CHECKPOINT"
+    },
+    {
+      "archive_path": "run_v001/Run_Manifest.json.txt",
+      "resource_id": "1Kx96wvOk9WPzXEU5uxOmoIGI_i34OgVI",
+      "sha256": "9a87b8bc7c5713fc994dd5cdc361990f16fa83be6becb60f94129152aba849c8",
+      "size_bytes": 7513,
+      "source_file": "Run Manifest.json.txt",
+      "source_role": "DRIVE_HISTORICAL_RUN_EVIDENCE"
+    },
+    {
+      "archive_path": "run_v001/Incident.json.txt",
+      "resource_id": "1GtsrebiH1s4pgVSzFMZudw9KJM8n3M6Z",
+      "sha256": "c1df507e23c024046e3b869a12bbf3096e2bc1de3c92c8662b6f5f88c1337850",
+      "size_bytes": 3838,
+      "source_file": "SLPE_INCIDENT_20260813_BOOTSTRAP_ARCHIVE_DELETION_001.json.txt",
+      "source_role": "DRIVE_INCIDENT_EVIDENCE"
+    },
+    {
+      "archive_path": "run_v001/Recovery_Rebaseline_Control.json",
+      "resource_id": "1FTb4QhbuUCx7o7ou9DIN4fSNR6u5z7Kk",
+      "sha256": "42f1d522f7a0a2c06ed742de7d119a1171c6d0ca089c21b7ecd27b2289d0b205",
+      "size_bytes": 4148,
+      "source_file": "SLPE_RECOVERY_REBASELINE_CONTROL_20260813_001.json",
+      "source_role": "DRIVE_RECOVERY_CONTROL_EVIDENCE"
+    },
+    {
+      "archive_path": "run_v001/Source_Price_List.pdf",
+      "resource_id": null,
+      "sha256": "e13fb9714559aeb4310f9c5a723d73708453e5e5195b9d061fc6d3e978222eae",
+      "size_bytes": 1203179,
+      "source_file": "NESTECH Price List 1405-05 (موقت).pdf",
+      "source_role": "USER_SUPPLIED_ACTIVE_RUN_SOURCE"
+    },
+    {
+      "archive_path": "run_v001/Source_Price_List.docx",
+      "resource_id": null,
+      "sha256": "ca6fa38b144e397a1cff5778bc31ae2b6c9af7bd3050b3cf23cbf769c9a91e3e",
+      "size_bytes": 69394,
+      "source_file": "NESTECH Price List 1405-05 (موقت).docx",
+      "source_role": "USER_SUPPLIED_STRUCTURED_COMPANION"
+    },
+    {
+      "archive_path": "evidence/WP_All_Import_Template_Export.txt",
+      "resource_id": null,
+      "sha256": "80d64556d1d353adab33aa5b44fedb8e76c6c19b38984ebd9095dadbb4853d7a",
+      "size_bytes": 35711,
+      "source_file": "WP All Import Template - Import_Sheet1.csv.txt",
+      "source_role": "USER_SUPPLIED_IMPORT_MAPPING_EVIDENCE"
+    }
+  ],
+  "reconstruction": "Extract deterministic tar.gz; verify each object SHA-256 against this inventory before use. Missing historical IDs remain missing lineage and are never reconstructed as provider identities.",
+  "scope": "PRE_REBASELINE_LIVE_STATE_AND_CRITICAL_RECOVERY_EVIDENCE",
+  "snapshot_at": "2026-08-13T16:40:01Z",
+  "validation": {
+    "known_hash_binding_mismatches": 0,
+    "known_hash_bindings_checked": 14,
+    "master_data_row_count": 826,
+    "master_header_count": 95,
+    "master_unique_column1_count": 826,
+    "missing_historical_objects_not_in_bundle": [
+      {
+        "reason": "MISSING_NOT_FOUND_404",
+        "resource_id": "18Q6pnEMdZwiYa0gEQBnKBsf5RZ6gMz1u"
+      },
+      {
+        "decision_id": "OD-BOOTSTRAP-INITIAL-STATE-BASELINE-001",
+        "reason": "MISSING_NOT_FOUND_404",
+        "resource_id": "1lXYO__8vB_RBBAdf1QC30rpdMoCUKeed"
+      }
+    ],
+    "ordered_master_keys_sha256": "f96f45a610b2d86dc6f81cbd351485a2cc0a935dc6f6f7097e11be355611c355",
+    "pps_excluded_pricing_inactive": 826,
+    "pps_manual_override_none": 826,
+    "pps_records": 826,
+    "pps_supplier_managed": 826,
+    "restoration_claimed": false
+  },
+  "workspace_root_resource_id": "1HgQlekyWQLiGnQ_UgV_SIzJVF6L2kymd"
+}
