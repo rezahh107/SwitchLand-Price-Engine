@@ -1,0 +1,75 @@
+{
+  "append_only": true,
+  "archive": {
+    "format": "deterministic tar.gz",
+    "part_count": 5,
+    "part_order": "ascending index",
+    "parts": [
+      {
+        "decoded_sha256": "ba1b6b64189cf1023f3e8b5a33a5e5b288cf86c76d52b7aee596dae38b836b24",
+        "decoded_size_bytes": 393216,
+        "encoded_sha256": "a4852d8de0c728ed94053a4aab17b6175e54c127fcccbb2b7c75042f3b2759d1",
+        "encoded_size_bytes": 524289,
+        "file_name": "SLPE-RECOVERY-BUNDLE-20260813-001.tar.gz.part001.b64",
+        "index": 1
+      },
+      {
+        "decoded_sha256": "60268360cc61047a5a57ccd351f1e4b7333763688f59f991cdea26eea238d86a",
+        "decoded_size_bytes": 393216,
+        "encoded_sha256": "e7637d285ddbd65294867eddb706f27240c789bde1ca4aa3266b8c9728667391",
+        "encoded_size_bytes": 524289,
+        "file_name": "SLPE-RECOVERY-BUNDLE-20260813-001.tar.gz.part002.b64",
+        "index": 2
+      },
+      {
+        "decoded_sha256": "c72601d784175925a0ded53ec74b0b445d01f3b3acb73864cdcd1d81ca88401e",
+        "decoded_size_bytes": 393216,
+        "encoded_sha256": "89253f82bb761cf5ca9d16a0527f5660f439306da58aadf54b80e16971ed9a69",
+        "encoded_size_bytes": 524289,
+        "file_name": "SLPE-RECOVERY-BUNDLE-20260813-001.tar.gz.part003.b64",
+        "index": 3
+      },
+      {
+        "decoded_sha256": "fe050876cae7fb59220548fc279289f3df3889cd59ecb9e1f7fd3737576c10f5",
+        "decoded_size_bytes": 393216,
+        "encoded_sha256": "3f0775e4d388069c62a7bfcd0047f254aa8cc635751cd07f89a5edb381d36de9",
+        "encoded_size_bytes": 524289,
+        "file_name": "SLPE-RECOVERY-BUNDLE-20260813-001.tar.gz.part004.b64",
+        "index": 4
+      },
+      {
+        "decoded_sha256": "3144aa5b9301f72886b566d368cf714c6ab2f52112a3c93990ca23433f1ce3bb",
+        "decoded_size_bytes": 148729,
+        "encoded_sha256": "b2d445a18cb5f9f4d00711d71aa6ff821f39c579c17dcef65d18de78c16f772c",
+        "encoded_size_bytes": 198309,
+        "file_name": "SLPE-RECOVERY-BUNDLE-20260813-001.tar.gz.part005.b64",
+        "index": 5
+      }
+    ],
+    "sha256": "01d194ad6b7386675c5b7daf4df7f6375f55395e88c04d96ed1e968d08e611fc",
+    "size_bytes": 1721593
+  },
+  "branch": "main",
+  "bundle_id": "SLPE-RECOVERY-BUNDLE-20260813-001",
+  "embedded_inventory": {
+    "object_count": 19,
+    "sha256": "3e009226894e445fc900ad6c380439edcc9568d8126dd84f1f3c57814f7a4009"
+  },
+  "missing_historical_ids_remain_missing": [
+    "18Q6pnEMdZwiYa0gEQBnKBsf5RZ6gMz1u",
+    "1lXYO__8vB_RBBAdf1QC30rpdMoCUKeed"
+  ],
+  "path": "backups/recovery/SLPE-RECOVERY-BUNDLE-20260813-001",
+  "repository": "rezahh107/SwitchLand-Price-Engine",
+  "snapshot_at": "2026-08-13T16:40:01Z",
+  "verification_plan": [
+    "create every part as a new repository file",
+    "create this manifest and README as new files",
+    "read back every created file",
+    "verify each encoded part SHA-256",
+    "base64 decode and concatenate parts in order",
+    "verify reconstructed tar.gz SHA-256",
+    "extract BUNDLE_INVENTORY.json and verify its SHA-256 and all object hashes"
+  ],
+  "visibility_required": "private"
+}
