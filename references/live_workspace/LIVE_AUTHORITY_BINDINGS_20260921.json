@@ -3,13 +3,13 @@
   "authorities": {
     "import_contract": {
       "drive_resource_id": "19PFly7-marww54yOaHmX0JKt-U_RYUlX",
-      "repository_path": "references/live_workspace/SLPE_WP_ALL_IMPORT_CONTRACT_v1.2.0.json",
+      "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_MIGRATION_INPUT_UNTIL_P010",
       "sha256": "57cb1f07361e2c6a0fa980fbd63242fc0bc526268747bc48b0ea9e250dbfd5ba",
       "version": "1.2.0"
     },
     "master_specification": {
       "drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
-      "repository_path": "authorities/master/SWITCHLAND_PRICE_ENGINE_MASTER_SPECIFICATION_v1.4.0_2026-08-20.md",
+      "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_UNTIL_P001",
       "sha256": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949",
       "version": "1.4.0"
     },
@@ -21,7 +21,7 @@
     "root_cause_hardening_owner_decision": {
       "decision_id": "OD-050",
       "drive_resource_id": "1S_VOKI_vYlOYTmndPs4vOnMgdXwiMFJg",
-      "repository_path": "references/live_workspace/SLPE_OWNER_DECISION_ROOT_CAUSE_HARDENING_20260921.json",
+      "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_DECISION_MIRRORED_IN_DECISION_ESCAPE_AND_BINDING_MANIFEST",
       "sha256": "82cd2bf659e2faf1a9c6164d00e2d53793df35aa92aed662b92f0cad2a38c67f"
     },
     "rulebook": {
