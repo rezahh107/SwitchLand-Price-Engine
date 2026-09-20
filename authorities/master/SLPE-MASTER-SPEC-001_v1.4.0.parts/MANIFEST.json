@@ -1,0 +1,33 @@
+{
+  "artifact_type": "CANONICAL_MASTER_TRANSPORT_MANIFEST",
+  "document_id": "SLPE-MASTER-SPEC-001",
+  "version": "1.4.0",
+  "canonical_filename": "SLPE-MASTER-SPEC-001_v1.4.0.md",
+  "transport_format": "ORDERED_UTF8_PARTS_CONCATENATE_EXACTLY_NO_SEPARATOR",
+  "canonical_size_bytes": 196278,
+  "canonical_sha256": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949",
+  "source_live_drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
+  "parts": [
+    {"path":"part-001.md","size_bytes":9769,"sha256":"6928a0682cbe7653002a77d447520d642d56d5a3d7da4fcaa9731e42841ba916"},
+    {"path":"part-002.md","size_bytes":9725,"sha256":"8ea4ef083682bee0c89dd58944bef96ad61bc0bbc392b85ff5619101c7bccaaa"},
+    {"path":"part-003.md","size_bytes":9591,"sha256":"0ca4516fdd8c0b7669ae3b344e36e07bb35300efa522c6cdc76e587b3f3e428d"},
+    {"path":"part-004.md","size_bytes":9735,"sha256":"06ceb3842410564feff2a484a4b3a759cf7d980792ec5fe78a396c397d42cff7"},
+    {"path":"part-005.md","size_bytes":9800,"sha256":"fa2df463a80650d489350e808cce33b4f7fffc407e1a03da5d6ccbda1bdd8864"},
+    {"path":"part-006.md","size_bytes":9773,"sha256":"4ca27bd4fa770ee08770177ff338d8371c228cff02a5d1a624d74e116edfb858"},
+    {"path":"part-007.md","size_bytes":9628,"sha256":"09daccd59c7a581092b5150178c10321f3a55d57b8f041386f680ea8af5770b9"},
+    {"path":"part-008.md","size_bytes":9652,"sha256":"b6f677c12bb8cbf90c6f88c7f404086ba7038fe3a3aadc949e64853c6f77d713"},
+    {"path":"part-009.md","size_bytes":9762,"sha256":"347c0cbf2d6e905035c74d6a87cc3a25638abb6efe2f7f499728b90043d7b6a5"},
+    {"path":"part-010.md","size_bytes":9774,"sha256":"094a3463327566cb285cba7bd98e7a61a34d91184c60641c29789f430031e3ae"},
+    {"path":"part-011.md","size_bytes":9778,"sha256":"7f089cd468a343886dfbb78b3cd39e83984f3938471ac22f8a664794a7094909"},
+    {"path":"part-012.md","size_bytes":9772,"sha256":"5aba358b9c50bea9f76ef3081665b4937c38c7e4701a6464ce0f13ec3328bf0f"},
+    {"path":"part-013.md","size_bytes":9764,"sha256":"eca7b166bcfa8d205ffa84f937e51a19efc57e79e401f17a8679eb24c5ded452"},
+    {"path":"part-014.md","size_bytes":9716,"sha256":"6d10ac55317e077ef79346fde54c51b004434269b184dfe1fcfbc92a4ff096bb"},
+    {"path":"part-015.md","size_bytes":9728,"sha256":"2b6d1c16b641a817fdce036037253f1342ac7150a8eda9c221dcedaa7e8486d9"},
+    {"path":"part-016.md","size_bytes":9760,"sha256":"621ba16ba442b9745d891391e36d52067a491ccb497dfc4656c9a0edd4b4f3e6"},
+    {"path":"part-017.md","size_bytes":9715,"sha256":"b29967d5c7bd5fcc6294494fbcaf17aac021ecfcfa954336fecd86ad6a9c7d1c"},
+    {"path":"part-018.md","size_bytes":9771,"sha256":"0ceaa04c641138a35328f3ee7bb76137253fe5f823ff53819f2674983ed1e37b"},
+    {"path":"part-019.md","size_bytes":9660,"sha256":"69d8185fb68137c94f0eef3ecbfe4d76d7e91ef949a49f8172ade98a6979bd03"},
+    {"path":"part-020.md","size_bytes":9801,"sha256":"ebdd3a4b7c80b481e4f65ce934fe21bab19a75af9170ad3d1a8c2cf0e178c409"},
+    {"path":"part-021.md","size_bytes":1604,"sha256":"0a2c0587feaeded607800f27b0cc26262075db5906d181c88b64dd8a51753f84"}
+  ]
+}
