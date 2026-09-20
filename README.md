@@ -32,7 +32,7 @@ The Domain Engine must not depend on PDF, DOCX, GUI, filesystem layout, or WP Al
 
 ## Authority hierarchy
 
-1. `authorities/master/SWITCHLAND_PRICE_ENGINE_MASTER_SPECIFICATION_v1.4.0_2026-08-20.md` — current repository Product/Business authority after resolved `SLPE-DE001`; exact SHA-256 `6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949`.
+1. `references/live_workspace/LIVE_AUTHORITY_BINDINGS_20260921.json` (exact live Drive resource/hash binding) — current repository Product/Business authority after resolved `SLPE-DE001`; exact SHA-256 `6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949`.
 2. `authorities/contracts/` — frozen architecture, technology, LLM execution, and legacy-migration authorities within their scopes, qualified only by explicit resolved Decision Escape(s) in `PROJECT_STATE.json`.
 3. `planning/PROJECT_SKELETON_SPECIFICATION.md` — frozen repository/planning structure (`SLPE-PSS-001 v1.0.0`).
 4. `planning/MASTER_IMPLEMENTATION_ROADMAP.md` — frozen dependency/risk ordering (`SLPE-MIR-001 v1.0.0`).
