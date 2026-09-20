@@ -18,7 +18,7 @@ Do not read old chats to reconstruct project truth.
 
 ## Authority model
 
-- **Product/Business semantics:** the exact `SLPE-MASTER-SPEC-001` selected by `PROJECT_STATE.json`. After resolved `SLPE-DE001`, the current repository baseline is v1.4.0 via `references/live_workspace/LIVE_AUTHORITY_BINDINGS_20260921.json` (exact live Drive resource/hash binding), SHA-256 `6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949`.
+- **Product/Business semantics:** the exact `SLPE-MASTER-SPEC-001` selected by `PROJECT_STATE.json`. After resolved `SLPE-DE001` and `SLPE-DE002`, the current repository baseline is v1.4.0 through the exact reconstructable transport at `authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/MANIFEST.json`, canonical SHA-256 `6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949`. Live operations still resolve fresh through Workspace Manifest → `CURRENT_SET`.
 - **Live Workspace runtime governance:** resolve fresh from Workspace Manifest → `CURRENT_SET`. Exact live Rulebook/Import Contract bindings are recorded in `PROJECT_STATE.json` / `references/live_workspace/` as migration/continuity inputs until their owning Python implementation Plans execute.
 - **Architecture/technology/development/migration decisions:** the frozen contracts under `authorities/contracts/`, qualified only by an explicit resolved Decision Escape recorded in `PROJECT_STATE.json`.
 - **Repository skeleton:** `SLPE-PSS-001`
@@ -31,7 +31,9 @@ README, AGENTS, PR prose, Handoffs, and chat responses are explanatory/evidence 
 
 ## Pre-P001 Master transport boundary
 
-The historical `SLPE-MASTER-SPEC-001_v1.2.0.parts/` + `MANIFEST.json` representation remains preserved as pre-P001 continuity history. Resolved `SLPE-DE001` rebaselines the current active Master binding to exact v1.4.0 identity/version/hash in the live Workspace without rewriting that history. P001 must converge the repository to its then-current frozen canonical payload target before closure; if a frozen target proves infeasible, use `DECISION_ESCAPE_REQUIRED` rather than silently substituting another representation.
+The historical `SLPE-MASTER-SPEC-001_v1.2.0.parts/` + `MANIFEST.json` representation remains preserved as continuity history. Resolved `SLPE-DE002` adds an exact reconstructable v1.4.0 transport without rewriting that history. Its ordered UTF-8 parts concatenate with no separator to the official 196278-byte Master whose SHA-256 is `6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949`.
+
+P001 must converge the repository to the canonical single-file target `authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.md` before closure. If that frozen target proves infeasible, use `DECISION_ESCAPE_REQUIRED` rather than silently substituting another permanent representation.
 
 ## Scope vocabulary
 
@@ -89,4 +91,4 @@ See `prompts/PROMPT_SYSTEM.md` for the reusable prompt roles.
 
 ## Current pre-implementation condition
 
-The continuity bootstrap/rebaseline is not `SLPE-P001`. Unless `PROJECT_STATE.json` later proves otherwise, all implementation capabilities remain unimplemented and unverified. P001 is the next authorized implementation Plan, not an active Plan. The 2026-09-21 sync updates authority truth and future implementation obligations only.
+The continuity bootstrap/rebaseline/canonical-authority sync is not `SLPE-P001`. Unless `PROJECT_STATE.json` later proves otherwise, all implementation capabilities remain unimplemented and unverified. P001 is the next authorized implementation Plan, not an active Plan. The 2026-09-21 DE001/DE002 sync updates authority truth and future implementation obligations only.
