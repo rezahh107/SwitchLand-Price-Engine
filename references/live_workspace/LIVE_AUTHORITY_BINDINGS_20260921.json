@@ -1,0 +1,76 @@
+{
+  "artifact_type": "LIVE_WORKSPACE_AUTHORITY_BINDINGS",
+  "authorities": {
+    "import_contract": {
+      "drive_resource_id": "19PFly7-marww54yOaHmX0JKt-U_RYUlX",
+      "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_MIGRATION_INPUT_UNTIL_P010",
+      "sha256": "57cb1f07361e2c6a0fa980fbd63242fc0bc526268747bc48b0ea9e250dbfd5ba",
+      "version": "1.2.0"
+    },
+    "master_specification": {
+      "drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
+      "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_UNTIL_P001",
+      "sha256": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949",
+      "version": "1.4.0"
+    },
+    "operational_contract": {
+      "drive_resource_id": "1RuksK90iDLuMnpa_1g1P68BR0-f-yuJ0",
+      "sha256": "886172da55afbaf08b087a4615fc5bda0ee02010bb4a112f184b5ae14c91d5f8",
+      "version": "1.4.0"
+    },
+    "root_cause_hardening_owner_decision": {
+      "decision_id": "OD-050",
+      "drive_resource_id": "1S_VOKI_vYlOYTmndPs4vOnMgdXwiMFJg",
+      "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_DECISION_MIRRORED_IN_DECISION_ESCAPE_AND_BINDING_MANIFEST",
+      "sha256": "82cd2bf659e2faf1a9c6164d00e2d53793df35aa92aed662b92f0cad2a38c67f"
+    },
+    "rulebook": {
+      "drive_resource_id": "18wTBbFQDS--3UgI0y3qvLNZUexBmEJrA",
+      "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_MIGRATION_INPUT_UNTIL_P003",
+      "sha256": "e48867a6888eb14bbaac0f2654fecd8ba72faa9163220958fe310e689d9fbf4b",
+      "version": "1.9.0"
+    },
+    "simple_human_approval": {
+      "drive_resource_id": "17m8g5Unv7p7wzgmS2zciaDPYfbkTfRSj",
+      "sha256": "44a983c16d56bb9402f2a281bfff65e5290fa549b08e1516d4583fa2bb874099"
+    }
+  },
+  "binding_id": "SLPE-LIVE-WORKSPACE-BINDINGS-20260921-001",
+  "current_data": {
+    "master": {
+      "changed_by_sync": false,
+      "fingerprint": "05897afa27d76b225fabfb33f778e93a6fb5cb63dc6a2a63daeea3039c0f9fe9",
+      "headers": 95,
+      "resource_id": "1vV2oVN4rDt6zzTNUDZToumoXgo4nePH7rRfUPRH2JBQ",
+      "revision_or_fingerprint": "3007",
+      "rows": 876
+    },
+    "product_pricing_state": {
+      "changed_by_sync": false,
+      "fingerprint": "5c4157a654d6c0254dad1ff4c0e73e8a3ccab64fbd8eff2a53c3ee7bf0400f1e",
+      "resource_id": "12SDQ2PN56sM0BLbiXSGbmj8oi2-dP6eF",
+      "version": "2.1.0"
+    }
+  },
+  "integrity_rule": "Exact identity/version/SHA256 bindings are required; repository prose must not substitute for live CURRENT_SET selection.",
+  "predecessor_current_set": {
+    "current_set_id": "SLPE-CURRENT-SET-GOVERNANCE-20260920-001",
+    "resource_id": "1vEx4-bPV6sptVzP1JdMLHuo__3-esdZu",
+    "sha256": "27596a3e7c20c27f36ecb6bc069eea7d025b01a12c36bca423f3d98b2aea3f39"
+  },
+  "python_runtime_boundary": "These live Rulebook/Import Contract artifacts are authoritative for the live Workspace when selected by CURRENT_SET, but they are migration/binding inputs for the not-yet-implemented Python project until their owning Plans migrate/implement/test them.",
+  "recorded_at": "2026-09-21T00:55:00+03:30",
+  "repository": "rezahh107/SwitchLand-Price-Engine",
+  "repository_role": "PRE_IMPLEMENTATION_CONTINUITY_AND_MIGRATION_BINDING",
+  "root_cause_hardening": {
+    "business_decisions_001_012_preserved": true,
+    "import_contract_version": "1.2.0",
+    "owner_decision_id": "SLPE-OWNER-DECISION-ROOT-CAUSE-HARDENING-20260921-001",
+    "production_write_performed": false,
+    "rulebook_decision_id": "OD-050",
+    "rulebook_version": "1.9.0",
+    "wp_template_configuration_changed": false
+  },
+  "workspace_manifest_resource_id": "1Kk3XaJwaRJWl2UrzoZJA5-YvuQCRTSQB",
+  "workspace_root_resource_id": "1HgQlekyWQLiGnQ_UgV_SIzJVF6L2kymd"
+}
