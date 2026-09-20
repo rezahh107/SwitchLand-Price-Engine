@@ -18,11 +18,11 @@ The repository continuity baseline hard-coded `SLPE-MASTER-SPEC-001 v1.2.0` as t
 - Owner root-cause hardening decision: `SLPE-OWNER-DECISION-ROOT-CAUSE-HARDENING-20260921-001` / `OD-050`, resource `1S_VOKI_vYlOYTmndPs4vOnMgdXwiMFJg`, SHA-256 `82cd2bf659e2faf1a9c6164d00e2d53793df35aa92aed662b92f0cad2a38c67f`.
 
 ## reproducible_failed_gate
-A fresh agent following `AGENTS.md` + `PROJECT_STATE.json` would pin Master v1.2.0, while a fresh live Workspace read pins Master v1.4.0. Both cannot be the same active Product/Business authority. Continuing without explicit rebaseline would create authority ambiguity and violate fail-closed/current-state rules.
+A fresh agent following the pre-DE001 `AGENTS.md` + `PROJECT_STATE.json` would pin Master v1.2.0, while a fresh live Workspace read pins Master v1.4.0. Both cannot be the same active Product/Business authority. Continuing without explicit rebaseline would create authority ambiguity and violate fail-closed/current-state rules.
 
 ## smallest_decision_to_reopen
 Only the stale **active authority version/binding** is reopened:
-1. repository canonical Product/Business Master baseline becomes exact v1.4.0 bytes/hash;
+1. repository Product/Business Master baseline becomes an exact identity/version/SHA-256 binding to live v1.4.0; P001 remains responsible for converging the canonical repository payload target;
 2. current live Rulebook/Import Contract/Owner Decision identities are hash-bound as migration inputs and live Workspace authorities when selected by `CURRENT_SET`;
 3. the new root-cause execution-safety decision `OD-050` is carried into future Python migration/implementation obligations.
 
