@@ -7,18 +7,20 @@ This repository is designed to be resumed by a capable LLM without historical ch
 1. `README.md`
 2. `PROJECT_STATE.json`
 3. the exact frozen authorities referenced by `PROJECT_STATE.json`
-4. `planning/PROJECT_SKELETON_SPECIFICATION.md`
-5. `planning/MASTER_IMPLEMENTATION_ROADMAP.md`
-6. the active Plan file, if `active_plan` is not null
-7. the latest relevant Plan Closure/Handoff, if needed
-8. only then the source/tests/fixtures directly relevant to the active Plan
+4. the resolved Decision Escape referenced by `PROJECT_STATE.json`, when present
+5. `planning/PROJECT_SKELETON_SPECIFICATION.md`
+6. `planning/MASTER_IMPLEMENTATION_ROADMAP.md`
+7. the active Plan file, if `active_plan` is not null
+8. the latest relevant Plan Closure/Handoff, if needed
+9. only then the source/tests/fixtures directly relevant to the active Plan
 
 Do not read old chats to reconstruct project truth.
 
 ## Authority model
 
-- **Product/Business semantics:** `SLPE-MASTER-SPEC-001 v1.2.0`. Repository entrypoint: `authorities/master/SLPE-MASTER-SPEC-001_v1.2.0.parts/MANIFEST.json`. It defines an exact ordered byte reconstruction; verify its aggregate SHA-256 before relying on it. Individual part files are not separate authorities.
-- **Architecture/technology/development/migration decisions:** the frozen contracts under `authorities/contracts/`
+- **Product/Business semantics:** the exact `SLPE-MASTER-SPEC-001` selected by `PROJECT_STATE.json`. After resolved `SLPE-DE001`, the current repository baseline is v1.4.0 at `authorities/master/SWITCHLAND_PRICE_ENGINE_MASTER_SPECIFICATION_v1.4.0_2026-08-20.md`, SHA-256 `6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949`.
+- **Live Workspace runtime governance:** resolve fresh from Workspace Manifest → `CURRENT_SET`. Exact live Rulebook/Import Contract bindings are recorded in `PROJECT_STATE.json` / `references/live_workspace/` as migration/continuity inputs until their owning Python implementation Plans execute.
+- **Architecture/technology/development/migration decisions:** the frozen contracts under `authorities/contracts/`, qualified only by an explicit resolved Decision Escape recorded in `PROJECT_STATE.json`.
 - **Repository skeleton:** `SLPE-PSS-001`
 - **Roadmap ordering:** `SLPE-MIR-001`
 - **Implementation status:** `PROJECT_STATE.json` only
@@ -29,11 +31,11 @@ README, AGENTS, PR prose, Handoffs, and chat responses are explanatory/evidence 
 
 ## Pre-P001 Master transport boundary
 
-The current `SLPE-MASTER-SPEC-001_v1.2.0.parts/` + `MANIFEST.json` representation is **pre-P001 continuity transport only**. It does not amend `SLPE-PSS-001` or permanently replace its P001 canonical repository target. P001 must converge to the frozen target before closure; if that target proves infeasible, stop and use `DECISION_ESCAPE_REQUIRED` rather than treating the split transport as a permanent substitute.
+The historical `SLPE-MASTER-SPEC-001_v1.2.0.parts/` + `MANIFEST.json` representation remains preserved as pre-P001 continuity history. Resolved `SLPE-DE001` rebaselines the current active Master binding to exact v1.4.0 bytes/hash without rewriting that history. P001 must converge the repository to its then-current frozen target before closure; if a frozen target proves infeasible, use `DECISION_ESCAPE_REQUIRED` rather than silently substituting another representation.
 
 ## Scope vocabulary
 
-- **FROZEN** — five frozen authorities + `SLPE-PSS-001` + `SLPE-MIR-001`; ordinary Plans do not rewrite them.
+- **FROZEN** — current Master selected by `PROJECT_STATE.json` + five frozen contracts + `SLPE-PSS-001` + `SLPE-MIR-001`, as qualified by explicit resolved Decision Escape(s); ordinary Plans do not rewrite them.
 - **CURRENT** — `PROJECT_STATE.json`.
 - **NEXT** — `PROJECT_STATE.next_authorized_plan`.
 - **DEFERRED** — later Roadmap Plans and explicit `NOT_PROVEN` items.
@@ -50,8 +52,8 @@ The current `SLPE-MASTER-SPEC-001_v1.2.0.parts/` + `MANIFEST.json` representatio
 7. Prompt wording is not enforcement; future scope closure requires actual diff/test/CI/Inspector evidence according to `SLPE-LIEP-v1`.
 8. If repository evidence conflicts with `PROJECT_STATE` or frozen docs, stop and report the conflict.
 9. If a frozen decision prevents safe implementation, return `DECISION_ESCAPE_REQUIRED`; do not work around it silently.
-10. Legacy LLM Rulebook/outputs are not the active Python Runtime Rulebook and are never Golden truth by themselves.
-11. Material business truth ultimately traces to the Master Specification and approved evidence.
+10. Legacy/live LLM Rulebook outputs are not automatically the active Python Runtime Rulebook and are never Golden truth by themselves.
+11. Material business truth ultimately traces to the active Master Specification and approved evidence.
 12. The owner is not a technical arbitrator and must not be asked to choose implementation patterns, resolve merge conflicts, or interpret stack traces.
 13. An Implementer cannot mark its own work VERIFIED.
 14. The Independent Inspector is read-only.
@@ -87,4 +89,4 @@ See `prompts/PROMPT_SYSTEM.md` for the reusable prompt roles.
 
 ## Current pre-implementation condition
 
-The continuity bootstrap is not `SLPE-P001`. Unless `PROJECT_STATE.json` later proves otherwise, all implementation capabilities remain unimplemented and unverified. P001 is the next authorized implementation Plan, not an active Plan.
+The continuity bootstrap/rebaseline is not `SLPE-P001`. Unless `PROJECT_STATE.json` later proves otherwise, all implementation capabilities remain unimplemented and unverified. P001 is the next authorized implementation Plan, not an active Plan. The 2026-09-21 sync updates authority truth and future implementation obligations only.
