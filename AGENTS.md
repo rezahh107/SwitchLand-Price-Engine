@@ -18,7 +18,7 @@ Do not read old chats to reconstruct project truth.
 
 ## Authority model
 
-- **Product/Business semantics:** the exact `SLPE-MASTER-SPEC-001` selected by `PROJECT_STATE.json`. After resolved `SLPE-DE001`, the current repository baseline is v1.4.0 at `authorities/master/SWITCHLAND_PRICE_ENGINE_MASTER_SPECIFICATION_v1.4.0_2026-08-20.md`, SHA-256 `6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949`.
+- **Product/Business semantics:** the exact `SLPE-MASTER-SPEC-001` selected by `PROJECT_STATE.json`. After resolved `SLPE-DE001`, the current repository baseline is v1.4.0 via `references/live_workspace/LIVE_AUTHORITY_BINDINGS_20260921.json` (exact live Drive resource/hash binding), SHA-256 `6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949`.
 - **Live Workspace runtime governance:** resolve fresh from Workspace Manifest → `CURRENT_SET`. Exact live Rulebook/Import Contract bindings are recorded in `PROJECT_STATE.json` / `references/live_workspace/` as migration/continuity inputs until their owning Python implementation Plans execute.
 - **Architecture/technology/development/migration decisions:** the frozen contracts under `authorities/contracts/`, qualified only by an explicit resolved Decision Escape recorded in `PROJECT_STATE.json`.
 - **Repository skeleton:** `SLPE-PSS-001`
@@ -31,7 +31,7 @@ README, AGENTS, PR prose, Handoffs, and chat responses are explanatory/evidence 
 
 ## Pre-P001 Master transport boundary
 
-The historical `SLPE-MASTER-SPEC-001_v1.2.0.parts/` + `MANIFEST.json` representation remains preserved as pre-P001 continuity history. Resolved `SLPE-DE001` rebaselines the current active Master binding to exact v1.4.0 bytes/hash without rewriting that history. P001 must converge the repository to its then-current frozen target before closure; if a frozen target proves infeasible, use `DECISION_ESCAPE_REQUIRED` rather than silently substituting another representation.
+The historical `SLPE-MASTER-SPEC-001_v1.2.0.parts/` + `MANIFEST.json` representation remains preserved as pre-P001 continuity history. Resolved `SLPE-DE001` rebaselines the current active Master binding to exact v1.4.0 identity/version/hash in the live Workspace without rewriting that history. P001 must converge the repository to its then-current frozen canonical payload target before closure; if a frozen target proves infeasible, use `DECISION_ESCAPE_REQUIRED` rather than silently substituting another representation.
 
 ## Scope vocabulary
 
