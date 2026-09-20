@@ -2,8 +2,8 @@
 
 SwitchLand Price Engine v1 is a deterministic local Windows desktop application for turning an authoritative supplier price list into validated, auditable WooCommerce/WP All Import output without relying on LLM interpretation for production pricing.
 
-**Repository continuity baseline:** `SLPE-REPOSITORY-CONTINUITY-BOOTSTRAP-v1`  
-**Status:** `PRE_IMPLEMENTATION_CONTINUITY_BASELINE`
+**Repository continuity baseline:** `SLPE-REPOSITORY-CONTINUITY-BOOTSTRAP-v1` + resolved `SLPE-DE001`  
+**Status:** `PRE_IMPLEMENTATION_CONTINUITY_BASELINE_REBASED_20260921`
 
 ## Final v1 goal
 
@@ -32,19 +32,28 @@ The Domain Engine must not depend on PDF, DOCX, GUI, filesystem layout, or WP Al
 
 ## Authority hierarchy
 
-1. `authorities/master/SLPE-MASTER-SPEC-001_v1.2.0.parts/MANIFEST.json` — entrypoint to the sole normative Product/Business authority. The exact canonical Master bytes are reconstructed from the ordered parts/literal separators and must match SHA-256 `4dcf348ef2b45225a14133f5c61a70861262edd01f698ae621b2df501290c846`.
-2. `authorities/contracts/` — frozen architecture, technology, LLM execution, and legacy-migration authorities within their scopes.
+1. `authorities/master/SWITCHLAND_PRICE_ENGINE_MASTER_SPECIFICATION_v1.4.0_2026-08-20.md` — current repository Product/Business authority after resolved `SLPE-DE001`; exact SHA-256 `6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949`.
+2. `authorities/contracts/` — frozen architecture, technology, LLM execution, and legacy-migration authorities within their scopes, qualified only by explicit resolved Decision Escape(s) in `PROJECT_STATE.json`.
 3. `planning/PROJECT_SKELETON_SPECIFICATION.md` — frozen repository/planning structure (`SLPE-PSS-001 v1.0.0`).
 4. `planning/MASTER_IMPLEMENTATION_ROADMAP.md` — frozen dependency/risk ordering (`SLPE-MIR-001 v1.0.0`).
 5. `PROJECT_STATE.json` — **sole implementation-status authority**.
-6. `plans/` — bounded work contracts and closure evidence; not project status authority.
-7. `references/legacy_llm/` — historical/migration evidence only; never active Python authority.
+6. `plans/` — bounded work contracts, Decision Escapes and closure evidence; not a competing project-status authority.
+7. `references/live_workspace/` — exact identity/hash live Workspace bindings and migration inputs; actual live runtime authority is always resolved fresh through Workspace Manifest → `CURRENT_SET`.
+8. `references/legacy_llm/` — historical/migration evidence only; never active Python authority.
 
-Chat history, README text, and legacy LLM outputs are not Product/Business authority.
+Chat history, README text, and legacy/live LLM outputs are not independent Product/Business authority.
 
 ### Pre-P001 Master transport boundary
 
-The current `SLPE-MASTER-SPEC-001_v1.2.0.parts/` + `MANIFEST.json` representation is **pre-P001 continuity transport only**. It does not amend `SLPE-PSS-001` or permanently replace its P001 canonical repository target. Before P001 closes, P001 must converge to the frozen target; if that target proves infeasible, the formal `DECISION_ESCAPE_REQUIRED` mechanism must be used rather than silently blessing the split transport as permanent.
+The historical `SLPE-MASTER-SPEC-001_v1.2.0.parts/` + `MANIFEST.json` representation remains preserved as continuity history. `SLPE-DE001` rebaselines the current active Product/Business authority to exact Master v1.4.0. It does not rewrite planning history or silently alter unrelated frozen architecture/technology decisions.
+
+## Root-cause hardening synchronized on 2026-09-21
+
+The governed live audit resolved Decisions 001–012. Their exact business outcomes are already permanent in live Rulebook v1.8.0 and preserved unchanged in v1.9.0. `OD-050` adds only import-execution safety controls: transient SKU transition preflight/order, no fabricated temporary SKU, selective-hash/skip guard, independent Production read-back before Promotion, Import Contract drift blocking, and exact 95-column least-mutation corrective execution.
+
+The persistent WP All Import template configuration is **not changed** by this sync; Import Contract v1.2.0 preserves `is_update_sku=0` and all existing mappings/update flags. Current Master, Product Pricing State, WooCommerce Production, schema, row order, and pricing formulas are not changed by this governance synchronization.
+
+These live governance controls become Python implementation/test obligations in their owning future Plans (P003/P006/P008/P010). They are not marked implemented merely because the live Workspace knows them.
 
 ## Current implementation status
 
@@ -54,7 +63,7 @@ At this continuity baseline, application implementation has **not started**. All
 - `last_verified_plan`: `null`
 - next authorized implementation Plan: **`SLPE-P001 — Foundation / Delivery Spine Proof`**
 
-This bootstrap is documentation/state continuity work and is **not** P001.
+This rebaseline is documentation/authority continuity work and is **not** P001.
 
 ## 13-Plan path
 
@@ -82,20 +91,24 @@ See `planning/MASTER_IMPLEMENTATION_ROADMAP.md` for dependencies, risks, evidenc
 - `PROJECT_STATE.json` — current implementation/verification truth and next authorized Plan.
 - `authorities/` — active frozen authorities.
 - `planning/` — frozen Skeleton and Roadmap.
+- `plans/decision-escapes/` — explicit frozen-decision reopening evidence.
 - `plans/PLAN_TEMPLATE.md` — reusable Plan + Closure/Handoff contract.
 - `prompts/PROMPT_SYSTEM.md` — Implementer → Inspector → Repair lifecycle.
 - `prompts/templates/` — prompt shells only; no future Plan is pre-generated.
+- `references/live_workspace/` — hash-bound live Workspace authority bindings/migration inputs.
 - `references/legacy_llm/` — legacy evidence identity/provenance, clearly non-authoritative for Python runtime.
 
 ## Resume After a Long Pause
 
 1. Read `AGENTS.md`.
 2. Read and validate `PROJECT_STATE.json`.
-3. Verify the frozen authority identities and hashes recorded there. For the Master, reconstruct through its `MANIFEST.json` and verify the canonical aggregate hash.
-4. Read the Skeleton and Roadmap.
-5. Inspect the active Plan if one exists.
-6. Inspect only code/tests/fixtures relevant to that Plan.
-7. Report current repository HEAD, implementation/verification state, blockers, Decision Escape status, and next authorized Plan.
-8. **Do not modify files until the next authorized work unit is explicitly confirmed.**
+3. Verify the frozen authority identities and hashes recorded there.
+4. Read any resolved Decision Escape referenced there.
+5. Read the Skeleton and Roadmap.
+6. Inspect the active Plan if one exists.
+7. Inspect only code/tests/fixtures relevant to that Plan.
+8. For live operations, fresh-read Workspace Manifest → `CURRENT_SET`; never infer live state from repository staleness or chat memory.
+9. Report current repository HEAD, implementation/verification state, blockers, Decision Escape status, and next authorized Plan.
+10. **Do not modify files until the next authorized work unit is explicitly confirmed.**
 
 The owner should not be asked to choose Python patterns, review source code, interpret test logs, or arbitrate technical disagreements.
