@@ -2,8 +2,8 @@
 
 SwitchLand Price Engine v1 is a deterministic local Windows desktop application for turning an authoritative supplier price list into validated, auditable WooCommerce/WP All Import output without relying on LLM interpretation for production pricing.
 
-**Repository continuity baseline:** `SLPE-REPOSITORY-CONTINUITY-BOOTSTRAP-v1` + resolved `SLPE-DE001`  
-**Status:** `PRE_IMPLEMENTATION_CONTINUITY_BASELINE_REBASED_20260921`
+**Repository continuity baseline:** `SLPE-REPOSITORY-CONTINUITY-BOOTSTRAP-v1` + resolved `SLPE-DE001` + resolved `SLPE-DE002`  
+**Status:** `PRE_IMPLEMENTATION_CONTINUITY_BASELINE_CANONICAL_MASTER_V1_4_SYNC_20260921`
 
 ## Final v1 goal
 
@@ -32,9 +32,9 @@ The Domain Engine must not depend on PDF, DOCX, GUI, filesystem layout, or WP Al
 
 ## Authority hierarchy
 
-1. `references/live_workspace/LIVE_AUTHORITY_BINDINGS_20260921.json` (exact live Drive resource/hash binding) — current repository Product/Business authority after resolved `SLPE-DE001`; exact SHA-256 `6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949`.
+1. `authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/MANIFEST.json` — exact reconstructable pre-P001 repository transport of the current Product/Business Master after resolved `SLPE-DE001` + `SLPE-DE002`. Ordered UTF-8 parts concatenate with no separator to the official 196278-byte Master, SHA-256 `6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949`. Live use is still activated through Workspace Manifest → `CURRENT_SET`.
 2. `authorities/contracts/` — frozen architecture, technology, LLM execution, and legacy-migration authorities within their scopes, qualified only by explicit resolved Decision Escape(s) in `PROJECT_STATE.json`.
-3. `planning/PROJECT_SKELETON_SPECIFICATION.md` — frozen repository/planning structure (`SLPE-PSS-001 v1.0.0`).
+3. `planning/PROJECT_SKELETON_SPECIFICATION.md` — frozen repository/planning structure (`SLPE-PSS-001 v1.0.0`). Stale v1.2 active-Master literals are superseded only as recorded by DE002; structure and planning semantics remain frozen.
 4. `planning/MASTER_IMPLEMENTATION_ROADMAP.md` — frozen dependency/risk ordering (`SLPE-MIR-001 v1.0.0`).
 5. `PROJECT_STATE.json` — **sole implementation-status authority**.
 6. `plans/` — bounded work contracts, Decision Escapes and closure evidence; not a competing project-status authority.
@@ -45,7 +45,13 @@ Chat history, README text, and legacy/live LLM outputs are not independent Produ
 
 ### Pre-P001 Master transport boundary
 
-The historical `SLPE-MASTER-SPEC-001_v1.2.0.parts/` + `MANIFEST.json` representation remains preserved as continuity history. `SLPE-DE001` rebaselines the current active Product/Business authority to exact Master v1.4.0. It does not rewrite planning history or silently alter unrelated frozen architecture/technology decisions.
+The historical `SLPE-MASTER-SPEC-001_v1.2.0.parts/` + `MANIFEST.json` representation remains preserved as continuity history. `SLPE-DE001` rebaselined active Product/Business authority to v1.4.0; `SLPE-DE002` then synchronized the **exact official v1.4.0 bytes** into the repository as a reconstructable transport. Neither Decision Escape rewrites planning history or silently alters unrelated frozen architecture/technology decisions.
+
+P001 must converge this transport to the canonical repository target `authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.md` before closure.
+
+## Master v1.4.0 comparison result
+
+The repository's historical v1.2 baseline and the live v1.4.0 authority were compared before DE002. v1.4.0 is a genuine semantic successor: v1.2's approved composite-pricing policy and existing safety architecture are retained; v1.3 adds the tightly bounded run-scoped Partial Promotion exception; v1.4 replaces technical owner approval tokens/hashes with one simple natural-language approval while keeping hash/CAS/revision/resource/read-back/duplicate checks as machine-owned controls. Pricing, SKU, Part Number, Promotion, Evidence and Reconciliation rules outside that declared governance surface remain preserved.
 
 ## Root-cause hardening synchronized on 2026-09-21
 
@@ -63,7 +69,7 @@ At this continuity baseline, application implementation has **not started**. All
 - `last_verified_plan`: `null`
 - next authorized implementation Plan: **`SLPE-P001 — Foundation / Delivery Spine Proof`**
 
-This rebaseline is documentation/authority continuity work and is **not** P001.
+This authority synchronization is documentation/continuity work and is **not** P001.
 
 ## 13-Plan path
 
@@ -89,7 +95,9 @@ See `planning/MASTER_IMPLEMENTATION_ROADMAP.md` for dependencies, risks, evidenc
 
 - `AGENTS.md` — fresh-agent operating entrypoint and read order.
 - `PROJECT_STATE.json` — current implementation/verification truth and next authorized Plan.
-- `authorities/` — active frozen authorities.
+- `authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/` — exact reconstructable pre-P001 current Master transport.
+- `authorities/master/SLPE-MASTER-SPEC-001_v1.2.0.parts/` — preserved historical continuity transport.
+- `authorities/contracts/` — frozen implementation contracts.
 - `planning/` — frozen Skeleton and Roadmap.
 - `plans/decision-escapes/` — explicit frozen-decision reopening evidence.
 - `plans/PLAN_TEMPLATE.md` — reusable Plan + Closure/Handoff contract.
@@ -102,13 +110,14 @@ See `planning/MASTER_IMPLEMENTATION_ROADMAP.md` for dependencies, risks, evidenc
 
 1. Read `AGENTS.md`.
 2. Read and validate `PROJECT_STATE.json`.
-3. Verify the frozen authority identities and hashes recorded there.
-4. Read any resolved Decision Escape referenced there.
-5. Read the Skeleton and Roadmap.
-6. Inspect the active Plan if one exists.
-7. Inspect only code/tests/fixtures relevant to that Plan.
-8. For live operations, fresh-read Workspace Manifest → `CURRENT_SET`; never infer live state from repository staleness or chat memory.
-9. Report current repository HEAD, implementation/verification state, blockers, Decision Escape status, and next authorized Plan.
-10. **Do not modify files until the next authorized work unit is explicitly confirmed.**
+3. Reconstruct/verify the current Master through its repository transport manifest and canonical SHA-256.
+4. Verify the other frozen authority identities and hashes recorded in `PROJECT_STATE.json`.
+5. Read resolved Decision Escapes referenced there.
+6. Read the Skeleton and Roadmap.
+7. Inspect the active Plan if one exists.
+8. Inspect only code/tests/fixtures relevant to that Plan.
+9. For live operations, fresh-read Workspace Manifest → `CURRENT_SET`; never infer live state from repository staleness or chat memory.
+10. Report current repository HEAD, implementation/verification state, blockers, Decision Escape status, and next authorized Plan.
+11. **Do not modify files until the next authorized work unit is explicitly confirmed.**
 
 The owner should not be asked to choose Python patterns, review source code, interpret test logs, or arbitrate technical disagreements.
