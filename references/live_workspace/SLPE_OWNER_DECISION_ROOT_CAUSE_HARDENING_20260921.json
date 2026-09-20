@@ -1,0 +1,98 @@
+{
+  "approval_mode": "OWNER_NATURAL_LANGUAGE_EXPLICIT_EXECUTION_REQUEST",
+  "approved_at": "2026-09-21T00:55:00+03:30",
+  "artifact_type": "OWNER_DECISION",
+  "authority_boundary": "Subordinate to active Master Specification; does not alter pricing formulas, schema, unrelated product data, Current Master/PPS, WP template configuration, or Production by itself.",
+  "cross_system_sync": {
+    "github": "Rebaseline repository authority bindings through formal Decision Escape; preserve PRE_IMPLEMENTATION capability status and next authorized Plan P001.",
+    "google_drive": "Activate successor Rulebook/Import Contract/Owner Decision by new CURRENT_SET and Manifest read-back.",
+    "python_project": "Record these controls as future implementation/test obligations in the appropriate Plans; do not claim code is implemented before Plans execute."
+  },
+  "decision_id": "OD-050",
+  "evidence_refs": [
+    "DRIVE_CURRENT_SET:1vEx4-bPV6sptVzP1JdMLHuo__3-esdZu",
+    "DRIVE_RULEBOOK_V1_8_0:1TnzY1z9lVCToh5rqXnRsCV1ZMZUpa4lA",
+    "DRIVE_IMPORT_CONTRACT_V1_1_0:1Pdsh5DzkSPn1JYVGCuTfVS0cfM5B5lst",
+    "RUN_RECONCILIATION_001:1ytiUZkU4aPuKgcl7RrgFdKSaC1FoMG1x",
+    "RUN_RECONCILIATION_002:195ws7BDIE5RMXZ8-QyJH_S8jSfWMV4AL"
+  ],
+  "explicit_non_effects": [
+    "NO_CURRENT_MASTER_CHANGE",
+    "NO_PRODUCT_PRICING_STATE_CHANGE",
+    "NO_WOOCOMMERCE_PRODUCTION_WRITE",
+    "NO_WP_ALL_IMPORT_TEMPLATE_SETTING_CHANGE",
+    "NO_SCHEMA_CHANGE",
+    "NO_ROW_ORDER_CHANGE",
+    "NO_PRICING_FORMULA_CHANGE",
+    "NO_UNRELATED_FIELD_CHANGE"
+  ],
+  "open_reconciliation_preserved": {
+    "run_id": "SLPE-RUN-20260920-001",
+    "statement": "Governance synchronization does not close or repair current Production mismatches.",
+    "status": "OPEN_BLOCKED_NOT_PROMOTED"
+  },
+  "owner_decision_id": "SLPE-OWNER-DECISION-ROOT-CAUSE-HARDENING-20260921-001",
+  "preserved_prior_decisions": {
+    "audit_decision_range": "SLPE-AUDIT-20260920-001_DECISION-001 through DECISION-012",
+    "rulebook_decisions": [
+      "OD-006",
+      "OD-007",
+      "OD-009",
+      "OD-043",
+      "OD-044",
+      "OD-045",
+      "OD-046",
+      "OD-047",
+      "OD-048",
+      "OD-049"
+    ],
+    "statement": "All exact business identity/BOM/SKU decisions already promoted to Rulebook v1.8.0 remain unchanged and permanent within their exact scopes."
+  },
+  "root_controls": [
+    {
+      "control_id": "SKU_TRANSITION_PREFLIGHT",
+      "failure_behavior": "BLOCK_OR_ORDER_DEPENDENCY_SAFE",
+      "prohibitions": [
+        "NO_TEMPORARY_OR_FABRICATED_SKU",
+        "NO_BLIND_ROW_ORDER_ASSUMPTION",
+        "NO_GENERAL_SKU_AUTO_FIX"
+      ],
+      "requirement": "Before an import that changes protected SKU identity, compare current holder state to target SKU state and detect transient collisions/dependencies even when the final dataset is globally unique."
+    },
+    {
+      "control_id": "SKU_TRANSITION_ORDERING",
+      "failure_behavior": "BLOCK_IF_CYCLE_OR_EXTERNAL_HOLDER_REMAINS",
+      "requirement": "If a destination SKU is held by a subject that is itself moving under an exact approved change, release/move that holder first through the governed protected-field repair path, then assign the destination."
+    },
+    {
+      "control_id": "SELECTIVE_HASH_SKIP_GUARD",
+      "failure_behavior": "NOT_PROVEN_AND_NO_PROMOTION",
+      "requirement": "WP All Import SKIPPED/unchanged output never proves Production correctness after an error, partial import, prior mismatch, or corrective attempt. A corrective execution must actually process the affected subjects and produce execution evidence."
+    },
+    {
+      "control_id": "PRODUCTION_READBACK_REQUIRED",
+      "failure_behavior": "NOT_PROVEN_AND_NO_PROMOTION",
+      "requirement": "After normal or corrective import, independently read back affected Production fields before Promotion. Minimum fields: ID, SKU, Regular price, Sale price, Visibility in catalog, Parent."
+    },
+    {
+      "control_id": "IMPORT_CONTRACT_DRIFT_GUARD",
+      "failure_behavior": "BLOCK_AFFECTED_IMPORT_CONTRACT_DECISION",
+      "requirement": "Do not infer or silently mutate WP All Import configuration from screenshots or runtime symptoms. Material discrepancy between active Import Contract and exported/verified template state blocks the affected decision until a successor contract is versioned."
+    },
+    {
+      "control_id": "CORRECTIVE_IMPORT_LEAST_MUTATION",
+      "failure_behavior": "BLOCK_ON_UNEXPECTED_DIFF",
+      "requirement": "Corrective rows are derived from the exact approved Final full dataset for exact affected subjects, preserving all 95 columns and unrelated values; correction scope must be explicit."
+    }
+  ],
+  "scope": "ROOT_CAUSE_HARDENING_AND_CROSS_SYSTEM_AUTHORITY_SYNC",
+  "status": "APPROVED_PERMANENT",
+  "wp_all_import_configuration_policy": {
+    "corrective_force_processing": "ONE_OFF_EXECUTION_BEHAVIOR_ONLY; MUST NOT SILENTLY ALTER PERSISTENT TEMPLATE_CONFIGURATION",
+    "persistent_template_configuration_changed": false,
+    "preserve_active_template_mapping": true,
+    "preserve_is_update_sku": "0",
+    "protected_sku_repair_path": "SEPARATE_GOVERNED_EXACT_SUBJECT_REPAIR",
+    "selective_hashing_may_remain_enabled": true
+  }
+}
