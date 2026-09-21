@@ -52,7 +52,7 @@
       "sha256": "44a983c16d56bb9402f2a281bfff65e5290fa549b08e1516d4583fa2bb874099"
     }
   },
-  "binding_id": "SLPE-LIVE-WORKSPACE-BINDINGS-20260921-002",
+  "binding_id": "SLPE-LIVE-WORKSPACE-BINDINGS-20260921-003",
   "current_data": {
     "master": {
       "changed_by_sync": false,
@@ -75,15 +75,22 @@
     "resource_id": "19RL9JfzHmZvmiuoyKYaTZ5o0BvfrAKEX",
     "sha256": "65e254c1a4b2d6cf9af6c4c1989709a6075aa712d08f27c78871718e61adb231"
   },
-  "prepared_current_set": {
+  "current_set": {
+    "current_set_id": "SLPE-CURRENT-SET-CONTROLLED-SKU-IMPORT-GOVERNANCE-20260921-002",
+    "resource_id": "1XRmDH3sxGUvq2Rg0Or7qbVklAI4H7yZ7",
+    "sha256": "90e3f272ffe6b6154b1f15926afe614d8074e84685b90b9bd536535abd812cff",
+    "status": "COMMITTED",
+    "read_back_verified": true,
+    "manifest_selected": true
+  },
+  "prepared_current_set_history": {
     "current_set_id": "SLPE-CURRENT-SET-CONTROLLED-SKU-IMPORT-GOVERNANCE-20260921-001",
     "resource_id": "1A-Cl7L1-vG3hn21x3481Go5u0JBMWIgd",
     "sha256": "0c7998adff6a354b9526d4ccd34d5ac62244829b4832374b67517d1cbed38093",
-    "read_back_verified": true,
-    "manifest_selection_status": "PENDING_REPOSITORY_SYNC"
+    "status": "PRESERVED_PRE_MERGE_PREPARED_ARTIFACT_NOT_SELECTED"
   },
   "python_runtime_boundary": "These live governance artifacts are authoritative for the live Workspace when selected by CURRENT_SET, but remain migration/binding inputs for the not-yet-implemented Python project until their owning Plans implement and test them.",
-  "recorded_at": "2026-09-21T11:20:00+03:30",
+  "recorded_at": "2026-09-21T11:33:00+03:30",
   "repository": "rezahh107/SwitchLand-Price-Engine",
   "repository_role": "PRE_IMPLEMENTATION_CONTINUITY_AND_MIGRATION_BINDING",
   "controlled_sku_import_governance": {
@@ -98,8 +105,14 @@
     "wp_template_configuration_changed_by_governance_work": false
   },
   "workspace_manifest_resource_id": "1Kk3XaJwaRJWl2UrzoZJA5-YvuQCRTSQB",
+  "workspace_manifest_sha256": "353297a302475f38f1b43d3bc65d7738f24b668c794ffd82c4a663bfe189ccd6",
   "workspace_root_resource_id": "1HgQlekyWQLiGnQ_UgV_SIzJVF6L2kymd",
-  "binding_status": "PREPARED_CURRENT_SET_READBACK_VERIFIED_PENDING_MANIFEST_SELECTION_AFTER_REPOSITORY_SYNC",
+  "binding_status": "LIVE_CURRENT_SET_SELECTED_READBACK_VERIFIED_CONTROLLED_SKU_GOVERNANCE_ACTIVE",
+  "repository_governance_sync": {
+    "pull_request": 4,
+    "merged_commit": "84f7593943f8c7200bb8be8a0af2f33e8651560f",
+    "decision_escape": "SLPE-DE003"
+  },
   "repository_master_transport": {
     "path": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/MANIFEST.json",
     "canonical_target": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.md",
