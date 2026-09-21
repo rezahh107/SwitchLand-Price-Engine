@@ -1,7 +1,8 @@
 {
   "artifact_type": "CONTROLLED_SKU_IMPORT_GOVERNANCE_BINDING",
-  "recorded_at": "2026-09-21T11:20:00+03:30",
-  "decision_escape": "SLPE-DE003",
+  "recorded_at": "2026-09-21T13:38:00+03:30",
+  "decision_escape": "SLPE-DE004",
+  "predecessor_decision_escape": "SLPE-DE003",
   "owner_decision": {
     "decision_ref": "OD-051",
     "decision_id": "SLPE-OWNER-DECISION-CONTROLLED-SKU-IMPORT-20260921-001",
@@ -9,61 +10,80 @@
     "sha256": "5c44c00344f147370aa08e67274571c9702fb7ac4a2bc932de316cbab304ff23"
   },
   "rulebook_successor": {
-    "version": "1.10.0",
-    "drive_resource_id": "1sPc41CcDeBSlhkD1MT7Eqywnf9ZJDEyj",
-    "sha256": "28fbe5859c631734617dccdbca0edc675d18075756c701b1a2184ebab1661e03"
+    "version": "1.11.0",
+    "drive_resource_id": "1GNXj1u6VUMb5sbgpNuC45H-j0c-clMtf",
+    "sha256": "44225f1efebdfa8bec0a9d9dce449f0661b3e215214cf643fe26312d8cf59c9f",
+    "activation_status": "PENDING_SUCCESSOR_CURRENT_SET_SELECTION"
   },
   "active_import_contract": {
     "version": "1.2.0",
     "drive_resource_id": "19PFly7-marww54yOaHmX0JKt-U_RYUlX",
     "sha256": "57cb1f07361e2c6a0fa980fbd63242fc0bc526268747bc48b0ea9e250dbfd5ba",
-    "is_update_sku": "0"
+    "status": "ACTIVE_UNCHANGED"
   },
   "candidate_import_contract": {
-    "version": "1.3.0",
-    "status": "CANDIDATE_PENDING_VERIFIED_TEMPLATE_EXPORT_READBACK",
-    "drive_resource_id": "1ejp5Ev8a2hIQRqqCFf4PFZUpzozv4XNM",
-    "sha256": "5c5da84f899bf164bf499396a9a36e5dbaf2cb389c5e96db7b54104a84e860df",
-    "authorized_material_delta": "matching_and_update_behavior.all_update_flags.is_update_sku: 0 -> 1",
-    "selected_as_active": false
+    "version": "1.4.0",
+    "status": "CANDIDATE_NOT_ACTIVE_PENDING_TEMPLATE_PROOF_AND_VARIATION_POLICY",
+    "drive_resource_id": "1qk82T6yCIy6HY56SePY6kFIC-0_ErYDE",
+    "sha256": "bd29b4b4989017921c05995e71113f035eeae75e46d8ffc319b39e1226066523",
+    "selected_as_active": false,
+    "guards": [
+      "VARIABLE_PARENT_CHILD_SKU_GUARD",
+      "VARIATION_AVAILABILITY_SEMANTICS_GATE"
+    ]
   },
-  "pilot": {
+  "pilot_execution": {
     "run_id": "SLPE-RUN-20260920-001",
-    "status": "PREPARED_NOT_IMPORT_READY",
-    "product_ids": [34201, 22133, 22569, 43123, 43124, 43125],
-    "csv": {
-      "drive_resource_id": "1gdjjr1YlCd-G6tWkjn_-isF9jucCvvjv",
-      "sha256": "2f6d353bd839e1cbefbc43b0d0ef863d165332c69482eac0529e1c088507e3f1",
-      "rows": 6,
-      "headers": 95
+    "status": "EXECUTED_WITH_ROOT_CAUSE_FINDINGS_RECONCILIATION_OPEN",
+    "second_import_log_drive_resource_id": "1zupBHkUGxhQjI6oknlGWItXBf-Yz9hMO",
+    "production_export_drive_resource_id": "16Uy4Kwr6O4oTdW45gyyY97-7jrjvqH7c",
+    "production_reconciliation_006_drive_resource_id": "1lOEZtKJL1ADVCbkR-1Virbncl-p6CkYp",
+    "root_cause_drive_resource_id": "1DCYbBodILlaHQOLr3DvSp_3DqIOJWNv7",
+    "global_nonblank_sku_duplicate_count": 0,
+    "confirmed_pass": [
+      "Product ID 34201 SKU=20523_10985 Regular=934000 visible",
+      "Product ID 22133 SKU=20523_11254 Regular=1128000 visible"
+    ]
+  },
+  "confirmed_root_causes": {
+    "variable_parent_child_sku": {
+      "subject_column1": "533570693",
+      "parent_product_id": "22569",
+      "parent_sku": "10999",
+      "child_candidate_product_id": "42419",
+      "child_candidate_sku": "",
+      "child_candidate_regular_price": "774000",
+      "cause": "generic variation SKU mapping can attempt Column2 on both parent and variation when Column28 is blank",
+      "required_guard": "BLOCK_OR_EXACTLY_RESOLVE_BEFORE_IMPORT"
     },
-    "sku_transition_preflight": {
-      "drive_resource_id": "1UEbT_gJzaY8rMmtoPVVeG1HsViXMGWyY",
-      "sha256": "208cfba126baac25ef1a9dac2a9efa69c132c662006c4c5e6113bec0f4254755",
-      "latest_available_export_observation": "NO_TRANSIENT_SKU_DEPENDENCY_IN_LATEST_AVAILABLE_EXPORT",
-      "support_sufficiency": "PARTIAL"
-    },
-    "audit": {
-      "drive_resource_id": "1JBp7MOlJZTP90uEF_ukJDfaVnBUQMpzZ",
-      "sha256": "fdb64e7fe7c99f260ba6562b950f23f3b4e46d509c1b0e685f461acab4b34830"
+    "zero_price_variation_visibility": {
+      "product_ids": [43123, 43124, 43125],
+      "regular_price": "0",
+      "import_log_requested_catalog_visibility": "hidden",
+      "production_readback_visibility": "visible",
+      "status": "BUSINESS_POLICY_AND_WOOCOMMERCE_SEMANTICS_GAP"
     }
   },
-  "prepared_current_set": {
-    "current_set_id": "SLPE-CURRENT-SET-CONTROLLED-SKU-IMPORT-GOVERNANCE-20260921-001",
-    "drive_resource_id": "1A-Cl7L1-vG3hn21x3481Go5u0JBMWIgd",
-    "sha256": "0c7998adff6a354b9526d4ccd34d5ac62244829b4832374b67517d1cbed38093",
-    "read_back_verified": true,
-    "manifest_selection_status": "PENDING_REPOSITORY_SYNC"
+  "business_policy_gap": {
+    "owner_decision_required": true,
+    "question": "How should Price=0 -> hidden be represented for a WooCommerce variation whose parent has active siblings?",
+    "no_silent_choice": true
+  },
+  "superseded_artifact": {
+    "name": "SLPE-RUN-20260920-001_CORRECTIVE_IMPORT_003.csv",
+    "drive_resource_id": "1KYosDC3pgevRkiapZvzpCXcUkOr2kvI0",
+    "status": "SUPERSEDED_DO_NOT_IMPORT"
   },
   "named_gaps": [
-    "Verified WP All Import template/config export proving the sole material delta is is_update_sku=1 is missing.",
-    "Fresh Production identity read-back immediately before pilot execution is missing."
+    "Fresh Production export with Parent column for IDs 22569, 42419, 22459, 43123, 43124, 43125.",
+    "Verified WP All Import template/config export proving least-mutation update scope and parent/variation mapping.",
+    "Owner decision for zero-price variation Production behavior."
   ],
   "non_effects": {
     "current_master_changed": false,
     "pps_changed": false,
-    "production_write_performed": false,
-    "wp_template_changed_by_governance_work": false,
+    "production_write_performed_by_governance_sync": false,
+    "wp_template_changed_by_governance_sync": false,
     "pricing_formula_changed": false,
     "schema_changed": false
   }

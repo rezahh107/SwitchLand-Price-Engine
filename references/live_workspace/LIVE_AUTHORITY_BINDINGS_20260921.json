@@ -1,112 +1,107 @@
 {
   "artifact_type": "LIVE_WORKSPACE_AUTHORITY_BINDINGS",
+  "binding_id": "SLPE-LIVE-WORKSPACE-BINDINGS-20260921-003",
+  "recorded_at": "2026-09-21T13:38:00+03:30",
+  "repository": "rezahh107/SwitchLand-Price-Engine",
+  "repository_role": "PRE_IMPLEMENTATION_CONTINUITY_AND_MIGRATION_BINDING",
+  "workspace_root_resource_id": "1HgQlekyWQLiGnQ_UgV_SIzJVF6L2kymd",
+  "workspace_manifest_resource_id": "1Kk3XaJwaRJWl2UrzoZJA5-YvuQCRTSQB",
+  "current_set": {
+    "current_set_id": "SLPE-CURRENT-SET-CONTROLLED-SKU-IMPORT-GOVERNANCE-20260921-002",
+    "resource_id": "1XRmDH3sxGUvq2Rg0Or7qbVklAI4H7yZ7",
+    "sha256": "90e3f272ffe6b6154b1f15926afe614d8074e84685b90b9bd536535abd812cff",
+    "status": "COMMITTED",
+    "read_back_verified": true,
+    "successor_preparation": "DE004 / Rulebook v1.11.0; final successor CURRENT_SET will be created only after repository merge evidence exists"
+  },
+  "current_data": {
+    "master": {
+      "resource_id": "1vV2oVN4rDt6zzTNUDZToumoXgo4nePH7rRfUPRH2JBQ",
+      "fingerprint": "05897afa27d76b225fabfb33f778e93a6fb5cb63dc6a2a63daeea3039c0f9fe9",
+      "revision_or_fingerprint": "3007",
+      "rows": 876,
+      "headers": 95,
+      "changed_by_sync": false
+    },
+    "product_pricing_state": {
+      "resource_id": "12SDQ2PN56sM0BLbiXSGbmj8oi2-dP6eF",
+      "version": "2.1.0",
+      "fingerprint": "5c4157a654d6c0254dad1ff4c0e73e8a3ccab64fbd8eff2a53c3ee7bf0400f1e",
+      "changed_by_sync": false
+    }
+  },
   "authorities": {
-    "import_contract": {
-      "drive_resource_id": "19PFly7-marww54yOaHmX0JKt-U_RYUlX",
-      "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_MIGRATION_INPUT_UNTIL_P010",
-      "sha256": "57cb1f07361e2c6a0fa980fbd63242fc0bc526268747bc48b0ea9e250dbfd5ba",
-      "version": "1.2.0",
-      "status": "ACTIVE_UNTIL_VERIFIED_TEMPLATE_EXPORT_ACTIVATES_V1_3_0"
-    },
-    "import_contract_candidate": {
-      "drive_resource_id": "1ejp5Ev8a2hIQRqqCFf4PFZUpzozv4XNM",
-      "sha256": "5c5da84f899bf164bf499396a9a36e5dbaf2cb389c5e96db7b54104a84e860df",
-      "version": "1.3.0",
-      "status": "CANDIDATE_PENDING_VERIFIED_TEMPLATE_EXPORT_READBACK",
-      "selected_as_active": false,
-      "authorized_material_delta": "is_update_sku: 0 -> 1"
-    },
     "master_specification": {
-      "drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
-      "repository_representation": "EXACT_RECONSTRUCTABLE_REPOSITORY_TRANSPORT_PLUS_LIVE_CURRENT_SET_BINDING",
-      "sha256": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949",
       "version": "1.4.0",
+      "drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
+      "sha256": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949",
+      "repository_representation": "EXACT_RECONSTRUCTABLE_REPOSITORY_TRANSPORT_PLUS_LIVE_CURRENT_SET_BINDING",
       "repository_transport_path": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/MANIFEST.json",
       "canonical_repository_target": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.md"
     },
+    "rulebook_successor": {
+      "version": "1.11.0",
+      "drive_resource_id": "1GNXj1u6VUMb5sbgpNuC45H-j0c-clMtf",
+      "sha256": "44225f1efebdfa8bec0a9d9dce449f0661b3e215214cf643fe26312d8cf59c9f",
+      "status": "SUCCESSOR_PREPARED_FOR_CURRENT_SET_SELECTION",
+      "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_MIGRATION_INPUT_UNTIL_P003"
+    },
+    "active_import_contract": {
+      "version": "1.2.0",
+      "drive_resource_id": "19PFly7-marww54yOaHmX0JKt-U_RYUlX",
+      "sha256": "57cb1f07361e2c6a0fa980fbd63242fc0bc526268747bc48b0ea9e250dbfd5ba",
+      "status": "ACTIVE_UNCHANGED"
+    },
+    "import_contract_candidate": {
+      "version": "1.4.0",
+      "drive_resource_id": "1qk82T6yCIy6HY56SePY6kFIC-0_ErYDE",
+      "sha256": "bd29b4b4989017921c05995e71113f035eeae75e46d8ffc319b39e1226066523",
+      "status": "CANDIDATE_NOT_ACTIVE_PENDING_TEMPLATE_PROOF_AND_VARIATION_POLICY",
+      "selected_as_active": false
+    },
     "operational_contract": {
+      "version": "1.4.0",
       "drive_resource_id": "1RuksK90iDLuMnpa_1g1P68BR0-f-yuJ0",
-      "sha256": "886172da55afbaf08b087a4615fc5bda0ee02010bb4a112f184b5ae14c91d5f8",
-      "version": "1.4.0"
-    },
-    "root_cause_hardening_owner_decision": {
-      "decision_id": "OD-050",
-      "drive_resource_id": "1S_VOKI_vYlOYTmndPs4vOnMgdXwiMFJg",
-      "repository_representation": "HISTORICAL_ACTIVE_EXCEPT_EXACT_SCOPE_SUPERSEDED_BY_OD_051",
-      "sha256": "82cd2bf659e2faf1a9c6164d00e2d53793df35aa92aed662b92f0cad2a38c67f"
-    },
-    "controlled_sku_import_owner_decision": {
-      "decision_id": "OD-051",
-      "drive_resource_id": "1wzPZUb0tdGIFZaZ2HfPDCdR9a-GKHAco",
-      "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_DECISION_MIRRORED_IN_DE003_AND_SKU_IMPORT_GOVERNANCE_BINDING",
-      "sha256": "5c44c00344f147370aa08e67274571c9702fb7ac4a2bc932de316cbab304ff23"
-    },
-    "rulebook": {
-      "drive_resource_id": "1sPc41CcDeBSlhkD1MT7Eqywnf9ZJDEyj",
-      "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_MIGRATION_INPUT_UNTIL_P003",
-      "sha256": "28fbe5859c631734617dccdbca0edc675d18075756c701b1a2184ebab1661e03",
-      "version": "1.10.0"
+      "sha256": "886172da55afbaf08b087a4615fc5bda0ee02010bb4a112f184b5ae14c91d5f8"
     },
     "simple_human_approval": {
       "drive_resource_id": "17m8g5Unv7p7wzgmS2zciaDPYfbkTfRSj",
       "sha256": "44a983c16d56bb9402f2a281bfff65e5290fa549b08e1516d4583fa2bb874099"
-    }
-  },
-  "binding_id": "SLPE-LIVE-WORKSPACE-BINDINGS-20260921-002",
-  "current_data": {
-    "master": {
-      "changed_by_sync": false,
-      "fingerprint": "05897afa27d76b225fabfb33f778e93a6fb5cb63dc6a2a63daeea3039c0f9fe9",
-      "headers": 95,
-      "resource_id": "1vV2oVN4rDt6zzTNUDZToumoXgo4nePH7rRfUPRH2JBQ",
-      "revision_or_fingerprint": "3007",
-      "rows": 876
     },
-    "product_pricing_state": {
-      "changed_by_sync": false,
-      "fingerprint": "5c4157a654d6c0254dad1ff4c0e73e8a3ccab64fbd8eff2a53c3ee7bf0400f1e",
-      "resource_id": "12SDQ2PN56sM0BLbiXSGbmj8oi2-dP6eF",
-      "version": "2.1.0"
+    "root_cause_hardening_owner_decision": {
+      "decision_id": "OD-050",
+      "drive_resource_id": "1S_VOKI_vYlOYTmndPs4vOnMgdXwiMFJg",
+      "sha256": "82cd2bf659e2faf1a9c6164d00e2d53793df35aa92aed662b92f0cad2a38c67f",
+      "status": "ACTIVE_EXCEPT_EXACT_SCOPE_SUPERSEDED_BY_OD_051"
+    },
+    "controlled_sku_import_owner_decision": {
+      "decision_id": "OD-051",
+      "drive_resource_id": "1wzPZUb0tdGIFZaZ2HfPDCdR9a-GKHAco",
+      "sha256": "5c44c00344f147370aa08e67274571c9702fb7ac4a2bc932de316cbab304ff23"
     }
   },
+  "production_evidence": {
+    "run_id": "SLPE-RUN-20260920-001",
+    "latest_export_drive_resource_id": "16Uy4Kwr6O4oTdW45gyyY97-7jrjvqH7c",
+    "latest_reconciliation_drive_resource_id": "1lOEZtKJL1ADVCbkR-1Virbncl-p6CkYp",
+    "root_cause_finding_drive_resource_id": "1DCYbBodILlaHQOLr3DvSp_3DqIOJWNv7",
+    "status": "BLOCKED_VARIATION_SEMANTICS_AND_IMPORT_CONTRACT_CORRECTION_REQUIRED",
+    "global_nonblank_sku_duplicates": 0,
+    "corrective_import_003": "SUPERSEDED_DO_NOT_IMPORT"
+  },
+  "de004_hardening": {
+    "decision_escape": "SLPE-DE004",
+    "controls": [
+      "VARIABLE_PARENT_CHILD_SKU_GUARD",
+      "VARIATION_AVAILABILITY_SEMANTICS_GATE",
+      "PARENT_AWARE_PRODUCTION_READBACK"
+    ],
+    "exact_sku_root_cause_subject": "Column1=533570693 / parent 22569 / child-candidate 42419",
+    "unresolved_business_policy": "Production representation of Price=0 -> hidden for a variation whose parent has active siblings",
+    "owner_decision_required_before_material_production_fix": true
+  },
+  "python_runtime_boundary": "Live governance artifacts may be selected by CURRENT_SET, but they remain migration/binding inputs for the not-yet-implemented Python project until their owning Plans implement and test them.",
+  "implementation_state": "PRE_IMPLEMENTATION",
   "integrity_rule": "Exact identity/version/SHA256 bindings are required; repository prose must not substitute for live CURRENT_SET selection.",
-  "predecessor_current_set": {
-    "current_set_id": "SLPE-CURRENT-SET-REPOSITORY-MASTER-V1_4-CANONICAL-SYNC-20260921-001",
-    "resource_id": "19RL9JfzHmZvmiuoyKYaTZ5o0BvfrAKEX",
-    "sha256": "65e254c1a4b2d6cf9af6c4c1989709a6075aa712d08f27c78871718e61adb231"
-  },
-  "prepared_current_set": {
-    "current_set_id": "SLPE-CURRENT-SET-CONTROLLED-SKU-IMPORT-GOVERNANCE-20260921-001",
-    "resource_id": "1A-Cl7L1-vG3hn21x3481Go5u0JBMWIgd",
-    "sha256": "0c7998adff6a354b9526d4ccd34d5ac62244829b4832374b67517d1cbed38093",
-    "read_back_verified": true,
-    "manifest_selection_status": "PENDING_REPOSITORY_SYNC"
-  },
-  "python_runtime_boundary": "These live governance artifacts are authoritative for the live Workspace when selected by CURRENT_SET, but remain migration/binding inputs for the not-yet-implemented Python project until their owning Plans implement and test them.",
-  "recorded_at": "2026-09-21T11:20:00+03:30",
-  "repository": "rezahh107/SwitchLand-Price-Engine",
-  "repository_role": "PRE_IMPLEMENTATION_CONTINUITY_AND_MIGRATION_BINDING",
-  "controlled_sku_import_governance": {
-    "decision_escape": "SLPE-DE003",
-    "owner_decision": "OD-051",
-    "rulebook_version": "1.10.0",
-    "active_import_contract_version": "1.2.0",
-    "candidate_import_contract_version": "1.3.0",
-    "candidate_activation_gate": "VERIFIED_TEMPLATE_EXPORT_READBACK_PROVING_SOLE_MATERIAL_DELTA_IS_IS_UPDATE_SKU_1",
-    "pilot_status": "PREPARED_NOT_IMPORT_READY",
-    "production_write_performed": false,
-    "wp_template_configuration_changed_by_governance_work": false
-  },
-  "workspace_manifest_resource_id": "1Kk3XaJwaRJWl2UrzoZJA5-YvuQCRTSQB",
-  "workspace_root_resource_id": "1HgQlekyWQLiGnQ_UgV_SIzJVF6L2kymd",
-  "binding_status": "PREPARED_CURRENT_SET_READBACK_VERIFIED_PENDING_MANIFEST_SELECTION_AFTER_REPOSITORY_SYNC",
-  "repository_master_transport": {
-    "path": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/MANIFEST.json",
-    "canonical_target": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.md",
-    "transport_format": "ORDERED_UTF8_PARTS_CONCATENATE_EXACTLY_NO_SEPARATOR",
-    "canonical_size_bytes": 196278,
-    "canonical_sha256": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949",
-    "source_live_drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
-    "decision_escape": "SLPE-DE002"
-  }
+  "binding_status": "DE004_REPOSITORY_SYNC_IN_PROGRESS; LIVE_CURRENT_SET_REMAINS_002_UNTIL_SUCCESSOR_MANIFEST_ACTIVATION"
 }
