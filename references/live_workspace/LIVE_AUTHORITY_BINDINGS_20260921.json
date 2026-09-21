@@ -1,18 +1,19 @@
 {
   "artifact_type": "LIVE_WORKSPACE_AUTHORITY_BINDINGS",
-  "binding_id": "SLPE-LIVE-WORKSPACE-BINDINGS-20260921-003",
+  "binding_id": "SLPE-LIVE-WORKSPACE-BINDINGS-20260921-004",
   "recorded_at": "2026-09-21T13:38:00+03:30",
   "repository": "rezahh107/SwitchLand-Price-Engine",
   "repository_role": "PRE_IMPLEMENTATION_CONTINUITY_AND_MIGRATION_BINDING",
   "workspace_root_resource_id": "1HgQlekyWQLiGnQ_UgV_SIzJVF6L2kymd",
   "workspace_manifest_resource_id": "1Kk3XaJwaRJWl2UrzoZJA5-YvuQCRTSQB",
+  "workspace_manifest_sha256": "2b441001d4fa19fffdf6f4ced461d0a81add3a83fea4328785eb3f53254fa208",
   "current_set": {
-    "current_set_id": "SLPE-CURRENT-SET-CONTROLLED-SKU-IMPORT-GOVERNANCE-20260921-002",
-    "resource_id": "1XRmDH3sxGUvq2Rg0Or7qbVklAI4H7yZ7",
-    "sha256": "90e3f272ffe6b6154b1f15926afe614d8074e84685b90b9bd536535abd812cff",
+    "current_set_id": "SLPE-CURRENT-SET-VARIABLE-PRODUCT-IMPORT-HARDENING-20260921-001",
+    "resource_id": "1UkMXpB-PNebp1KE8FwIMOdjPuCl0YLHd",
+    "sha256": "deac7e006d788b8026eb2afc212a35b7ff76d82569b9cd261043fe6cd282f674",
     "status": "COMMITTED",
     "read_back_verified": true,
-    "successor_preparation": "DE004 / Rulebook v1.11.0; final successor CURRENT_SET will be created only after repository merge evidence exists"
+    "parent_current_set_id": "SLPE-CURRENT-SET-CONTROLLED-SKU-IMPORT-GOVERNANCE-20260921-002"
   },
   "current_data": {
     "master": {
@@ -35,22 +36,20 @@
       "version": "1.4.0",
       "drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
       "sha256": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949",
-      "repository_representation": "EXACT_RECONSTRUCTABLE_REPOSITORY_TRANSPORT_PLUS_LIVE_CURRENT_SET_BINDING",
-      "repository_transport_path": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/MANIFEST.json",
-      "canonical_repository_target": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.md"
+      "repository_representation": "EXACT_RECONSTRUCTABLE_REPOSITORY_TRANSPORT_PLUS_LIVE_CURRENT_SET_BINDING"
     },
-    "rulebook_successor": {
+    "rulebook": {
       "version": "1.11.0",
       "drive_resource_id": "1GNXj1u6VUMb5sbgpNuC45H-j0c-clMtf",
       "sha256": "44225f1efebdfa8bec0a9d9dce449f0661b3e215214cf643fe26312d8cf59c9f",
-      "status": "SUCCESSOR_PREPARED_FOR_CURRENT_SET_SELECTION",
+      "status": "ACTIVE_CURRENT_SET_AUTHORITY",
       "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_MIGRATION_INPUT_UNTIL_P003"
     },
     "active_import_contract": {
       "version": "1.2.0",
       "drive_resource_id": "19PFly7-marww54yOaHmX0JKt-U_RYUlX",
       "sha256": "57cb1f07361e2c6a0fa980fbd63242fc0bc526268747bc48b0ea9e250dbfd5ba",
-      "status": "ACTIVE_UNCHANGED"
+      "status": "ACTIVE_CURRENT_SET_AUTHORITY_UNCHANGED"
     },
     "import_contract_candidate": {
       "version": "1.4.0",
@@ -71,8 +70,7 @@
     "root_cause_hardening_owner_decision": {
       "decision_id": "OD-050",
       "drive_resource_id": "1S_VOKI_vYlOYTmndPs4vOnMgdXwiMFJg",
-      "sha256": "82cd2bf659e2faf1a9c6164d00e2d53793df35aa92aed662b92f0cad2a38c67f",
-      "status": "ACTIVE_EXCEPT_EXACT_SCOPE_SUPERSEDED_BY_OD_051"
+      "sha256": "82cd2bf659e2faf1a9c6164d00e2d53793df35aa92aed662b92f0cad2a38c67f"
     },
     "controlled_sku_import_owner_decision": {
       "decision_id": "OD-051",
@@ -91,6 +89,10 @@
   },
   "de004_hardening": {
     "decision_escape": "SLPE-DE004",
+    "repository_merge": {
+      "pull_request": 5,
+      "merged_commit": "f58f35d7be4606ffd5b1f13b62cd5a649ad585bd"
+    },
     "controls": [
       "VARIABLE_PARENT_CHILD_SKU_GUARD",
       "VARIATION_AVAILABILITY_SEMANTICS_GATE",
@@ -100,8 +102,8 @@
     "unresolved_business_policy": "Production representation of Price=0 -> hidden for a variation whose parent has active siblings",
     "owner_decision_required_before_material_production_fix": true
   },
-  "python_runtime_boundary": "Live governance artifacts may be selected by CURRENT_SET, but they remain migration/binding inputs for the not-yet-implemented Python project until their owning Plans implement and test them.",
+  "python_runtime_boundary": "Live governance artifacts are authoritative when selected by CURRENT_SET but remain migration/binding inputs for the not-yet-implemented Python project until owning Plans implement and test them.",
   "implementation_state": "PRE_IMPLEMENTATION",
   "integrity_rule": "Exact identity/version/SHA256 bindings are required; repository prose must not substitute for live CURRENT_SET selection.",
-  "binding_status": "DE004_REPOSITORY_SYNC_IN_PROGRESS; LIVE_CURRENT_SET_REMAINS_002_UNTIL_SUCCESSOR_MANIFEST_ACTIVATION"
+  "binding_status": "CURRENT_SET_AND_MANIFEST_READBACK_VERIFIED; DE004_LIVE_WORKSPACE_SYNC_COMMITTED"
 }
