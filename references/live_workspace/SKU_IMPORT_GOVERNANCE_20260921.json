@@ -1,6 +1,6 @@
 {
   "artifact_type": "CONTROLLED_SKU_IMPORT_GOVERNANCE_BINDING",
-  "recorded_at": "2026-09-21T11:20:00+03:30",
+  "recorded_at": "2026-09-21T11:33:00+03:30",
   "decision_escape": "SLPE-DE003",
   "owner_decision": {
     "decision_ref": "OD-051",
@@ -11,7 +11,8 @@
   "rulebook_successor": {
     "version": "1.10.0",
     "drive_resource_id": "1sPc41CcDeBSlhkD1MT7Eqywnf9ZJDEyj",
-    "sha256": "28fbe5859c631734617dccdbca0edc675d18075756c701b1a2184ebab1661e03"
+    "sha256": "28fbe5859c631734617dccdbca0edc675d18075756c701b1a2184ebab1661e03",
+    "status": "ACTIVE_VIA_CURRENT_SET"
   },
   "active_import_contract": {
     "version": "1.2.0",
@@ -48,12 +49,22 @@
       "sha256": "fdb64e7fe7c99f260ba6562b950f23f3b4e46d509c1b0e685f461acab4b34830"
     }
   },
-  "prepared_current_set": {
-    "current_set_id": "SLPE-CURRENT-SET-CONTROLLED-SKU-IMPORT-GOVERNANCE-20260921-001",
-    "drive_resource_id": "1A-Cl7L1-vG3hn21x3481Go5u0JBMWIgd",
-    "sha256": "0c7998adff6a354b9526d4ccd34d5ac62244829b4832374b67517d1cbed38093",
+  "current_set": {
+    "current_set_id": "SLPE-CURRENT-SET-CONTROLLED-SKU-IMPORT-GOVERNANCE-20260921-002",
+    "drive_resource_id": "1XRmDH3sxGUvq2Rg0Or7qbVklAI4H7yZ7",
+    "sha256": "90e3f272ffe6b6154b1f15926afe614d8074e84685b90b9bd536535abd812cff",
     "read_back_verified": true,
-    "manifest_selection_status": "PENDING_REPOSITORY_SYNC"
+    "manifest_selected": true,
+    "status": "COMMITTED"
+  },
+  "workspace_manifest": {
+    "drive_resource_id": "1Kk3XaJwaRJWl2UrzoZJA5-YvuQCRTSQB",
+    "sha256": "353297a302475f38f1b43d3bc65d7738f24b668c794ffd82c4a663bfe189ccd6",
+    "read_back_verified": true
+  },
+  "repository_governance_sync": {
+    "pull_request": 4,
+    "merged_commit": "84f7593943f8c7200bb8be8a0af2f33e8651560f"
   },
   "named_gaps": [
     "Verified WP All Import template/config export proving the sole material delta is is_update_sku=1 is missing.",
