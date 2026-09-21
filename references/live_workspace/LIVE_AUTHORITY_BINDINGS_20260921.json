@@ -9,9 +9,11 @@
     },
     "master_specification": {
       "drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
-      "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_UNTIL_P001",
+      "repository_representation": "EXACT_RECONSTRUCTABLE_REPOSITORY_TRANSPORT_PLUS_LIVE_CURRENT_SET_BINDING",
       "sha256": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949",
-      "version": "1.4.0"
+      "version": "1.4.0",
+      "repository_transport_path": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/MANIFEST.json",
+      "canonical_repository_target": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.md"
     },
     "operational_contract": {
       "drive_resource_id": "1RuksK90iDLuMnpa_1g1P68BR0-f-yuJ0",
@@ -72,5 +74,22 @@
     "wp_template_configuration_changed": false
   },
   "workspace_manifest_resource_id": "1Kk3XaJwaRJWl2UrzoZJA5-YvuQCRTSQB",
-  "workspace_root_resource_id": "1HgQlekyWQLiGnQ_UgV_SIzJVF6L2kymd"
+  "workspace_root_resource_id": "1HgQlekyWQLiGnQ_UgV_SIzJVF6L2kymd",
+  "binding_status": "LIVE_CURRENT_SET_ACTIVATED_AND_REPOSITORY_MASTER_TRANSPORT_SYNCED",
+  "current_set": {
+    "current_set_id": "SLPE-CURRENT-SET-ROOT-CAUSE-HARDENING-20260921-001",
+    "resource_id": "1vB1LnykGL9zC370SGxhMN0Wd-ukmZX49",
+    "sha256": "3c532ccbe7c75e2738673fabfcbf99a89dc79c5fb2bc53794f11f9212b1f1df2",
+    "status": "COMMITTED",
+    "read_back_verified": true
+  },
+  "repository_master_transport": {
+    "path": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/MANIFEST.json",
+    "canonical_target": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.md",
+    "transport_format": "ORDERED_UTF8_PARTS_CONCATENATE_EXACTLY_NO_SEPARATOR",
+    "canonical_size_bytes": 196278,
+    "canonical_sha256": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949",
+    "source_live_drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
+    "decision_escape": "SLPE-DE002"
+  }
 }

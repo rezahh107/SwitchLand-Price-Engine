@@ -3,18 +3,21 @@
   "project_id": "switchland-price-engine",
   "repository_continuity": {
     "bootstrap_id": "SLPE-REPOSITORY-CONTINUITY-BOOTSTRAP-v1",
-    "status": "PRE_IMPLEMENTATION_CONTINUITY_BASELINE_REBASED_20260921",
-    "decision_escape_ref": "plans/decision-escapes/SLPE-DE001-live-workspace-authority-rebaseline.md"
+    "status": "PRE_IMPLEMENTATION_CONTINUITY_BASELINE_CANONICAL_MASTER_V1_4_SYNC_20260921",
+    "decision_escape_ref": "plans/decision-escapes/SLPE-DE002-master-v1.4-canonical-sync.md",
+    "prior_decision_escape_ref": "plans/decision-escapes/SLPE-DE001-live-workspace-authority-rebaseline.md"
   },
   "frozen_contracts": {
     "master_specification": {
       "authority_id": "SLPE-MASTER-SPEC-001",
       "version": "1.4.0",
-      "repository_path": "references/live_workspace/LIVE_AUTHORITY_BINDINGS_20260921.json#authorities.master_specification",
-      "storage_format": "HASH_BOUND_LIVE_DRIVE_AUTHORITY_UNTIL_P001",
+      "repository_path": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/MANIFEST.json",
+      "storage_format": "ORDERED_UTF8_PARTS_CONCATENATE_EXACTLY_NO_SEPARATOR",
       "canonical_size_bytes": 196278,
       "content_hash": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949",
-      "drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU"
+      "drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
+      "canonical_repository_target": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.md",
+      "transport_boundary": "PRE_P001_EXACT_RECONSTRUCTION"
     },
     "implementation_architecture": {
       "authority_id": "IMPLEMENTATION_ARCHITECTURE_CONTRACT",
@@ -48,19 +51,19 @@
       "version": "1.0.0",
       "repository_path": "planning/PROJECT_SKELETON_SPECIFICATION.md",
       "sha256": "fdf104eff98a9b0228709f4fc50a0a41453397563acb80f9e33d3bf51363b782",
-      "decision_escape_note": "DE001 supersedes only stale active-Master-version literals; repository shape/Plan semantics remain unchanged."
+      "decision_escape_note": "DE002 supersedes only stale active-Master v1.2.0 version/path literals for the P001 canonical authority target; repository structure and planning semantics remain frozen and unchanged."
     },
     "master_implementation_roadmap": {
       "artifact_id": "SLPE-MIR-001",
       "version": "1.0.0",
       "repository_path": "planning/MASTER_IMPLEMENTATION_ROADMAP.md",
       "sha256": "e141c7afabeeba20907883275a0a89522378ce506ec75f391810ebccf2269735",
-      "decision_escape_note": "DE001 does not reorder Plans or mark any capability implemented."
+      "decision_escape_note": "DE002 supersedes only stale active-Master v1.2.0 literals; no Plan ordering, dependency, acceptance boundary, capability status, or roadmap semantics are changed."
     }
   },
   "live_workspace_sync": {
     "sync_id": "SLPE-LIVE-WORKSPACE-SYNC-20260921-001",
-    "status": "STAGED_AUTHORITIES_PENDING_CURRENT_SET_ACTIVATION",
+    "status": "CURRENT_SET_ACTIVATED_READBACK_VERIFIED_AND_REPOSITORY_MASTER_TRANSPORT_SYNCED",
     "workspace_manifest_resource_id": "1Kk3XaJwaRJWl2UrzoZJA5-YvuQCRTSQB",
     "predecessor_current_set": {
       "current_set_id": "SLPE-CURRENT-SET-GOVERNANCE-20260920-001",
@@ -86,7 +89,9 @@
         "version": "1.4.0",
         "drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
         "sha256": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949",
-        "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_UNTIL_P001"
+        "repository_representation": "EXACT_RECONSTRUCTABLE_REPOSITORY_TRANSPORT_PLUS_LIVE_CURRENT_SET_BINDING",
+        "repository_transport_path": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/MANIFEST.json",
+        "canonical_repository_target": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.md"
       },
       "rulebook": {
         "version": "1.9.0",
@@ -120,6 +125,13 @@
       "run_id": "SLPE-RUN-20260920-001",
       "status": "OPEN_BLOCKED_NOT_PROMOTED",
       "production_write_performed_by_sync": false
+    },
+    "current_set": {
+      "current_set_id": "SLPE-CURRENT-SET-ROOT-CAUSE-HARDENING-20260921-001",
+      "resource_id": "1vB1LnykGL9zC370SGxhMN0Wd-ukmZX49",
+      "sha256": "3c532ccbe7c75e2738673fabfcbf99a89dc79c5fb2bc53794f11f9212b1f1df2",
+      "status": "COMMITTED",
+      "read_back_verified": true
     }
   },
   "root_cause_hardening_obligations": {
@@ -135,115 +147,29 @@
       "CORRECTIVE_IMPORT_LEAST_MUTATION"
     ],
     "plan_bindings": {
-      "SLPE-P003": [
-        "Rulebook/decision migration + trace of OD-043..OD-050"
-      ],
-      "SLPE-P006": [
-        "exact identity/BOM/pricing mappings and independent fixtures"
-      ],
-      "SLPE-P008": [
-        "95-column preservation + corrective least-mutation validation"
-      ],
-      "SLPE-P010": [
-        "SKU transition preflight/order, selective-hash skip guard, production read-back, contract drift, corrective execution evidence"
-      ]
+      "SLPE-P003": ["Rulebook/decision migration + trace of OD-043..OD-050"],
+      "SLPE-P006": ["exact identity/BOM/pricing mappings and independent fixtures"],
+      "SLPE-P008": ["95-column preservation + corrective least-mutation validation"],
+      "SLPE-P010": ["SKU transition preflight/order, selective-hash skip guard, production read-back, contract drift, corrective execution evidence"]
     },
     "template_configuration_changed": false,
     "pricing_formula_changed": false,
     "schema_changed": false
   },
   "capabilities": {
-    "CAP-01": {
-      "name": "delivery_spine",
-      "implementation_status": "NOT_IMPLEMENTED",
-      "verification_status": "NOT_TESTED",
-      "evidence_refs": [],
-      "roadmap_plan": "SLPE-P001"
-    },
-    "CAP-02": {
-      "name": "verified_source_catalog",
-      "implementation_status": "NOT_IMPLEMENTED",
-      "verification_status": "NOT_TESTED",
-      "evidence_refs": [],
-      "roadmap_plan": "SLPE-P002"
-    },
-    "CAP-03": {
-      "name": "rule_migration_trace",
-      "implementation_status": "NOT_IMPLEMENTED",
-      "verification_status": "NOT_TESTED",
-      "evidence_refs": [],
-      "roadmap_plan": "SLPE-P003"
-    },
-    "CAP-04": {
-      "name": "state_repository_recovery",
-      "implementation_status": "NOT_IMPLEMENTED",
-      "verification_status": "NOT_TESTED",
-      "evidence_refs": [],
-      "roadmap_plan": "SLPE-P004"
-    },
-    "CAP-05": {
-      "name": "independent_acceptance_oracle",
-      "implementation_status": "NOT_IMPLEMENTED",
-      "verification_status": "NOT_TESTED",
-      "evidence_refs": [],
-      "roadmap_plan": "SLPE-P005"
-    },
-    "CAP-06": {
-      "name": "matching_bom_pricing",
-      "implementation_status": "NOT_IMPLEMENTED",
-      "verification_status": "NOT_TESTED",
-      "evidence_refs": [],
-      "roadmap_plan": "SLPE-P006"
-    },
-    "CAP-07": {
-      "name": "commercial_policy_state",
-      "implementation_status": "NOT_IMPLEMENTED",
-      "verification_status": "NOT_TESTED",
-      "evidence_refs": [],
-      "roadmap_plan": "SLPE-P007"
-    },
-    "CAP-08": {
-      "name": "deterministic_output_validation",
-      "implementation_status": "NOT_IMPLEMENTED",
-      "verification_status": "NOT_TESTED",
-      "evidence_refs": [],
-      "roadmap_plan": "SLPE-P008"
-    },
-    "CAP-09": {
-      "name": "guided_run_gui_approval",
-      "implementation_status": "NOT_IMPLEMENTED",
-      "verification_status": "NOT_TESTED",
-      "evidence_refs": [],
-      "roadmap_plan": "SLPE-P009"
-    },
-    "CAP-10": {
-      "name": "import_promotion",
-      "implementation_status": "NOT_IMPLEMENTED",
-      "verification_status": "NOT_TESTED",
-      "evidence_refs": [],
-      "roadmap_plan": "SLPE-P010"
-    },
-    "CAP-11": {
-      "name": "rollback_recovery",
-      "implementation_status": "NOT_IMPLEMENTED",
-      "verification_status": "NOT_TESTED",
-      "evidence_refs": [],
-      "roadmap_plan": "SLPE-P011"
-    },
-    "CAP-12": {
-      "name": "migration_acceptance",
-      "implementation_status": "NOT_IMPLEMENTED",
-      "verification_status": "NOT_TESTED",
-      "evidence_refs": [],
-      "roadmap_plan": "SLPE-P012"
-    },
-    "CAP-13": {
-      "name": "release_acceptance",
-      "implementation_status": "NOT_IMPLEMENTED",
-      "verification_status": "NOT_TESTED",
-      "evidence_refs": [],
-      "roadmap_plan": "SLPE-P013"
-    }
+    "CAP-01": {"name":"delivery_spine","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P001"},
+    "CAP-02": {"name":"verified_source_catalog","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P002"},
+    "CAP-03": {"name":"rule_migration_trace","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P003"},
+    "CAP-04": {"name":"state_repository_recovery","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P004"},
+    "CAP-05": {"name":"independent_acceptance_oracle","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P005"},
+    "CAP-06": {"name":"matching_bom_pricing","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P006"},
+    "CAP-07": {"name":"commercial_policy_state","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P007"},
+    "CAP-08": {"name":"deterministic_output_validation","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P008"},
+    "CAP-09": {"name":"guided_run_gui_approval","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P009"},
+    "CAP-10": {"name":"import_promotion","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P010"},
+    "CAP-11": {"name":"rollback_recovery","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P011"},
+    "CAP-12": {"name":"migration_acceptance","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P012"},
+    "CAP-13": {"name":"release_acceptance","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P013"}
   },
   "active_plan": null,
   "last_verified_plan": null,
@@ -255,6 +181,12 @@
       "path": "plans/decision-escapes/SLPE-DE001-live-workspace-authority-rebaseline.md",
       "resolved_on": "2026-09-21",
       "resolution": "Owner-authorized minimal rebaseline to active Master v1.4.0 and exact hash-bound live governance authorities; no implementation capability advanced."
+    },
+    {
+      "escape_id": "SLPE-DE002",
+      "path": "plans/decision-escapes/SLPE-DE002-master-v1.4-canonical-sync.md",
+      "resolved_on": "2026-09-21",
+      "resolution": "Comparison confirmed active Master v1.4.0 is the semantic successor to repository v1.2.0. Exact official v1.4.0 bytes are now represented by an ordered reconstructable pre-P001 repository transport; no implementation capability, production data, schema, pricing formula, WP All Import template configuration, or roadmap ordering advanced."
     }
   ],
   "next_authorized_plan": {
