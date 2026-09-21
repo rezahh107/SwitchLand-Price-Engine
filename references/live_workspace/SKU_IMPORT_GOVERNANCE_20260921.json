@@ -1,0 +1,70 @@
+{
+  "artifact_type": "CONTROLLED_SKU_IMPORT_GOVERNANCE_BINDING",
+  "recorded_at": "2026-09-21T11:20:00+03:30",
+  "decision_escape": "SLPE-DE003",
+  "owner_decision": {
+    "decision_ref": "OD-051",
+    "decision_id": "SLPE-OWNER-DECISION-CONTROLLED-SKU-IMPORT-20260921-001",
+    "drive_resource_id": "1wzPZUb0tdGIFZaZ2HfPDCdR9a-GKHAco",
+    "sha256": "5c44c00344f147370aa08e67274571c9702fb7ac4a2bc932de316cbab304ff23"
+  },
+  "rulebook_successor": {
+    "version": "1.10.0",
+    "drive_resource_id": "1sPc41CcDeBSlhkD1MT7Eqywnf9ZJDEyj",
+    "sha256": "28fbe5859c631734617dccdbca0edc675d18075756c701b1a2184ebab1661e03"
+  },
+  "active_import_contract": {
+    "version": "1.2.0",
+    "drive_resource_id": "19PFly7-marww54yOaHmX0JKt-U_RYUlX",
+    "sha256": "57cb1f07361e2c6a0fa980fbd63242fc0bc526268747bc48b0ea9e250dbfd5ba",
+    "is_update_sku": "0"
+  },
+  "candidate_import_contract": {
+    "version": "1.3.0",
+    "status": "CANDIDATE_PENDING_VERIFIED_TEMPLATE_EXPORT_READBACK",
+    "drive_resource_id": "1ejp5Ev8a2hIQRqqCFf4PFZUpzozv4XNM",
+    "sha256": "5c5da84f899bf164bf499396a9a36e5dbaf2cb389c5e96db7b54104a84e860df",
+    "authorized_material_delta": "matching_and_update_behavior.all_update_flags.is_update_sku: 0 -> 1",
+    "selected_as_active": false
+  },
+  "pilot": {
+    "run_id": "SLPE-RUN-20260920-001",
+    "status": "PREPARED_NOT_IMPORT_READY",
+    "product_ids": [34201, 22133, 22569, 43123, 43124, 43125],
+    "csv": {
+      "drive_resource_id": "1gdjjr1YlCd-G6tWkjn_-isF9jucCvvjv",
+      "sha256": "2f6d353bd839e1cbefbc43b0d0ef863d165332c69482eac0529e1c088507e3f1",
+      "rows": 6,
+      "headers": 95
+    },
+    "sku_transition_preflight": {
+      "drive_resource_id": "1UEbT_gJzaY8rMmtoPVVeG1HsViXMGWyY",
+      "sha256": "208cfba126baac25ef1a9dac2a9efa69c132c662006c4c5e6113bec0f4254755",
+      "latest_available_export_observation": "NO_TRANSIENT_SKU_DEPENDENCY_IN_LATEST_AVAILABLE_EXPORT",
+      "support_sufficiency": "PARTIAL"
+    },
+    "audit": {
+      "drive_resource_id": "1JBp7MOlJZTP90uEF_ukJDfaVnBUQMpzZ",
+      "sha256": "fdb64e7fe7c99f260ba6562b950f23f3b4e46d509c1b0e685f461acab4b34830"
+    }
+  },
+  "prepared_current_set": {
+    "current_set_id": "SLPE-CURRENT-SET-CONTROLLED-SKU-IMPORT-GOVERNANCE-20260921-001",
+    "drive_resource_id": "1A-Cl7L1-vG3hn21x3481Go5u0JBMWIgd",
+    "sha256": "0c7998adff6a354b9526d4ccd34d5ac62244829b4832374b67517d1cbed38093",
+    "read_back_verified": true,
+    "manifest_selection_status": "PENDING_REPOSITORY_SYNC"
+  },
+  "named_gaps": [
+    "Verified WP All Import template/config export proving the sole material delta is is_update_sku=1 is missing.",
+    "Fresh Production identity read-back immediately before pilot execution is missing."
+  ],
+  "non_effects": {
+    "current_master_changed": false,
+    "pps_changed": false,
+    "production_write_performed": false,
+    "wp_template_changed_by_governance_work": false,
+    "pricing_formula_changed": false,
+    "schema_changed": false
+  }
+}
