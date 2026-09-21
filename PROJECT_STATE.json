@@ -3,9 +3,9 @@
   "project_id": "switchland-price-engine",
   "repository_continuity": {
     "bootstrap_id": "SLPE-REPOSITORY-CONTINUITY-BOOTSTRAP-v1",
-    "status": "PRE_IMPLEMENTATION_CONTINUITY_CONTROLLED_SKU_IMPORT_GOVERNANCE_20260921",
-    "decision_escape_ref": "plans/decision-escapes/SLPE-DE003-controlled-sku-import-governance.md",
-    "prior_decision_escape_ref": "plans/decision-escapes/SLPE-DE002-master-v1.4-canonical-sync.md"
+    "status": "PRE_IMPLEMENTATION_CONTINUITY_DE004_VARIABLE_PRODUCT_IMPORT_HARDENING_20260921",
+    "decision_escape_ref": "plans/decision-escapes/SLPE-DE004-variable-product-import-hardening.md",
+    "prior_decision_escape_ref": "plans/decision-escapes/SLPE-DE003-controlled-sku-import-governance.md"
   },
   "frozen_contracts": {
     "master_specification": {
@@ -58,18 +58,13 @@
       "version": "1.0.0",
       "repository_path": "planning/MASTER_IMPLEMENTATION_ROADMAP.md",
       "sha256": "e141c7afabeeba20907883275a0a89522378ce506ec75f391810ebccf2269735",
-      "decision_escape_note": "DE003 adds controlled SKU-import governance obligations to existing owning Plans without changing Plan ordering, architecture, technology or capability acceptance semantics."
+      "decision_escape_note": "DE003 and DE004 add controlled SKU-import, variable parent/child SKU, Parent-aware read-back and variation-availability obligations to existing owning Plans without changing Plan ordering, architecture, technology or capability acceptance semantics."
     }
   },
   "live_workspace_sync": {
-    "sync_id": "SLPE-LIVE-WORKSPACE-SYNC-20260921-002",
-    "status": "CONTROLLED_SKU_IMPORT_GOVERNANCE_PREPARED_PENDING_MANIFEST_SELECTION",
+    "sync_id": "SLPE-LIVE-WORKSPACE-SYNC-20260921-003",
+    "status": "DE004_REPOSITORY_SYNC_IN_PROGRESS_PENDING_SUCCESSOR_CURRENT_SET_ACTIVATION",
     "workspace_manifest_resource_id": "1Kk3XaJwaRJWl2UrzoZJA5-YvuQCRTSQB",
-    "predecessor_current_set": {
-      "current_set_id": "SLPE-CURRENT-SET-REPOSITORY-MASTER-V1_4-CANONICAL-SYNC-20260921-001",
-      "resource_id": "19RL9JfzHmZvmiuoyKYaTZ5o0BvfrAKEX",
-      "sha256": "65e254c1a4b2d6cf9af6c4c1989709a6075aa712d08f27c78871718e61adb231"
-    },
     "current_master": {
       "resource_id": "1vV2oVN4rDt6zzTNUDZToumoXgo4nePH7rRfUPRH2JBQ",
       "fingerprint": "05897afa27d76b225fabfb33f778e93a6fb5cb63dc6a2a63daeea3039c0f9fe9",
@@ -88,28 +83,25 @@
       "master_specification": {
         "version": "1.4.0",
         "drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
-        "sha256": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949",
-        "repository_representation": "EXACT_RECONSTRUCTABLE_REPOSITORY_TRANSPORT_PLUS_LIVE_CURRENT_SET_BINDING",
-        "repository_transport_path": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/MANIFEST.json",
-        "canonical_repository_target": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.md"
+        "sha256": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949"
       },
-      "rulebook": {
-        "version": "1.10.0",
-        "drive_resource_id": "1sPc41CcDeBSlhkD1MT7Eqywnf9ZJDEyj",
-        "sha256": "28fbe5859c631734617dccdbca0edc675d18075756c701b1a2184ebab1661e03",
-        "repository_representation": "HASH_BOUND_LIVE_AUTHORITY_MIGRATION_INPUT_UNTIL_P003"
+      "rulebook_successor": {
+        "version": "1.11.0",
+        "drive_resource_id": "1GNXj1u6VUMb5sbgpNuC45H-j0c-clMtf",
+        "sha256": "44225f1efebdfa8bec0a9d9dce449f0661b3e215214cf643fe26312d8cf59c9f",
+        "status": "PREPARED_PENDING_SUCCESSOR_CURRENT_SET_SELECTION"
       },
       "import_contract": {
         "version": "1.2.0",
         "drive_resource_id": "19PFly7-marww54yOaHmX0JKt-U_RYUlX",
         "sha256": "57cb1f07361e2c6a0fa980fbd63242fc0bc526268747bc48b0ea9e250dbfd5ba",
-        "repository_representation": "ACTIVE_HASH_BOUND_LIVE_AUTHORITY_UNTIL_VERIFIED_V1_3_ACTIVATION"
+        "status": "ACTIVE_UNCHANGED"
       },
       "import_contract_candidate": {
-        "version": "1.3.0",
-        "drive_resource_id": "1ejp5Ev8a2hIQRqqCFf4PFZUpzozv4XNM",
-        "sha256": "5c5da84f899bf164bf499396a9a36e5dbaf2cb389c5e96db7b54104a84e860df",
-        "status": "CANDIDATE_PENDING_VERIFIED_TEMPLATE_EXPORT_READBACK",
+        "version": "1.4.0",
+        "drive_resource_id": "1qk82T6yCIy6HY56SePY6kFIC-0_ErYDE",
+        "sha256": "bd29b4b4989017921c05995e71113f035eeae75e46d8ffc319b39e1226066523",
+        "status": "CANDIDATE_NOT_ACTIVE_PENDING_TEMPLATE_PROOF_AND_VARIATION_POLICY",
         "selected_as_active": false
       },
       "operational_contract": {
@@ -124,8 +116,7 @@
       "root_cause_hardening_owner_decision": {
         "decision_id": "OD-050",
         "drive_resource_id": "1S_VOKI_vYlOYTmndPs4vOnMgdXwiMFJg",
-        "sha256": "82cd2bf659e2faf1a9c6164d00e2d53793df35aa92aed662b92f0cad2a38c67f",
-        "status": "ACTIVE_EXCEPT_EXACT_SCOPE_SUPERSEDED_BY_OD_051"
+        "sha256": "82cd2bf659e2faf1a9c6164d00e2d53793df35aa92aed662b92f0cad2a38c67f"
       },
       "controlled_sku_import_owner_decision": {
         "decision_id": "OD-051",
@@ -133,24 +124,19 @@
         "sha256": "5c44c00344f147370aa08e67274571c9702fb7ac4a2bc932de316cbab304ff23"
       }
     },
-    "open_production_reconciliation": {
-      "run_id": "SLPE-RUN-20260920-001",
-      "status": "OPEN_BLOCKED_NOT_PROMOTED",
-      "production_write_performed_by_sync": false
-    },
     "current_set": {
-      "current_set_id": "SLPE-CURRENT-SET-REPOSITORY-MASTER-V1_4-CANONICAL-SYNC-20260921-001",
-      "resource_id": "19RL9JfzHmZvmiuoyKYaTZ5o0BvfrAKEX",
-      "sha256": "65e254c1a4b2d6cf9af6c4c1989709a6075aa712d08f27c78871718e61adb231",
+      "current_set_id": "SLPE-CURRENT-SET-CONTROLLED-SKU-IMPORT-GOVERNANCE-20260921-002",
+      "resource_id": "1XRmDH3sxGUvq2Rg0Or7qbVklAI4H7yZ7",
+      "sha256": "90e3f272ffe6b6154b1f15926afe614d8074e84685b90b9bd536535abd812cff",
       "status": "COMMITTED",
       "read_back_verified": true
     },
-    "prepared_current_set": {
-      "current_set_id": "SLPE-CURRENT-SET-CONTROLLED-SKU-IMPORT-GOVERNANCE-20260921-001",
-      "resource_id": "1A-Cl7L1-vG3hn21x3481Go5u0JBMWIgd",
-      "sha256": "0c7998adff6a354b9526d4ccd34d5ac62244829b4832374b67517d1cbed38093",
-      "read_back_verified": true,
-      "manifest_selection_status": "PENDING_REPOSITORY_SYNC"
+    "open_production_reconciliation": {
+      "run_id": "SLPE-RUN-20260920-001",
+      "status": "BLOCKED_VARIATION_SEMANTICS_AND_IMPORT_CONTRACT_CORRECTION_REQUIRED",
+      "latest_reconciliation_resource_id": "1lOEZtKJL1ADVCbkR-1Virbncl-p6CkYp",
+      "root_cause_resource_id": "1DCYbBodILlaHQOLr3DvSp_3DqIOJWNv7",
+      "production_write_performed_by_repository_sync": false
     }
   },
   "root_cause_hardening_obligations": {
@@ -164,32 +150,38 @@
       "SELECTIVE_HASH_SKIP_GUARD",
       "PRODUCTION_READBACK_GATE",
       "IMPORT_CONTRACT_DRIFT_GUARD",
-      "CORRECTIVE_IMPORT_LEAST_MUTATION"
+      "CORRECTIVE_IMPORT_LEAST_MUTATION",
+      "VARIABLE_PARENT_CHILD_SKU_GUARD",
+      "PARENT_AWARE_PRODUCTION_READBACK",
+      "VARIATION_AVAILABILITY_SEMANTICS_GATE"
     ],
     "plan_bindings": {
-      "SLPE-P003": ["Rulebook/decision migration + trace of OD-043..OD-051"],
+      "SLPE-P003": ["Rulebook/decision migration + trace through Rulebook v1.11.0"],
       "SLPE-P006": ["exact identity/BOM/pricing mappings and independent fixtures"],
-      "SLPE-P008": ["95-column preservation + corrective least-mutation validation"],
-      "SLPE-P010": ["SKU transition preflight/order, gated SKU updates, template binding, selective-hash skip guard, production read-back, contract drift, corrective execution evidence"]
+      "SLPE-P008": ["95-column preservation + corrective least-mutation + variable-product effective-state validation"],
+      "SLPE-P010": ["SKU transition preflight/order, parent-child SKU guard, gated SKU updates, Parent-aware read-back, template binding, selective-hash skip guard, Production read-back, contract drift, variation availability gate, corrective execution evidence"]
     },
     "template_configuration_changed_by_governance_work": false,
-    "candidate_template_delta": "is_update_sku: 0 -> 1",
-    "candidate_activation_status": "PENDING_VERIFIED_TEMPLATE_EXPORT_READBACK",
+    "candidate_import_contract_version": "1.4.0",
+    "candidate_activation_status": "BLOCKED_PENDING_TEMPLATE_PROOF_AND_VARIATION_POLICY",
     "pricing_formula_changed": false,
     "schema_changed": false
   },
-  "pilot_corrective": {
+  "production_reconciliation": {
     "run_id": "SLPE-RUN-20260920-001",
-    "artifact": "SLPE-RUN-20260920-001_PILOT_CORRECTIVE_002.csv",
-    "drive_resource_id": "1gdjjr1YlCd-G6tWkjn_-isF9jucCvvjv",
-    "sha256": "2f6d353bd839e1cbefbc43b0d0ef863d165332c69482eac0529e1c088507e3f1",
-    "rows": 6,
-    "headers": 95,
-    "status": "PREPARED_NOT_IMPORT_READY",
-    "named_gaps": [
-      "Verified WP All Import template/config export proving the sole material delta is is_update_sku=1.",
-      "Fresh Production identity read-back immediately before pilot execution."
-    ]
+    "latest_reconciliation": "SLPE-RUN-20260920-001_PRODUCTION_RECONCILIATION_006",
+    "latest_reconciliation_drive_resource_id": "1lOEZtKJL1ADVCbkR-1Virbncl-p6CkYp",
+    "production_export_drive_resource_id": "16Uy4Kwr6O4oTdW45gyyY97-7jrjvqH7c",
+    "global_duplicate_nonblank_sku_count": 0,
+    "confirmed_root_cause": "VARIABLE_PARENT_VARIATION_SKU_COLLISION_FOR_COLUMN1_533570693",
+    "variation_availability_policy_gap": [43123, 43124, 43125],
+    "corrective_import_003_status": "SUPERSEDED_DO_NOT_IMPORT",
+    "promotion": "BLOCKED"
+  },
+  "business_policy_gap": {
+    "status": "OWNER_DECISION_REQUIRED",
+    "question": "For a zero-price WooCommerce variation whose parent has active siblings, what Production state should represent Price=0 -> hidden?",
+    "no_silent_choice": true
   },
   "capabilities": {
     "CAP-01": {"name":"delivery_spine","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P001"},
@@ -208,8 +200,10 @@
   },
   "active_plan": null,
   "last_verified_plan": null,
-  "blockers": [],
-  "active_decision_escape": "SLPE-DE003",
+  "blockers": [
+    "VARIATION_AVAILABILITY_BUSINESS_POLICY_UNRESOLVED_FOR_ZERO_PRICE_VARIATIONS_WITH_ACTIVE_SIBLINGS"
+  ],
+  "active_decision_escape": "SLPE-DE004",
   "resolved_decision_escapes": [
     {
       "escape_id": "SLPE-DE001",
@@ -221,7 +215,13 @@
       "escape_id": "SLPE-DE002",
       "path": "plans/decision-escapes/SLPE-DE002-master-v1.4-canonical-sync.md",
       "resolved_on": "2026-09-21",
-      "resolution": "Comparison confirmed active Master v1.4.0 is the semantic successor to repository v1.2.0. Exact official v1.4.0 bytes are represented by an ordered reconstructable repository transport; no implementation capability, Production data, schema, pricing formula, WP All Import template configuration, or Roadmap ordering advanced."
+      "resolution": "Active Master v1.4.0 synchronized as exact reconstructable repository transport; no implementation capability or Production data advanced."
+    },
+    {
+      "escape_id": "SLPE-DE003",
+      "path": "plans/decision-escapes/SLPE-DE003-controlled-sku-import-governance.md",
+      "resolved_on": "2026-09-21",
+      "resolution": "Controlled SKU-enabled import governance and preflight/read-back obligations recorded; later Production evidence is extended by DE004."
     }
   ],
   "next_authorized_plan": {
