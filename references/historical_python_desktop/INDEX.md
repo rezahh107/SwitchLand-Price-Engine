@@ -10,7 +10,7 @@ Historical surfaces and descendants:
 - `authorities/master/SLPE-MASTER-SPEC-001_v1.2.0.parts/`
 - `authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/`
 - `planning/`
-- `plans/decision-escapes/`
+- `plans/`
 - `prompts/`
 - `references/legacy_llm/`
 - `references/live_workspace/` snapshots dated 2026-09-21
