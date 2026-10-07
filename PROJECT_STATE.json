@@ -26,8 +26,13 @@
     "rulebook_version": "1.24.4",
     "gwoc_version": "1.16.4",
     "active_wp_all_import_contract_version": "1.2.0",
-    "current_master_provider_revision": "3007"
+    "current_master_provider_revision": "3007",
+    "package_bytes_repository_status": "NOT_EMBEDDED_BUT_EXACT_SOURCE_IDENTITY_VERIFIED"
   },
+  "known_package_instruction_regressions": [
+    "PREPARED_PROJECT_START_CARD_REGRESSION",
+    "SIMPLE_HUMAN_APPROVAL_INTERACTION_KERNEL_OVER_DEPENDENT_ON_SOURCE_RETRIEVAL"
+  ],
   "historical_python_desktop_model": {
     "status": "SUPERSEDED_HISTORICAL_ONLY",
     "index": "references/historical_python_desktop/INDEX.md",

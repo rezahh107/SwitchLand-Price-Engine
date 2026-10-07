@@ -16,6 +16,15 @@ Observed size: `502115` bytes.
 
 See `SHA256SUMS` for the exact extracted-file inventory. The actual supplied ZIP was verified before this rebaseline: ZIP SHA and every listed extracted-file SHA matched the Owner-provided expected values, and all five JSON sources parsed successfully.
 
+## Known v3.14.2 Instructions regressions
+
+Recorded, not repaired by this governance task:
+
+1. Prepared Project Start Card regression.
+2. One Simple Human Approval interaction kernel is too dependent on source retrieval.
+
+Owner preference is to avoid a standalone Instructions-only successor and coordinate these repairs with the successor after consumer qualification unless they become a blocker.
+
 ## Publication status / tooling deviation
 
 The execution environment could read and hash the Owner-supplied ZIP locally, but the available GitHub write connector has no file-path/binary-upload seam from that local sandbox. Therefore this PR records the exact verified package identity and inventory but does **not** claim that the ZIP/extracted payload bytes were embedded in Git.
