@@ -1,0 +1,40 @@
+name: Temporary repository description repair
+on:
+  push:
+    branches: [rebaseline/active-runtime-2026-10-07]
+permissions:
+  contents: write
+jobs:
+  repair-description:
+    if: github.event.head_commit.message == 'Attempt current repository description repair'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update only repository description
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          code=$(curl -sS -o /tmp/description-response.json -w '%{http_code}' \
+            -X PATCH \
+            -H 'Accept: application/vnd.github+json' \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}" \
+            -d '{"description":"Governance, authority continuity, qualification/regression, and CI/evidence repository for the SwitchLand Price Engine ChatGPT Project runtime."}')
+          echo "DESCRIPTION_PATCH_HTTP=${code}"
+          test "${code}" = '200'
+      - name: Remove temporary workflow
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/slpe-repo-description-repair.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m 'Remove temporary description repair workflow'
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
