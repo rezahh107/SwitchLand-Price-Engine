@@ -1,0 +1,83 @@
+name: Temporary final PR7 archive verification
+on:
+  push:
+    branches: [rebaseline/active-runtime-2026-10-07]
+permissions:
+  contents: write
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Run final exact archive verification'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify committed archive bytes and governance evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path, PurePosixPath
+          import hashlib, json, zipfile
+          pkg=Path("references/current_package/v3.14.2")
+          zip_path=pkg/"SwitchLand_Price_Engine_GPT_Project_Package_v3.14.2(1).zip"
+          prefix="SwitchLand_Price_Engine_GPT_Project_Package_v3.14.2/"
+          sums={}
+          for line in (pkg/"SHA256SUMS").read_text(encoding="utf-8").splitlines():
+              digest,name=line.split("  ",1)
+              if name in sums: raise SystemExit(f"duplicate inventory path {name}")
+              sums[name]=digest
+          raw=zip_path.read_bytes()
+          got=hashlib.sha256(raw).hexdigest()
+          if len(raw)!=502115: raise SystemExit(f"ZIP_SIZE_MISMATCH {len(raw)}")
+          if got!="23c89b374b2728bf2606a3770f2a6ff6bb16387294f83194a33b0d8b9b084c06": raise SystemExit(f"ZIP_SHA_MISMATCH {got}")
+          if sums.get(zip_path.name)!=got: raise SystemExit("ZIP_SUMS_MISMATCH")
+          expected={k:v for k,v in sums.items() if k!=zip_path.name}
+          if len(expected)!=8: raise SystemExit(f"PAYLOAD_COUNT_MISMATCH {len(expected)}")
+          with zipfile.ZipFile(zip_path) as z:
+              bad=z.testzip()
+              if bad is not None: raise SystemExit(f"ZIP_INTEGRITY_FAIL {bad}")
+              rels=[]
+              for i in z.infolist():
+                  if i.is_dir(): continue
+                  if not i.filename.startswith(prefix): raise SystemExit(f"BAD_ROOT {i.filename}")
+                  rel=i.filename[len(prefix):]
+                  p=PurePosixPath(rel)
+                  if not rel or p.is_absolute() or ".." in p.parts: raise SystemExit(f"BAD_MEMBER {rel}")
+                  rels.append(rel)
+              if len(rels)!=len(set(rels)): raise SystemExit("DUPLICATE_MEMBER")
+              if set(rels)!=set(expected): raise SystemExit(f"INVENTORY_MISMATCH missing={sorted(set(expected)-set(rels))} extra={sorted(set(rels)-set(expected))}")
+          for rel,digest in expected.items():
+              p=pkg/"extracted"/PurePosixPath(rel)
+              data=p.read_bytes()
+              observed=hashlib.sha256(data).hexdigest()
+              if observed!=digest: raise SystemExit(f"COMMITTED_PAYLOAD_SHA_MISMATCH {rel} {observed}")
+          jsons=sorted(r for r in expected if r.endswith(".json"))
+          if len(jsons)!=5: raise SystemExit(f"JSON_COUNT_MISMATCH {len(jsons)}")
+          for rel in jsons:
+              json.loads((pkg/"extracted"/PurePosixPath(rel)).read_bytes().decode("utf-8"))
+          state=json.loads(Path("PROJECT_STATE.json").read_text(encoding="utf-8"))
+          if state["synchronized_package_baseline"]["package_bytes_repository_status"]!="EMBEDDED_EXACT_BYTES_VERIFIED": raise SystemExit("PROJECT_STATE_ARCHIVE_STATUS_MISMATCH")
+          hist=Path("references/historical_python_desktop/INDEX.md").read_text(encoding="utf-8")
+          plans=Path("plans/README.md").read_text(encoding="utf-8")
+          if "- `plans/`" not in hist or "`PLAN_TEMPLATE.md`" not in plans or "MUST NOT" not in plans: raise SystemExit("HISTORICAL_CLASSIFICATION_REGRESSION")
+          print("COMMITTED_ZIP_SHA_OK",got)
+          print("COMMITTED_ZIP_SIZE_OK",len(raw))
+          print("COMMITTED_ZIP_INTEGRITY_OK")
+          print("COMMITTED_PAYLOAD_HASHES_OK",len(expected))
+          print("COMMITTED_INVENTORY_OK",len(rels))
+          print("COMMITTED_JSON_PARSE_OK",len(jsons))
+          print("PROJECT_STATE_PARSE_OK")
+          print("HISTORICAL_CLASSIFICATION_OK")
+          PY
+      - name: Remove temporary verifier
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/slpe-pr7-final-archive-verify.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m 'Remove temporary final archive verifier'
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
