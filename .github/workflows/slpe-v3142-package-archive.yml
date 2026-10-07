@@ -1,0 +1,123 @@
+name: Temporary exact v3.14.2 package archival
+
+on:
+  push:
+    branches:
+      - rebaseline/active-runtime-2026-10-07
+
+permissions:
+  contents: write
+
+jobs:
+  archive-exact-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify and extract exact package bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path, PurePosixPath
+          import hashlib
+          import json
+          import shutil
+          import zipfile
+
+          pkg = Path("references/current_package/v3.14.2")
+          zip_path = pkg / "SwitchLand_Price_Engine_GPT_Project_Package_v3.14.2(1).zip"
+          expected_zip_sha = "23c89b374b2728bf2606a3770f2a6ff6bb16387294f83194a33b0d8b9b084c06"
+          expected_zip_size = 502115
+          prefix = "SwitchLand_Price_Engine_GPT_Project_Package_v3.14.2/"
+
+          raw = zip_path.read_bytes()
+          observed = hashlib.sha256(raw).hexdigest()
+          if len(raw) != expected_zip_size:
+              raise SystemExit(f"ZIP size mismatch: {len(raw)} != {expected_zip_size}")
+          if observed != expected_zip_sha:
+              raise SystemExit(f"ZIP SHA mismatch: {observed} != {expected_zip_sha}")
+
+          sums = {}
+          for line in (pkg / "SHA256SUMS").read_text(encoding="utf-8").splitlines():
+              digest, name = line.split("  ", 1)
+              if name in sums:
+                  raise SystemExit(f"duplicate SHA256SUMS path: {name}")
+              sums[name] = digest
+
+          if sums.get(zip_path.name) != expected_zip_sha:
+              raise SystemExit("SHA256SUMS ZIP identity mismatch")
+
+          expected_payloads = {k: v for k, v in sums.items() if k != zip_path.name}
+          if len(expected_payloads) != 8:
+              raise SystemExit(f"expected 8 payloads in SHA256SUMS, got {len(expected_payloads)}")
+
+          out = pkg / "extracted"
+          shutil.rmtree(out, ignore_errors=True)
+          out.mkdir(parents=True)
+
+          with zipfile.ZipFile(zip_path, "r") as z:
+              bad = z.testzip()
+              if bad is not None:
+                  raise SystemExit(f"ZIP integrity failure at {bad}")
+
+              members = [i for i in z.infolist() if not i.is_dir()]
+              rels = []
+              seen = set()
+              payload_bytes = {}
+              for info in members:
+                  name = info.filename
+                  if not name.startswith(prefix):
+                      raise SystemExit(f"unexpected package-root member: {name}")
+                  rel = name[len(prefix):]
+                  p = PurePosixPath(rel)
+                  if not rel or p.is_absolute() or ".." in p.parts:
+                      raise SystemExit(f"unsafe member path: {name}")
+                  if rel in seen:
+                      raise SystemExit(f"duplicate member path: {rel}")
+                  seen.add(rel)
+                  rels.append(rel)
+
+              if set(rels) != set(expected_payloads):
+                  missing = sorted(set(expected_payloads) - set(rels))
+                  extra = sorted(set(rels) - set(expected_payloads))
+                  raise SystemExit(f"inventory mismatch missing={missing} extra={extra}")
+
+              for info in members:
+                  rel = info.filename[len(prefix):]
+                  data = z.read(info)
+                  digest = hashlib.sha256(data).hexdigest()
+                  if digest != expected_payloads[rel]:
+                      raise SystemExit(f"payload SHA mismatch: {rel}: {digest}")
+                  payload_bytes[rel] = data
+                  target = out / PurePosixPath(rel)
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(data)
+
+          json_paths = sorted(p for p in expected_payloads if p.endswith(".json"))
+          if len(json_paths) != 5:
+              raise SystemExit(f"expected five JSON payloads, got {len(json_paths)}")
+          for rel in json_paths:
+              json.loads(payload_bytes[rel].decode("utf-8"))
+
+          print("ZIP_SHA_OK", observed)
+          print("ZIP_SIZE_OK", len(raw))
+          print("ZIP_INTEGRITY_OK")
+          print("PAYLOAD_HASHES_OK", len(expected_payloads))
+          print("INVENTORY_OK", len(rels))
+          print("JSON_PARSE_OK", len(json_paths))
+          PY
+
+      - name: Commit exact archive and remove transport workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/slpe-v3142-package-archive.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --name-status
+          git commit -m "Archive exact v3.14.2 package payloads"
+          git push origin HEAD:${GITHUB_REF_NAME}
