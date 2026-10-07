@@ -1,4 +1,4 @@
-name: Temporary admit exact WP All Import binaries
+name: Temporary verify exact WP All Import fixtures
 
 on:
   push:
@@ -8,10 +8,10 @@ on:
       - .github/workflows/_tmp-admit-wpai-binaries.yml
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  admit:
+  verify:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -19,40 +19,54 @@ jobs:
           ref: ${{ github.ref_name }}
           fetch-depth: 0
 
-      - name: Acquire exact Owner-supplied binaries
+      - name: Verify committed exact fixtures
         shell: bash
         run: |
           set -euo pipefail
           root="tests/fixtures/wp-all-import-packages"
-          mkdir -p "$root"
+          verifier="tests/wp-all-import-ci-lab/verify-package-fixtures.php"
 
-          curl --fail --location --retry 3 --retry-all-errors \
-            --output "$root/wp-all-import-pro.zip" \
-            "https://drive.usercontent.google.com/download?id=1o_8j8__DGRpLZt3DIDkB3rCj-WGa91Ok&export=download&confirm=t"
+          stat -c '%n %s' "$root/wp-all-import-pro.zip" "$root/wpai-woocommerce-add-on_4.0.6.zip"
+          sha256sum "$root/wp-all-import-pro.zip" "$root/wpai-woocommerce-add-on_4.0.6.zip"
+          php "$verifier" "$root"
 
-          curl --fail --location --retry 3 --retry-all-errors \
-            --output "$root/wpai-woocommerce-add-on_4.0.6.zip" \
-            "https://drive.usercontent.google.com/download?id=1f5YqG3MwA_JUGsfWC_9M3OCoYspPprMC&export=download&confirm=t"
-
-          test "$(stat -c '%s' "$root/wp-all-import-pro.zip")" = "4370010"
-          test "$(stat -c '%s' "$root/wpai-woocommerce-add-on_4.0.6.zip")" = "437099"
-
-          printf '%s  %s\n' \
-            '8c38753da981293432c5ff2fff4124ccb9cf5c7f0a90e964f1fbb222c09772bb' "$root/wp-all-import-pro.zip" \
-            '6959464478610568937cc51d118a832ec3515ed501b3bb083dbe68894f8bda6a' "$root/wpai-woocommerce-add-on_4.0.6.zip" \
-            | sha256sum -c -
-
-          unzip -tqq "$root/wp-all-import-pro.zip"
-          unzip -tqq "$root/wpai-woocommerce-add-on_4.0.6.zip"
-
-      - name: Commit admitted exact bytes
+      - name: Falsification controls
         shell: bash
         run: |
           set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tests/fixtures/wp-all-import-packages/wp-all-import-pro.zip \
-                  tests/fixtures/wp-all-import-packages/wpai-woocommerce-add-on_4.0.6.zip
-          git diff --cached --quiet && exit 0
-          git commit -m "Admit exact WP All Import binary fixtures"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          root="tests/fixtures/wp-all-import-packages"
+          verifier="$GITHUB_WORKSPACE/tests/wp-all-import-ci-lab/verify-package-fixtures.php"
+
+          expect_fail() {
+            local label="$1"
+            local dir="$2"
+            set +e
+            output="$(php "$verifier" "$dir" 2>&1)"
+            status=$?
+            set -e
+            if [ "$status" -eq 0 ]; then
+              echo "NEGATIVE_FAIL $label: verifier unexpectedly passed" >&2
+              exit 1
+            fi
+            echo "NEGATIVE_PASS $label :: $(printf '%s' "$output" | head -n1)"
+          }
+
+          wrong_sha="$RUNNER_TEMP/wpai-wrong-sha"
+          cp -a "$root" "$wrong_sha"
+          php -r '
+            $p=$argv[1];
+            $d=json_decode(file_get_contents($p), true, 512, JSON_THROW_ON_ERROR);
+            $d["packages"][0]["sha256"]=str_repeat("0",64);
+            file_put_contents($p, json_encode($d, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES)."\n");
+          ' "$wrong_sha/manifest.json"
+          expect_fail wrong_sha "$wrong_sha"
+
+          missing="$RUNNER_TEMP/wpai-missing"
+          cp -a "$root" "$missing"
+          rm "$missing/wp-all-import-pro.zip"
+          expect_fail missing_package "$missing"
+
+          unexpected="$RUNNER_TEMP/wpai-unexpected"
+          cp -a "$root" "$unexpected"
+          cp "$unexpected/wp-all-import-pro.zip" "$unexpected/unexpected.zip"
+          expect_fail unexpected_package "$unexpected"
