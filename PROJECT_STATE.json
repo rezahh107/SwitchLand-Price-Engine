@@ -27,7 +27,7 @@
     "gwoc_version": "1.16.4",
     "active_wp_all_import_contract_version": "1.2.0",
     "current_master_provider_revision": "3007",
-    "package_bytes_repository_status": "NOT_EMBEDDED_BUT_EXACT_SOURCE_IDENTITY_VERIFIED"
+    "package_bytes_repository_status": "EMBEDDED_EXACT_BYTES_VERIFIED"
   },
   "known_package_instruction_regressions": [
     "PREPARED_PROJECT_START_CARD_REGRESSION",
@@ -53,7 +53,7 @@
   "next_repository_engineering_action": "WP_ALL_IMPORT_CI_LAB",
   "governance_rebaseline": {
     "target_date": "2026-10-07",
-    "status": "REBASELINED_CURRENT_DESTINATION_WITH_PACKAGE_PUBLICATION_DEVIATION_TRACKED_IN_PACKAGE_INDEX"
+    "status": "REBASELINED_CURRENT_DESTINATION_WITH_EXACT_PACKAGE_BYTES_ARCHIVED_AND_VERIFIED"
   },
   "live_workspace_or_production_mutation_by_rebaseline": false
 }
