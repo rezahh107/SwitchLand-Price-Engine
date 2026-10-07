@@ -1,0 +1,58 @@
+name: Temporary admit exact WP All Import binaries
+
+on:
+  push:
+    branches:
+      - lab/wpai-binary-fixture-admission
+    paths:
+      - .github/workflows/_tmp-admit-wpai-binaries.yml
+
+permissions:
+  contents: write
+
+jobs:
+  admit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Acquire exact Owner-supplied binaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="tests/fixtures/wp-all-import-packages"
+          mkdir -p "$root"
+
+          curl --fail --location --retry 3 --retry-all-errors \
+            --output "$root/wp-all-import-pro.zip" \
+            "https://drive.usercontent.google.com/download?id=1o_8j8__DGRpLZt3DIDkB3rCj-WGa91Ok&export=download&confirm=t"
+
+          curl --fail --location --retry 3 --retry-all-errors \
+            --output "$root/wpai-woocommerce-add-on_4.0.6.zip" \
+            "https://drive.usercontent.google.com/download?id=1f5YqG3MwA_JUGsfWC_9M3OCoYspPprMC&export=download&confirm=t"
+
+          test "$(stat -c '%s' "$root/wp-all-import-pro.zip")" = "4370010"
+          test "$(stat -c '%s' "$root/wpai-woocommerce-add-on_4.0.6.zip")" = "437099"
+
+          printf '%s  %s\n' \
+            '8c38753da981293432c5ff2fff4124ccb9cf5c7f0a90e964f1fbb222c09772bb' "$root/wp-all-import-pro.zip" \
+            '6959464478610568937cc51d118a832ec3515ed501b3bb083dbe68894f8bda6a' "$root/wpai-woocommerce-add-on_4.0.6.zip" \
+            | sha256sum -c -
+
+          unzip -tqq "$root/wp-all-import-pro.zip"
+          unzip -tqq "$root/wpai-woocommerce-add-on_4.0.6.zip"
+
+      - name: Commit admitted exact bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tests/fixtures/wp-all-import-packages/wp-all-import-pro.zip \
+                  tests/fixtures/wp-all-import-packages/wpai-woocommerce-add-on_4.0.6.zip
+          git diff --cached --quiet && exit 0
+          git commit -m "Admit exact WP All Import binary fixtures"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
