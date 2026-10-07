@@ -1,239 +1,59 @@
 {
-  "schema_version": "slpe-project-state.v1",
+  "schema_version": "slpe-repository-governance-state.v2",
   "project_id": "switchland-price-engine",
-  "repository_continuity": {
-    "bootstrap_id": "SLPE-REPOSITORY-CONTINUITY-BOOTSTRAP-v1",
-    "status": "PRE_IMPLEMENTATION_CONTINUITY_DE004_VARIABLE_PRODUCT_IMPORT_HARDENING_COMMITTED_20260921",
-    "decision_escape_ref": "plans/decision-escapes/SLPE-DE004-variable-product-import-hardening.md",
-    "prior_decision_escape_ref": "plans/decision-escapes/SLPE-DE003-controlled-sku-import-governance.md"
+  "updated_at": "2026-10-07",
+  "repository_role": "VERSION_CONTROLLED_GOVERNANCE_AUTHORITY_REPRESENTATION_HISTORY_QUALIFICATION_REGRESSION_AND_CI_EVIDENCE",
+  "owner_destination_authority": {
+    "status": "ACTIVE_OWNER_DESTINATION",
+    "path": "GOAL_AUTHORITY/CURRENT_DESTINATION_2026-10-07.md"
   },
-  "frozen_contracts": {
-    "master_specification": {
-      "authority_id": "SLPE-MASTER-SPEC-001",
-      "version": "1.4.0",
-      "repository_path": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.parts/MANIFEST.json",
-      "storage_format": "ORDERED_UTF8_PARTS_CONCATENATE_EXACTLY_NO_SEPARATOR",
-      "canonical_size_bytes": 196278,
-      "content_hash": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949",
-      "drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
-      "canonical_repository_target": "authorities/master/SLPE-MASTER-SPEC-001_v1.4.0.md",
-      "transport_boundary": "PRE_P001_EXACT_RECONSTRUCTION"
-    },
-    "implementation_architecture": {
-      "authority_id": "IMPLEMENTATION_ARCHITECTURE_CONTRACT",
-      "version": "IAC-v1",
-      "repository_path": "authorities/contracts/IMPLEMENTATION_ARCHITECTURE_CONTRACT_IAC-v1.md",
-      "content_hash": "bd218774bc4861d598ab180863dbef2007aaecb1f3b99bd21ff234d187595435"
-    },
-    "technology_implementation": {
-      "authority_id": "TECHNOLOGY_IMPLEMENTATION_CONTRACT",
-      "version": "SLPE-TIC-v1",
-      "repository_path": "authorities/contracts/TECHNOLOGY_IMPLEMENTATION_CONTRACT_SLPE-TIC-v1.md",
-      "content_hash": "ef3831aa459158711914c81af3e1e53c4fa3d0e6e39acda6e8fc28ffeef06b42"
-    },
-    "llm_execution_protocol": {
-      "authority_id": "LLM_IMPLEMENTATION_EXECUTION_PROTOCOL_CONTRACT",
-      "version": "SLPE-LIEP-v1",
-      "repository_path": "authorities/contracts/LLM_IMPLEMENTATION_EXECUTION_PROTOCOL_SLPE-LIEP-v1.md",
-      "content_hash": "638b61976fa8815eed728903a75f8c75b522b0b8b6c5a476cc00f724f71126a0"
-    },
-    "legacy_migration": {
-      "authority_id": "LEGACY_LLM_TO_PYTHON_MIGRATION_CONTRACT",
-      "version": "SLPE-LLM-PY-MIGRATION-v1",
-      "repository_path": "authorities/contracts/LEGACY_LLM_TO_PYTHON_MIGRATION_SLPE-LLM-PY-MIGRATION-v1.md",
-      "content_hash": "802abade446c6e22ef0c1cf38f71aed471acbf2278565f5882a492a0f0d71d34",
-      "decision_escape_note": "DE001 supersedes only the hard-coded active Master-version reference from v1.2.0 to v1.4.0; all other migration semantics remain frozen."
-    }
+  "production_runtime": {
+    "model": "CHATGPT_PROJECT_LANGUAGE_MODEL_CONNECTED_APPS_PROVIDERS_NO_CODE_EXECUTION",
+    "normal_price_update_requires_code_execution": false,
+    "repository_is_production_runtime": false
   },
-  "planning_baseline": {
-    "project_skeleton_specification": {
-      "artifact_id": "SLPE-PSS-001",
-      "version": "1.0.0",
-      "repository_path": "planning/PROJECT_SKELETON_SPECIFICATION.md",
-      "sha256": "fdf104eff98a9b0228709f4fc50a0a41453397563acb80f9e33d3bf51363b782",
-      "decision_escape_note": "DE002 supersedes only stale active-Master v1.2.0 version/path literals for the P001 canonical authority target; repository structure and planning semantics remain frozen and unchanged."
-    },
-    "master_implementation_roadmap": {
-      "artifact_id": "SLPE-MIR-001",
-      "version": "1.0.0",
-      "repository_path": "planning/MASTER_IMPLEMENTATION_ROADMAP.md",
-      "sha256": "e141c7afabeeba20907883275a0a89522378ce506ec75f391810ebccf2269735",
-      "decision_escape_note": "DE003 and DE004 add controlled SKU-import, variable parent/child SKU, Parent-aware read-back and variation-availability obligations to existing owning Plans without changing Plan ordering, architecture, technology or capability acceptance semantics."
-    }
+  "live_authority_resolution": {
+    "method": "WORKSPACE_MANIFEST_TO_LIVE_CURRENT_SET",
+    "git_is_competing_live_selector": false,
+    "fresh_resolution_required_for_live_persistent_external_effect_claims": true
   },
-  "live_workspace_sync": {
-    "sync_id": "SLPE-LIVE-WORKSPACE-SYNC-20260921-004",
-    "status": "DE004_CURRENT_SET_AND_MANIFEST_READBACK_VERIFIED",
-    "workspace_manifest_resource_id": "1Kk3XaJwaRJWl2UrzoZJA5-YvuQCRTSQB",
-    "workspace_manifest_sha256": "2b441001d4fa19fffdf6f4ced461d0a81add3a83fea4328785eb3f53254fa208",
-    "repository_merge": {
-      "decision_escape": "SLPE-DE004",
-      "pull_request": 5,
-      "merged_commit": "f58f35d7be4606ffd5b1f13b62cd5a649ad585bd"
-    },
-    "current_master": {
-      "resource_id": "1vV2oVN4rDt6zzTNUDZToumoXgo4nePH7rRfUPRH2JBQ",
-      "fingerprint": "05897afa27d76b225fabfb33f778e93a6fb5cb63dc6a2a63daeea3039c0f9fe9",
-      "revision_or_fingerprint": "3007",
-      "rows": 876,
-      "headers": 95,
-      "changed_by_sync": false
-    },
-    "current_product_pricing_state": {
-      "resource_id": "12SDQ2PN56sM0BLbiXSGbmj8oi2-dP6eF",
-      "version": "2.1.0",
-      "fingerprint": "5c4157a654d6c0254dad1ff4c0e73e8a3ccab64fbd8eff2a53c3ee7bf0400f1e",
-      "changed_by_sync": false
-    },
-    "authorities": {
-      "master_specification": {
-        "version": "1.4.0",
-        "drive_resource_id": "19gYJsZ1wW5T5vuyRITCnRH6TLTFC8JOU",
-        "sha256": "6d32566bf9c66664d46a2c4012f932e315b0276d8584bbdbbc2658fcdacf9949"
-      },
-      "rulebook": {
-        "version": "1.11.0",
-        "drive_resource_id": "1GNXj1u6VUMb5sbgpNuC45H-j0c-clMtf",
-        "sha256": "44225f1efebdfa8bec0a9d9dce449f0661b3e215214cf643fe26312d8cf59c9f",
-        "status": "ACTIVE_CURRENT_SET_AUTHORITY"
-      },
-      "import_contract": {
-        "version": "1.2.0",
-        "drive_resource_id": "19PFly7-marww54yOaHmX0JKt-U_RYUlX",
-        "sha256": "57cb1f07361e2c6a0fa980fbd63242fc0bc526268747bc48b0ea9e250dbfd5ba",
-        "status": "ACTIVE_CURRENT_SET_AUTHORITY_UNCHANGED"
-      },
-      "import_contract_candidate": {
-        "version": "1.4.0",
-        "drive_resource_id": "1qk82T6yCIy6HY56SePY6kFIC-0_ErYDE",
-        "sha256": "bd29b4b4989017921c05995e71113f035eeae75e46d8ffc319b39e1226066523",
-        "status": "CANDIDATE_NOT_ACTIVE_PENDING_TEMPLATE_PROOF_AND_VARIATION_POLICY",
-        "selected_as_active": false
-      },
-      "operational_contract": {
-        "version": "1.4.0",
-        "drive_resource_id": "1RuksK90iDLuMnpa_1g1P68BR0-f-yuJ0",
-        "sha256": "886172da55afbaf08b087a4615fc5bda0ee02010bb4a112f184b5ae14c91d5f8"
-      },
-      "simple_human_approval": {
-        "drive_resource_id": "17m8g5Unv7p7wzgmS2zciaDPYfbkTfRSj",
-        "sha256": "44a983c16d56bb9402f2a281bfff65e5290fa549b08e1516d4583fa2bb874099"
-      },
-      "root_cause_hardening_owner_decision": {
-        "decision_id": "OD-050",
-        "drive_resource_id": "1S_VOKI_vYlOYTmndPs4vOnMgdXwiMFJg",
-        "sha256": "82cd2bf659e2faf1a9c6164d00e2d53793df35aa92aed662b92f0cad2a38c67f"
-      },
-      "controlled_sku_import_owner_decision": {
-        "decision_id": "OD-051",
-        "drive_resource_id": "1wzPZUb0tdGIFZaZ2HfPDCdR9a-GKHAco",
-        "sha256": "5c44c00344f147370aa08e67274571c9702fb7ac4a2bc932de316cbab304ff23"
-      }
-    },
-    "current_set": {
-      "current_set_id": "SLPE-CURRENT-SET-VARIABLE-PRODUCT-IMPORT-HARDENING-20260921-001",
-      "resource_id": "1UkMXpB-PNebp1KE8FwIMOdjPuCl0YLHd",
-      "sha256": "deac7e006d788b8026eb2afc212a35b7ff76d82569b9cd261043fe6cd282f674",
-      "parent_current_set_id": "SLPE-CURRENT-SET-CONTROLLED-SKU-IMPORT-GOVERNANCE-20260921-002",
-      "status": "COMMITTED",
-      "read_back_verified": true
-    },
-    "open_production_reconciliation": {
-      "run_id": "SLPE-RUN-20260920-001",
-      "status": "BLOCKED_VARIATION_SEMANTICS_AND_IMPORT_CONTRACT_CORRECTION_REQUIRED",
-      "latest_reconciliation_resource_id": "1lOEZtKJL1ADVCbkR-1Virbncl-p6CkYp",
-      "root_cause_resource_id": "1DCYbBodILlaHQOLr3DvSp_3DqIOJWNv7",
-      "production_write_performed_by_repository_sync": false
-    }
+  "synchronized_package_baseline": {
+    "package_version": "3.14.2",
+    "package_sha256": "23c89b374b2728bf2606a3770f2a6ff6bb16387294f83194a33b0d8b9b084c06",
+    "package_index": "references/current_package/v3.14.2/INDEX.md",
+    "current_set_id": "SLPE-CURRENT-SET-PROVIDER-NATIVE-DOWNSTREAM-INTEGRITY-CLOSURE-20261007-003",
+    "master_version": "1.14.3",
+    "rulebook_version": "1.24.4",
+    "gwoc_version": "1.16.4",
+    "active_wp_all_import_contract_version": "1.2.0",
+    "current_master_provider_revision": "3007",
+    "package_bytes_repository_status": "EMBEDDED_EXACT_BYTES_VERIFIED"
   },
-  "root_cause_hardening_obligations": {
-    "authority_decision": "OD-051",
-    "implementation_status": "NOT_IMPLEMENTED",
-    "verification_status": "NOT_TESTED",
-    "controls": [
-      "SKU_TRANSITION_PREFLIGHT",
-      "SKU_TRANSITION_DEPENDENCY_ORDERING",
-      "SKU_IMPORT_GATED",
-      "SELECTIVE_HASH_SKIP_GUARD",
-      "PRODUCTION_READBACK_GATE",
-      "IMPORT_CONTRACT_DRIFT_GUARD",
-      "CORRECTIVE_IMPORT_LEAST_MUTATION",
-      "VARIABLE_PARENT_CHILD_SKU_GUARD",
-      "PARENT_AWARE_PRODUCTION_READBACK",
-      "VARIATION_AVAILABILITY_SEMANTICS_GATE"
-    ],
-    "plan_bindings": {
-      "SLPE-P003": ["Rulebook/decision migration + trace through Rulebook v1.11.0"],
-      "SLPE-P006": ["exact identity/BOM/pricing mappings and independent fixtures"],
-      "SLPE-P008": ["95-column preservation + corrective least-mutation + variable-product effective-state validation"],
-      "SLPE-P010": ["SKU transition preflight/order, parent-child SKU guard, gated SKU updates, Parent-aware read-back, template binding, selective-hash skip guard, Production read-back, contract drift, variation availability gate, corrective execution evidence"]
-    },
-    "template_configuration_changed_by_governance_work": false,
-    "candidate_import_contract_version": "1.4.0",
-    "candidate_activation_status": "BLOCKED_PENDING_TEMPLATE_PROOF_AND_VARIATION_POLICY",
-    "pricing_formula_changed": false,
-    "schema_changed": false
-  },
-  "production_reconciliation": {
-    "run_id": "SLPE-RUN-20260920-001",
-    "latest_reconciliation": "SLPE-RUN-20260920-001_PRODUCTION_RECONCILIATION_006",
-    "latest_reconciliation_drive_resource_id": "1lOEZtKJL1ADVCbkR-1Virbncl-p6CkYp",
-    "production_export_drive_resource_id": "16Uy4Kwr6O4oTdW45gyyY97-7jrjvqH7c",
-    "global_duplicate_nonblank_sku_count": 0,
-    "confirmed_root_cause": "VARIABLE_PARENT_VARIATION_SKU_COLLISION_FOR_COLUMN1_533570693",
-    "variation_availability_policy_gap": [43123, 43124, 43125],
-    "corrective_import_003_status": "SUPERSEDED_DO_NOT_IMPORT",
-    "promotion": "BLOCKED"
-  },
-  "business_policy_gap": {
-    "status": "OWNER_DECISION_REQUIRED",
-    "question": "For a zero-price WooCommerce variation whose parent has active siblings, what Production state should represent Price=0 -> hidden?",
-    "no_silent_choice": true
-  },
-  "capabilities": {
-    "CAP-01": {"name":"delivery_spine","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P001"},
-    "CAP-02": {"name":"verified_source_catalog","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P002"},
-    "CAP-03": {"name":"rule_migration_trace","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P003"},
-    "CAP-04": {"name":"state_repository_recovery","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P004"},
-    "CAP-05": {"name":"independent_acceptance_oracle","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P005"},
-    "CAP-06": {"name":"matching_bom_pricing","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P006"},
-    "CAP-07": {"name":"commercial_policy_state","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P007"},
-    "CAP-08": {"name":"deterministic_output_validation","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P008"},
-    "CAP-09": {"name":"guided_run_gui_approval","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P009"},
-    "CAP-10": {"name":"import_promotion","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P010"},
-    "CAP-11": {"name":"rollback_recovery","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P011"},
-    "CAP-12": {"name":"migration_acceptance","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P012"},
-    "CAP-13": {"name":"release_acceptance","implementation_status":"NOT_IMPLEMENTED","verification_status":"NOT_TESTED","evidence_refs":[],"roadmap_plan":"SLPE-P013"}
-  },
-  "active_plan": null,
-  "last_verified_plan": null,
-  "blockers": [
-    "VARIATION_AVAILABILITY_BUSINESS_POLICY_UNRESOLVED_FOR_ZERO_PRICE_VARIATIONS_WITH_ACTIVE_SIBLINGS"
+  "known_package_instruction_regressions": [
+    "PREPARED_PROJECT_START_CARD_REGRESSION",
+    "SIMPLE_HUMAN_APPROVAL_INTERACTION_KERNEL_OVER_DEPENDENT_ON_SOURCE_RETRIEVAL"
   ],
-  "active_decision_escape": "SLPE-DE004",
-  "resolved_decision_escapes": [
-    {
-      "escape_id": "SLPE-DE001",
-      "path": "plans/decision-escapes/SLPE-DE001-live-workspace-authority-rebaseline.md",
-      "resolved_on": "2026-09-21",
-      "resolution": "Owner-authorized minimal rebaseline to active Master v1.4.0 and exact hash-bound live governance authorities; no implementation capability advanced."
-    },
-    {
-      "escape_id": "SLPE-DE002",
-      "path": "plans/decision-escapes/SLPE-DE002-master-v1.4-canonical-sync.md",
-      "resolved_on": "2026-09-21",
-      "resolution": "Active Master v1.4.0 synchronized as exact reconstructable repository transport; no implementation capability or Production data advanced."
-    },
-    {
-      "escape_id": "SLPE-DE003",
-      "path": "plans/decision-escapes/SLPE-DE003-controlled-sku-import-governance.md",
-      "resolved_on": "2026-09-21",
-      "resolution": "Controlled SKU-enabled import governance and preflight/read-back obligations recorded; later Production evidence is extended by DE004."
-    }
-  ],
-  "next_authorized_plan": {
-    "plan_id": "SLPE-P001",
-    "name": "Foundation / Delivery Spine Proof",
-    "roadmap_path": "planning/MASTER_IMPLEMENTATION_ROADMAP.md"
-  }
+  "historical_python_desktop_model": {
+    "status": "SUPERSEDED_HISTORICAL_ONLY",
+    "index": "references/historical_python_desktop/INDEX.md",
+    "p001_is_authorized": false,
+    "p001_p013_train_is_current": false
+  },
+  "open_qualification_gates": {
+    "C1_PROVIDER_NATIVE_COMMA_CSV": "NOT_PROVEN",
+    "C2_PROVIDER_NATIVE_XLSX": "NOT_PROVEN",
+    "EXACT_IMPORT_CONFIGURATION": "PARTIALLY_PROVEN_BUT_MATERIALLY_INCOMPLETE",
+    "OWNER_SERIALIZATION_DECISION_READY": "NO",
+    "SUCCESSOR_IMPLEMENTATION": "DO_NOT_START_YET"
+  },
+  "preserved_contracts": {
+    "MST_007": "UNCHANGED",
+    "active_wp_all_import_contract_v1_2_0": "UNCHANGED"
+  },
+  "next_repository_engineering_action": "WP_ALL_IMPORT_CI_LAB",
+  "governance_rebaseline": {
+    "target_date": "2026-10-07",
+    "status": "REBASELINED_CURRENT_DESTINATION_WITH_EXACT_PACKAGE_BYTES_ARCHIVED_AND_VERIFIED"
+  },
+  "live_workspace_or_production_mutation_by_rebaseline": false
 }

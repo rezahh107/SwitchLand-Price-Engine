@@ -1,0 +1,990 @@
+{
+  "artifact_type": "CURRENT_SET_SELECTOR",
+  "authority_coherence_lock": {
+    "active_free_text_carrier_conformance_required": true,
+    "active_free_text_identity_material_without_supported_projection": "FAIL_CLOSED",
+    "active_object_subtree_identity_scan_required": true,
+    "active_typed_carrier_conformance_required": true,
+    "baseline_role_truthfulness_required": true,
+    "bounded_representation_contract_required": true,
+    "carrier_class_profile": "SLPE_BOUNDED_ACTIVE_AUTHORITY_REPRESENTATION_V4",
+    "carrier_discovery_mode": "RECURSIVE_ACTIVE_OBJECT_SUBTREE_IDENTITY_BOUNDARY_V4",
+    "current_identity_literal_policy": "CANONICAL_CURRENT_SET_SELECTOR_SLOT_OR_TYPED_REFERENCE_ONLY",
+    "free_text_current_identity": "MECHANICALLY_DERIVED_CHECKED_OR_FAIL_CLOSED",
+    "generic_identity_material_detection_required": true,
+    "hash_coherence_alone_sufficient": false,
+    "historical_active_role_conflict_fails": true,
+    "historical_reference_policy": "Historical/change-log/provenance references may retain predecessor versions only when historical role is explicit.",
+    "legacy_field_name_signature_sufficient": false,
+    "new_or_relocated_carrier_must_be_discovered": true,
+    "path_whitelist_sufficient": false,
+    "rc_b3_closure_preservation": "REQUIRED_AND_VERIFIED",
+    "rc_b4_closure_preservation": "REQUIRED_AND_VERIFIED",
+    "rc_b_closure_preservation": "REQUIRED_AND_VERIFIED_WITH_ACTIVE_FREE_TEXT_CARRIER_CONFORMANCE_AND_BASELINE_ROLE_TRUTHFULNESS",
+    "rc_b_root_closure_preservation": "REQUIRED_AND_VERIFIED",
+    "selected_authorities": {
+      "import_contract": {
+        "authority_kind": "IMPORT_CONTRACT",
+        "authority_ref": "CURRENT_SET_SELECTED",
+        "carrier_role": "ACTIVE_CURRENT_AUTHORITY_BINDING",
+        "contract_id": "SLPE-WPAI-CONTRACT-001",
+        "must_match_live_current_set": true,
+        "resource_id": "19PFly7-marww54yOaHmX0JKt-U_RYUlX",
+        "sha256": "57cb1f07361e2c6a0fa980fbd63242fc0bc526268747bc48b0ea9e250dbfd5ba",
+        "version": "1.2.0"
+      },
+      "master_specification": {
+        "authority_kind": "MASTER_SPECIFICATION",
+        "authority_ref": "CURRENT_SET_SELECTED",
+        "carrier_role": "ACTIVE_CURRENT_AUTHORITY_BINDING",
+        "must_match_live_current_set": true,
+        "document_id": "SLPE-MASTER-SPEC-001",
+        "resource_id": "1a_ABKxjaX-aPcqixVnj6M3EY0kR5qyF3",
+        "sha256": "58e1a8df0777cc4db0a89b6459f551a3ab8d1eb88aec48b7c27e19940ed49c31",
+        "version": "1.14.3",
+        "provider_revision_id": "0B-KReMc9BD1fQWN1RkVjTGtIODQyM3ZRayttS2oxdUlKOVdBPQ"
+      },
+      "operational_contract": {
+        "authority_kind": "OPERATIONAL_CONTRACT",
+        "authority_ref": "CURRENT_SET_SELECTED",
+        "carrier_role": "ACTIVE_CURRENT_AUTHORITY_BINDING",
+        "must_match_live_current_set": true,
+        "contract_id": "SLPE-GWOC-001",
+        "resource_id": "1xEUrFnoeDcUxAhy9Sqh3ittYUkga2Cbh",
+        "sha256": "9479cea4fceb5369bb3252bbc12d53a5d16d79169c1aca91df89d26f633e3ae4",
+        "version": "1.16.4",
+        "provider_revision_id": "0B-KReMc9BD1fWmRHZXlRTENvY09MMUJUT2JtL3NJS2RpZS9jPQ"
+      },
+      "rulebook": {
+        "authority_kind": "RULEBOOK",
+        "authority_ref": "CURRENT_SET_SELECTED",
+        "carrier_role": "ACTIVE_CURRENT_AUTHORITY_BINDING",
+        "must_match_live_current_set": true,
+        "rulebook_id": "SLPE-RULEBOOK-001",
+        "resource_id": "19hBNr1DyB_fKx_s5jjHDYHkzsYTKsQYA",
+        "sha256": "98f55f2ac63882d05ec80b8b496664015aeb508c0bf3f8087f45283a7c0495ee",
+        "version": "1.24.4",
+        "provider_revision_id": "0B-KReMc9BD1fRHBSYXJIb2NnTlR1MXE4azFSazNBNit1YlZFPQ"
+      }
+    },
+    "selector": "THIS_CURRENT_SET",
+    "semantic_active_current_claim_detection_required": true,
+    "semantic_key_current_identity": "CANONICAL_SELECTOR_OR_TYPED_REFERENCE_OR_EXPLICIT_HISTORICAL_CANDIDATE",
+    "status": "ENFORCED",
+    "structural_qualification_on_active_identity_mismatch": "FAIL",
+    "unknown_authority_kind_with_identity_material": "FAIL_CLOSED",
+    "unsupported_active_current_identity_form": "FAIL_CLOSED",
+    "untyped_active_identity_projection_must_fail": true
+  },
+  "bounded_authority_carrier_representation_contract": {
+    "active_subtree_descendant_identity_scan_required": true,
+    "bounded_free_text_fields": [
+      "statement",
+      "authority_statement",
+      "extension_authority_statement",
+      "summary",
+      "description",
+      "text",
+      "message",
+      "current_authority_statement"
+    ],
+    "candidate_exception": "EXPLICIT_CANDIDATE_NOT_ACTIVE_AND_NO_ACTIVE_CURRENT_CLAIM",
+    "discovery_mode": "RECURSIVE_ACTIVE_OBJECT_SUBTREE_IDENTITY_BOUNDARY_V4",
+    "enforcement_boundary": "EXPLICIT_ACTIVE_CURRENT_AUTHORITY_CONTEXT_PLUS_IDENTITY_MATERIAL_PRESENT",
+    "free_text_identity_without_supported_kind_or_template": "FAIL_CLOSED",
+    "historical_exception": "EXPLICIT_TRUTHFUL_HISTORICAL_ROLE_AND_NO_ACTIVE_CURRENT_CLAIM",
+    "mixed_valid_invalid_policy": "INVALID_NOT_MASKED",
+    "otherwise": "FAIL_CLOSED",
+    "path_whitelist_sufficient": false,
+    "plain_business_number_is_identity": false,
+    "profile_id": "SLPE_BOUNDED_ACTIVE_AUTHORITY_REPRESENTATION_V4",
+    "unknown_authority_kind_identity_material": "FAIL_CLOSED",
+    "unrestricted_nlp_used": false,
+    "valid_outcomes": [
+      "CANONICAL_CURRENT_SET_SELECTOR",
+      "VALID_TYPED_CURRENT_SET_SELECTED_REFERENCE",
+      "APPROVED_DERIVED_CHECKED_TEXT_PROJECTION"
+    ]
+  },
+  "candidate_import_contract": {
+    "activation_gates": [
+      "verified WP All Import template/config export and read-back",
+      "no unrelated update-scope drift",
+      "controlled pilot Production read-back for zero-price variation disable behavior"
+    ],
+    "contract_id": "SLPE-WPAI-CONTRACT-001",
+    "resource_id": "1XZ_c_GKQMwptU4RtRvwbtggBTYWT03SV",
+    "satisfied_gates": [
+      "Owner business-policy decision for zero-price variation Production behavior = OD-052",
+      "Parent-aware Production read-back present",
+      "Global duplicate nonblank SKU count = 0"
+    ],
+    "selected_as_active": false,
+    "sha256": "ffd63e4a7a54d67068b11133f74e00691a6f5b9588ef19bd1b2a2833e92b2ab0",
+    "status": "CANDIDATE_NOT_ACTIVE_PENDING_TEMPLATE_PROOF_AND_VARIATION_DISABLE_PILOT",
+    "version": "1.5.0"
+  },
+  "commit_type": "PROVIDER_NATIVE_DOWNSTREAM_NO_CODE_INTEGRITY_ROOT_CLOSURE",
+  "committed_at": "2026-10-07",
+  "controlled_sku_import_owner_decision": {
+    "authority_status": "ACTIVE",
+    "decision_id": "SLPE-OWNER-DECISION-CONTROLLED-SKU-IMPORT-20260921-001",
+    "decision_ref": "OD-051",
+    "resource_id": "1wzPZUb0tdGIFZaZ2HfPDCdR9a-GKHAco",
+    "sha256": "5c44c00344f147370aa08e67274571c9702fb7ac4a2bc932de316cbab304ff23"
+  },
+  "current_master_fingerprint": "05897afa27d76b225fabfb33f778e93a6fb5cb63dc6a2a63daeea3039c0f9fe9",
+  "current_master_resource_id": "1vV2oVN4rDt6zzTNUDZToumoXgo4nePH7rRfUPRH2JBQ",
+  "current_master_revision_or_fingerprint": "3007",
+  "current_set_id": "SLPE-CURRENT-SET-PROVIDER-NATIVE-DOWNSTREAM-INTEGRITY-CLOSURE-20261007-003",
+  "evidence_binding_contract": "SLPE_EVIDENCE_BINDING_CONTRACT_V1",
+  "final_v4": {
+    "headers": 95,
+    "resource_id": "1_F-pdnk34pSaYdYGYUuw-lWhIq77UgaX",
+    "rows": 876,
+    "sha256": "05897afa27d76b225fabfb33f778e93a6fb5cb63dc6a2a63daeea3039c0f9fe9"
+  },
+  "governance_activation": {
+    "accepted_approval": "OWNER_FULL_PROVIDER_NATIVE_DOWNSTREAM_NO_CODE_INTEGRITY_ROOT_REPAIR_2026-10-07",
+    "activation_id": "SLPE-PROVIDER-NATIVE-DOWNSTREAM-INTEGRITY-CLOSURE-20261007-003",
+    "active_import_contract_changed": false,
+    "current_master_changed": false,
+    "immutable_history_preserved": true,
+    "master_successor_created": true,
+    "operational_contract_successor_created": true,
+    "product_pricing_state_changed": false,
+    "production_write_performed_by_this_activation": false,
+    "root_cause_controls": [
+      "SOURCE_ROW_CONSERVATION_INVARIANT",
+      "BIDIRECTIONAL_SOURCE_ROW_RECONCILIATION",
+      "CURRENT_AUTHORITY_CONFORMANCE_LOCK",
+      "PROJECT_INSTRUCTIONS_DOMAIN_AUTHORITY_BOUNDARY",
+      "PRE_INVENTORY_SOURCE_ROW_DISCOVERY",
+      "TWO_STAGE_SOURCE_CONSERVATION",
+      "SOURCE_IDENTITY_DERIVATION_CONFORMANCE",
+      "ORDINAL_INDEPENDENCE_REPLAY",
+      "STRUCTURED_SOURCE_CLASSIFICATION_CONFORMANCE",
+      "CLASSIFICATION_METADATA_CONFLICT_FAIL_CLOSED",
+      "ACTIVE_FREE_TEXT_AUTHORITY_CARRIER_CONFORMANCE",
+      "SOURCE_RULEBOOK_BASELINE_ROLE_TRUTHFULNESS",
+      "EXPLICIT_HISTORICAL_ROLE_DISCRIMINATION",
+      "SOURCE_NATIVE_SCHEMA_AUTHORITY",
+      "SOURCE_NATIVE_STRUCTURAL_REGION_ENUMERATION",
+      "STRUCTURAL_REGION_COVERAGE_CONFORMANCE",
+      "LEGITIMATE_ZERO_REGION_INDEPENDENT_PROOF",
+      "RECURSIVE_TYPED_ACTIVE_IDENTITY_CARRIER_DISCOVERY",
+      "UNTYPED_ACTIVE_IDENTITY_CARRIER_FAIL_CLOSED",
+      "EXACT_SOURCE_ARTIFACT_AUTHORITY_ANCHOR",
+      "QUALIFIED_SOURCE_EXTRACTOR_BOUNDARY",
+      "EXACT_SOURCE_ZERO_RESULT_TRUTHFULNESS",
+      "DERIVED_SOURCE_NATIVE_PROJECTION_CONFORMANCE",
+      "SEMANTIC_ACTIVE_AUTHORITY_OBJECT_CLASSIFICATION",
+      "EXPLICIT_CURRENT_AUTHORITY_REFERENCE_CONTRACT",
+      "SEMANTIC_CARRIER_DISCOVERY_COMPLETENESS",
+      "BOUNDED_CURRENT_IDENTITY_REPRESENTATION_CONTRACT",
+      "SEMANTIC_KEY_AUTHORITY_IDENTITY_CLASSIFICATION",
+      "BOUNDED_ACTIVE_FREE_TEXT_IDENTITY_CONFORMANCE",
+      "UNSUPPORTED_CURRENT_AUTHORITY_IDENTITY_FAIL_CLOSED",
+      "MIXED_VALID_BYPASS_NON_MASKING",
+      "PACKAGE_REQUIRED_TEST_SET_A_Z",
+      "ACTIVE_OBJECT_SUBTREE_IDENTITY_MATERIAL_BOUNDARY",
+      "UNKNOWN_AUTHORITY_KIND_IDENTITY_FAIL_CLOSED",
+      "DESCENDANT_IDENTITY_RELOCATION_NON_ESCAPE",
+      "BOUNDED_GENERIC_ACTIVE_FREE_TEXT_IDENTITY_FAIL_CLOSED",
+      "MIXED_VALID_UNSUPPORTED_NON_MASKING",
+      "PACKAGE_REQUIRED_TEST_SET_A_AG",
+      "RC_B_ACTIVE_RULEBOOK_IDENTITY_PROJECTION_CONFORMANCE",
+      "NO_CODE_RUNTIME_DEPENDENCY",
+      "ADOBE_ACROBAT_CAPABILITY_AVAILABILITY_PRECHECK",
+      "NATIVE_SOURCE_TEXT_COVERAGE",
+      "ADOBE_STRUCTURED_EXTRACTION_PASS_A",
+      "ADOBE_STRUCTURED_EXTRACTION_PASS_B_INDEPENDENT",
+      "ADOBE_PASS_A_B_REPLAY_RECONCILIATION",
+      "NATIVE_TEXT_TO_ADOBE_SECTION_COVERAGE_RECONCILIATION",
+      "COMPOSITE_SOURCE_ROW_IDENTITY",
+      "CODE_LESS_PRICE_ROW_PRESERVATION",
+      "ALL_PRICE_COLUMNS_PRESERVATION",
+      "ADOBE_NATIVE_TWO_STAGE_SOURCE_CONSERVATION",
+      "BOUNDED_TABLE_FAMILY_FAIL_CLOSED",
+      "FOCUSED_DUAL_CHANNEL_ABSENCE_CONFIRMATION",
+      "ADOBE_NATIVE_NORMAL_PRICE_UPDATE_PROGRESS",
+      "PROVIDER_NATIVE_CURRENT_MASTER_REVISION_CONCURRENCY",
+      "TARGETED_AUTHORITATIVE_VALUE_READBACK",
+      "PERSISTED_FINAL_OUTPUT_PROVIDER_IDENTITY",
+      "PPS_PROVIDER_IDENTITY_LIFECYCLE",
+      "PROVIDER_NATIVE_EXPECTED_PARENT_CAS",
+      "BOUNDED_IMPORT_HANDOFF_ASSURANCE",
+      "NO_MODEL_COMPUTED_RUNTIME_SHA_PREREQUISITE",
+      "SOURCE_SHA_ACTIVE_PROJECTION_REGRESSION_CLOSURE",
+      "MACHINE_OWNED_EXECUTOR_CAPABILITY_TRUTHFULNESS"
+    ],
+    "rulebook_successor_created": true,
+    "wp_all_import_template_changed_by_system": false,
+    "corrective_post_activation_carrier_repair": true,
+    "corrective_reason": "Final V25 sweep found stale ACC-029 active self-version label in selected Master v1.14.2; corrected by Master v1.14.3 / Rulebook v1.24.4 / GWOC v1.16.4."
+  },
+  "governance_owner_decision": {
+    "audit_decision_folder_id": "1MvfnqFV2ng_sGeBqqigA5ds4b9G30vV-",
+    "authority_status": "ACTIVE",
+    "decision_id": "OD-GOVERNANCE-SIMPLE-HUMAN-APPROVAL-20260820-001",
+    "decision_refs": [
+      "OD-042",
+      "OD-043",
+      "OD-044",
+      "OD-045",
+      "OD-046",
+      "OD-047",
+      "OD-048",
+      "OD-049",
+      "OD-050",
+      "OD-051",
+      "OD-052"
+    ],
+    "resource_id": "17m8g5Unv7p7wzgmS2zciaDPYfbkTfRSj",
+    "sha256": "44a983c16d56bb9402f2a281bfff65e5290fa549b08e1516d4583fa2bb874099"
+  },
+  "import_contract": {
+    "contract_id": "SLPE-WPAI-CONTRACT-001",
+    "resource_id": "19PFly7-marww54yOaHmX0JKt-U_RYUlX",
+    "sha256": "57cb1f07361e2c6a0fa980fbd63242fc0bc526268747bc48b0ea9e250dbfd5ba",
+    "version": "1.2.0"
+  },
+  "master_specification_id": "SLPE-MASTER-SPEC-001",
+  "master_specification_resource_id": "1a_ABKxjaX-aPcqixVnj6M3EY0kR5qyF3",
+  "master_specification_sha256": "58e1a8df0777cc4db0a89b6459f551a3ab8d1eb88aec48b7c27e19940ed49c31",
+  "master_specification_version": "1.14.3",
+  "open_production_reconciliation": {
+    "corrective_import_003_status": "SUPERSEDED_DO_NOT_IMPORT",
+    "global_duplicate_nonblank_sku_count": 0,
+    "latest_reconciliation_resource_id": "1k6SEldsjPX4MaxQsCJD3VNulqwRJfFXQ",
+    "latest_reconciliation_sha256": "260e2048464c3ef7d7a94a5602bc0fe72ab86f2dbc32b52e716635125d189fe2",
+    "named_gaps": [
+      "Verified WP All Import template/configuration export/read-back for the approved Variations Enabled conditional mapping is still missing.",
+      "Controlled Production pilot for IDs 43123/43124/43125 has not yet been executed under the verified template.",
+      "Post-pilot Production read-back proving zero-price variations are not displayed/selectable while parent and positive-price siblings remain correct is still missing."
+    ],
+    "parent_column_readback_status": "PASS",
+    "production_export_resource_id": "1mPNmsVQIsO3MlHiL12X2sVT_lPSgVno0",
+    "production_export_sha256": "e0dd5df25fdbc1e5c07659c87fc846fc3911cb952bbef627c3f5c94fb5c5f3df",
+    "production_write_observed_in_open_run": true,
+    "production_write_performed_by_this_activation": false,
+    "root_cause_finding_resource_id": "1DCYbBodILlaHQOLr3DvSp_3DqIOJWNv7",
+    "root_cause_finding_sha256": "f5f82db93b7cd2dd1dd8b7ea9a63d01b189aedc2cac77579860e22b3f09a5567",
+    "run_id": "SLPE-RUN-20260920-001",
+    "status": "INCOMPLETE_PENDING_VERIFIED_TEMPLATE_CONFIGURATION_AND_VARIATION_DISABLE_PILOT_READBACK",
+    "variation_business_policy_status": "RESOLVED_OD_052"
+  },
+  "operational_contract": {
+    "authority_kind": "OPERATIONAL_CONTRACT",
+    "authority_ref": "CURRENT_SET_SELECTED",
+    "carrier_role": "ACTIVE_CURRENT_AUTHORITY_BINDING",
+    "must_match_live_current_set": true,
+    "contract_id": "SLPE-GWOC-001",
+    "resource_id": "1xEUrFnoeDcUxAhy9Sqh3ittYUkga2Cbh",
+    "sha256": "9479cea4fceb5369bb3252bbc12d53a5d16d79169c1aca91df89d26f633e3ae4",
+    "version": "1.16.4",
+    "provider_revision_id": "0B-KReMc9BD1fWmRHZXlRTENvY09MMUJUT2JtL3NJS2RpZS9jPQ"
+  },
+  "operational_contract_duplicate_binding_resolution": {
+    "authoritative_resource_id": "1VnsRzWTI4bIze-lNkIxaOGMug85ss0o7",
+    "destructive_cleanup": "FORBIDDEN",
+    "owner_decision_resource_id": "1RBELAaJ4_8VQVxryIGs-1PupNBQT6B4m",
+    "owner_decision_sha256": "df46bd594548c784dc0893f310467be3f48f4fa469d4107c4e07b0b5639875d0",
+    "preserved_duplicate_resource_id": "1a8y2Lc5ry9G3jm1hQixtlYPXad0JVxx1"
+  },
+  "parent_current_set": {
+    "authority_kind": "CURRENT_SET",
+    "carrier_role": "HISTORICAL_AUTHORITY_REFERENCE",
+    "current_set_id": "SLPE-CURRENT-SET-PROVIDER-NATIVE-DOWNSTREAM-INTEGRITY-CLOSURE-20261007-002",
+    "historical_role": "IMMEDIATE_PREDECESSOR_CURRENT_SET",
+    "resource_id": "1g9_JTgJGRBrrqMujGs5-i9gswzxgpOF2",
+    "sha256": "e31f396a1a39a6fe40bb9b49cdd950f478d9e607db4be1726191853046f6da54",
+    "provider_revision_id": "0B-KReMc9BD1fcFprc3pNTlUrYlhEM3M1eUNJUm00Q3F3aTBvPQ"
+  },
+  "persistence_contract": {
+    "parent_folder_id": "1AU7IBalGjB1wfyVgFAZScaqBSkBY4Ukz",
+    "read_back_required": true,
+    "resource_id": "PROVIDER_ASSIGNED_ON_CREATE",
+    "self_resource_id_not_fabricated": true
+  },
+  "pilot_corrective": {
+    "business_policy_gap_open": false,
+    "confirmed_sku_repair": {
+      "product_id": "34201",
+      "regular_price": "934000",
+      "sku": "20523_10985",
+      "visibility": "visible"
+    },
+    "global_duplicate_nonblank_sku_count": 0,
+    "production_export_resource_id": "1mPNmsVQIsO3MlHiL12X2sVT_lPSgVno0",
+    "production_pilot_gap_open": true,
+    "reconciliation_007_resource_id": "1k6SEldsjPX4MaxQsCJD3VNulqwRJfFXQ",
+    "root_cause_finding_resource_id": "1DCYbBodILlaHQOLr3DvSp_3DqIOJWNv7",
+    "run_id": "SLPE-RUN-20260920-001",
+    "second_import_log_resource_id": "1zupBHkUGxhQjI6oknlGWItXBf-Yz9hMO",
+    "status": "PRIOR_PILOT_EVIDENCE_RECONCILED_POLICY_RESOLVED_NEW_TEMPLATE_PILOT_PENDING",
+    "template_implementation_gap_open": true
+  },
+  "pre_promotion_candidate_lineage": {
+    "current_set_id": "SLPE-CURRENT-SET-ADOBE-ACROBAT-STRUCTURED-PDF-CENSUS-NATIVE-TEXT-COVERAGE-CLOSURE-20261006-002",
+    "historical_role": "SUPERSEDED_PRE_PROMOTION_CANDIDATE",
+    "reason": "Pre-promotion candidate selected Rulebook v1.22.1/GWOC v1.14.2 before Rulebook v1.22.2 corrected active Master-source identity projection; corrected by this Current Set.",
+    "resource_id": "1aWw8mx5ua0xBHTZm4fJqJjYwTcbKBW4l",
+    "selected_as_live": false,
+    "sha256": "924c19a030e8c2153464d237a0f007f9875d4acac7fd178efc07e45443eddf94"
+  },
+  "product_pricing_state_fingerprint": "5c4157a654d6c0254dad1ff4c0e73e8a3ccab64fbd8eff2a53c3ee7bf0400f1e",
+  "product_pricing_state_resource_id": "12SDQ2PN56sM0BLbiXSGbmj8oi2-dP6eF",
+  "product_pricing_state_version": "2.1.0",
+  "project_instructions_authority_boundary": {
+    "active_identity_carrier_discovery": "RECURSIVE_ACTIVE_OBJECT_SUBTREE_IDENTITY_BOUNDARY_V4",
+    "bounded_active_identity_representation_profile": "SLPE_BOUNDED_ACTIVE_AUTHORITY_REPRESENTATION_V4",
+    "code_execution_assumption_allowed": false,
+    "domain_business_authority": "THIS_CURRENT_SET_SELECTED_AUTHORITIES",
+    "owner_technical_handoff_required": false,
+    "project_instructions_override_allowed": false,
+    "project_instructions_scope": [
+      "ORCHESTRATION",
+      "SAFETY",
+      "EVIDENCE_DISCIPLINE",
+      "ROUTING",
+      "INTERACTION_BEHAVIOR"
+    ],
+    "rc_b2_active_carrier_closure_preserved": true,
+    "rc_b_boundary_preserved": true,
+    "runtime_source_completeness_activation": "ADOBE_NATIVE_PLUS_RUN_SCOPED_PROVIDER_ARTIFACT_BINDING_V1_PLUS_STRUCTURED_SOURCE_VISIBLE_ROW_IDENTITY_V1"
+  },
+  "promoted_run_id": "SLPE-RUN-20260813-002",
+  "promoted_run_version": "v003",
+  "rc_a6_adobe_native_source_completeness": {
+    "adobe_acrobat_capability_role": "CONNECTED_EXTERNAL_APP_CAPABILITY_CONSUMED_BY_LANGUAGE_MODEL",
+    "adobe_pass_a_required": true,
+    "adobe_pass_b_fresh_independent_required": true,
+    "all_price_columns_preserved_required": true,
+    "app_availability_precheck_required": true,
+    "app_unavailable_named_gap": "REQUIRED_STRUCTURED_PDF_EXTRACTION_CAPABILITY_UNAVAILABLE",
+    "claim_ceiling": "RUN_SCOPED_SOURCE_ARTIFACT_BINDING_PLUS_STRUCTURED_SOURCE_VISIBLE_ROW_IDENTITY_PLUS_INDEPENDENT_ADOBE_REPLAY_PLUS_SOURCE_COVERAGE_RECONCILIATION",
+    "code_execution_required": false,
+    "code_less_price_rows_preserved_required": true,
+    "composite_row_identity_required": false,
+    "evidence_profile": "ADOBE_ACROBAT_STRUCTURED_PDF_CENSUS_WITH_NATIVE_TEXT_COVERAGE_V1",
+    "native_source_text_coverage_required": true,
+    "native_text_row_price_geometry_authority": false,
+    "native_to_adobe_section_and_row_coverage_reconciliation_required": true,
+    "normal_owner_manual_table_export_or_row_inspection_required": false,
+    "pass_a_b_reconciliation_required": true,
+    "pdf_properties_endpoint_required": false,
+    "row_number_sole_identity_forbidden": true,
+    "table_family_scope": "QUALIFIED_OBSERVED_NESTECH_NATIVE_PDF_FAMILY_ONLY",
+    "unknown_or_materially_changed_family_result": "UNRESOLVED_PENDING_BOUNDED_REQUALIFICATION",
+    "structured_source_visible_row_identity_required": true,
+    "role_preserving_source_price_cells_required": true,
+    "run_scoped_provider_artifact_binding_required": true,
+    "exact_same_source_distinct_from_same_material": true,
+    "page_census_disposition": "SUPERSEDED_NOT_ACTIVE_FOR_ADOBE_NATIVE_PROFILE"
+  },
+  "repository_sync": {
+    "decision_escape_id": "SLPE-DE004",
+    "historical_role": "PREDECESSOR_REPOSITORY_SYNC_EVIDENCE; NOT_CURRENT_AUTHORITY_SELECTOR",
+    "merged_commit": "f58f35d7be4606ffd5b1f13b62cd5a649ad585bd",
+    "performed_by_this_activation": false,
+    "pull_request": 5,
+    "repository": "rezahh107/SwitchLand-Price-Engine",
+    "status": "MERGED"
+  },
+  "root_cause_hardening": {
+    "active_authority_refs": [
+      {
+        "authority_kind": "RULEBOOK",
+        "authority_ref": "CURRENT_SET_SELECTED",
+        "carrier_role": "ACTIVE_CURRENT_AUTHORITY_REFERENCE",
+        "must_match_live_current_set": true,
+        "resource_id": "1lgzEx-I__uifthpHQEm48-Pq4NH0e8wF",
+        "sha256": "3320bb1b1fe534aac2af0d601ba507e50af1d04b747667ad7b97507612a2dc40",
+        "version": "1.23.3"
+      },
+      {
+        "authority_kind": "IMPORT_CONTRACT",
+        "authority_ref": "CURRENT_SET_SELECTED",
+        "carrier_role": "ACTIVE_CURRENT_AUTHORITY_REFERENCE",
+        "must_match_live_current_set": true
+      }
+    ],
+    "authority_decision": "OD-052",
+    "authority_identity_projection_policy": "NO_DUPLICATED_CURRENT_VERSION_RESOURCE_HASH_LITERALS; RESOLVE_THROUGH_CURRENT_SET_SELECTED_TYPED_REFERENCES",
+    "business_decisions_001_012_preserved": true,
+    "candidate_import_contract_reference": {
+      "authority_kind": "IMPORT_CONTRACT",
+      "authority_ref": "CURRENT_SET_CANDIDATE_IMPORT_CONTRACT",
+      "carrier_role": "CANDIDATE_NOT_ACTIVE_AUTHORITY_REFERENCE",
+      "selected_as_active": false,
+      "status": "CANDIDATE_NOT_ACTIVE"
+    },
+    "code_execution_runtime_dependency_active": false,
+    "current_master_changed": false,
+    "parent_aware_production_readback_required": true,
+    "persistent_sku_update_activated": false,
+    "persistent_sku_update_authorized": true,
+    "pilot_production_readback_required": true,
+    "pricing_formula_changed": false,
+    "product_pricing_state_changed": false,
+    "production_readback_required": true,
+    "production_write_performed_by_this_activation": false,
+    "rc_a6_runtime_execution_status": "ADOBE_NATIVE_NO_CODE_SOURCE_ARTIFACT_AND_ROW_IDENTITY_ROOT_CORRECTED",
+    "schema_changed": false,
+    "source_completeness_evidence_mode": "ADOBE_ACROBAT_STRUCTURED_PDF_CENSUS_WITH_NATIVE_TEXT_COVERAGE_V1_PLUS_RUN_SCOPED_PROVIDER_ARTIFACT_BINDING_V1_PLUS_STRUCTURED_SOURCE_VISIBLE_ROW_IDENTITY_V1",
+    "template_export_readback_required_before_activation": true,
+    "temporary_or_fabricated_sku_prohibited": true,
+    "variable_parent_child_sku_guard_required": true,
+    "variation_availability_business_policy_status": "RESOLVED_OD_052",
+    "variation_availability_semantics_gate_required": true,
+    "variation_availability_technical_target": "DISABLE_VARIATION",
+    "variation_enabled_mapping_candidate": "[IF({price[1][.=0]})]no[ELSE]yes[ENDIF]",
+    "normal_price_update_source_row_hash_dependency_active": false,
+    "non_source_hash_domains_preserved": true,
+    "post_sweep_correction": "RULEBOOK_V1_23_3_GWOC_V1_15_3_RC_B_V4_AND_ACTIVE_IDENTITY_PROJECTION_COHERENCE"
+  },
+  "root_cause_hardening_owner_decision": {
+    "authority_status": "ACTIVE",
+    "decision_id": "OD-050",
+    "owner_decision_id": "SLPE-OWNER-DECISION-ROOT-CAUSE-HARDENING-20260921-001",
+    "resource_id": "1S_VOKI_vYlOYTmndPs4vOnMgdXwiMFJg",
+    "scope": "ROOT_CAUSE_HARDENING_AND_CROSS_SYSTEM_AUTHORITY_SYNC",
+    "sha256": "82cd2bf659e2faf1a9c6164d00e2d53793df35aa92aed662b92f0cad2a38c67f"
+  },
+  "rulebook_id": "SLPE-RULEBOOK-001",
+  "rulebook_resource_id": "19hBNr1DyB_fKx_s5jjHDYHkzsYTKsQYA",
+  "rulebook_sha256": "98f55f2ac63882d05ec80b8b496664015aeb508c0bf3f8087f45283a7c0495ee",
+  "rulebook_version": "1.24.4",
+  "run_scoped_promotion_exception": {
+    "import_outcome": "PARTIAL",
+    "owner_decision_resource_id": "12XIhWbBtTyi1LX_2eNip9f2jm0cMqv24",
+    "owner_decision_sha256": "83564d51f555e753520c7182518fd7fb8159f56cc6a94de660e2c437a32f75c2",
+    "production_reconciliation_status": "OPEN_CARRIED_FORWARD",
+    "production_sku_assignment_success_claimed": false,
+    "promotion_status": "PROMOTED_WITH_OPEN_RECONCILIATION",
+    "queue_resource_id": "1f8qOiV0vTMBNOWshkm3CV-kdedZb6Xs7",
+    "queue_sha256": "c5045d9282419a4c6b1eabab36c14f0e29c094602b7aa28b60d0336ee33dd37a",
+    "run_status": "IMPORT_PARTIAL",
+    "subject_count": 6
+  },
+  "runtime_data_snapshots": {
+    "current_master": {
+      "business_state_changed_by_packaging": false,
+      "canonical_current_master_fingerprint": "05897afa27d76b225fabfb33f778e93a6fb5cb63dc6a2a63daeea3039c0f9fe9",
+      "data_row_count": 876,
+      "filename": "CURRENT_MASTER_RUNTIME_SNAPSHOT_REV3007.csv",
+      "freshness": "PUBLICATION_SNAPSHOT; USE FRESH EXTERNAL SOURCE ONLY WHEN CAPABILITY IS ACTUALLY AVAILABLE",
+      "header_count": 95,
+      "raw_export_sha256": "e35fcdfd67c0d6d4d180f176f4dcd773603dd3a222e82f9a9be5a37f2f46b6b3",
+      "runtime_role": "READ_ONLY_RUNTIME_DATA_SNAPSHOT",
+      "source_resource_id": "1vV2oVN4rDt6zzTNUDZToumoXgo4nePH7rRfUPRH2JBQ",
+      "source_revision": "3007"
+    },
+    "product_pricing_state": {
+      "business_state_changed_by_packaging": false,
+      "filename": "PRODUCT_PRICING_STATE_RUNTIME_SNAPSHOT_v2.1.0.json",
+      "freshness": "PUBLICATION_SNAPSHOT; USE FRESH EXTERNAL SOURCE ONLY WHEN CAPABILITY IS ACTUALLY AVAILABLE",
+      "runtime_role": "READ_ONLY_RUNTIME_DATA_SNAPSHOT",
+      "sha256": "5c4157a654d6c0254dad1ff4c0e73e8a3ccab64fbd8eff2a53c3ee7bf0400f1e",
+      "source_resource_id": "12SDQ2PN56sM0BLbiXSGbmj8oi2-dP6eF",
+      "version": "2.1.0"
+    }
+  },
+  "source_baseline_ref": null,
+  "source_completeness_governance": {
+    "absence_destructive_action_guard": {
+      "failure_result": "UNRESOLVED_ABSENCE_CONFIRMATION",
+      "positive_found_rows_require_third_absence_recheck": false,
+      "requires_complete": true,
+      "requires_native_to_adobe_coverage_reconciliation": true,
+      "requires_pass_a_pass_b_reconciliation": true,
+      "third_focused_absence_recheck_adobe_structured_result_required": true,
+      "third_focused_absence_recheck_original_native_source_required": true,
+      "zero_relevant_unresolved_conditions_required": true
+    },
+    "active_pdf_evidence_mode": "ADOBE_ACROBAT_STRUCTURED_PDF_CENSUS_WITH_NATIVE_TEXT_COVERAGE_V1",
+    "active_structured_evidence_mode": "LLM_NATIVE_STRUCTURED_SOURCE_CENSUS_V1",
+    "adobe_capability_unavailable_named_gap": "REQUIRED_STRUCTURED_PDF_EXTRACTION_CAPABILITY_UNAVAILABLE",
+    "adobe_capability_unavailable_result": "INCOMPLETE_UNRESOLVED",
+    "all_price_columns_preserved_required": true,
+    "ambiguous_geometry_result": "UNRESOLVED_SOURCE_GEOMETRY",
+    "applicable_region_census_required_for_pdf_complete": true,
+    "candidate_to_physical_conservation_required_for_complete": true,
+    "claim_ceiling": "RUN_SCOPED_SOURCE_ARTIFACT_BINDING_PLUS_STRUCTURED_SOURCE_VISIBLE_ROW_IDENTITY_PLUS_INDEPENDENT_REPLAY_RECONCILIATION_PLUS_BIDIRECTIONAL_SOURCE_ROW_CONSERVATION; NOT_CRYPTOGRAPHIC_OR_BYTE_LEVEL_PROOF",
+    "code_execution_required_for_complete": false,
+    "code_less_price_rows_preserved_required": true,
+    "complete_requires": [
+      "RUN_SCOPED_SOURCE_ARTIFACT_BINDING_PROVEN",
+      "REQUIRED_ADOBE_ACROBAT_CAPABILITY_AVAILABLE",
+      "WHOLE_SOURCE_NATIVE_TEXT_COVERAGE_COMPLETE",
+      "ADOBE_PASS_A_STRUCTURED_EXTRACTION_COMPLETE",
+      "ADOBE_PASS_B_FRESH_STRUCTURED_EXTRACTION_COMPLETE",
+      "ADOBE_PASS_A_B_RECONCILIATION_PASS",
+      "NATIVE_SECTION_AND_ROW_TO_ADOBE_COVERAGE_RECONCILIATION_PASS",
+      "ROLE_PRESERVING_SOURCE_PRICE_CELLS",
+      "CODE_LESS_PRICE_BEARING_ROWS_PRESERVED",
+      "ZERO_UNRESOLVED_TABLE_SCHEMA_CELL_IDENTITY_ASSOCIATION_GAPS",
+      "CANDIDATE_TO_PHYSICAL_CONSERVATION_PASS",
+      "PHYSICAL_TO_CANONICAL_CONSERVATION_PASS",
+      "MISSING_ZERO_DUPLICATE_CANONICALIZATION_ZERO_ORPHAN_ZERO_UNRESOLVED_ZERO"
+    ],
+    "count_equality_alone_sufficient": false,
+    "derived_snapshot_self_certification_allowed": false,
+    "future_materially_changed_table_family_result": "UNRESOLVED_PENDING_BOUNDED_REQUALIFICATION",
+    "legitimate_zero_region_complete_only_if": [
+      "PASS_A_FULL_SOURCE_ZERO_APPLICABLE_REGIONS",
+      "PASS_B_FULL_SOURCE_ZERO_APPLICABLE_REGIONS",
+      "RECONCILIATION_PASS",
+      "ZERO_MATERIAL_SOURCE_ACCESS_GAPS"
+    ],
+    "native_section_extraction_gap_result": "UNRESOLVED_SOURCE_SECTION_EXTRACTION_GAP",
+    "native_text_is_row_price_association_authority": false,
+    "page_census_required_for_pdf_complete": false,
+    "pass_a_pass_b_reconciliation_required": true,
+    "pass_a_source_census_required": true,
+    "pass_b_independent_source_census_required": true,
+    "pass_b_reinspect_original_source_required": true,
+    "pdf_properties_endpoint_required": false,
+    "physical_to_canonical_conservation_required_for_complete": true,
+    "profile_id": "SLPE_SOURCE_COMPLETENESS_ADOBE_NATIVE_NO_CODE_IDENTITY_V2",
+    "reconciliation_mismatch_result": "UNRESOLVED_SOURCE_CENSUS_MISMATCH",
+    "row_identity_model": "STRUCTURED_SOURCE_VISIBLE_ROW_IDENTITY_V1_WITH_ROLE_PRESERVING_RAW_PRICE_CELLS",
+    "runtime_tool_requirement_for_normal_price_update": "CONNECTED_ADOBE_ACROBAT_STRUCTURED_EXTRACTION_CAPABILITY_PLUS_NATIVE_SOURCE_TEXT_ACCESS",
+    "source_row_coverage_gap_result": "UNRESOLVED_SOURCE_ROW_COVERAGE_GAP",
+    "source_row_identity_collision_result": "UNRESOLVED_SOURCE_ROW_IDENTITY_COLLISION",
+    "source_row_identity_extraction_ordinal_forbidden": true,
+    "source_visible_row_number_sole_identity_forbidden": true,
+    "structured_replay_mismatch_result": "UNRESOLVED_STRUCTURED_EXTRACTION_REPLAY_MISMATCH",
+    "whole_source_access_required_for_complete": true,
+    "page_census_disposition": "SUPERSEDED_NOT_ACTIVE_FOR_ADOBE_NATIVE_PROFILE",
+    "run_scoped_source_artifact_binding_required": true,
+    "provider_file_ref_semantics": "OPAQUE_RUN_SCOPED_PROVIDER_REFERENCE_NOT_CONTENT_HASH",
+    "exact_same_source_distinct_from_same_material": true,
+    "runtime_source_sha256_required": false,
+    "canonical_json_row_hash_required": false,
+    "mechanical_row_identity_recompute_required": false,
+    "role_preserving_source_price_cells": {
+      "required": true,
+      "cell_fields": [
+        "source_price_column_identity",
+        "source_header_or_role",
+        "raw_value"
+      ],
+      "unordered_set_forbidden": true,
+      "price_role_swap_must_fail_reconciliation": true
+    },
+    "hash_domain_separation": {
+      "normal_active_run_price_list_source_row_identity": "NO_RUNTIME_HASH_PREREQUISITE",
+      "retained_distinct_domains": [
+        "AUTHORITY_ARTIFACT_IDENTITY",
+        "CURRENT_MASTER_CONCURRENCY_INTEGRITY",
+        "PRODUCT_PRICING_STATE_INTEGRITY",
+        "IMPORT_PROMOTION_ARTIFACT_INTEGRITY",
+        "PACKAGE_BUILD_ARCHIVE_INTEGRITY",
+        "ROLLBACK_HISTORY_EVIDENCE"
+      ]
+    }
+  },
+  "source_proof_chain": {
+    "all_stages_required_for_complete": true,
+    "classification_conformance_required": true,
+    "conditional_chains": {
+      "ADOBE_ACROBAT_STRUCTURED_PDF_CENSUS_WITH_NATIVE_TEXT_COVERAGE_V1": [
+        "OFFICIAL_SUPPLIER_PDF",
+        "RUN_SCOPED_PROVIDER_ARTIFACT_BINDING",
+        "NATIVE_SOURCE_TEXT_WHOLE_DOCUMENT_COVERAGE",
+        "ADOBE_ACROBAT_STRUCTURED_EXTRACTION_PASS_A",
+        "ADOBE_ACROBAT_STRUCTURED_EXTRACTION_PASS_B_FRESH",
+        "ADOBE_PASS_A_B_STRUCTURED_IDENTITY_COMPONENT_RECONCILIATION",
+        "NATIVE_SECTION_AND_ROW_TO_ADOBE_TABLE_RECONCILIATION",
+        "ROLE_PRESERVING_SOURCE_PRICE_CELLS",
+        "STRUCTURED_SOURCE_VISIBLE_ROW_IDENTITIES",
+        "SOURCE_STRUCTURAL_ROW_CANDIDATE_INVENTORY",
+        "PHYSICAL_PRICE_BEARING_ROW_INVENTORY",
+        "CANONICAL_SOURCE_RECORDS",
+        "BIDIRECTIONAL_SOURCE_ROW_CONSERVATION"
+      ],
+      "LLM_NATIVE_STRUCTURED_SOURCE_CENSUS_V1": [
+        "OWNER_SUPPLIED_OR_AUTHORIZED_STRUCTURED_SOURCE",
+        "WHOLE_SOURCE_ACCESS_QUALIFICATION",
+        "PASS_A_SCHEMA_ROW_CENSUS",
+        "PASS_B_INDEPENDENT_SCHEMA_ROW_CENSUS",
+        "CENSUS_RECONCILIATION",
+        "CLASSIFICATION",
+        "SOURCE_STRUCTURAL_ROW_CANDIDATE_INVENTORY",
+        "PHYSICAL_PRICE_BEARING_ROW_INVENTORY",
+        "CANONICAL_SOURCE_RECORDS"
+      ]
+    },
+    "historical_superseded_chains": {
+      "LLM_NATIVE_PDF_SOURCE_CENSUS_V1": {
+        "chain": [
+          "OFFICIAL_SUPPLIER_PDF",
+          "WHOLE_SOURCE_ACCESS_QUALIFICATION",
+          "PASS_A_PAGE_REGION_ROW_CENSUS",
+          "PASS_B_INDEPENDENT_PAGE_REGION_ROW_CENSUS",
+          "CENSUS_RECONCILIATION",
+          "BOUNDED_NORMALIZATION",
+          "CLASSIFICATION",
+          "SOURCE_STRUCTURAL_ROW_CANDIDATE_INVENTORY",
+          "PHYSICAL_PRICE_BEARING_ROW_INVENTORY",
+          "CANONICAL_SOURCE_RECORDS"
+        ],
+        "historical_role": "SUPERSEDED_SOURCE_COMPLETENESS_PROOF_CHAIN",
+        "selected_as_active": false,
+        "superseded_by": "ADOBE_ACROBAT_STRUCTURED_PDF_CENSUS_WITH_NATIVE_TEXT_COVERAGE_V1"
+      }
+    },
+    "profile_id": "SLPE_ADOBE_NATIVE_NO_CODE_SOURCE_IDENTITY_PROOF_CHAIN_V2",
+    "row_identity": "STRUCTURED_SOURCE_VISIBLE_ROW_IDENTITY_V1_ROLE_PRESERVING_PRICE_CELLS_ORDINAL_INDEPENDENT",
+    "two_stage_conservation_required": true
+  },
+  "staged_non_authoritative_run": {
+    "authoritative_before_promotion": false,
+    "final_import_ready_resource_id": "15ODPUk4kJ2Gn69mu60jFd6cyMi-CGHJ_",
+    "final_import_ready_sha256": "228b10b82d70438e1a4b5c659d4b33e0e1d5eb5d8186022f7724a048c9fe6c7b",
+    "proposed_pps_resource_id": "1hzg4xUvBWLMFmLIeSv8oSVF_Sldi66u1",
+    "proposed_pps_sha256": "6d6da18e6816cfdffee2ac9b8164e0cb5a597da32ea8005b296eeda310734828",
+    "run_id": "SLPE-RUN-20260920-001",
+    "status": "IMPORT_READY_NOT_PROMOTED"
+  },
+  "superseded_runtime_execution_architecture": {
+    "active_current_runtime_prerequisite": false,
+    "historical_bindings": {
+      "pdf_native_enumerator": {
+        "binding_role": "RUNTIME_EXECUTABLE_PAYLOAD_BINDING",
+        "byte_size": 11110,
+        "dependency_profile_ref": "SLPE_PDF_RUNTIME_DEPENDENCY_PROFILE_V1",
+        "drive_resource_id": "1H-7sxenaH9Ury_yCkP2psPRWn8-2IdMi",
+        "enumerator_output_schema": "SLPE_PDF_NATIVE_ENUMERATION_RESULT_V0.1.0",
+        "filename": "SLPE_PDF_NATIVE_TABLE_ENUMERATOR_P1_PROTOTYPE_V0.1.0.py",
+        "gpt_project_source": false,
+        "implementation_sha256": "8990422d32956fc97dce74bbae37e5141219b15e1639deba084ba396a36493a3",
+        "mime_type": "text/x-python",
+        "normalization_output_schema": "SLPE_PDF_TO_STRUCTURED_COMPAT_V0.1.0",
+        "payload_profile_id": "SLPE_PDF_NATIVE_TABLE_ENUMERATOR_P1_PROTOTYPE_V0.1.0",
+        "payload_sha_verification_required_before_execution": true,
+        "read_back_verified": true,
+        "runtime_distribution": "EXTERNAL_GOVERNED_DRIVE_PAYLOAD",
+        "runtime_fetch_required": true,
+        "selection_scope": "PRICE_UPDATE_SOURCE_COMPLETENESS"
+      },
+      "qualified_dependency_profile": {
+        "different_identity_is_proven_incompatible": false,
+        "different_identity_result": "UNRESOLVED_RUNTIME_DEPENDENCY_IDENTITY",
+        "embedded_mupdf_version": "1.26.12",
+        "profile_id": "SLPE_PDF_RUNTIME_DEPENDENCY_PROFILE_V1",
+        "pymupdf_version": "1.26.7",
+        "python_executor_required": true,
+        "support_status": "QUALIFIED_BOUNDED_SUPPORTED_ENVIRONMENT",
+        "table_strategy": "lines_strict"
+      },
+      "runtime_invocation_controller_ref": "SLPE_PDF_RUNTIME_INVOCATION_CONTROLLER_V1"
+    },
+    "historical_role": "SUPERSEDED_RUNTIME_ARCHITECTURE",
+    "predecessor_current_set_id": "SLPE-CURRENT-SET-DRIVE-HOSTED-PDF-RUNTIME-CLOSURE-20261005-003",
+    "status": "HISTORICAL_NOT_ACTIVE",
+    "superseded_by": "ADOBE_ACROBAT_STRUCTURED_PDF_CENSUS_WITH_NATIVE_TEXT_COVERAGE_V1"
+  },
+  "superseded_source_completeness_architectures": {
+    "LLM_NATIVE_PDF_SOURCE_CENSUS_V1": {
+      "historical_role": "IMMEDIATE_PREDECESSOR_SOURCE_COMPLETENESS_ARCHITECTURE",
+      "predecessor_current_set_id": "SLPE-CURRENT-SET-LLM-NATIVE-PDF-SOURCE-CENSUS-CLOSURE-20261006-002",
+      "selected_as_active": false,
+      "status": "HISTORICAL_NOT_ACTIVE",
+      "superseded_by": "ADOBE_ACROBAT_STRUCTURED_PDF_CENSUS_WITH_NATIVE_TEXT_COVERAGE_V1"
+    }
+  },
+  "timestamp_semantics": "2026-10-06 RC-A6 activation selects run-scoped provider artifact binding + structured source-visible row identity with role-preserving PRICE cells + independent Adobe/native replay + two-stage conservation; exact-same-source remains distinct from same-material; page census superseded for Adobe/native; RC-B active-authority representation is coherently V4 across selected active projections; pricing/business/Production semantics unchanged.",
+  "variation_zero_price_owner_decision": {
+    "authority_status": "ACTIVE",
+    "decision_id": "SLPE-OWNER-DECISION-VARIATION-ZERO-PRICE-HIDE-20260921-001",
+    "decision_ref": "OD-052",
+    "persistence_scope": "PERMANENT_POLICY",
+    "resource_id": "1lrq3q6zZna8fh0d69uoWUlIdqQVabZ7o"
+  },
+  "pre_promotion_candidate_history": [
+    {
+      "candidate_role": "PRE_PROMOTION_NEVER_SELECTED_CORRECTIVE_CANDIDATE",
+      "historical_role": "PRE_PROMOTION_CANDIDATE_HISTORY",
+      "rulebook_version": "1.23.2",
+      "rulebook_resource_id": "1yi3d6dKl01c_8m6q7Kq27uX1qa47dWwt",
+      "rulebook_sha256": "f95f2b581a9ed15e240e59724de3d21f15af55b834b7e4f914b2e42b63c6e559",
+      "operational_contract_version": "1.15.2",
+      "operational_contract_resource_id": "1PLmCbCWacesjL7jCYLXtLXB_Hf9dJuVT",
+      "operational_contract_sha256": "6c4b8ee135c33bc60dbae76ac8cddc34863a1de23e66d97dd1604e2e80f088c0",
+      "selected_as_live": false,
+      "superseded_reason": "FINAL_PRE_PROMOTION_ACTIVE_CURRENT_CARRIER_SWEEP_FOUND_RC_B_V3_LABELS_AND_STALE_DUPLICATED_ACTIVE_AUTHORITY_PROJECTIONS"
+    },
+    {
+      "current_set_id": "SLPE-CURRENT-SET-LLM-NATIVE-PDF-SOURCE-CENSUS-CLOSURE-20261006-001",
+      "historical_role": "SUPERSEDED_PRE_PROMOTION_CANDIDATE",
+      "reason": "No-tool liveness review established Current Master and PPS must be readable Runtime Source snapshots for normal PRICE_UPDATE matching/pricing without optional tools.",
+      "resource_id": "1vphbK6DceNQmUpx9CdK3m_mMKXkPtxvr",
+      "selected_as_live": false,
+      "sha256": "785a7b849e5f89226856384f16a7086ac5e8624329ca1cc4740a31abd9e059cb"
+    },
+    {
+      "current_set_id": "SLPE-CURRENT-SET-ADOBE-ACROBAT-STRUCTURED-PDF-CENSUS-NATIVE-TEXT-COVERAGE-CLOSURE-20261006-001",
+      "historical_role": "SUPERSEDED_PRE_PROMOTION_CANDIDATE",
+      "reason": "Pre-promotion Adobe candidate selected Master v1.12.0, Rulebook v1.22.0 and GWOC v1.14.0 before migration-carrier corrective successors; corrected by this Current Set.",
+      "resource_id": "167Orp2VsYqySWesDt7EjuGgH7xZA6h49",
+      "selected_as_live": false,
+      "sha256": "8f8dd9a11187636f8ebdfe5337635cdecb9bbd26a9590e975a00bb768398ab16"
+    },
+    {
+      "historical_role": "SUPERSEDED_NEVER_SELECTED_PRE_PROMOTION_CANDIDATE",
+      "selected_as_live": false,
+      "master_version": "1.14.0",
+      "rulebook_version": "1.24.0",
+      "operational_contract_version": "1.16.0",
+      "reason": "Corrected by v1.14.1/v1.24.1/v1.16.1 after same-root active-carrier sweep.",
+      "corrective_candidates": [
+        "Master v1.14.1",
+        "Rulebook v1.24.1",
+        "GWOC v1.16.1"
+      ],
+      "final_successor_versions": [
+        "Master v1.14.2",
+        "Rulebook v1.24.3",
+        "GWOC v1.16.3"
+      ],
+      "intermediate_selected_successor_versions": [
+        "Master v1.14.2",
+        "Rulebook v1.24.2",
+        "GWOC v1.16.2"
+      ],
+      "post_activation_correction_reason": "Persisted read-back of Rulebook v1.24.2 exposed stale active self-version carrier; v1.24.3 removed it and GWOC v1.16.3 rebound current authority."
+    },
+    {
+      "current_set_id": "SLPE-CURRENT-SET-PROVIDER-NATIVE-DOWNSTREAM-INTEGRITY-CLOSURE-20261007-001",
+      "resource_id": "1CqGRBdxTutsT15a0oOYrCtXqssHreiM2",
+      "sha256": "b4d032cea0b8fe96a1515fba5e99570435b09a0c617c087330ffa6711eaebd4f",
+      "provider_revision_id": "0B-KReMc9BD1fcmxLMFRtUmordlJPV2R1UUh4MEZON1ROcFJjPQ",
+      "historical_role": "IMMEDIATE_PREDECESSOR_CURRENT_SET",
+      "selected_as_live": false,
+      "superseded_reason": "Post-activation active-carrier read-back correction to Rulebook v1.24.3 / GWOC v1.16.3."
+    },
+    {
+      "current_set_id": "SLPE-CURRENT-SET-PROVIDER-NATIVE-DOWNSTREAM-INTEGRITY-CLOSURE-20261007-002",
+      "resource_id": "1g9_JTgJGRBrrqMujGs5-i9gswzxgpOF2",
+      "sha256": "e31f396a1a39a6fe40bb9b49cdd950f478d9e607db4be1726191853046f6da54",
+      "provider_revision_id": "0B-KReMc9BD1fcFprc3pNTlUrYlhEM3M1eUNJUm00Q3F3aTBvPQ",
+      "historical_role": "IMMEDIATE_PREDECESSOR_CURRENT_SET",
+      "selected_as_live": false,
+      "superseded_reason": "Final V25 ACC-029 active self-version carrier correction."
+    }
+  ],
+  "source_identity_runtime": {
+    "artifact_binding_model": "RUN_SCOPED_PROVIDER_ARTIFACT_BINDING_V1",
+    "row_identity_model": "STRUCTURED_SOURCE_VISIBLE_ROW_IDENTITY_V1",
+    "price_cell_model": "ROLE_PRESERVING_SOURCE_PRICE_CELLS",
+    "replay_model": "INDEPENDENT_ADOBE_REPLAY_RECONCILIATION",
+    "conservation_model": "TWO_STAGE_SOURCE_CONSERVATION",
+    "exact_same_source_policy": "PROVEN_ONLY_WITH_SUFFICIENT_EXACT_ARTIFACT_EVIDENCE; NEVER_INFER_FROM_SAME_MATERIAL_OR_NO_CHANGES",
+    "material_comparison_term": "MATERIAL_SOURCE_COMPARISON",
+    "normal_runtime_sha256_required": false,
+    "normal_runtime_code_execution_required": false,
+    "downstream_successor_non_regression": "PRESERVED_UNCHANGED"
+  },
+  "current_master_provider_identity": {
+    "profile_id": "CURRENT_MASTER_PROVIDER_IDENTITY_V1",
+    "provider": "GOOGLE_DRIVE",
+    "resource_id": "1vV2oVN4rDt6zzTNUDZToumoXgo4nePH7rRfUPRH2JBQ",
+    "provider_revision_id": "3007",
+    "persisted_legacy_sha256_evidence": "05897afa27d76b225fabfb33f778e93a6fb5cb63dc6a2a63daeea3039c0f9fe9",
+    "legacy_hash_role": "PRE_ESTABLISHED_HISTORICAL_INTEGRITY_EVIDENCE_NOT_RUNTIME_COMPUTATION"
+  },
+  "product_pricing_state_provider_identity": {
+    "profile_id": "PPS_PROVIDER_IDENTITY_V1",
+    "state_version": "2.1.0",
+    "provider_resource_id": "12SDQ2PN56sM0BLbiXSGbmj8oi2-dP6eF",
+    "provider_revision_id": "0B-KReMc9BD1fVzNsMGR3bzh5WWtEb1h0NFQyeW9KbFhaMU9JPQ",
+    "authority_state": "COMMITTED",
+    "persisted_legacy_sha256_evidence": "5c4157a654d6c0254dad1ff4c0e73e8a3ccab64fbd8eff2a53c3ee7bf0400f1e",
+    "legacy_hash_role": "PRE_ESTABLISHED_COMMITTED_STATE_EVIDENCE_NOT_RUNTIME_COMPUTATION"
+  },
+  "provider_native_downstream_integrity": {
+    "profile_id": "SLPE_PROVIDER_NATIVE_DOWNSTREAM_INTEGRITY_V1",
+    "target_runtime": "CHATGPT_PROJECT_PLUS_LANGUAGE_MODEL_PLUS_CONNECTED_APPS_PROVIDERS_PLUS_NO_CODE_EXECUTION",
+    "normal_runtime_model_computed_sha_required": false,
+    "models": [
+      "CURRENT_MASTER_PROVIDER_IDENTITY_V1",
+      "TARGETED_AUTHORITATIVE_VALUE_READBACK_V1",
+      "PERSISTED_OUTPUT_PROVIDER_IDENTITY_V1",
+      "PPS_PROVIDER_IDENTITY_V1",
+      "PROVIDER_NATIVE_EXPECTED_PARENT_CAS_V1",
+      "BOUNDED_IMPORT_HANDOFF_ASSURANCE_V1"
+    ],
+    "current_master_concurrency": {
+      "identity": [
+        "provider",
+        "resource_id",
+        "provider_revision_id"
+      ],
+      "fresh_revision_required_at": [
+        "RUN_START",
+        "PRE_FINAL_SUMMARY_APPROVAL",
+        "IMMEDIATELY_PRE_PROMOTION"
+      ],
+      "revision_change_result": [
+        "MASTER_CHANGED_DURING_RUN",
+        "STALE_RUN_PROMOTION_CONFLICT"
+      ],
+      "revision_is_byte_equality": false
+    },
+    "targeted_master_value_readback": {
+      "required_when_exact_value_is_decision_material": true,
+      "revision_identity_substitutes_for_value_read": false,
+      "comparison": "EXPECTED_BEFORE_VALUE_VS_CURRENT_AUTHORITATIVE_VALUE"
+    },
+    "final_output_provider_identity": {
+      "required_fields": [
+        "provider",
+        "resource_id",
+        "provider_revision_id",
+        "run_id",
+        "run_version",
+        "filename",
+        "mime_type",
+        "provider_reported_size_when_available",
+        "persisted_read_back_state"
+      ],
+      "same_filename_sufficient": false,
+      "changed_revision_invalidates_old_binding": true
+    },
+    "pps_provider_identity": {
+      "required_fields": [
+        "state_version",
+        "provider_resource_id",
+        "provider_revision_id",
+        "committed_or_proposed_run_id",
+        "parent_master_resource_id",
+        "parent_master_revision_id",
+        "authority_state",
+        "persisted_read_back"
+      ],
+      "proposed_is_authoritative_before_promotion": false
+    },
+    "expected_parent_cas": {
+      "compare": [
+        "EXPECTED_CURRENT_MASTER_PROVIDER_IDENTITY_VS_FRESH_CURRENT",
+        "EXPECTED_COMMITTED_PPS_PROVIDER_IDENTITY_VS_FRESH_CURRENT"
+      ],
+      "mismatch": "BLOCK_RESYNC_OR_CORRECTIVE_FLOW",
+      "stale_overwrite_allowed": false
+    },
+    "wp_import_handoff": {
+      "external_checksum_or_receipt_if_actually_supplied": "MAY_STRENGTHEN",
+      "bounded_user_attested_branch_preserved_if_active_contract_permits": true,
+      "user_attested_is_cryptographic_proof": false,
+      "successful_import_alone_proves_exact_provider_bytes": false
+    },
+    "persisted_build_history_hashes_may_be_consumed": true,
+    "persisted_build_history_hashes_must_not_be_recomputed_by_runtime_model": true,
+    "active_carrier_readback_correction": "MASTER_v1.14.3_RULEBOOK_v1.24.4_GWOC_v1.16.4"
+  },
+  "provider_native_conditional_path_status": {
+    "NEW_PRODUCT": {
+      "status": "BOUNDED_FAIL_CLOSED_PENDING_COMPLETE_KNOWN_RESERVED_SET_ENUMERATION",
+      "model_computed_reserved_set_fingerprint_required": false,
+      "failure": "UNRESOLVED_COLUMN1_GENERATION"
+    },
+    "PARTIAL_PROMOTION": {
+      "status": "QUALIFIED_CONTRACT_STATIC_WITH_PROVIDER_ARTIFACT_BINDING",
+      "requires": [
+        "exact_run_id",
+        "exact_run_version",
+        "exact_final_output_provider_resource_revision",
+        "closed_exception_subject_set",
+        "exact_open_reconciliation_queue",
+        "exact_expected_parent_master_pps_identities"
+      ],
+      "missing_identity": "BLOCK"
+    },
+    "MUTATION_PLAN": {
+      "status": "QUALIFIED_WITH_PERSISTED_PROVIDER_ARTIFACT",
+      "model_computed_plan_sha_required": false,
+      "changed_provider_revision_invalidates_binding": true
+    },
+    "MASTER_DATA_EDIT": {
+      "status": "QUALIFIED_CONTRACT_WITH_PROVIDER_REVISION_AND_TARGETED_VALUE_READBACK",
+      "requires": [
+        "expected_master_resource_revision",
+        "fresh_revision",
+        "fresh_target_cell",
+        "expected_before_value",
+        "approved_final_value",
+        "mutation_scope",
+        "post_write_readback_when_write_authorized"
+      ]
+    },
+    "CONTROLLED_SKU_IMPORT": {
+      "status": "BOUNDED_FAIL_CLOSED_EXISTING_PRODUCTION_GATES_UNCHANGED",
+      "active_import_contract_changed": false,
+      "candidate_import_contract_remains_inactive": true
+    }
+  },
+  "qualification_evidence": {
+    "qualification_run_id": "SLPE-QUAL-20261007-PROVIDER-NATIVE-DOWNSTREAM-INTEGRITY-001",
+    "production_write_performed": false,
+    "source_pdf": {
+      "resource_id": "10JFL2WZdcMtBdZPx3IgfI4MF3i0aRGXj",
+      "adobe_pass_a_fresh": true,
+      "adobe_pass_b_fresh_independent": true,
+      "ab_reconciliation": "PASS"
+    },
+    "current_master": {
+      "resource_id": "1vV2oVN4rDt6zzTNUDZToumoXgo4nePH7rRfUPRH2JBQ",
+      "fresh_revision_reads": [
+        "3007",
+        "3007"
+      ],
+      "historical_revision_for_counterfactual": "3006",
+      "targeted_readback": {
+        "range": "'Import - Sheet1.csv'!A763:I763",
+        "column1": "533570840",
+        "sku": "69421",
+        "price": "16760000"
+      }
+    },
+    "qualification_final_output": {
+      "resource_id": "1niAjXSTQ7d6EKlhvX3VuXRpCeR0k0Zgl",
+      "provider_revision_id": "0B-KReMc9BD1fYkRGcFNHdFRNVzZwTS9STlB1UUhqbkVFTWFFPQ",
+      "role": "QUALIFICATION_ONLY_NOT_IMPORT_READY",
+      "persisted_read_back": true
+    },
+    "qualification_proposed_pps": {
+      "resource_id": "1S2osJ6-itDqc-_VyC3VbSpjgeyLNOzoV",
+      "provider_revision_id": "0B-KReMc9BD1fQzdJL2Roci9kN3NlSlQwbklNVzRNQnpSNThVPQ",
+      "authority_state": "PROPOSED_NON_AUTHORITATIVE",
+      "selected_by_current_set": false,
+      "persisted_read_back": true
+    },
+    "qualification_mutation_plan": {
+      "resource_id": "1-v5lglCoW8pdHUM5a6MuqeAFRNIFq5If",
+      "provider_revision_id": "0B-KReMc9BD1fTU1OQThtUVFmN05xeVlXS0thTmRBdTBLWUQ0PQ",
+      "qualification_only": true,
+      "persisted_read_back": true
+    },
+    "post_activation_corrective_readback": {
+      "finding": "STALE_ACTIVE_RULEBOOK_SELF_VERSION_CARRIER_IN_V1.24.2",
+      "disposition": "CORRECTED_IN_RULEBOOK_v1.24.3_AND_GWOC_v1.16.3",
+      "rulebook_resource_id": "1CBQ6nUiRjsxndJ7YIYXkVYsFTYpAtf9T",
+      "rulebook_provider_revision_id": "0B-KReMc9BD1fQzFNVkNXVlhHczI2YWFQMkpFbWQ5aFRzcXFJPQ",
+      "gwoc_resource_id": "1DLswUsnk_aZXDHdjQW4YKEoSIUHcjo8d",
+      "gwoc_provider_revision_id": "0B-KReMc9BD1fdlliUFRRTWZMK3JFTHJVR1pEeHpPSnl2MnI4PQ",
+      "production_write_performed": false,
+      "historical_role": "SUPERSEDED_INTERMEDIATE_AUTHORITY_CORRECTION_EVIDENCE",
+      "selected_as_active": false
+    },
+    "final_v25_corrective_readback": {
+      "finding": "ACC-029_ACTIVE_SELF_VERSION_LABEL_STALE_IN_MASTER_v1.14.2",
+      "disposition": "CORRECTED_IN_MASTER_v1.14.3_RULEBOOK_v1.24.4_GWOC_v1.16.4",
+      "production_write_performed": false
+    }
+  },
+  "current_master_fingerprint_role": "PRE_ESTABLISHED_HISTORICAL_INTEGRITY_EVIDENCE_NOT_RUNTIME_CONCURRENCY_KEY",
+  "product_pricing_state_fingerprint_role": "PRE_ESTABLISHED_COMMITTED_STATE_EVIDENCE_NOT_RUNTIME_GENERATION_REQUIREMENT"
+}

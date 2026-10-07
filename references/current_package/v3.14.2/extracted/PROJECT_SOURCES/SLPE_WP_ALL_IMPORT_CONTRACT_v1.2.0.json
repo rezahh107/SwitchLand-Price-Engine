@@ -1,0 +1,1488 @@
+{
+  "acf_mappings": {
+    "acf_selection": {
+      "%d8%b4%d9%85%d8%a7%d8%b1%d9%86%d8%af%d9%87": "1",
+      "20810": "0",
+      "23316": "0",
+      "31117": "0",
+      "part-number": "1",
+      "sku": "1"
+    },
+    "enabled_for_existing_updates": false,
+    "field_key_mappings": {
+      "field_66fbda642899a": "{sku_mix[1]}",
+      "field_66fbdad70f492": "{skupart1[1]}",
+      "field_66fbdafadbda4": "{skupart2[1]}",
+      "field_66fd080b6a4b5": "{column7[1]}",
+      "field_66fe4c91a9670": "{skupart12[1]}",
+      "field_66fe4d0eb13ce": "{skupart3[1]}",
+      "field_675e884e8aa34": "{column1[1]}"
+    },
+    "update_logic": "full_update"
+  },
+  "all_field_expression_inventory": [
+    {
+      "expression": "{column5[1]}",
+      "path": "$.options.post_excerpt"
+    },
+    {
+      "expression": "{column1[1]}",
+      "path": "$.options.unique_key"
+    },
+    {
+      "expression": "{column3[1]}{column14[1]}-{column16[1]}-{column12[1]}-{column18[1]}-{column20[1]}-{column22[1]}-{column24[1]}-{column26[1]}",
+      "path": "$.options.tmp_unique_key"
+    },
+    {
+      "expression": "{pic[1]}",
+      "path": "$.options.image_meta_title"
+    },
+    {
+      "expression": "{pic[1]}",
+      "path": "$.options.image_meta_caption"
+    },
+    {
+      "expression": "{pic[1]}",
+      "path": "$.options.image_meta_alt"
+    },
+    {
+      "expression": "{column[1]}",
+      "path": "$.options.title"
+    },
+    {
+      "expression": "{column4[1]}",
+      "path": "$.options.content"
+    },
+    {
+      "expression": "{column35[1]}",
+      "path": "$.options.tax_hierarchical_xpath.product_cat[0]"
+    },
+    {
+      "expression": "{column36[1]}",
+      "path": "$.options.tax_hierarchical_xpath.product_cat[1]"
+    },
+    {
+      "expression": "{column27[1]}",
+      "path": "$.options.single_product_type"
+    },
+    {
+      "expression": "{visibility[1]}",
+      "path": "$.options.single_product_visibility"
+    },
+    {
+      "expression": "{column2[1]}",
+      "path": "$.options.single_product_sku"
+    },
+    {
+      "expression": "{price[1]}",
+      "path": "$.options.single_product_regular_price"
+    },
+    {
+      "expression": "{column10[1]}",
+      "path": "$.options.single_product_sale_price"
+    },
+    {
+      "expression": "{column13[1]}",
+      "path": "$.options.attribute_name[0]"
+    },
+    {
+      "expression": "{column15[1]}",
+      "path": "$.options.attribute_name[1]"
+    },
+    {
+      "expression": "{column11[1]}",
+      "path": "$.options.attribute_name[2]"
+    },
+    {
+      "expression": "{column17[1]}",
+      "path": "$.options.attribute_name[3]"
+    },
+    {
+      "expression": "{column19[1]}",
+      "path": "$.options.attribute_name[4]"
+    },
+    {
+      "expression": "{column21[1]}",
+      "path": "$.options.attribute_name[5]"
+    },
+    {
+      "expression": "{column23[1]}",
+      "path": "$.options.attribute_name[6]"
+    },
+    {
+      "expression": "{column25[1]}",
+      "path": "$.options.attribute_name[7]"
+    },
+    {
+      "expression": "{forspech[1]}",
+      "path": "$.options.attribute_name[8]"
+    },
+    {
+      "expression": "{controlmode[1]}",
+      "path": "$.options.attribute_name[9]"
+    },
+    {
+      "expression": "{iotprotocol[1]}",
+      "path": "$.options.attribute_name[10]"
+    },
+    {
+      "expression": "{inputvoltage[1]}",
+      "path": "$.options.attribute_name[11]"
+    },
+    {
+      "expression": "{maximumoutputpower[1]}",
+      "path": "$.options.attribute_name[12]"
+    },
+    {
+      "expression": "{compatibility[1]}",
+      "path": "$.options.attribute_name[13]"
+    },
+    {
+      "expression": "{used_in_the_series[1]}",
+      "path": "$.options.attribute_name[14]"
+    },
+    {
+      "expression": "{rj45[1]}",
+      "path": "$.options.attribute_name[15]"
+    },
+    {
+      "expression": "{rj11[1]}",
+      "path": "$.options.attribute_name[16]"
+    },
+    {
+      "expression": "{usbtype[1]}",
+      "path": "$.options.attribute_name[17]"
+    },
+    {
+      "expression": "{dimensions[1]}",
+      "path": "$.options.attribute_name[18]"
+    },
+    {
+      "expression": "{connections[1]}",
+      "path": "$.options.attribute_name[19]"
+    },
+    {
+      "expression": "{other[1]}",
+      "path": "$.options.attribute_name[20]"
+    },
+    {
+      "expression": "{standard[1]}",
+      "path": "$.options.attribute_name[21]"
+    },
+    {
+      "expression": "{material[1]}",
+      "path": "$.options.attribute_name[22]"
+    },
+    {
+      "expression": "{workingtemperature[1]}",
+      "path": "$.options.attribute_name[23]"
+    },
+    {
+      "expression": "{relative_humidity[1]}",
+      "path": "$.options.attribute_name[24]"
+    },
+    {
+      "expression": "{made_in[1]}",
+      "path": "$.options.attribute_name[25]"
+    },
+    {
+      "expression": "{working_life[1]}",
+      "path": "$.options.attribute_name[26]"
+    },
+    {
+      "expression": "{radio_frequency[1]}",
+      "path": "$.options.attribute_name[27]"
+    },
+    {
+      "expression": "{devicemodelvalue[1]}",
+      "path": "$.options.attribute_name[28]"
+    },
+    {
+      "expression": "{flow_rate[1]}",
+      "path": "$.options.attribute_name[29]"
+    },
+    {
+      "expression": "{usb_voltage[1]}",
+      "path": "$.options.attribute_name[30]"
+    },
+    {
+      "expression": "{function[1]}",
+      "path": "$.options.attribute_name[31]"
+    },
+    {
+      "expression": "{column14[1]}",
+      "path": "$.options.attribute_value[0]"
+    },
+    {
+      "expression": "{column16[1]}",
+      "path": "$.options.attribute_value[1]"
+    },
+    {
+      "expression": "{column12[1]}",
+      "path": "$.options.attribute_value[2]"
+    },
+    {
+      "expression": "{column18[1]}",
+      "path": "$.options.attribute_value[3]"
+    },
+    {
+      "expression": "{column20[1]}",
+      "path": "$.options.attribute_value[4]"
+    },
+    {
+      "expression": "{column22[1]}",
+      "path": "$.options.attribute_value[5]"
+    },
+    {
+      "expression": "{column24[1]}",
+      "path": "$.options.attribute_value[6]"
+    },
+    {
+      "expression": "{column26[1]}",
+      "path": "$.options.attribute_value[7]"
+    },
+    {
+      "expression": "{column30[1]}",
+      "path": "$.options.attribute_value[8]"
+    },
+    {
+      "expression": "{controlvalue[1]}",
+      "path": "$.options.attribute_value[9]"
+    },
+    {
+      "expression": "{iotvalue[1]}",
+      "path": "$.options.attribute_value[10]"
+    },
+    {
+      "expression": "{inputvoltagevalue[1]}",
+      "path": "$.options.attribute_value[11]"
+    },
+    {
+      "expression": "{maximumoutputvalue[1]}",
+      "path": "$.options.attribute_value[12]"
+    },
+    {
+      "expression": "{compatibilityvalue[1]}",
+      "path": "$.options.attribute_value[13]"
+    },
+    {
+      "expression": "{used_in_value[1]}",
+      "path": "$.options.attribute_value[14]"
+    },
+    {
+      "expression": "{rj45value[1]}",
+      "path": "$.options.attribute_value[15]"
+    },
+    {
+      "expression": "{rj11value[1]}",
+      "path": "$.options.attribute_value[16]"
+    },
+    {
+      "expression": "{usbtypevalue[1]}",
+      "path": "$.options.attribute_value[17]"
+    },
+    {
+      "expression": "{dimensionvalue[1]}",
+      "path": "$.options.attribute_value[18]"
+    },
+    {
+      "expression": "{connectionvalue[1]}",
+      "path": "$.options.attribute_value[19]"
+    },
+    {
+      "expression": "{othervalue[1]}",
+      "path": "$.options.attribute_value[20]"
+    },
+    {
+      "expression": "{standardvalue[1]}",
+      "path": "$.options.attribute_value[21]"
+    },
+    {
+      "expression": "{materialvalue[1]}",
+      "path": "$.options.attribute_value[22]"
+    },
+    {
+      "expression": "{tempvalue[1]}",
+      "path": "$.options.attribute_value[23]"
+    },
+    {
+      "expression": "{relative_humidity_value[1]}",
+      "path": "$.options.attribute_value[24]"
+    },
+    {
+      "expression": "{made_in_value[1]}",
+      "path": "$.options.attribute_value[25]"
+    },
+    {
+      "expression": "{working_life_value[1]}",
+      "path": "$.options.attribute_value[26]"
+    },
+    {
+      "expression": "{radio_frequency_value[1]}",
+      "path": "$.options.attribute_value[27]"
+    },
+    {
+      "expression": "{devicemodel[1]}",
+      "path": "$.options.attribute_value[28]"
+    },
+    {
+      "expression": "{flow_rate_value[1]}",
+      "path": "$.options.attribute_value[29]"
+    },
+    {
+      "expression": "{usb_voltage_value[1]}",
+      "path": "$.options.attribute_value[30]"
+    },
+    {
+      "expression": "{function_value[1]}",
+      "path": "$.options.attribute_value[31]"
+    },
+    {
+      "expression": "{column8[1]}",
+      "path": "$.options.single_product_id_first_is_parent_id"
+    },
+    {
+      "expression": "{column3[1]}",
+      "path": "$.options.single_product_id_first_is_parent_title"
+    },
+    {
+      "expression": "{column8[1]}",
+      "path": "$.options.single_product_first_is_parent_title_parent_sku"
+    },
+    {
+      "expression": "{column3[1]}",
+      "path": "$.options.single_product_id_first_is_variation"
+    },
+    {
+      "expression": "{column7[1]}",
+      "path": "$.options.fields.field_66fd080b6a4b5"
+    },
+    {
+      "expression": "{sku_mix[1]}",
+      "path": "$.options.fields.field_66fbda642899a"
+    },
+    {
+      "expression": "{skupart1[1]}",
+      "path": "$.options.fields.field_66fbdad70f492"
+    },
+    {
+      "expression": "{skupart2[1]}",
+      "path": "$.options.fields.field_66fbdafadbda4"
+    },
+    {
+      "expression": "{skupart12[1]}",
+      "path": "$.options.fields.field_66fe4c91a9670"
+    },
+    {
+      "expression": "{skupart3[1]}",
+      "path": "$.options.fields.field_66fe4d0eb13ce"
+    },
+    {
+      "expression": "{column1[1]}",
+      "path": "$.options.fields.field_675e884e8aa34"
+    },
+    {
+      "expression": "{column18[1]}",
+      "path": "$.options.yoast_addon._yoast_wpseo_focuskw"
+    },
+    {
+      "expression": "{column3[1]}",
+      "path": "$.options.yoast_addon._yoast_wpseo_title"
+    },
+    {
+      "expression": "{column5[1]}",
+      "path": "$.options.yoast_addon._yoast_wpseo_metadesc"
+    },
+    {
+      "expression": "{column18[1]},{column16[1]},خانه هوشمند",
+      "path": "$.options.rank_math_seo_addon.rank_math_focus_keyword"
+    },
+    {
+      "expression": "{column3[1]}",
+      "path": "$.options.rank_math_seo_addon.rank_math_title"
+    },
+    {
+      "expression": "{column4[1]}",
+      "path": "$.options.rank_math_seo_addon.rank_math_description"
+    },
+    {
+      "expression": "{column18[1]}",
+      "path": "$.options.rank_math_seo_addon.rank_math_primary_product_cat"
+    }
+  ],
+  "attribute_mappings": {
+    "attribute_name": [
+      "{column13[1]}",
+      "{column15[1]}",
+      "{column11[1]}",
+      "{column17[1]}",
+      "{column19[1]}",
+      "{column21[1]}",
+      "{column23[1]}",
+      "{column25[1]}",
+      "{forspech[1]}",
+      "{controlmode[1]}",
+      "{iotprotocol[1]}",
+      "{inputvoltage[1]}",
+      "{maximumoutputpower[1]}",
+      "{compatibility[1]}",
+      "{used_in_the_series[1]}",
+      "{rj45[1]}",
+      "{rj11[1]}",
+      "{usbtype[1]}",
+      "{dimensions[1]}",
+      "{connections[1]}",
+      "{other[1]}",
+      "{standard[1]}",
+      "{material[1]}",
+      "{workingtemperature[1]}",
+      "{relative_humidity[1]}",
+      "{made_in[1]}",
+      "{working_life[1]}",
+      "{radio_frequency[1]}",
+      "{devicemodelvalue[1]}",
+      "{flow_rate[1]}",
+      "{usb_voltage[1]}",
+      "{function[1]}"
+    ],
+    "attribute_value": [
+      "{column14[1]}",
+      "{column16[1]}",
+      "{column12[1]}",
+      "{column18[1]}",
+      "{column20[1]}",
+      "{column22[1]}",
+      "{column24[1]}",
+      "{column26[1]}",
+      "{column30[1]}",
+      "{controlvalue[1]}",
+      "{iotvalue[1]}",
+      "{inputvoltagevalue[1]}",
+      "{maximumoutputvalue[1]}",
+      "{compatibilityvalue[1]}",
+      "{used_in_value[1]}",
+      "{rj45value[1]}",
+      "{rj11value[1]}",
+      "{usbtypevalue[1]}",
+      "{dimensionvalue[1]}",
+      "{connectionvalue[1]}",
+      "{othervalue[1]}",
+      "{standardvalue[1]}",
+      "{materialvalue[1]}",
+      "{tempvalue[1]}",
+      "{relative_humidity_value[1]}",
+      "{made_in_value[1]}",
+      "{working_life_value[1]}",
+      "{radio_frequency_value[1]}",
+      "{devicemodel[1]}",
+      "{flow_rate_value[1]}",
+      "{usb_voltage_value[1]}",
+      "{function_value[1]}"
+    ],
+    "create_taxonomy_if_missing": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "0",
+      "1"
+    ],
+    "in_variations": [
+      "1",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "1"
+    ],
+    "is_taxonomy": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "is_visible": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "0",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ]
+  },
+  "authority_role": "WP_ALL_IMPORT_MAPPING_AND_UPDATE_CONTRACT",
+  "candidate_authority_extension": {
+    "activation_state": "TARGET_MAPPING_CANDIDATE_REQUIRES_WP_ALL_IMPORT_CONFIGURATION_EXPORT_AND_READBACK_BEFORE_ACTIVATION",
+    "owner_decision": "Column28 = 'PARENT_' + exact Column8 for valid variation members; simple products blank.",
+    "owner_decision_id": "OD-039",
+    "root_cause_hardening_decision": "SLPE-OWNER-DECISION-ROOT-CAUSE-HARDENING-20260921-001",
+    "semantic_change": "EXECUTION_SAFETY_ONLY_NO_MAPPING_OR_UPDATE_FLAG_CHANGE",
+    "template_configuration_changed": false,
+    "versioning_basis": {
+      "active_import_contract_version": "1.0.0",
+      "project_successor_evidence": "Active SLPE-GWOC-001 v1.2.0 explicitly supersedes v1.1.0; semantic mapping extension uses next minor successor 1.1.0.",
+      "version_shape": "x.y.z"
+    }
+  },
+  "candidate_target_template_configuration": {
+    "activation_requirement": "Re-export WP All Import template after configuration and bind exact option paths/hash before this successor can become ACTIVE.",
+    "bindings": {
+      "Inventory → SKU": "{column2[1]}",
+      "Variations → Parent SKU": "{column28[1]}",
+      "Variations → Unique Value / Group ID": "{column8[1]}",
+      "Variations → grouping method": "Group variations using a unique identifier"
+    },
+    "evidence_status": "OWNER_APPROVED_TARGET_SEMANTICS_NOT_YET_PLUGIN_EXPORT_READBACK",
+    "raw_wp_all_import_option_path_for_new_parent_sku_mapping": "NOT_PROVEN_UNTIL_RECONFIGURED_TEMPLATE_EXPORT_IS_READ_BACK",
+    "superseded_workflow_behaviors": {
+      "Parent SKU": "blank",
+      "first_is_parent": "yes",
+      "matching_parent": "first_is_parent_id",
+      "variable_sku": "blank"
+    }
+  },
+  "contract_id": "SLPE-WPAI-CONTRACT-001",
+  "contract_version": "1.2.0",
+  "custom_functions": {
+    "interpretation": "No material mapping expression in this template invokes a custom function. Global Function Editor contents are outside the supplied export evidence and are not asserted absent.",
+    "material_mapping_dependency_on_custom_function": false,
+    "template_referenced_custom_function_calls": [],
+    "template_referenced_custom_function_count": 0,
+    "wp_all_import_function_editor_or_external_php_library": "NOT_PROVEN_FROM_TEMPLATE_EXPORT"
+  },
+  "evidence_binding": {
+    "contract_ref": "SLPE_EVIDENCE_BINDING_CONTRACT_V1",
+    "freshness": "CURRENT_USER_SUPPLIED_FOR_IMPORT_CONTRACT_ESTABLISHMENT_2026-08-13",
+    "proof_scope": "Active v1.0.0 mapping evidence is preserved. New Column28 Parent SKU target semantics are Owner-authorized but require a fresh configured WP All Import template export/readback before activation.",
+    "provenance": "ACTIVE_V1.0.0_TEMPLATE_EVIDENCE_PLUS_EXPLICIT_OWNER_DECISION_OD-039",
+    "self_certification": false
+  },
+  "execution_safety_extension": {
+    "authority": "SLPE-OWNER-DECISION-ROOT-CAUSE-HARDENING-20260921-001",
+    "configuration_delta": {},
+    "contract_drift_guard": {
+      "required_for_material_change": "verified exported template/config evidence + versioned successor contract + affected revalidation",
+      "screenshot_or_runtime_symptom_can_change_contract": false
+    },
+    "corrective_import": {
+      "header_count": 95,
+      "scope": "EXACT_AFFECTED_SUBJECTS_ONLY",
+      "source": "EXACT_APPROVED_FINAL_FULL_DATASET",
+      "unexpected_diff": "BLOCK",
+      "unrelated_value_preservation": "EXACT"
+    },
+    "explicit_preserved_flags": {
+      "is_selective_hashing": "1",
+      "is_update_catalog_visibility": "1",
+      "is_update_price": "1",
+      "is_update_regular_price": "1",
+      "is_update_sale_price": "1",
+      "is_update_sku": "0"
+    },
+    "extension_id": "SLPE-WPAI-EXECUTION-SAFETY-20260921-001",
+    "persistent_template_policy": "PRESERVE_EXACT_EXISTING_TEMPLATE_CONFIGURATION",
+    "production_readback_gate": {
+      "minimum_fields": [
+        "ID",
+        "SKU",
+        "Regular price",
+        "Sale price",
+        "Visibility in catalog",
+        "Parent"
+      ],
+      "missing_or_mismatch": "BLOCK_PROMOTION",
+      "required_before_promotion": true
+    },
+    "protected_sku_existing_record_policy": {
+      "general_template_update": false,
+      "preflight": "SKU transition current-holder/target dependency analysis required before import when approved target SKU changes exist",
+      "repair_path": "SEPARATE_EXACT_SUBJECT_GOVERNED_PROTECTED_FIELD_REPAIR",
+      "temporary_or_fabricated_sku": "PROHIBITED"
+    },
+    "selective_hashing_guard": {
+      "after_prior_error_partial_or_mismatch": "affected claims remain NOT_PROVEN until actual processing plus read-back",
+      "corrective_execution": "use a one-off force/non-skip or fresh execution identity while preserving persistent template configuration; capture log/evidence",
+      "skipped_unchanged_is_production_proof": false
+    },
+    "template_configuration_changed": false
+  },
+  "integrity_metadata": {
+    "active_template_inventory_preserved_as_baseline_evidence": true,
+    "artifact_sha256_recorded_externally_after_persisted_readback": true,
+    "candidate_state": "LOCAL_FROZEN_NOT_COMMITTED",
+    "hash_algorithm": "SHA-256",
+    "serialization": "UTF-8_JSON_INDENT_2_LF"
+  },
+  "issued_at": "2026-09-21T00:55:00+03:30",
+  "matching_and_update_behavior": {
+    "all_update_flags": {
+      "is_update_acf": "0",
+      "is_update_advanced_options": "1",
+      "is_update_allow_backorders": 1,
+      "is_update_attachments": "0",
+      "is_update_attributes": "0",
+      "is_update_author": "0",
+      "is_update_backorders": "0",
+      "is_update_billing_details": 1,
+      "is_update_catalog_visibility": "1",
+      "is_update_categories": "0",
+      "is_update_comment_agent": 1,
+      "is_update_comment_approved": 1,
+      "is_update_comment_author": 1,
+      "is_update_comment_author_IP": 1,
+      "is_update_comment_author_email": 1,
+      "is_update_comment_author_url": 1,
+      "is_update_comment_karma": 1,
+      "is_update_comment_post_id": 1,
+      "is_update_comment_rating": 1,
+      "is_update_comment_status": "0",
+      "is_update_comment_type": 1,
+      "is_update_comment_user_id": 1,
+      "is_update_comment_verified": 1,
+      "is_update_comments": 1,
+      "is_update_content": "0",
+      "is_update_coupons": 1,
+      "is_update_cross_sells": "0",
+      "is_update_custom_fields": "0",
+      "is_update_dates": "0",
+      "is_update_download_expiry": "0",
+      "is_update_download_limit": "0",
+      "is_update_downloadable": "0",
+      "is_update_downloadable_files": "0",
+      "is_update_excerpt": "0",
+      "is_update_featured_status": "1",
+      "is_update_fees": 1,
+      "is_update_global_unique_id": "0",
+      "is_update_grouping": "0",
+      "is_update_height": "0",
+      "is_update_images": "0",
+      "is_update_length": "0",
+      "is_update_manage_stock": "0",
+      "is_update_menu_order": "0",
+      "is_update_missing_cf": "0",
+      "is_update_notes": 1,
+      "is_update_parent": "0",
+      "is_update_payment": 1,
+      "is_update_ping_status": "0",
+      "is_update_post_format": 1,
+      "is_update_post_type": "1",
+      "is_update_previous": 0,
+      "is_update_price": "1",
+      "is_update_product_type": "0",
+      "is_update_products": 1,
+      "is_update_purchase_note": "0",
+      "is_update_rank_math_schema": "0",
+      "is_update_refunds": 1,
+      "is_update_regular_price": "1",
+      "is_update_sale_price": "1",
+      "is_update_sale_price_dates": 1,
+      "is_update_sale_price_dates_from": "0",
+      "is_update_sale_price_dates_to": "0",
+      "is_update_shipping": 1,
+      "is_update_shipping_class": "0",
+      "is_update_shipping_details": 1,
+      "is_update_sku": "0",
+      "is_update_slug": "0",
+      "is_update_sold_individually": "0",
+      "is_update_status": "0",
+      "is_update_stock": 1,
+      "is_update_stock_quantity": "0",
+      "is_update_stock_status": "0",
+      "is_update_tax_class": "0",
+      "is_update_tax_status": "0",
+      "is_update_taxes": 1,
+      "is_update_title": "0",
+      "is_update_total": 1,
+      "is_update_up_sells": "0",
+      "is_update_virtual": "0",
+      "is_update_weight": "0",
+      "is_update_width": "0",
+      "is_update_woocommerce_general_options": "1",
+      "is_update_woocommerce_inventory_options": "0",
+      "is_update_woocommerce_linked_product_options": "0",
+      "is_update_woocommerce_shipping_options": "0"
+    },
+    "create_delete_missing": {
+      "create_new_records": "1",
+      "delete_missing_action": "keep",
+      "is_delete_missing": "0",
+      "set_missing_to_draft": 0
+    },
+    "parent_identity_reconciliation_gate": {
+      "blocking_classifications": [
+        "EXISTING_PARENT_IDENTITY_CONFLICT",
+        "MULTIPLE_EXISTING_PARENT_CANDIDATES",
+        "NOT_PROVEN"
+      ],
+      "classification_set": [
+        "EXISTING_PARENT_EXACT_MATCH",
+        "EXISTING_PARENT_REQUIRES_SKU_ASSIGNMENT",
+        "EXISTING_PARENT_IDENTITY_CONFLICT",
+        "NO_EXISTING_PARENT_SAFE_TO_CREATE",
+        "MULTIPLE_EXISTING_PARENT_CANDIDATES",
+        "NOT_PROVEN"
+      ],
+      "required_before_import_ready": true,
+      "rulebook_rule": "SKU-PARENT-001",
+      "unreconciled_state": "PARENT_IDENTITY_RECONCILIATION_REQUIRED"
+    },
+    "record_identity": {
+      "disable_sku_matching": "0",
+      "duplicate_indicator": "title",
+      "duplicate_matching": "auto",
+      "tmp_unique_key": "{column3[1]}{column14[1]}-{column16[1]}-{column12[1]}-{column18[1]}-{column20[1]}-{column22[1]}-{column24[1]}-{column26[1]}",
+      "unique_key": "{column1[1]}"
+    },
+    "update_mode": {
+      "chuncking": "1",
+      "convert_decimal_separator": "0",
+      "create_new_product_if_no_parent": "0",
+      "create_new_records": "1",
+      "delete_missing_action": "keep",
+      "disable_prepare_price": "1",
+      "disable_sku_matching": "0",
+      "duplicate_indicator": "title",
+      "duplicate_matching": "auto",
+      "first_is_parent": "no",
+      "grouping_indicator": "xpath",
+      "implicit_first_row_parent_forbidden": true,
+      "import_processing": "ajax",
+      "is_delete_missing": "0",
+      "is_fast_mode": "1",
+      "is_selective_hashing": "1",
+      "is_update_previous": 0,
+      "make_simple_product": "0",
+      "matching_parent": "explicit_parent_sku",
+      "parent_sku_expression": "{column28[1]}",
+      "prepare_price_to_woo_format": "1",
+      "processing_iteration_logic": "auto",
+      "records_per_request": "10",
+      "set_missing_to_draft": 0,
+      "set_parent_stock": "0",
+      "tmp_unique_key": "{column3[1]}{column14[1]}-{column16[1]}-{column12[1]}-{column18[1]}-{column20[1]}-{column22[1]}-{column24[1]}-{column26[1]}",
+      "unique_key": "{column1[1]}",
+      "update_all_data": "no",
+      "variable_sku_add_parent": "0",
+      "variation_group_expression": "{column8[1]}",
+      "variation_sku_expression": "{column2[1]}"
+    }
+  },
+  "material_mapping_closure": {
+    "catalog_visibility": "PROVEN",
+    "closure_state": "CLOSED_FOR_CURRENT_IMPORT_MAPPING",
+    "custom_function_gap_material_to_mapping": false,
+    "existing_record_matching_update_behavior": "PROVEN",
+    "material_mapping_ambiguity_count": 0,
+    "parent_sku": "OWNER_APPROVED_TARGET_CANDIDATE_PENDING_TEMPLATE_EXPORT_READBACK",
+    "plugin_version_gap_material_to_mapping": false,
+    "product_type": "PROVEN",
+    "regular_price": "PROVEN",
+    "sale_price": "PROVEN",
+    "sku": "PROVEN_PRESERVED",
+    "unique_identifier": "PROVEN",
+    "variation_grouping": "OWNER_APPROVED_TARGET_CANDIDATE_PENDING_TEMPLATE_EXPORT_READBACK"
+  },
+  "material_mappings": {
+    "post": {
+      "content": {
+        "expression": "{column4[1]}",
+        "status": "PROVEN"
+      },
+      "excerpt": {
+        "expression": "{column5[1]}",
+        "status": "PROVEN"
+      },
+      "post_type": {
+        "status": "PROVEN",
+        "value": "product"
+      },
+      "title": {
+        "expression": "{column[1]}",
+        "status": "PROVEN"
+      }
+    },
+    "unique_identifier": {
+      "expression": "{column1[1]}",
+      "source_field": "Column1",
+      "status": "PROVEN"
+    },
+    "woocommerce": {
+      "catalog_visibility": {
+        "expression": "{visibility[1]}",
+        "mode": "xpath",
+        "source_field": "visibility",
+        "status": "PROVEN"
+      },
+      "parent_identity_contract": {
+        "different_group_different_parent_sku": true,
+        "first_csv_row_is_parent_identity": false,
+        "group_id_expression": "{column8[1]}",
+        "grouping_method": "Group variations using a unique identifier",
+        "implicit_first_row_parent_forbidden": true,
+        "parent_sku_expression": "{column28[1]}",
+        "same_group_same_parent_sku": true
+      },
+      "parent_sku": {
+        "expression": "{column28[1]}",
+        "source_field": "Column28",
+        "status": "OWNER_APPROVED_TARGET_MAPPING_CANDIDATE",
+        "ui_semantics": "Variations → Parent SKU"
+      },
+      "product_type": {
+        "expression": "{column27[1]}",
+        "source_field": "Column27",
+        "status": "PROVEN"
+      },
+      "regular_price": {
+        "expression": "{price[1]}",
+        "source_field": "Price",
+        "status": "PROVEN"
+      },
+      "sale_price": {
+        "expression": "{column10[1]}",
+        "source_field": "Column10",
+        "status": "PROVEN"
+      },
+      "sku": {
+        "expression": "{column2[1]}",
+        "source_field": "Column2",
+        "status": "PROVEN"
+      },
+      "variation_enabled": {
+        "mode": "yes",
+        "status": "PROVEN"
+      },
+      "variation_grouping": {
+        "expression": "{column8[1]}",
+        "first_is_parent": "no",
+        "matching_parent": "explicit_parent_sku",
+        "method": "unique_identifier",
+        "source_field": "Column8",
+        "status": "OWNER_APPROVED_TARGET_MAPPING_CANDIDATE",
+        "ui_semantics": "Group variations using a unique identifier"
+      },
+      "variation_sku": {
+        "expression": "{column2[1]}",
+        "source_field": "Column2",
+        "status": "PROVEN_PRESERVED",
+        "ui_semantics": "Inventory → SKU / Variation SKU"
+      }
+    }
+  },
+  "plugin_versions_and_modules": [
+    {
+      "component": "WP All Import Core",
+      "evidence": "template schema present; no core version field found",
+      "material_mapping_dependency": true,
+      "version": "NOT_PROVEN_FROM_TEMPLATE_EXPORT"
+    },
+    {
+      "component": "WP All Import WooCommerce Add-On",
+      "evidence_path": "$.options.woo_add_on_version",
+      "material_mapping_dependency": true,
+      "version": "4.0.5"
+    },
+    {
+      "component": "Yoast SEO Import Add-On",
+      "configuration_present": true,
+      "evidence_path": "$.options.rapid_addon",
+      "material_mapping_dependency": false,
+      "module": "yoast-seo-settings-xml-csv-import/rapid-addon.php",
+      "version": "NOT_PROVEN_FROM_TEMPLATE_EXPORT"
+    },
+    {
+      "component": "Rank Math SEO Add-On",
+      "configuration_present": true,
+      "evidence_path": "$.options.rank_math_seo_addon",
+      "material_mapping_dependency": false,
+      "version": "NOT_PROVEN_FROM_TEMPLATE_EXPORT"
+    }
+  ],
+  "schema_binding": {
+    "bundle_fixture_and_current_master_headers_exact_match": true,
+    "header_count": 95,
+    "ordered_header_sha256": "5a9090cf52582ea443030edd4bb8b6bb0e3a1abf4bdc08626e6e46e2c9def4b4",
+    "ordered_headers": [
+      "Column1",
+      "Column2",
+      "Column۳",
+      "Column4",
+      "Column5",
+      "Column6",
+      "Column7",
+      "Column8",
+      "Price",
+      "Column10",
+      "Column11",
+      "Column12",
+      "Column13",
+      "Column14",
+      "Column15",
+      "Column16",
+      "Column17",
+      "Column18",
+      "Column19",
+      "Column20",
+      "Column21",
+      "Column22",
+      "Column23",
+      "Column24",
+      "Column25",
+      "Column26",
+      "Column27",
+      "Column28",
+      "Column29",
+      "pic",
+      "Column31",
+      "Column32",
+      "Column33",
+      "Column34",
+      "Column35",
+      "Column36",
+      "Column37",
+      "Column38",
+      "Column39",
+      "Column40",
+      "SKU Part1",
+      "SKU Part12",
+      "SKU Part2",
+      "SKU Part3",
+      "Tax Status",
+      "Tax Class",
+      "forspech",
+      "Column30",
+      "Control mode",
+      "control value",
+      "IoT Protocol",
+      "IoT value",
+      "input voltage",
+      "input voltage value",
+      "Maximum output power",
+      "Maximum output value",
+      "compatibility",
+      "compatibility value",
+      "used_in_the_series",
+      "used_in_value",
+      "RJ45",
+      "RJ45Value",
+      "RJ11",
+      "RJ11value",
+      "USB Type",
+      "USB Type Value",
+      "dimensions",
+      "dimension value",
+      "connections",
+      "connection value",
+      "Other",
+      "other value",
+      "standard",
+      "standard value",
+      "material",
+      "material value",
+      "working temperature",
+      "temp value",
+      "relative_humidity",
+      "relative_humidity_value",
+      "made_in",
+      "made_in_value",
+      "working_Life",
+      "working_life_value",
+      "radio_frequency",
+      "radio_frequency_value",
+      "device model value",
+      "device model",
+      "flow_rate",
+      "flow_rate_value",
+      "usb_voltage",
+      "usb_voltage_value",
+      "function",
+      "function_value",
+      "visibility"
+    ],
+    "schema_id": "SLPE-MASTER-95-COLUMN-SCHEMA",
+    "schema_version": "BOOTSTRAP_ACTIVE_95COL"
+  },
+  "scope_statement": "Defines how the 95-column SwitchLand Full Dataset is interpreted and updated by the proven WP All Import template. It is not supplier price, availability, product identity, or business-rule authority. Successor v1.1.0 additionally defines deterministic explicit WooCommerce Parent identity for valid variation groups: Column8 remains the Group ID, Column2 remains the child/product SKU, and Column28 is the Generated Parent SKU.",
+  "seo_addon_mappings": {
+    "rank_math": {
+      "mappings": {
+        "download_image": {
+          "rank_math_facebook_image": "no",
+          "rank_math_twitter_image": "no"
+        },
+        "mapping": {
+          "rank_math_facebook_image_overlay": "[]",
+          "rank_math_pillar_content": "[]",
+          "rank_math_schema_article_type": "[]",
+          "rank_math_schema_course_provider_type": "[]",
+          "rank_math_schema_edition_format": "[]",
+          "rank_math_schema_event_attendance_mode": "[]",
+          "rank_math_schema_event_availability": "[]",
+          "rank_math_schema_event_performer_type": "[]",
+          "rank_math_schema_event_status": "[]",
+          "rank_math_schema_event_type": "[]",
+          "rank_math_schema_jobposting_employment_type": "[]",
+          "rank_math_schema_jobposting_payroll": "[]",
+          "rank_math_schema_jobposting_unpublish": "[]",
+          "rank_math_schema_location": "[]",
+          "rank_math_schema_music_type": "[]",
+          "rank_math_schema_product_instock": "[]",
+          "rank_math_schema_recipe_instruction_type": "[]",
+          "rank_math_schema_type": "[]",
+          "rank_math_schema_woocommerce_product": "[]",
+          "rank_math_twitter_card_type": "[]",
+          "rank_math_twitter_image_overlay": "[]",
+          "rank_math_wpseo_meta-robots-noarchive": "[]",
+          "rank_math_wpseo_meta-robots-nofollow": "[]",
+          "rank_math_wpseo_meta-robots-noimageindex": "[]",
+          "rank_math_wpseo_meta-robots-noindex": "[]",
+          "rank_math_wpseo_meta-robots-nosnippet": "[]",
+          "rank_math_wpseo_meta_robots_max-image-preview": "[]"
+        },
+        "rank_math_canonical_url": "",
+        "rank_math_description": "{column4[1]}",
+        "rank_math_facebook_description": "",
+        "rank_math_facebook_image": "",
+        "rank_math_facebook_image_overlay": "",
+        "rank_math_facebook_title": "",
+        "rank_math_focus_keyword": "{column18[1]},{column16[1]},خانه هوشمند",
+        "rank_math_pillar_content": "",
+        "rank_math_primary_product_cat": "{column18[1]}",
+        "rank_math_schema_article_type": "Article",
+        "rank_math_schema_author": "",
+        "rank_math_schema_book_rating": "",
+        "rank_math_schema_book_rating_max": "",
+        "rank_math_schema_book_rating_min": "",
+        "rank_math_schema_course_provider": "",
+        "rank_math_schema_course_provider_type": "Person",
+        "rank_math_schema_course_provider_url": "",
+        "rank_math_schema_course_rating": "",
+        "rank_math_schema_course_rating_max": "",
+        "rank_math_schema_course_rating_min": "",
+        "rank_math_schema_description": "",
+        "rank_math_schema_edition_author": "",
+        "rank_math_schema_edition_date": "",
+        "rank_math_schema_edition_edition": "",
+        "rank_math_schema_edition_format": "https://schema.org/EBook",
+        "rank_math_schema_edition_isbn": "",
+        "rank_math_schema_edition_title": "",
+        "rank_math_schema_edition_url": "",
+        "rank_math_schema_event_address_country": "",
+        "rank_math_schema_event_address_locality": "",
+        "rank_math_schema_event_address_postalcode": "",
+        "rank_math_schema_event_address_region": "",
+        "rank_math_schema_event_address_street": "",
+        "rank_math_schema_event_attendance_mode": "OfflineEventAttendanceMode",
+        "rank_math_schema_event_availability": "None",
+        "rank_math_schema_event_availability_starts": "",
+        "rank_math_schema_event_currency": "",
+        "rank_math_schema_event_enddate": "",
+        "rank_math_schema_event_inventory": "",
+        "rank_math_schema_event_performer": "",
+        "rank_math_schema_event_performer_type": "Person",
+        "rank_math_schema_event_performer_url": "",
+        "rank_math_schema_event_price": "",
+        "rank_math_schema_event_rating": "",
+        "rank_math_schema_event_rating_max": "",
+        "rank_math_schema_event_rating_min": "",
+        "rank_math_schema_event_startdate": "",
+        "rank_math_schema_event_status": "",
+        "rank_math_schema_event_ticketurl": "",
+        "rank_math_schema_event_type": "Event",
+        "rank_math_schema_event_venue": "",
+        "rank_math_schema_event_venue_url": "",
+        "rank_math_schema_headline": "",
+        "rank_math_schema_jobposting_address_country": "",
+        "rank_math_schema_jobposting_address_locality": "",
+        "rank_math_schema_jobposting_address_postalcode": "",
+        "rank_math_schema_jobposting_address_region": "",
+        "rank_math_schema_jobposting_address_street": "",
+        "rank_math_schema_jobposting_currency": "",
+        "rank_math_schema_jobposting_employment_type": "",
+        "rank_math_schema_jobposting_expirydate": "",
+        "rank_math_schema_jobposting_id": "",
+        "rank_math_schema_jobposting_logo": "",
+        "rank_math_schema_jobposting_organization": "",
+        "rank_math_schema_jobposting_payroll": "",
+        "rank_math_schema_jobposting_salary": "",
+        "rank_math_schema_jobposting_startdate": "",
+        "rank_math_schema_jobposting_unpublish": "on",
+        "rank_math_schema_jobposting_url": "",
+        "rank_math_schema_local_address_country": "",
+        "rank_math_schema_local_address_locality": "",
+        "rank_math_schema_local_address_postalcode": "",
+        "rank_math_schema_local_address_region": "",
+        "rank_math_schema_local_address_street": "",
+        "rank_math_schema_local_closes": "",
+        "rank_math_schema_local_lat": "",
+        "rank_math_schema_local_long": "",
+        "rank_math_schema_local_opendays": "",
+        "rank_math_schema_local_opens": "",
+        "rank_math_schema_local_phone": "",
+        "rank_math_schema_local_price_range": "",
+        "rank_math_schema_location": "top",
+        "rank_math_schema_music_type": "MusicGroup",
+        "rank_math_schema_online_event_url": "",
+        "rank_math_schema_person_address_country": "",
+        "rank_math_schema_person_address_locality": "",
+        "rank_math_schema_person_address_postalcode": "",
+        "rank_math_schema_person_address_region": "",
+        "rank_math_schema_person_address_street": "",
+        "rank_math_schema_person_email": "",
+        "rank_math_schema_person_gender": "",
+        "rank_math_schema_person_job_title": "",
+        "rank_math_schema_product_brand": "",
+        "rank_math_schema_product_currency": "",
+        "rank_math_schema_product_instock": "",
+        "rank_math_schema_product_price": "",
+        "rank_math_schema_product_price_valid": "",
+        "rank_math_schema_product_rating": "",
+        "rank_math_schema_product_rating_max": "",
+        "rank_math_schema_product_rating_min": "",
+        "rank_math_schema_product_sku": "",
+        "rank_math_schema_recipe_calories": "",
+        "rank_math_schema_recipe_cooktime": "",
+        "rank_math_schema_recipe_cuisine": "",
+        "rank_math_schema_recipe_ingredients": "",
+        "rank_math_schema_recipe_instruction_type": "SingleField",
+        "rank_math_schema_recipe_instructions_name": "",
+        "rank_math_schema_recipe_instructions_text": "",
+        "rank_math_schema_recipe_keywords": "",
+        "rank_math_schema_recipe_preptime": "",
+        "rank_math_schema_recipe_rating": "",
+        "rank_math_schema_recipe_rating_max": "",
+        "rank_math_schema_recipe_rating_min": "",
+        "rank_math_schema_recipe_single_instructions": "",
+        "rank_math_schema_recipe_totaltime": "",
+        "rank_math_schema_recipe_type": "",
+        "rank_math_schema_recipe_video": "",
+        "rank_math_schema_recipe_video_content_url": "",
+        "rank_math_schema_recipe_video_date": "",
+        "rank_math_schema_recipe_video_description": "",
+        "rank_math_schema_recipe_video_name": "",
+        "rank_math_schema_recipe_video_thumbnail": "",
+        "rank_math_schema_recipe_yield": "",
+        "rank_math_schema_restaurant_menu": "",
+        "rank_math_schema_restaurant_serves_cuisine": "",
+        "rank_math_schema_service_price": "",
+        "rank_math_schema_service_price_currency": "",
+        "rank_math_schema_service_type": "",
+        "rank_math_schema_software_application_category": "",
+        "rank_math_schema_software_operating_system": "",
+        "rank_math_schema_software_price": "",
+        "rank_math_schema_software_price_currency": "",
+        "rank_math_schema_software_rating": "",
+        "rank_math_schema_software_rating_max": "",
+        "rank_math_schema_software_rating_min": "",
+        "rank_math_schema_type": "off",
+        "rank_math_schema_url": "",
+        "rank_math_schema_video_duration": "",
+        "rank_math_schema_video_embed_url": "",
+        "rank_math_schema_video_url": "",
+        "rank_math_title": "{column3[1]}",
+        "rank_math_twitter_app_country": "",
+        "rank_math_twitter_app_description": "",
+        "rank_math_twitter_app_googleplay_id": "",
+        "rank_math_twitter_app_googleplay_name": "",
+        "rank_math_twitter_app_googleplay_url": "",
+        "rank_math_twitter_app_ipad_id": "",
+        "rank_math_twitter_app_ipad_name": "",
+        "rank_math_twitter_app_ipad_url": "",
+        "rank_math_twitter_app_iphone_id": "",
+        "rank_math_twitter_app_iphone_name": "",
+        "rank_math_twitter_app_iphone_url": "",
+        "rank_math_twitter_card_type": "summary_large_image",
+        "rank_math_twitter_description": "",
+        "rank_math_twitter_image": "",
+        "rank_math_twitter_image_overlay": "",
+        "rank_math_twitter_player_size": "",
+        "rank_math_twitter_player_stream": "",
+        "rank_math_twitter_player_stream_ctype": "",
+        "rank_math_twitter_player_url": "",
+        "rank_math_twitter_title": "",
+        "rank_math_twitter_use_facebook": "on",
+        "rank_math_wpseo_meta-robots-noarchive": "",
+        "rank_math_wpseo_meta-robots-nofollow": "",
+        "rank_math_wpseo_meta-robots-noimageindex": "",
+        "rank_math_wpseo_meta-robots-noindex": "index",
+        "rank_math_wpseo_meta-robots-nosnippet": "",
+        "rank_math_wpseo_meta_robots_max-image-preview": "large",
+        "rank_math_wpseo_meta_robots_max-snippet": "",
+        "rank_math_wpseo_meta_robots_max-video-preview": "",
+        "xpaths": {
+          "rank_math_facebook_image_overlay": "",
+          "rank_math_pillar_content": "",
+          "rank_math_schema_article_type": "",
+          "rank_math_schema_course_provider_type": "",
+          "rank_math_schema_edition_format": "",
+          "rank_math_schema_event_attendance_mode": "",
+          "rank_math_schema_event_availability": "",
+          "rank_math_schema_event_performer_type": "",
+          "rank_math_schema_event_status": "",
+          "rank_math_schema_event_type": "",
+          "rank_math_schema_jobposting_employment_type": "",
+          "rank_math_schema_jobposting_payroll": "",
+          "rank_math_schema_jobposting_unpublish": "",
+          "rank_math_schema_location": "",
+          "rank_math_schema_music_type": "",
+          "rank_math_schema_product_instock": "",
+          "rank_math_schema_recipe_instruction_type": "",
+          "rank_math_schema_type": "",
+          "rank_math_schema_woocommerce_product": "",
+          "rank_math_twitter_card_type": "",
+          "rank_math_twitter_image_overlay": "",
+          "rank_math_wpseo_meta-robots-noarchive": "",
+          "rank_math_wpseo_meta-robots-nofollow": "",
+          "rank_math_wpseo_meta-robots-noimageindex": "",
+          "rank_math_wpseo_meta-robots-noindex": "",
+          "rank_math_wpseo_meta-robots-nosnippet": "",
+          "rank_math_wpseo_meta_robots_max-image-preview": ""
+        }
+      }
+    },
+    "yoast": {
+      "mappings": {
+        "_yoast_wpseo_canonical": "",
+        "_yoast_wpseo_focuskw": "{column18[1]}",
+        "_yoast_wpseo_meta-robots-adv": "",
+        "_yoast_wpseo_meta-robots-nofollow": "",
+        "_yoast_wpseo_meta-robots-noindex": "",
+        "_yoast_wpseo_metadesc": "{column5[1]}",
+        "_yoast_wpseo_opengraph-description": "",
+        "_yoast_wpseo_opengraph-image": "",
+        "_yoast_wpseo_opengraph-title": "",
+        "_yoast_wpseo_primary_category_addon": "",
+        "_yoast_wpseo_title": "{column3[1]}",
+        "_yoast_wpseo_twitter-description": "",
+        "_yoast_wpseo_twitter-image": "",
+        "_yoast_wpseo_twitter-title": "",
+        "_yst_is_cornerstone": "",
+        "download_image": {
+          "_yoast_wpseo_opengraph-image": "no",
+          "_yoast_wpseo_twitter-image": "no"
+        },
+        "mapping": {
+          "_yoast_wpseo_meta-robots-adv": "[]",
+          "_yoast_wpseo_meta-robots-nofollow": "[]",
+          "_yoast_wpseo_meta-robots-noindex": "[]",
+          "_yst_is_cornerstone": "[]"
+        },
+        "xpaths": {
+          "_yoast_wpseo_meta-robots-adv": "",
+          "_yoast_wpseo_meta-robots-nofollow": "",
+          "_yoast_wpseo_meta-robots-noindex": "",
+          "_yst_is_cornerstone": ""
+        }
+      },
+      "module": "yoast-seo-settings-xml-csv-import/rapid-addon.php"
+    }
+  },
+  "source_evidence": {
+    "bundle_embedded_source_csv": {
+      "data_row_count": 826,
+      "delimiter": ";",
+      "encoding": "UTF-8 BOM",
+      "header_count": 95,
+      "ordered_header_sha256": "5a9090cf52582ea443030edd4bb8b6bb0e3a1abf4bdc08626e6e46e2c9def4b4",
+      "path": "bundle//Import_Sheet1.csv",
+      "role": "SUCCESSFUL_IMPORT_SOURCE_FIXTURE_EVIDENCE",
+      "sha256": "3c23927c02ce6699f32dfa9a9e17595e156f16ffac3538b6f81b12559f69f9f0",
+      "size_bytes": 2130970
+    },
+    "bundle_embedded_template": {
+      "bundle_xpath": "/node",
+      "path": "bundle//WP All Import Template - Import_Sheet1.csv.txt",
+      "role": "PRIMARY_MACHINE_READABLE_MAPPING_EVIDENCE",
+      "sha256": "c441e83def367cf5e5a88338508b2f49bf8fec1330b46d72bfd5e3f9d432712b",
+      "size_bytes": 35735,
+      "template_name": "Import_Sheet1.csv"
+    },
+    "current_master_binding": {
+      "current_export_sha256": "ab7d8eaf37ee5b4046f4b955822e6d63d1d147f83e6403e629425d5e9e469fd3",
+      "data_row_count": 826,
+      "header_count": 95,
+      "ordered_header_sha256": "5a9090cf52582ea443030edd4bb8b6bb0e3a1abf4bdc08626e6e46e2c9def4b4",
+      "ordered_headers_equal_bundle_fixture": true,
+      "resource_id": "1vV2oVN4rDt6zzTNUDZToumoXgo4nePH7rRfUPRH2JBQ",
+      "revision_id": "3004"
+    },
+    "user_supplied_bundle_zip": {
+      "filename": "Import_Sheet1.csv.zip",
+      "role": "PRIMARY_IMPORT_PACKAGE_EXPORT",
+      "sha256": "58ac9909fd599451bb1d6df8ef4d4e007a07d519bcceb4b276d135b2591787dc",
+      "size_bytes": 71086
+    },
+    "user_supplied_template_txt": {
+      "filename": "WP All Import Template - Import_Sheet1.csv.txt",
+      "role": "SUPPORTING_TEMPLATE_EXPORT",
+      "sha256": "80d64556d1d353adab33aa5b44fedb8e76c6c19b38984ebd9095dadbb4853d7a",
+      "size_bytes": 35711
+    }
+  },
+  "status": "NORMATIVE_SUCCESSOR_ACTIVE_WHEN_SELECTED",
+  "supersedes": {
+    "contract_id": "SLPE-WPAI-CONTRACT-001",
+    "contract_version": "1.1.0",
+    "preserved_historical": true,
+    "resource_id": "1Pdsh5DzkSPn1JYVGCuTfVS0cfM5B5lst",
+    "sha256": "7576a81183ec8c3b136f3e7d2ccebb9f185f2c7031a85490d29ce7019247be3f"
+  },
+  "taxonomy_mappings": {
+    "tax_assing": {
+      "product_brand": "0",
+      "product_cat": "1",
+      "product_tag": "0",
+      "product_visibility": "0",
+      "wpc-attribute-group": "0"
+    },
+    "tax_enable_mapping": {
+      "product_brand": "0",
+      "product_cat": "0",
+      "product_tag": "0",
+      "product_visibility": "0",
+      "wpc-attribute-group": "0"
+    },
+    "tax_hierarchical_xpath": {
+      "product_brand": [
+        "",
+        ""
+      ],
+      "product_cat": [
+        "{column35[1]}",
+        "{column36[1]}",
+        ""
+      ]
+    },
+    "tax_logic": {
+      "product_brand": "single",
+      "product_cat": "hierarchical",
+      "product_tag": "single",
+      "product_visibility": "single",
+      "wpc-attribute-group": "single"
+    },
+    "tax_multiple_xpath": {
+      "product_brand": "",
+      "product_cat": "",
+      "product_tag": "",
+      "product_visibility": "",
+      "wpc-attribute-group": ""
+    },
+    "tax_single_xpath": {
+      "product_brand": "",
+      "product_cat": "",
+      "product_tag": "",
+      "product_visibility": "",
+      "wpc-attribute-group": ""
+    }
+  }
+}

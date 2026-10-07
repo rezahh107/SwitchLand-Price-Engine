@@ -1,0 +1,878 @@
+{
+  "architecture": "GOOGLE_UNIFIED_OPERATIONAL_WORKSPACE",
+  "authority_bindings": {
+    "current_master": {
+      "canonical_csv_sha256": "05897afa27d76b225fabfb33f778e93a6fb5cb63dc6a2a63daeea3039c0f9fe9",
+      "canonical_csv_sha256_role": "PREESTABLISHED_HISTORICAL_INTEGRITY_EVIDENCE_NOT_NORMAL_RUNTIME_RECOMPUTED",
+      "normal_runtime_sha_recomputation_required": false,
+      "observed_data_row_count": 876,
+      "observed_header_count": 95,
+      "provider": "GOOGLE_DRIVE_GOOGLE_SHEETS",
+      "provider_identity_model": "CURRENT_MASTER_PROVIDER_IDENTITY_V1",
+      "provider_revision_id": "3007",
+      "read_only_resolution": true,
+      "resource_id": "1vV2oVN4rDt6zzTNUDZToumoXgo4nePH7rRfUPRH2JBQ",
+      "resource_name": "Import - Sheet1",
+      "revision_id": "3007",
+      "sheet_name": "Import - Sheet1.csv",
+      "targeted_authoritative_value_readback_required_when_decision_material": true,
+      "write_authority": "ONLY_EXISTING_GOVERNED_PROMOTION_OR_EXPLICITLY_AUTHORIZED_MAINTENANCE"
+    },
+    "current_set": {
+      "authoritative_identity_source": "WORKSPACE_MANIFEST.current_set + persisted CURRENT_SET selector artifact",
+      "conformance_rule": "GWOC does not cache a concrete live CURRENT_SET identity; caller must resolve it fresh.",
+      "resolution_mode": "DYNAMIC_LIVE_CURRENT_SET",
+      "static_selected_current_set_identity_forbidden": true
+    },
+    "governance_owner_decision": {
+      "decision_id": "OD-GOVERNANCE-SIMPLE-HUMAN-APPROVAL-20260820-001",
+      "decision_refs": [
+        "OD-042"
+      ],
+      "resource_id": "17m8g5Unv7p7wzgmS2zciaDPYfbkTfRSj",
+      "sha256": "44a983c16d56bb9402f2a281bfff65e5290fa549b08e1516d4583fa2bb874099"
+    },
+    "import_contract": {
+      "authority_kind": "IMPORT_CONTRACT",
+      "authority_ref": "CURRENT_SET_SELECTED",
+      "carrier_role": "ACTIVE_CURRENT_AUTHORITY_BINDING",
+      "contract_id": "SLPE-WPAI-CONTRACT-001",
+      "must_match_live_current_set": true,
+      "resource_id": "19PFly7-marww54yOaHmX0JKt-U_RYUlX",
+      "sha256": "57cb1f07361e2c6a0fa980fbd63242fc0bc526268747bc48b0ea9e250dbfd5ba",
+      "status": "ACTIVE_CURRENT_SET_AUTHORITY",
+      "version": "1.2.0"
+    },
+    "legacy_product_and_sku_reference": {
+      "current_availability_authority": false,
+      "current_price_authority": false,
+      "resource_id": "1c7KVlTgRGyF0-4b_EgmPEklPl_c7Dykh",
+      "resource_name": "محصولات شرکت.xlsx",
+      "role": "LEGACY_PRODUCT_AND_SKU_REFERENCE",
+      "sha256": "5d961deabe6ac2f509dff939c31b1cc5601d04c21185eb31def8c84ce8614e33"
+    },
+    "master_specification": {
+      "authority_kind": "MASTER_SPECIFICATION",
+      "authority_ref": "CURRENT_SET_SELECTED",
+      "carrier_role": "ACTIVE_CURRENT_AUTHORITY_BINDING",
+      "document_id": "SLPE-MASTER-SPEC-001",
+      "must_match_live_current_set": true,
+      "resource_id": "1a_ABKxjaX-aPcqixVnj6M3EY0kR5qyF3",
+      "sha256": "58e1a8df0777cc4db0a89b6459f551a3ab8d1eb88aec48b7c27e19940ed49c31",
+      "version": "1.14.3",
+      "provider_revision_id": "0B-KReMc9BD1fQWN1RkVjTGtIODQyM3ZRayttS2oxdUlKOVdBPQ"
+    },
+    "part_number_reference": {
+      "availability_authority": false,
+      "price_authority": false,
+      "resource_id": "12a-2K89sUSuJH31CCEdO4IVBCLAmyLQF",
+      "resource_name": "Nestech IRAN_Part Number.xlsx",
+      "role": "ACTIVE_PART_NUMBER_REFERENCE_FOR_BOOTSTRAP",
+      "sha256": "850cc76e2027030f269cb724775487d9ecacccff3b5bd993e8df8887541d25a9"
+    },
+    "product_pricing_state": {
+      "commit_type": "RUN_PROMOTION_COMMIT_WITH_OPEN_RECONCILIATION",
+      "normal_runtime_sha_recomputation_required": false,
+      "provider": "GOOGLE_DRIVE",
+      "provider_identity_model": "PPS_PROVIDER_IDENTITY_V1",
+      "provider_revision_id": "0B-KReMc9BD1fVzNsMGR3bzh5WWtEb1h0NFQyeW9KbFhaMU9JPQ",
+      "read_back_verified": true,
+      "resource_id": "12SDQ2PN56sM0BLbiXSGbmj8oi2-dP6eF",
+      "sha256": "5c4157a654d6c0254dad1ff4c0e73e8a3ccab64fbd8eff2a53c3ee7bf0400f1e",
+      "sha256_role": "PREESTABLISHED_COMMITTED_STATE_EVIDENCE_NOT_NORMAL_RUNTIME_RECOMPUTED",
+      "version": "2.1.0"
+    },
+    "rebaseline_owner_decision": {
+      "authority_class": "USER_DECISION_OR_AUTHORIZATION",
+      "decision_id": "OD-RECOVERY-REBASELINE-BASELINE-20260813-001",
+      "resource_id": "1SXP-zWIWv7pe23V8WMdec0qvUpgdyNbO",
+      "scope": "RECOVERY_REBASELINE_BASELINE_ONLY",
+      "sha256": "a17260bc9fefd310fac0b9ab44ce83d7a4628826c01f3a2eae2c68e8251fe453"
+    },
+    "rulebook": {
+      "authority_kind": "RULEBOOK",
+      "authority_ref": "CURRENT_SET_SELECTED",
+      "carrier_role": "ACTIVE_CURRENT_AUTHORITY_BINDING",
+      "freeze_status": "CURRENT_SET_SELECTED_ACTIVE_AUTHORITY",
+      "must_match_live_current_set": true,
+      "resource_id": "19hBNr1DyB_fKx_s5jjHDYHkzsYTKsQYA",
+      "rulebook_id": "SLPE-RULEBOOK-001",
+      "sha256": "98f55f2ac63882d05ec80b8b496664015aeb508c0bf3f8087f45283a7c0495ee",
+      "version": "1.24.4",
+      "provider_revision_id": "0B-KReMc9BD1fRHBSYXJIb2NnTlR1MXE4azFSazNBNit1YlZFPQ"
+    }
+  },
+  "authority_kind": "OPERATIONAL_CONTRACT",
+  "authority_ref": "CURRENT_SET_SELECTED",
+  "bootstrap_completion": {
+    "bootstrap_id": "SLPE-BOOTSTRAP-INITIAL-001",
+    "current_master_mutations": 0,
+    "evidence_cycles": 0,
+    "product_pricing_state_products": 826,
+    "status": "HISTORICAL_BOOTSTRAP_PRESERVED_WITH_REBASELINED_SUCCESSOR",
+    "unresolved_override_or_excluded_lifecycle": 0,
+    "unresolved_scope": 0
+  },
+  "bounded_authority_carrier_representation_contract": {
+    "active_current_context_plus_identity_material": "REQUIRES_CANONICAL_SELECTOR_OR_TYPED_CURRENT_SET_SELECTED_REFERENCE_OR_APPROVED_DERIVED_TEXT_ELSE_FAIL_CLOSED",
+    "active_object_descendant_identity_scan_required": true,
+    "bounded_free_text_identity_scan_required": true,
+    "candidate_not_active_exception": "EXPLICIT_ONLY",
+    "discovery_mode": "RECURSIVE_ACTIVE_OBJECT_SUBTREE_IDENTITY_BOUNDARY_V4",
+    "historical_exception": "EXPLICIT_TRUTHFUL_ROLE_AND_NO_ACTIVE_CURRENT_CLAIM",
+    "profile_id": "SLPE_BOUNDED_ACTIVE_AUTHORITY_REPRESENTATION_V4",
+    "unknown_authority_kind_with_identity_material": "FAIL_CLOSED",
+    "unrestricted_nlp_used": false,
+    "unsupported_active_current_identity_form": "FAIL_CLOSED"
+  },
+  "business_authority": {
+    "master": {
+      "authority_kind": "MASTER_SPECIFICATION",
+      "authority_ref": "CURRENT_SET_SELECTED",
+      "carrier_role": "ACTIVE_CURRENT_AUTHORITY_BINDING",
+      "document_id": "SLPE-MASTER-SPEC-001",
+      "must_match_live_current_set": true,
+      "resource_id": "1a_ABKxjaX-aPcqixVnj6M3EY0kR5qyF3",
+      "sha256": "58e1a8df0777cc4db0a89b6459f551a3ab8d1eb88aec48b7c27e19940ed49c31",
+      "version": "1.14.3",
+      "provider_revision_id": "0B-KReMc9BD1fQWN1RkVjTGtIODQyM3ZRayttS2oxdUlKOVdBPQ"
+    },
+    "rulebook": {
+      "authority_kind": "RULEBOOK",
+      "authority_ref": "CURRENT_SET_SELECTED",
+      "carrier_role": "ACTIVE_CURRENT_AUTHORITY_BINDING",
+      "freeze_status": "CURRENT_SET_SELECTED_ACTIVE_AUTHORITY",
+      "must_match_live_current_set": true,
+      "resource_id": "19hBNr1DyB_fKx_s5jjHDYHkzsYTKsQYA",
+      "rulebook_id": "SLPE-RULEBOOK-001",
+      "sha256": "98f55f2ac63882d05ec80b8b496664015aeb508c0bf3f8087f45283a7c0495ee",
+      "version": "1.24.4",
+      "provider_revision_id": "0B-KReMc9BD1fRHBSYXJIb2NnTlR1MXE4azFSazNBNit1YlZFPQ"
+    }
+  },
+  "carrier_role": "ACTIVE_CURRENT_AUTHORITY_BINDING",
+  "change_log": [
+    {
+      "version": "1.16.4",
+      "date": "2026-10-07",
+      "type": "PATCH",
+      "historical_role": "CURRENT_SUCCESSOR_CHANGE_ENTRY",
+      "business_semantics_changed": false,
+      "production_write_performed": false,
+      "change": "Bind Master v1.14.3 and Rulebook v1.24.4 after final ACC-029 active-carrier self-version correction; provider-native integrity, Adobe/source, RC-B and all business/Import/Production semantics unchanged."
+    },
+    {
+      "version": "1.16.3",
+      "date": "2026-10-07",
+      "type": "PATCH",
+      "historical_role": "SELECTED_PREDECESSOR_CHANGE_ENTRY",
+      "business_semantics_changed": false,
+      "production_write_performed": false,
+      "change": "Bind Rulebook v1.24.3 post-activation carrier-label correction; Master v1.14.2, provider-native integrity, Adobe/source, RC-B and all business/Import/Production semantics unchanged.",
+      "selected_as_live": true,
+      "superseded_by": "1.16.4"
+    },
+    {
+      "version": "1.16.2",
+      "date": "2026-10-07",
+      "type": "PATCH",
+      "historical_role": "SELECTED_PREDECESSOR_CHANGE_ENTRY",
+      "business_semantics_changed": false,
+      "production_write_performed": false,
+      "change": "Bind corrected Master v1.14.2 and Rulebook v1.24.2 after final self-version/runtime-semantics carrier sweep; provider-native downstream integrity, Adobe/source, RC-B and business/Import/Production semantics unchanged.",
+      "selected_as_live": true,
+      "superseded_by": "1.16.3"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Bind corrected Master v1.14.1 and Rulebook v1.24.1 after direct stale-carrier repair; preserve SLPE_PROVIDER_NATIVE_DOWNSTREAM_INTEGRITY_V1, Adobe/native Source controls, RC-B V4 carrier closure, business/Import/Production semantics unchanged.",
+      "date": "2026-10-07",
+      "historical_role": "PRE_PROMOTION_CANDIDATE_NEVER_SELECTED",
+      "production_write_performed": false,
+      "type": "PATCH",
+      "version": "1.16.1",
+      "selected_as_live": false,
+      "corrected_by": "1.16.2"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Adopt SLPE_PROVIDER_NATIVE_DOWNSTREAM_INTEGRITY_V1 for Current Master/PPS/Final Output/CAS, repair Source SHA projection residue, retain valid persisted/build/history/external hashes, no business/Production semantic change.",
+      "corrected_by": "1.16.1",
+      "date": "2026-10-06",
+      "historical_role": "PRE_PROMOTION_CANDIDATE_NEVER_SELECTED",
+      "production_write_performed": false,
+      "selected_as_live": false,
+      "type": "MINOR_ROOT_CAUSE_HARDENING",
+      "version": "1.16.0"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Bind Rulebook v1.23.3 and close residual active RC-B V3 profile labels plus stale duplicated business_authority Master/Rulebook projections; no business/Production semantic change.",
+      "date": "2026-10-06",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "production_write_performed": false,
+      "type": "PATCH",
+      "version": "1.15.3"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Bind Rulebook v1.23.2 full compiled-carrier closure; candidate v1.15.1 remains immutable never-selected pre-promotion evidence.",
+      "date": "2026-10-06",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "production_write_performed": false,
+      "type": "PATCH",
+      "version": "1.15.2"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Bind corrective Rulebook v1.23.1 after active-carrier sweep closed residual GOV-009/SRC-008 normal Source-runtime hash requirements and repaired candidate provenance truthfulness; no business/Production semantic change.",
+      "date": "2026-10-06",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "production_write_performed": false,
+      "type": "PATCH",
+      "version": "1.15.1"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Bind Master v1.13.0 and Rulebook v1.23.0; replace normal Source artifact/row hash identity with run-scoped provider binding + structured source-visible row identity + role-preserving price cells + independent Adobe replay + explicit bidirectional conservation; supersede page census for Adobe/native profile; preserve RC-B and distinct non-Source hash domains.",
+      "date": "2026-10-06",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "production_write_performed": false,
+      "type": "MINOR",
+      "version": "1.15.0"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Bind Rulebook v1.22.2 active Master-source identity coherence correction; Adobe/native RC-A6 runtime semantics unchanged.",
+      "date": "2026-10-06",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "production_write_performed": false,
+      "type": "PATCH",
+      "version": "1.14.3"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Bind Master v1.12.1 migration-carrier correction with Rulebook v1.22.1; Adobe/native RC-A6 runtime semantics unchanged.",
+      "date": "2026-10-06",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "production_write_performed": false,
+      "type": "PATCH",
+      "version": "1.14.2"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Bind Rulebook v1.22.1 pre-promotion migration-carrier correction; Adobe/native RC-A6 runtime semantics unchanged.",
+      "date": "2026-10-06",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "production_write_performed": false,
+      "type": "PATCH",
+      "version": "1.14.1"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Select Adobe Acrobat structured PDF extraction + native source-text coverage, independent Adobe replay/reconciliation, and repair all stale active predecessor-runtime carriers.",
+      "date": "2026-10-06",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "production_write_performed": false,
+      "version": "1.14.0"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Retire active code-execution-dependent PDF completeness architecture and bind LLM-native whole-source PDF census with independent second pass, reconciliation, two-stage conservation, and focused absence confirmation.",
+      "date": "2026-10-06",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "production_write_performed": false,
+      "version": "1.13.0"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Bind Rulebook v1.20.3 active-identity conformance correction; RC-A6 Drive runtime semantics unchanged.",
+      "date": "2026-10-05",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "production_write_performed": false,
+      "version": "1.12.2"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Identity-conformance correction: bind self-consistent Master v1.10.3 and Rulebook v1.20.2; RC-A6 Drive runtime semantics unchanged.",
+      "date": "2026-10-05",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "production_write_performed": false,
+      "version": "1.12.1"
+    },
+    {
+      "business_semantics_changed": false,
+      "change": "Bind Master v1.10.2 / Rulebook v1.20.1 and govern model-owned Drive-hosted PDF enumerator fetch/hash/execute/replay for RC-A6 using the exact payload-emitted representation schemas.",
+      "date": "2026-10-05",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "production_write_performed": false,
+      "version": "1.12.0"
+    },
+    {
+      "change": "Bind Rulebook v1.19.0 and enforce active/current object-subtree identity-material fail-closed classification while preserving exact-source proof and all business/Production semantics.",
+      "date": "2026-10-05",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "version": "1.11.0"
+    },
+    {
+      "change": "Bound active/current authority identity representation space, including semantic-key and bounded free-text carriers, while preserving exact-source proof and all business/Production semantics.",
+      "date": "2026-10-05",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "version": "1.10.0"
+    },
+    {
+      "change": "Type canonical GWOC root as active/current authority carrier and bind Rulebook patch successor v1.17.1 after pre-promotion semantic self-classification gate.",
+      "date": "2026-10-04",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "version": "1.9.1"
+    },
+    {
+      "change": "Bind source completeness to exact-source qualified extractor output and replace legacy-field-based untyped carrier discovery with semantic active/current authority-object classification.",
+      "date": "2026-10-04",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "version": "1.9.0"
+    },
+    {
+      "changes": [
+        "bind active Master v1.8.0 and Rulebook v1.16.0 exact resource/hash identities",
+        "project RC-A4 source-native schema/region authority gates",
+        "replace enumerated active identity carrier list with recursive typed carrier-class conformance"
+      ],
+      "date": "2026-10-04",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "reason": "RC-A4/RC-B3 governance successor; no business/pricing/Production semantics changed.",
+      "version": "1.8.0"
+    },
+    {
+      "changes": [
+        "bind active Master v1.7.0 and Rulebook v1.15.0 exact resource/hash identities",
+        "require structured-source classification conformance from raw_cells/schema before conservation",
+        "require active/current free-text identity carrier conformance beyond hash checks",
+        "require source_rulebook_baseline role truthfulness",
+        "preserve dynamic CURRENT_SET resolution and Project Instructions authority boundary"
+      ],
+      "date": "2026-10-04",
+      "historical_role": "CHANGE_LOG_ENTRY",
+      "reason": "Close RC-A3 and RC-B2 without changing business/import/production semantics.",
+      "version": "1.7.0"
+    },
+    {
+      "business_semantics_changed": false,
+      "changes": [
+        "bind active Master v1.6.0 and Rulebook v1.14.0 exact resource/hash identities",
+        "add pre-inventory source discovery + two-stage conservation operational gate",
+        "require mechanical source identity derivation replay and ordinal-independence qualification",
+        "keep unsupported/unproven source representations UNRESOLVED",
+        "preserve v1.5.0 dynamic CURRENT_SET resolution, RC-B conformance lock and Project Instructions boundary"
+      ],
+      "date": "2026-10-04",
+      "production_write_performed": false,
+      "type": "MINOR",
+      "version": "1.6.0"
+    },
+    {
+      "business_semantics_changed": false,
+      "changes": [
+        "replace cached concrete CURRENT_SET identity with dynamic live selector resolution",
+        "bind active Master v1.5.0 and Rulebook v1.13.0 exact resource/hash identities",
+        "repair active Import Contract binding to live v1.2.0",
+        "add active/current conformance lock",
+        "establish Project Instructions orchestration-only authority boundary",
+        "preserve historical predecessor/change-log/metadata references explicitly"
+      ],
+      "date": "2026-10-04",
+      "production_write_performed": false,
+      "type": "MINOR",
+      "version": "1.5.0"
+    },
+    {
+      "changes": [
+        "replaced immutable-plan hash approval with one simple natural-language approval per coherent workflow",
+        "removed special technical tokens and technical identifiers from the Owner approval interface",
+        "made all non-destructive derived operations part of the original approval until the disclosed goal is complete",
+        "kept hash, CAS, revision, Resource ID, read-back, duplicate and audit controls as machine responsibilities",
+        "limited a new human decision to material business change, destructive action, undisclosed Production write or genuine business ambiguity",
+        "updated active bindings to Current Master revision 3007, PPS v2.1.0 and the promoted Current Set"
+      ],
+      "date": "2026-08-20",
+      "type": "MINOR",
+      "version": "1.4.0"
+    },
+    {
+      "changes": [
+        "metadata-only release-state and activation-provenance normalization",
+        "bound read-back-verified Master Specification v1.3.1 and Rulebook v1.6.1 successors",
+        "normalized current Current Set and Import Contract release-state metadata",
+        "preserved all substantive Drive safety, promotion, CAS, read-back, evidence, pricing, matching, SKU and mutation semantics unchanged"
+      ],
+      "date": "2026-08-16",
+      "type": "PATCH",
+      "version": "1.3.1"
+    }
+  ],
+  "consequential_write_contract": {
+    "accepted_approval": "NATURAL_LANGUAGE_EXECUTION_REQUEST_OR_AFFIRMATIVE_RESPONSE",
+    "approval_model": "ONE_SIMPLE_HUMAN_APPROVAL_PER_COHERENT_WORKFLOW",
+    "destructive_operations_require_separate_plain_language_authorization": true,
+    "immutable_history_preserved": true,
+    "machine_only_controls": [
+      "PROVIDER_RESOURCE_IDENTITY",
+      "PROVIDER_REVISION_VERIFICATION",
+      "PROVIDER_EXPECTED_PARENT_CAS",
+      "PERSISTED_READ_BACK",
+      "DUPLICATE_DETECTION",
+      "AUDIT_RECEIPT",
+      "EXTERNAL_CHECKSUM_VERIFICATION_WHEN_ACTUALLY_AVAILABLE"
+    ],
+    "new_human_decision_only_for": [
+      "MATERIAL_BUSINESS_SCOPE_OR_OUTCOME_CHANGE",
+      "NEW_DESTRUCTIVE_OR_IRREVERSIBLE_ACTION",
+      "UNDISCLOSED_EXTERNAL_PRODUCTION_WRITE",
+      "GENUINE_BUSINESS_AMBIGUITY"
+    ],
+    "one_approval_covers_all_non_destructive_operations_needed_for_the_goal": true,
+    "per_file_reapproval_required": false,
+    "provider_assigned_id_or_derived_artifact_reapproval_required": false,
+    "read_only_and_draft_work_requires_approval": false,
+    "special_token_or_hash_required_from_owner": false,
+    "technical_failure_behavior": "SAFE_RETRY_OR_BLOCK/RESYNC_WITH_PLAIN_LANGUAGE_REPORT; NO EXECUTOR => NO OPERATIONAL CLAIM"
+  },
+  "contract_id": "SLPE-GWOC-001",
+  "contract_version": "1.16.4",
+  "current_authority_conformance_lock": {
+    "active_carrier_roles": [
+      "ACTIVE_CURRENT_AUTHORITY_BINDING",
+      "ACTIVE_CURRENT_AUTHORITY_REFERENCE",
+      "ACTIVE_CURRENT_DERIVED_TEXT_PROJECTION",
+      "ACTIVE_CURRENT_IDENTITY_PROJECTION",
+      "ACTIVE_CURRENT_MULTI_AUTHORITY_REFERENCE_SET",
+      "ACTIVE_CURRENT_SET_PROJECTION"
+    ],
+    "active_free_text_identity_carriers_must_conform": true,
+    "active_projection_must_match_selected_version_resource_and_persisted_hash_when_supplied": true,
+    "bounded_representation_contract_required": true,
+    "canonical_current_set_selector_slots_only_for_untyped_current_identity": true,
+    "carrier_class_profile": "SLPE_BOUNDED_ACTIVE_AUTHORITY_REPRESENTATION_V4",
+    "carrier_discovery_mode": "RECURSIVE_ACTIVE_OBJECT_SUBTREE_IDENTITY_BOUNDARY_V4",
+    "dynamic_selector_carriers": [
+      "authority_bindings.current_set",
+      "current_set_resolution"
+    ],
+    "free_text_current_identity": "DERIVED_OR_MECHANICALLY_CHECKED_OR_FAIL",
+    "hash_coherence_is_not_sufficient_for_active_identity_carrier_conformance": true,
+    "historical_active_role_conflict_fails": true,
+    "historical_exception": "Only explicitly historical change_log/metadata_patch/supersedes records may retain predecessor identities.",
+    "historical_reference_exception": "Allowed only when the same carrier has an explicit historical/change-log/provenance role.",
+    "legacy_field_signature_sufficient": false,
+    "new_or_relocated_carrier_must_be_discovered": true,
+    "on_mismatch": "CURRENT_AUTHORITY_IDENTITY_DRIFT -> FAIL_CLOSED",
+    "path_whitelist_sufficient": false,
+    "rc_b3_carrier_class_closure": true,
+    "rc_b4_semantic_form_closure": true,
+    "rc_b_closure_preserved_during_rc_a2": true,
+    "rulebook_baseline_role_truthfulness_required": true,
+    "runtime_hash_recomputation_required_for_conformance": false,
+    "selector": "LIVE_CURRENT_SET",
+    "semantic_carrier_profile": "SLPE_BOUNDED_ACTIVE_AUTHORITY_REPRESENTATION_V4",
+    "semantic_key_current_identity": "TYPED_REFERENCE_OR_CANONICAL_SELECTOR_OR_FAIL",
+    "stale_active_carrier_failure_code": "CURRENT_AUTHORITY_IDENTITY_DRIFT",
+    "unsupported_active_current_identity_form": "FAIL_CLOSED",
+    "untyped_active_identity_projection_must_fail": true
+  },
+  "current_set_resolution": {
+    "active_free_text_carrier_conformance_required": true,
+    "active_identity_carrier_discovery": "RECURSIVE_ACTIVE_OBJECT_SUBTREE_IDENTITY_BOUNDARY_V4",
+    "active_identity_carrier_sweep_required": true,
+    "bounded_representation_profile": "SLPE_BOUNDED_ACTIVE_AUTHORITY_REPRESENTATION_V4",
+    "cached_concrete_current_set_authority_allowed": false,
+    "domain_authority_resolution_order": [
+      "WORKSPACE_MANIFEST",
+      "CURRENT_SET",
+      "SELECTED_AUTHORITY_ARTIFACTS"
+    ],
+    "historical_selector_cache_is_authoritative": false,
+    "json_path_whitelist_sufficient": false,
+    "resolution_mode": "FRESH_DYNAMIC_READ",
+    "selection_model": "WORKSPACE_MANIFEST_PLUS_EXPLICIT_CURRENT_SET_SELECTOR",
+    "static_current_set_identity_forbidden": true
+  },
+  "evidence_binding": {
+    "consequential_binding_requires_identifiable_admissible_evidence": true,
+    "contract_ref": "SLPE_EVIDENCE_BINDING_CONTRACT_V1",
+    "model_assertion_is_evidence": false,
+    "required_evidence_token_self_satisfaction_forbidden": true
+  },
+  "governance_change": {
+    "business_semantics_changed": false,
+    "predecessor": {
+      "resource_id": "1OZfYKZ-a4V5v21Qbt5Dl0V-qBkT9jNQr",
+      "sha256": "5cf1f42ff2a2613fc37ea3c676839e597a815ad7f8a46f1d655902641869244e",
+      "version": "1.15.3"
+    },
+    "production_write_performed": false,
+    "type": "PROVIDER_NATIVE_DOWNSTREAM_NO_CODE_INTEGRITY_ROOT_CLOSURE"
+  },
+  "issued_at": "2026-10-06",
+  "machine_owned_runtime_controls": {
+    "EXTERNAL_CHECKSUM_VERIFICATION_WHEN_ACTUAL": {
+      "executor": "EXTERNAL_PROVIDER_OR_IMPORT_SYSTEM_SUPPLIED_CHECKSUM_ONLY",
+      "no_executor_behavior": "DO_NOT_CLAIM_HASH_VERIFIED"
+    },
+    "MODEL_COMPUTED_RUNTIME_SHA": {
+      "executor": null,
+      "status": "UNAVAILABLE_NOT_REQUIRED_FOR_NORMAL_PRICE_UPDATE"
+    },
+    "PERSISTED_READ_BACK": {
+      "executor": "CONNECTED_PROVIDER_FETCH_READBACK",
+      "no_executor_behavior": "NOT_PROVEN"
+    },
+    "PROVIDER_RESOURCE_IDENTITY": {
+      "executor": "CONNECTED_GOOGLE_DRIVE_METADATA_OR_READBACK",
+      "no_executor_behavior": "NOT_PROVEN_OR_BLOCKED"
+    },
+    "PROVIDER_REVISION_VERIFICATION": {
+      "executor": "CONNECTED_GOOGLE_DRIVE_REVISION_READ",
+      "no_executor_behavior": "BLOCK_OR_RESYNC_AT_REQUIRED_GATE"
+    },
+    "TARGETED_SHEET_VALUE_READBACK": {
+      "executor": "CONNECTED_GOOGLE_SHEETS_RANGE_READ",
+      "no_executor_behavior": "NOT_PROVEN_OR_BLOCKED_WHEN_DECISION_MATERIAL"
+    }
+  },
+  "master_data_edit": {
+    "concurrency_model": "CURRENT_MASTER_PROVIDER_IDENTITY_V1 + TARGETED_AUTHORITATIVE_VALUE_READBACK_V1",
+    "direct_current_master_mutation_during_discussion": false,
+    "normal_read_requires_price_list": false,
+    "normal_user_editable_content_requires_price_list_by_default": false,
+    "runtime_hash_required": false,
+    "supplier_current_fact_dependency_activates_specialized_evidence": true
+  },
+  "metadata_patch": {
+    "activation_current_set_basis": {
+      "current_set_id": "SLPE-CURRENT-SET-GOVERNANCE-20260816-001",
+      "resource_id": "1GP1dct4KQDDz0D5IiUE2YccxIUdJXeo9",
+      "sha256": "7e036b42cf2ffb214531b9292fb935fd8251a5dad89266baca86fa53488adfdd"
+    },
+    "activation_manifest_basis": {
+      "resource_id": "1Kk3XaJwaRJWl2UrzoZJA5-YvuQCRTSQB",
+      "revision_id": "0B-KReMc9BD1fWHIwd3MwZTRUWW1nVEdEQmFHVWJSVWt4OStVPQ",
+      "sha256": "3f9431e2bc229cccd78d68a7f4e6a36416c843150b1520dc48a5f5b7d93c96fc"
+    },
+    "activation_receipt": {
+      "resource_id": "16qfVyzEyWYpXZr5L8HToUB70cy4SkzOi",
+      "sha256": "8839602d251efa4a5040fc1640d9bfdefee81577b0ad24d12944ab09113f688f"
+    },
+    "historical_role": "HISTORICAL_PREDECESSOR_ACTIVATION_METADATA; NON_CURRENT",
+    "master_spec_successor": {
+      "resource_id": "1kUyh7po8B50jbujvBLCHvtXlvrN0koHC",
+      "sha256": "8fdab1ef66a704a39e83b0ecb8c21ce44a5d4d7646b4f044fc6cf5c2f0a5b7ef",
+      "version": "1.3.1"
+    },
+    "metadata_patch_validation_resource_id": "10R8Lun1OCjCzT2oOWsRcbLpVVfAXjutj",
+    "metadata_patch_validation_sha256": "040750aca2dc20412cafc5f4d8c1c087f09cc7b531b46d4618c73903b22c7179",
+    "patch_type": "METADATA_ONLY_ACTIVATION_PROVENANCE_AND_BINDING_NORMALIZATION",
+    "predecessor_resource_id": "1DoecCDRtlhkS7IL8Lp8Nijn55UPiowrg",
+    "predecessor_sha256": "d1abf9113a793115dafb498ca4dc7bd32aa98f202af3d5144dcb916189d60f8e",
+    "read_back_required": true,
+    "rulebook_successor": {
+      "resource_id": "15S2BnVcN3Op8wjwp6BM3TJXUmtf8CEGN",
+      "sha256": "d0b95831af3148605965fc40e01cd33f8123e189cbd042fbed2914ed9e8e3d08",
+      "version": "1.6.1"
+    },
+    "semantic_change": "NONE",
+    "semantic_diff_outside_permitted_metadata": 0
+  },
+  "must_match_live_current_set": true,
+  "next_phase": "NORMAL_OPERATION_WITH_ADOBE_NATIVE_SOURCE_COMPLETENESS_PLUS_PROVIDER_NATIVE_DOWNSTREAM_INTEGRITY_V1; SOURCE_SHA_ACTIVE_PROJECTION_RESIDUE_CLOSED; NORMAL_PRICE_UPDATE_NO_MODEL_COMPUTED_SHA_OR_CODE_EXECUTION; PERSISTED_BUILD_HISTORY_EXTERNAL_HASHES_RETAINED; CONDITIONAL_NEW_PRODUCT_FAILS_CLOSED_IF_COMPLETE_HISTORY_NOT_ENUMERABLE; OPEN_PRODUCTION_RECONCILIATION_UNCHANGED",
+  "output_audit": {
+    "current_set_mutation_allowed": false,
+    "promotion_allowed": false,
+    "read_only_by_default": true
+  },
+  "pre_promotion_candidate_lineage": {
+    "contract_id": "SLPE-GWOC-001",
+    "historical_role": "SUPERSEDED_PRE_PROMOTION_CANDIDATE",
+    "reason": "GWOC v1.14.2 bound Rulebook v1.22.1 before the Rulebook v1.22.2 Master-source identity coherence correction; corrected by GWOC v1.14.3.",
+    "resource_id": "1WoKQm60_bZT5LnK579ZccGdZ61AUItGj",
+    "selected_as_live": false,
+    "sha256": "28655a51b5f507b87d2aca00e22bcb193f66820ae51f493c2f9c5058d384e428",
+    "version": "1.14.2"
+  },
+  "price_update": {
+    "active_run_price_list_authority": "USER_SUPPLIED_FOR_CURRENT_RUN_ONLY",
+    "downstream_integrity_profile": "SLPE_PROVIDER_NATIVE_DOWNSTREAM_INTEGRITY_V1",
+    "drive_auto_selection_forbidden": true,
+    "drive_discovery_or_modified_time_cannot_create_active_run_authority": true,
+    "exact_same_source_policy": "RERUN_SAME_SOURCE_ONLY_WHEN_EXACT_ARTIFACT_IDENTITY_PROVEN_PLUS_EXPLICIT_RERUN_AUTHORIZATION",
+    "flattened_text_geometry_fallback_allowed": false,
+    "material_source_comparison": "SOURCE_VISIBLE_EVIDENCE_ONLY_NOT_BYTE_OR_CRYPTOGRAPHIC_IDENTITY",
+    "missing_material_source_access_behavior": "INCOMPLETE_UNRESOLVED_NO_COMPLETE",
+    "missing_optional_retrieval_capability_behavior": "REQUEST_OWNER_SUPPLIED_SOURCE_OR_MARK_NAMED_GAP; DO_NOT_CLAIM_EXECUTION",
+    "missing_required_structured_pdf_capability_behavior": "INCOMPLETE_UNRESOLVED_WITH_NAMED_GAP_REQUIRED_STRUCTURED_PDF_EXTRACTION_CAPABILITY_UNAVAILABLE",
+    "normal_positive_progress_requires_code_execution": false,
+    "pdf_properties_endpoint_required": false,
+    "required_structured_pdf_capability": "CONNECTED_ADOBE_ACROBAT_STRUCTURED_PDF_EXTRACTION",
+    "role_preserving_source_price_cells": true,
+    "runtime_sequence": [
+      "RESOLVE_USER_SUPPLIED_OFFICIAL_SUPPLIER_PDF_FOR_RUN",
+      "CREATE_RUN_SCOPED_PROVIDER_ARTIFACT_BINDING",
+      "PRECHECK_CONNECTED_ADOBE_STRUCTURED_EXTRACTION_CAPABILITY",
+      "NATIVE_WHOLE_SOURCE_TEXT_COVERAGE_PASS",
+      "ADOBE_STRUCTURED_PASS_A_SAME_BOUND_ARTIFACT",
+      "ADOBE_STRUCTURED_PASS_B_SAME_BOUND_ARTIFACT_FRESH_INDEPENDENT_INVOCATION",
+      "RECONCILE_ADOBE_PASS_A_B_STRUCTURED_ROW_IDENTITY_COMPONENTS",
+      "RECONCILE_NATIVE_SECTIONS_ROWS_TO_ADOBE_TABLES",
+      "BUILD_ROLE_PRESERVING_SOURCE_PRICE_CELLS",
+      "BUILD_STRUCTURED_SOURCE_VISIBLE_ROW_IDENTITIES",
+      "CANDIDATE_TO_PHYSICAL_CONSERVATION",
+      "PHYSICAL_TO_CANONICAL_BIDIRECTIONAL_CONSERVATION",
+      "CANONICAL_SOURCE_IR",
+      "FRESH_CURRENT_MASTER_AND_COMMITTED_PPS_PROVIDER_IDENTITY",
+      "TARGETED_MASTER_VALUE_READBACK_WHEN_DECISION_MATERIAL",
+      "MATCHING",
+      "PRICING",
+      "PERSIST_FINAL_OUTPUT_PROVIDER_ARTIFACT_AND_READBACK",
+      "FINALIZATION_PROVIDER_IDENTITY_GATES"
+    ],
+    "runtime_sha256_downstream_identity_required": false,
+    "runtime_sha256_source_identity_required": false,
+    "source_artifact_binding_model": "RUN_SCOPED_PROVIDER_ARTIFACT_BINDING_V1",
+    "source_completeness_evidence_mode": "SLPE_ADOBE_ACROBAT_STRUCTURED_PDF_CENSUS_WITH_NATIVE_TEXT_COVERAGE_V1",
+    "source_retrieval_or_persistence_tool": "USE_ONLY_IF_ACTUALLY_AVAILABLE; ADOBE_IS_CONNECTED_RUNTIME_APP_NOT_PROJECT_SOURCE",
+    "source_row_identity_model": "STRUCTURED_SOURCE_VISIBLE_ROW_IDENTITY_V1",
+    "source_sha_same_root_projection_closure": "WF-003 + SRC-ACTIVE-RUN-PRICE-LIST-001 + ERR-002 aligned; exact_same_source != same_material"
+  },
+  "project_instructions_authority_boundary": {
+    "authoritative_scope": [
+      "ORCHESTRATION",
+      "SAFETY",
+      "EVIDENCE_DISCIPLINE",
+      "ROUTING",
+      "INTERACTION_BEHAVIOR"
+    ],
+    "conflict_behavior": "STALE_STATIC_DOMAIN_SUMMARY_IGNORED; LIVE_SELECTED_DOMAIN_AUTHORITY_WINS",
+    "domain_business_authority": "LIVE_CURRENT_SET_SELECTED_AUTHORITIES",
+    "domain_business_semantics_source": "LIVE_CURRENT_SET_SELECTED_MASTER_RULEBOOK_CONTRACTS",
+    "normal_runtime_code_execution_required": false,
+    "normal_runtime_model_computed_sha_required": false,
+    "project_instructions_domain_override_allowed": false,
+    "project_instructions_override_allowed": false,
+    "rc_b_preservation_status": "PRESERVED",
+    "runtime_downstream_integrity": "SLPE_PROVIDER_NATIVE_DOWNSTREAM_INTEGRITY_V1",
+    "runtime_pdf_source_completeness": "SLPE_ADOBE_ACROBAT_STRUCTURED_PDF_CENSUS_WITH_NATIVE_TEXT_COVERAGE_V1"
+  },
+  "promotion_contract": {
+    "candidate_artifacts_authoritative_before_commit": false,
+    "cross_resource_google_atomicity_claimed": false,
+    "expected_parent_model": "PROVIDER_NATIVE_EXPECTED_PARENT_CAS_V1",
+    "generic_partial_promotion_allowed": false,
+    "import_handoff_claim_ceiling": "Without actual external checksum/receipt, USER_ATTESTED is bounded non-cryptographic assurance only.",
+    "model": "LOGICALLY_ATOMIC_PROMOTION",
+    "model_computed_hash_required": false,
+    "partial_exception_requires": [
+      "PERSISTED_RUN_SCOPED_OWNER_DECISION",
+      "EXACT_RUN_ID_AND_VERSION",
+      "EXACT_FINAL_OUTPUT_PROVIDER_RESOURCE_AND_REVISION",
+      "COMPLETE_IDENTIFIED_ERROR_SET",
+      "NO_UNKNOWN_OR_OUT_OF_SCOPE_ERROR",
+      "FULL_DATASET_VALID",
+      "ALL_NON_PARTIAL_PROMOTION_GATES_PASS",
+      "EXACT_OPEN_RECONCILIATION_QUEUE",
+      "EXPECTED_MASTER_AND_PPS_PROVIDER_IDENTITIES"
+    ],
+    "partial_exception_state": {
+      "full_production_match_claimed": false,
+      "import_outcome": "PARTIAL",
+      "promotion_status": "PROMOTED_WITH_OPEN_RECONCILIATION",
+      "queue_carried_forward": true
+    },
+    "partial_promotion_allowed": true,
+    "partial_promotion_scope": "ONLY_EXACT_RUN_SCOPED_OWNER_EXCEPTION_WITH_OPEN_RECONCILIATION",
+    "requires_current_set_read_back": true,
+    "requires_expected_parent_revalidation": true
+  },
+  "provider_native_downstream_integrity": {
+    "cas": "PROVIDER_NATIVE_EXPECTED_PARENT_CAS_V1",
+    "current_master": "CURRENT_MASTER_PROVIDER_IDENTITY_V1",
+    "current_master_provider_identity": "resource_id + provider_revision_id",
+    "expected_parent_cas": "EXPECTED_PROVIDER_IDENTITY_EQUALS_FRESH_PROVIDER_IDENTITY",
+    "final_output": "PERSISTED_OUTPUT_PROVIDER_IDENTITY_V1",
+    "final_output_provider_identity_required": true,
+    "import_handoff": "BOUNDED_IMPORT_HANDOFF_ASSURANCE_V1",
+    "normal_price_update_model_computed_sha_required": false,
+    "pps": "PPS_PROVIDER_IDENTITY_V1",
+    "pps_provider_identity_required": true,
+    "profile_id": "SLPE_PROVIDER_NATIVE_DOWNSTREAM_INTEGRITY_V1",
+    "provider_revision_is_byte_hash": false,
+    "retained_hash_evidence": [
+      "CURRENT_SET authority hashes",
+      "historical/archive/build hashes",
+      "rollback evidence",
+      "external checksums actually supplied"
+    ],
+    "revision_change_is_conservatively_change": true,
+    "revision_unavailable_required_gate": "BLOCK_OR_RESYNC",
+    "runtime_model_computed_sha_required": false,
+    "runtime_target": "LLM_PLUS_CONNECTED_APPS_PROVIDERS_PLUS_NO_CODE_EXECUTION",
+    "targeted_value_readback": "TARGETED_AUTHORITATIVE_VALUE_READBACK_V1",
+    "targeted_value_readback_required_when_decision_material": true,
+    "user_attested_import_branch_claim_ceiling": "RUN_BOUND_LOWER_ASSURANCE_NOT_CRYPTOGRAPHIC",
+    "wp_import_exact_byte_claim_without_external_receipt": "NOT_PROVEN"
+  },
+  "recovery_rebaseline": {
+    "incident_linkage": {
+      "linkage_id": "SLPE-RECOVERY-INCIDENT-LINKAGE-20260813-001",
+      "resource_id": "1Se5T7NNwQO-sU1XKvq1E2L8BIIOSHoPV",
+      "sha256": "dabc199e5a10eda3ce9c291f8103595e86dace588af022079c2a8c7fb4331b79"
+    },
+    "independent_backup": {
+      "bundle_sha256": "01d194ad6b7386675c5b7daf4df7f6375f55395e88c04d96ed1e968d08e611fc",
+      "path": "backups/recovery/SLPE-RECOVERY-BUNDLE-20260813-001",
+      "repository": "rezahh107/SwitchLand-Price-Engine",
+      "verification_state": "VERIFIED"
+    },
+    "missing_historical_resource_ids": [
+      "18Q6pnEMdZwiYa0gEQBnKBsf5RZ6gMz1u",
+      "1lXYO__8vB_RBBAdf1QC30rpdMoCUKeed"
+    ],
+    "recovery_id": "SLPE-RECOVERY-REBASELINE-20260813-001",
+    "restoration_claimed": false,
+    "restored_resource_ids": [],
+    "source_incident": {
+      "incident_id": "SLPE-INCIDENT-20260813-BOOTSTRAP-ARCHIVE-DELETION-001",
+      "resource_id": "1GtsrebiH1s4pgVSzFMZudw9KJM8n3M6Z"
+    },
+    "status": "REBASELINED_WITH_NEW_LINEAGE_EFFECTIVE_ONLY_AFTER_MANIFEST_ACTIVATION_AND_READBACK"
+  },
+  "source_completeness_governance": {
+    "absence_failure_result": "UNRESOLVED_ABSENCE_CONFIRMATION",
+    "adobe_structured_row_price_association_authority": true,
+    "all_price_columns_required": true,
+    "ambiguous_geometry_result": "UNRESOLVED_SOURCE_ROW_COVERAGE_GAP",
+    "app_unavailable_named_gap": "REQUIRED_STRUCTURED_PDF_EXTRACTION_CAPABILITY_UNAVAILABLE",
+    "app_unavailable_result": "INCOMPLETE_UNRESOLVED",
+    "applicable_region_census_required": true,
+    "candidate_to_physical_conservation_required": true,
+    "canonical_json_row_hash_required": false,
+    "census_reconciliation_required": true,
+    "claim_ceiling": "RUN_SCOPED_SOURCE_ARTIFACT_BINDING_PLUS_STRUCTURED_SOURCE_VISIBLE_ROW_IDENTITY_PLUS_INDEPENDENT_REPLAY_RECONCILIATION_PLUS_BIDIRECTIONAL_SOURCE_ROW_CONSERVATION",
+    "code_execution_required": false,
+    "code_less_price_rows_preserved": true,
+    "complete_requires": [
+      "RUN_SCOPED_SOURCE_ARTIFACT_BINDING_PROVEN",
+      "CONNECTED_ADOBE_CAPABILITY_AVAILABLE",
+      "WHOLE_SOURCE_NATIVE_TEXT_COVERAGE_COMPLETE",
+      "ADOBE_PASS_A_COMPLETE",
+      "ADOBE_PASS_B_COMPLETE",
+      "ADOBE_PASS_A_B_RECONCILIATION_PASS",
+      "NATIVE_ADOBE_SECTION_AND_ROW_COVERAGE_RECONCILIATION_PASS",
+      "ROLE_PRESERVING_SOURCE_PRICE_CELLS",
+      "CODE_LESS_PRICE_ROWS_PRESERVED",
+      "ZERO_UNRESOLVED_TABLE_SCHEMA_CELL_IDENTITY_ASSOCIATION_GAPS",
+      "CANDIDATE_TO_PHYSICAL_CONSERVATION_PASS",
+      "PHYSICAL_TO_CANONICAL_CONSERVATION_PASS",
+      "MISSING_ZERO_DUPLICATE_CANONICALIZATION_ZERO_ORPHAN_ZERO_UNRESOLVED_ZERO"
+    ],
+    "count_equality_alone_sufficient": false,
+    "derived_snapshot_self_certification_allowed": false,
+    "exact_same_source_distinct_from_same_material": true,
+    "first_source_pass_required": true,
+    "flattened_text_alone_sufficient_when_geometry_material": false,
+    "hash_domain_separation": {
+      "normal_active_run_price_list_source_row_identity": "NO_RUNTIME_HASH_PREREQUISITE",
+      "retained_distinct_domains": [
+        "AUTHORITY_ARTIFACT_IDENTITY",
+        "CURRENT_MASTER_CONCURRENCY_INTEGRITY",
+        "PRODUCT_PRICING_STATE_INTEGRITY",
+        "IMPORT_PROMOTION_ARTIFACT_INTEGRITY",
+        "PACKAGE_BUILD_ARCHIVE_INTEGRITY",
+        "ROLLBACK_HISTORY_EVIDENCE"
+      ]
+    },
+    "independent_adobe_replay_required": true,
+    "independent_second_source_pass_required": true,
+    "legitimate_zero_region_complete_only_if": [
+      "PASS_A_FULL_SOURCE_ZERO_APPLICABLE_REGIONS",
+      "PASS_B_FULL_SOURCE_ZERO_APPLICABLE_REGIONS",
+      "RECONCILIATION_PASS",
+      "ZERO_MATERIAL_SOURCE_ACCESS_GAPS"
+    ],
+    "mechanical_row_identity_recompute_required": false,
+    "native_adobe_coverage_reconciliation_required": true,
+    "native_text_row_price_association_authority": false,
+    "not_found_destructive_action_requires": [
+      "SOURCE_COMPLETENESS_COMPLETE_ADOBE_NATIVE",
+      "ADOBE_PASS_A_B_RECONCILIATION_PASS",
+      "NATIVE_ADOBE_COVERAGE_RECONCILIATION_PASS",
+      "ZERO_RELEVANT_UNRESOLVED_CONDITIONS",
+      "THIRD_FOCUSED_ABSENCE_RECHECK_ORIGINAL_NATIVE_SOURCE",
+      "THIRD_FOCUSED_ABSENCE_RECHECK_ADOBE_STRUCTURED_RESULT"
+    ],
+    "official_pdf_evidence_mode": "SLPE_ADOBE_ACROBAT_STRUCTURED_PDF_CENSUS_WITH_NATIVE_TEXT_COVERAGE_V1",
+    "optional_tool_may_be_required_for_source_retrieval_or_persistence_only": true,
+    "page_census_disposition": "SUPERSEDED_NOT_ACTIVE_FOR_ADOBE_NATIVE_PROFILE",
+    "page_census_required": false,
+    "pdf_properties_endpoint_required": false,
+    "physical_to_canonical_conservation_required": true,
+    "positive_found_rows_require_third_absence_pass": false,
+    "profile_id": "SLPE_SOURCE_COMPLETENESS_ADOBE_NATIVE_NO_CODE_IDENTITY_V2",
+    "provider_file_ref_semantics": "OPAQUE_RUN_SCOPED_PROVIDER_REFERENCE_NOT_CONTENT_HASH",
+    "reconciliation_mismatch_result": "UNRESOLVED_STRUCTURED_EXTRACTION_REPLAY_MISMATCH",
+    "required_structured_pdf_capability": "CONNECTED_ADOBE_ACROBAT_STRUCTURED_PDF_EXTRACTION",
+    "retrieved_snippets_alone_sufficient": false,
+    "role_preserving_source_price_cells_required": true,
+    "row_identity_collision_result": "UNRESOLVED_SOURCE_ROW_IDENTITY_COLLISION",
+    "row_identity_ordinal_independent": true,
+    "run_scoped_source_artifact_binding_required": true,
+    "runtime_owner": "LANGUAGE_MODEL_ORCHESTRATING_CONNECTED_ADOBE_ACROBAT_APP",
+    "runtime_source_sha256_required": false,
+    "second_pass_must_reinspect_original_source": true,
+    "structured_evidence_mode": "LLM_NATIVE_STRUCTURED_SOURCE_CENSUS_V1",
+    "structured_source_visible_row_identity_required": true,
+    "whole_source_access_required": true
+  },
+  "status": "NORMATIVE_SUCCESSOR_ACTIVE_WHEN_SELECTED",
+  "superseded_runtime_execution_architecture": {
+    "active_current_runtime_prerequisite": false,
+    "historical_payload_resource_id": "1H-7sxenaH9Ury_yCkP2psPRWn8-2IdMi",
+    "historical_payload_sha256": "8990422d32956fc97dce74bbae37e5141219b15e1639deba084ba396a36493a3",
+    "historical_role": "SUPERSEDED_RUNTIME_ARCHITECTURE",
+    "note": "Historical predecessor evidence only: both Drive-hosted executable enumeration and pure-LLM Project-file visual/table census are non-active. Current PDF completeness uses native text coverage plus connected Adobe Acrobat structured replay/reconciliation.",
+    "predecessor_contracts": [
+      "SLPE_PDF_RUNTIME_INVOCATION_CONTROLLER_V1",
+      "SLPE_PDF_RUNTIME_DEPENDENCY_PROFILE_V1",
+      "SLPE_DRIVE_RUNTIME_PAYLOAD_GOVERNANCE_V1",
+      "SLPE_LLM_NATIVE_PDF_SOURCE_CENSUS_V1"
+    ],
+    "retired_assumptions": [
+      "Python executor",
+      "PyMuPDF/MuPDF",
+      "Drive-hosted executable .py payload",
+      "runtime code execution",
+      "package installation",
+      "pure LLM Project-file visual/table geometry census for normal supplier PDF"
+    ],
+    "status": "HISTORICAL_NOT_ACTIVE",
+    "superseded_by": "SLPE_ADOBE_ACROBAT_STRUCTURED_PDF_CENSUS_WITH_NATIVE_TEXT_COVERAGE_V1"
+  },
+  "supersedes": "SLPE-GWOC-001 v1.16.2",
+  "workspace": {
+    "active_rebaseline_id": "SLPE-RECOVERY-REBASELINE-20260813-001",
+    "bootstrap_id": "SLPE-BOOTSTRAP-INITIAL-001",
+    "folders": {
+      "00_INBOX": "1JzMNoTaYbyCMewelvthoEAeI5_zE4L1_",
+      "01_CURRENT": "1AU7IBalGjB1wfyVgFAZScaqBSkBY4Ukz",
+      "02_AUTHORITIES": "1zwHcOJlWwCopN6ejsg1Ger-YASSM1DNq",
+      "03_RUNS": "1Iad_9wN5x_1-Gyguxc0tPn2NFhW06aBG"
+    },
+    "manifest_resource_id": "1Kk3XaJwaRJWl2UrzoZJA5-YvuQCRTSQB",
+    "root_resource_id": "1HgQlekyWQLiGnQ_UgV_SIzJVF6L2kymd"
+  },
+  "post_activation_correction": {
+    "predecessor_gwoc_version": "1.16.3",
+    "predecessor_rulebook_version": "1.24.3",
+    "predecessor_master_version": "1.14.2",
+    "reason": "Final active-carrier sweep found stale ACC-029 self-version label in selected Master v1.14.2; corrected by Master v1.14.3 / Rulebook v1.24.4 / GWOC v1.16.4.",
+    "production_write_performed": false
+  }
+}
