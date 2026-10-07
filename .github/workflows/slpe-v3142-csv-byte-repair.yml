@@ -1,0 +1,30 @@
+name: Temporary byte-exact CSV archive repair
+on:
+  push:
+    branches: [rebaseline/active-runtime-2026-10-07]
+permissions:
+  contents: write
+jobs:
+  repair:
+    if: github.event.head_commit.message == 'Enforce byte-preserving package archive attributes'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore exact archived CSV bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          unzip -p 'references/current_package/v3.14.2/SwitchLand_Price_Engine_GPT_Project_Package_v3.14.2(1).zip' 'SwitchLand_Price_Engine_GPT_Project_Package_v3.14.2/PROJECT_SOURCES/CURRENT_MASTER_RUNTIME_SNAPSHOT_REV3007.csv' > 'references/current_package/v3.14.2/extracted/PROJECT_SOURCES/CURRENT_MASTER_RUNTIME_SNAPSHOT_REV3007.csv'
+          git add 'references/current_package/v3.14.2/extracted/PROJECT_SOURCES/CURRENT_MASTER_RUNTIME_SNAPSHOT_REV3007.csv'
+          test "$(git show ':references/current_package/v3.14.2/extracted/PROJECT_SOURCES/CURRENT_MASTER_RUNTIME_SNAPSHOT_REV3007.csv' | sha256sum | cut -d' ' -f1)" = 'e35fcdfd67c0d6d4d180f176f4dcd773603dd3a222e82f9a9be5a37f2f46b6b3'
+      - name: Commit exact bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/slpe-v3142-csv-byte-repair.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          test "$(git show ':references/current_package/v3.14.2/extracted/PROJECT_SOURCES/CURRENT_MASTER_RUNTIME_SNAPSHOT_REV3007.csv' | sha256sum | cut -d' ' -f1)" = 'e35fcdfd67c0d6d4d180f176f4dcd773603dd3a222e82f9a9be5a37f2f46b6b3'
+          git commit -m 'Preserve exact v3.14.2 CSV bytes'
+          git push origin HEAD:${GITHUB_REF_NAME}

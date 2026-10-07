@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Exact archived package payloads must remain byte-identical to the Owner-supplied v3.14.2 package.
+references/current_package/v3.14.2/extracted/** -text
