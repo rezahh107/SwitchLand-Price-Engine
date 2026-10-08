@@ -24,7 +24,7 @@ def main():
         return 1
     if manifest.get("production_equivalence") != "NOT_PROVEN":
         errors.append("production equivalence must remain NOT_PROVEN")
-    if manifest.get("acquisition_policy") != "REPOSITORY_TRACKED_EXACT_FIXTURES_NO_NETWORK_FALLBACK":
+    if manifest.get("acquisition_policy") != "EXTERNAL_AUTHORIZED_EXACT_FIXTURES_NO_NETWORK_FALLBACK":
         errors.append("acquisition policy changed; do not silently authorize downloads")
     actual = manifest.get("packages")
     if not isinstance(actual, list) or len(actual) != len(LOCKED):

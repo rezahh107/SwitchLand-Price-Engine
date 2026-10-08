@@ -59,7 +59,7 @@ if (($manifest['schema_version'] ?? null) !== '1.0.0') {
 if (($manifest['fixture_family'] ?? null) !== 'WP_ALL_IMPORT_CI_LAB_V1_BINARY_FIXTURES') {
     $fail('fixture_family mismatch.');
 }
-if (($manifest['acquisition_policy'] ?? null) !== 'REPOSITORY_TRACKED_EXACT_FIXTURES_NO_NETWORK_FALLBACK') {
+if (($manifest['acquisition_policy'] ?? null) !== 'EXTERNAL_AUTHORIZED_EXACT_FIXTURES_NO_NETWORK_FALLBACK') {
     $fail('fixture acquisition policy mismatch.');
 }
 if (($manifest['production_equivalence'] ?? null) !== 'NOT_PROVEN') {
@@ -198,4 +198,4 @@ foreach ($expected as $id => $identity) {
     }
 }
 
-echo 'WPAI_PACKAGE_FIXTURES_PASS packages=' . count($expected) . ' acquisition=REPOSITORY_TRACKED_EXACT_FIXTURES_NO_NETWORK_FALLBACK production_equivalence=NOT_PROVEN' . PHP_EOL;
+echo 'WPAI_PACKAGE_FIXTURES_PASS packages=' . count($expected) . ' acquisition=EXTERNAL_AUTHORIZED_EXACT_FIXTURES_NO_NETWORK_FALLBACK production_equivalence=NOT_PROVEN' . PHP_EOL;

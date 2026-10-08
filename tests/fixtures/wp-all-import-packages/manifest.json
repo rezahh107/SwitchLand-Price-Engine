@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "fixture_family": "WP_ALL_IMPORT_CI_LAB_V1_BINARY_FIXTURES",
-  "acquisition_policy": "REPOSITORY_TRACKED_EXACT_FIXTURES_NO_NETWORK_FALLBACK",
+  "acquisition_policy": "EXTERNAL_AUTHORIZED_EXACT_FIXTURES_NO_NETWORK_FALLBACK",
   "production_equivalence": "NOT_PROVEN",
   "packages": [
     {
