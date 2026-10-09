@@ -13,31 +13,65 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
-      - name: Reject public commercial binaries and identity drift
+      - name: Enforce archive allowlist and exact tracked Git blob identities
         run: python3 tests/wp-all-import-ci-lab/check-public-boundary.py
-      - name: Verify CLI syntax and absent private input fails closed
+      - name: Verify exact original ZIP bytes and WordPress plugin headers
         shell: bash
         run: |
           set -euo pipefail
           php -l tests/wp-all-import-ci-lab/verify-package-fixtures.php
-          manifest="tests/fixtures/wp-all-import-packages/manifest.json"
-          if php tests/wp-all-import-ci-lab/verify-package-fixtures.php "$manifest" "$RUNNER_TEMP/not-provisioned" > "$RUNNER_TEMP/fixture-failure.log" 2>&1; then
-            echo "Missing private fixture was incorrectly accepted" >&2
-            exit 1
-          fi
-          grep -q 'WPAI_PACKAGE_FIXTURE_FAILURE:' "$RUNNER_TEMP/fixture-failure.log"
-      - name: Falsify the guard with a synthetic tracked ZIP
+          php tests/wp-all-import-ci-lab/verify-package-fixtures.php
+      - name: Falsify archive admission inside and outside fixture directory
         shell: bash
         run: |
           set -euo pipefail
-          synthetic="tests/fixtures/wp-all-import-packages/_synthetic-public-binary.zip"
-          printf 'synthetic fixture - never real vendor package' > "$synthetic"
-          git add -f "$synthetic"
-          if python3 tests/wp-all-import-ci-lab/check-public-boundary.py > "$RUNNER_TEMP/guard-negative.log" 2>&1; then
-            echo "Public ZIP guard incorrectly accepted injected archive" >&2
+          for synthetic in \
+            tests/fixtures/wp-all-import-packages/_synthetic-extra.zip \
+            tests/wp-all-import-ci-lab/_synthetic-extra.zip; do
+            printf 'synthetic unapproved archive' > "$synthetic"
+            git add -f "$synthetic"
+            if python3 tests/wp-all-import-ci-lab/check-public-boundary.py > "$RUNNER_TEMP/archive-negative.log" 2>&1; then
+              echo "Archive admission guard accepted unapproved ZIP" >&2
+              exit 1
+            fi
+            grep -q 'WPAI_FIXTURE_ADMISSION_FAIL' "$RUNNER_TEMP/archive-negative.log"
+            git reset -q HEAD -- "$synthetic"
+            rm -f "$synthetic"
+          done
+          python3 tests/wp-all-import-ci-lab/check-public-boundary.py
+      - name: Falsify missing and changed package and wrong manifest identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          core=tests/fixtures/wp-all-import-packages/wp-all-import-pro.zip
+          original="$RUNNER_TEMP/original-core.zip"
+          cp "$core" "$original"
+          rm "$core"
+          if php tests/wp-all-import-ci-lab/verify-package-fixtures.php > "$RUNNER_TEMP/missing.log" 2>&1; then
+            echo "Missing package accepted" >&2
             exit 1
           fi
-          grep -q 'PUBLIC_FIXTURE_BOUNDARY_FAIL' "$RUNNER_TEMP/guard-negative.log"
-          git reset -q HEAD -- "$synthetic"
-          rm -f "$synthetic"
+          grep -q 'WPAI_PACKAGE_FIXTURE_FAILURE:' "$RUNNER_TEMP/missing.log"
+          cp "$original" "$core"
+          printf 'tamper-test' >> "$core"
+          if php tests/wp-all-import-ci-lab/verify-package-fixtures.php > "$RUNNER_TEMP/tamper.log" 2>&1; then
+            echo "Tampered package accepted" >&2
+            exit 1
+          fi
+          grep -q 'WPAI_PACKAGE_FIXTURE_FAILURE:' "$RUNNER_TEMP/tamper.log"
+          cp "$original" "$core"
+          python3 - "$RUNNER_TEMP/wrong-manifest.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          obj = json.loads(Path("tests/fixtures/wp-all-import-packages/manifest.json").read_text())
+          obj["packages"][0]["sha256"] = "0" * 64
+          Path(sys.argv[1]).write_text(json.dumps(obj))
+          PY
+          if php tests/wp-all-import-ci-lab/verify-package-fixtures.php "$RUNNER_TEMP/wrong-manifest.json" > "$RUNNER_TEMP/manifest.log" 2>&1; then
+            echo "Manifest identity drift accepted" >&2
+            exit 1
+          fi
+          grep -q 'WPAI_PACKAGE_FIXTURE_FAILURE:' "$RUNNER_TEMP/manifest.log"
+          php tests/wp-all-import-ci-lab/verify-package-fixtures.php
           python3 tests/wp-all-import-ci-lab/check-public-boundary.py

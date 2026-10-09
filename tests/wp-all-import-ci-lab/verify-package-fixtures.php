@@ -1,29 +1,23 @@
 <?php
 declare(strict_types=1);
 
-// The manifest is public metadata; package bytes must be supplied separately.
-// There is deliberately no implicit repo-relative fixture or network fallback.
-$manifestPath = $argv[1] ?? '';
-$root = $argv[2] ?? '';
+// Packages are repository-tracked byte-for-byte; no download or fallback is allowed.
+$fixtureDirectory = dirname(__DIR__) . '/fixtures/wp-all-import-packages';
+$manifestPath = $argv[1] ?? $fixtureDirectory . '/manifest.json';
+$root = $argv[2] ?? $fixtureDirectory;
 
 $fail = static function (string $message): never {
     fwrite(STDERR, "WPAI_PACKAGE_FIXTURE_FAILURE: {$message}\n");
     exit(1);
 };
 
-if ('' === $manifestPath || '' === $root) {
-    $fail('usage: php verify-package-fixtures.php <public-manifest.json> <external-authorized-package-directory>');
-}
 $resolvedRoot = realpath($root);
-$resolvedRepo = realpath(dirname(__DIR__, 2));
-if (false === $resolvedRoot || ! is_dir($resolvedRoot)) {
-    $fail('external authorized package directory is missing.');
+$canonicalRoot = realpath($fixtureDirectory);
+if (false === $resolvedRoot || ! is_dir($resolvedRoot) || false === $canonicalRoot) {
+    $fail('repository-tracked fixture directory is missing.');
 }
-if (false === $resolvedRepo) {
-    $fail('repository root cannot be resolved.');
-}
-if ($resolvedRoot === $resolvedRepo || str_starts_with($resolvedRoot, $resolvedRepo . DIRECTORY_SEPARATOR)) {
-    $fail('external package directory must not be inside the repository checkout.');
+if ($resolvedRoot !== $canonicalRoot) {
+    $fail('only the repository-tracked fixture directory is authorized.');
 }
 $root = $resolvedRoot;
 
@@ -59,7 +53,7 @@ if (($manifest['schema_version'] ?? null) !== '1.0.0') {
 if (($manifest['fixture_family'] ?? null) !== 'WP_ALL_IMPORT_CI_LAB_V1_BINARY_FIXTURES') {
     $fail('fixture_family mismatch.');
 }
-if (($manifest['acquisition_policy'] ?? null) !== 'EXTERNAL_AUTHORIZED_EXACT_FIXTURES_NO_NETWORK_FALLBACK') {
+if (($manifest['acquisition_policy'] ?? null) !== 'REPOSITORY_TRACKED_EXACT_FIXTURES_NO_NETWORK_FALLBACK') {
     $fail('fixture acquisition policy mismatch.');
 }
 if (($manifest['production_equivalence'] ?? null) !== 'NOT_PROVEN') {
@@ -198,4 +192,4 @@ foreach ($expected as $id => $identity) {
     }
 }
 
-echo 'WPAI_PACKAGE_FIXTURES_PASS packages=' . count($expected) . ' acquisition=EXTERNAL_AUTHORIZED_EXACT_FIXTURES_NO_NETWORK_FALLBACK production_equivalence=NOT_PROVEN' . PHP_EOL;
+echo 'WPAI_PACKAGE_FIXTURES_PASS packages=' . count($expected) . ' acquisition=REPOSITORY_TRACKED_EXACT_FIXTURES_NO_NETWORK_FALLBACK production_equivalence=NOT_PROVEN' . PHP_EOL;
