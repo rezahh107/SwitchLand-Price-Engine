@@ -15,6 +15,11 @@ jobs:
           persist-credentials: false
       - name: Enforce archive allowlist and exact tracked Git blob identities
         run: python3 tests/wp-all-import-ci-lab/check-public-boundary.py
+      - name: Exercise content-aware archive-admission regression cases
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/wp-all-import-ci-lab/test-archive-admission.py
       - name: Verify exact original ZIP bytes and WordPress plugin headers
         shell: bash
         run: |

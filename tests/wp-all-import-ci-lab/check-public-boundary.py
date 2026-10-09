@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "tests/fixtures/wp-all-import-packages/manifest.json"
@@ -24,6 +25,48 @@ LOCKED = {
     "wp-all-import-pro": ("wp-all-import-pro.zip", 4370010, "8c38753da981293432c5ff2fff4124ccb9cf5c7f0a90e964f1fbb222c09772bb"),
     "wpai-woocommerce-add-on": ("wpai-woocommerce-add-on_4.0.6.zip", 437099, "6959464478610568937cc51d118a832ec3515ed501b3bb083dbe68894f8bda6a"),
 }
+
+
+def classify_archive(path: Path):
+    """Identify archive payloads independently of their filename extension.
+
+    Header signatures catch recognizable damaged archives. The ZIP central
+    directory also identifies archives with prepended/self-extracting stubs.
+    TAR without ustar requires an authentic header checksum to avoid treating
+    arbitrary ordinary files as archives. Read errors fail closed.
+    """
+    with path.open("rb") as stream:
+        header = stream.read(512)
+
+    if header.startswith((b"PK\x03\x04", b"PK\x05\x06", b"PK\x07\x08")):
+        return "ZIP"
+    if header.startswith(b"\x1f\x8b\x08"):
+        return "GZIP"
+    if header.startswith(b"\xfd7zXZ\x00"):
+        return "XZ"
+    if header.startswith(b"BZh") and len(header) > 3 and header[3:4] in b"123456789":
+        return "BZIP2"
+    if header.startswith(b"\x28\xb5\x2f\xfd"):
+        return "ZSTD"
+    if header.startswith(b"7z\xbc\xaf\x27\x1c"):
+        return "7Z"
+    if header.startswith((b"Rar!\x1a\x07\x00", b"Rar!\x1a\x07\x01\x00")):
+        return "RAR"
+
+    if len(header) == 512:
+        if header[257:262] == b"ustar":
+            return "TAR"
+        checksum = header[148:156].strip(b" \x00")
+        if (header[0] != 0 and checksum and
+                all(ch in b"01234567" for ch in checksum)):
+            expected = int(checksum, 8)
+            observed = sum(header[:148]) + 8 * 32 + sum(header[156:])
+            if expected == observed:
+                return "TAR"
+
+    if zipfile.is_zipfile(path):
+        return "ZIP"
+    return None
 
 def main():
     errors = []
@@ -88,8 +131,16 @@ def main():
                     errors.append("fixture Git blob drift: " + rel)
             except (OSError, subprocess.CalledProcessError) as exc:
                 errors.append("unreadable fixture: " + rel + " (" + str(exc) + ")")
-        elif path.is_file() and not path.is_symlink():
+        elif path.is_symlink():
+            # A Git-tracked symlink stores its target path, not archive bytes.
+            continue
+        elif not path.is_file():
+            errors.append("tracked file cannot be classified: " + rel)
+        else:
             try:
+                archive_format = classify_archive(path)
+                if archive_format and rel not in allowed_archives:
+                    errors.append("archive content outside explicit allowlist (" + archive_format + "): " + rel)
                 if path.stat().st_size in sizes:
                     with path.open("rb") as handle:
                         actual = hashlib.file_digest(handle, "sha256").hexdigest()
