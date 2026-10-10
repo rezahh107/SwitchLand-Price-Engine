@@ -43,6 +43,10 @@ if($stage==='bootstrap') {
       'wizard_type'=>'new','custom_type'=>'product','post_type'=>'product',
       'title'=>'{column3[1]}','unique_key'=>'{column1[1]}',
       'single_product_type'=>'variable',
+      // Add-On default multiple_product_type=simple overrides an unmapped type.
+      // Source-backed fixed product-type selector.
+      'is_multiple_product_type'=>'yes',
+      'multiple_product_type'=>'variable',
       'single_product_sku'=>'{column2[1]}',
       'single_product_regular_price'=>'{price[1]}',
       'single_product_sale_price'=>'',
@@ -72,6 +76,10 @@ if($stage==='bootstrap') {
         if(!array_key_exists($key,$defaults)) {
             throw new RuntimeException('TARGET_VARIATION_NATIVE_SOURCE_KEY_MISSING:'.$key);
         }
+    }
+    if(($defaults['multiple_product_type']??null)!=='simple'
+       ||($defaults['is_multiple_product_type']??null)!=='yes') {
+        throw new RuntimeException('TARGET_VARIATION_NATIVE_PRODUCT_TYPE_VERSION_DRIFT');
     }
     $options=array_replace($options,$mapping);
     $rel=wp_all_import_get_relative_path($file);
