@@ -68,6 +68,10 @@ jobs:
           find tests/wp-all-import-ci-lab -type f -name '*.php' -print0 | xargs -0 -n1 php -l
           php tests/wp-all-import-ci-lab/target-fixture.php
           test -s "$LAB_OUT/synthetic-95col-report.json"
+          python3 -m py_compile tests/wp-all-import-ci-lab/inspect-dated-bundle.py
+          python3 tests/wp-all-import-ci-lab/test-dated-bundle-inspector.py
+          python3 tests/wp-all-import-ci-lab/dated-reported-option-diff.py
+          test -s "$LAB_OUT/dated-verified-options-comparison.json"
 
       - name: Set up pinned WP CLI, WordPress, and WooCommerce
         shell: bash
@@ -185,6 +189,35 @@ jobs:
           LAB_STAGE=second php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-variation-consumer.php --path="$LAB_WP"
           php tests/wp-all-import-ci-lab/verify-target-variation.php "$LAB_OUT"
           test -s "$LAB_OUT/target-variation-evidence.json"
+
+      - name: Dated Owner-reported A versus approved B — native synthetic baseline comparison
+        shell: bash
+        run: |
+          set -euo pipefail
+          for variant in A B; do
+            LAB_VARIANT="$variant" LAB_STAGE=bootstrap php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/dated-bundle-ab-consumer.php --path="$LAB_WP"
+            id="$(cat "$LAB_OUT/dated-$variant-id.txt")"
+            test "$id" -gt 0
+            php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/dated-$variant-initial.log"
+            LAB_VARIANT="$variant" LAB_STAGE=pre php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/dated-bundle-ab-consumer.php --path="$LAB_WP"
+            php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/dated-$variant-updated.log"
+            LAB_VARIANT="$variant" LAB_STAGE=post php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/dated-bundle-ab-consumer.php --path="$LAB_WP"
+          done
+          php tests/wp-all-import-ci-lab/verify-dated-bundle-ab.php "$LAB_OUT"
+          test -s "$LAB_OUT/dated-ab-comparison.json"
+
+      - name: Distinct native group-less variable row classification probe (not business admission)
+        shell: bash
+        run: |
+          set -euo pipefail
+          for variant in A B; do
+            LAB_VARIANT="$variant" LAB_STAGE=bootstrap php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/dated-group-less-consumer.php --path="$LAB_WP"
+            id="$(cat "$LAB_OUT/dated-group-less-$variant-id.txt")"
+            test "$id" -gt 0
+            php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/dated-group-less-$variant.log"
+            LAB_VARIANT="$variant" LAB_STAGE=readback php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/dated-group-less-consumer.php --path="$LAB_WP"
+          done
+          php tests/wp-all-import-ci-lab/verify-dated-group-less.php "$LAB_OUT"
 
       - name: Capture native import failure diagnostics without overriding failure
         if: failure()
