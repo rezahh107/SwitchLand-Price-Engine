@@ -167,6 +167,8 @@ jobs:
           LAB_STAGE=mid php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-simple-consumer.php --path="$LAB_WP"
           php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/target-native-zero.log"
           LAB_STAGE=post php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-simple-consumer.php --path="$LAB_WP"
+          # Synthetic-only read-backs help diagnose a failing independent verifier.
+          php -r 'foreach (["target-simple-pre","target-simple-mid","target-simple-post"] as $name) { $data=json_decode(file_get_contents(getenv("LAB_OUT")."/".$name.".json"),true); echo $name,": ",json_encode($data,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES),"\n"; }'
           php tests/wp-all-import-ci-lab/verify-target-simple.php "$LAB_OUT"
           test -s "$LAB_OUT/target-simple-evidence.json"
 
