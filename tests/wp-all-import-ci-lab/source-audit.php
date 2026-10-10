@@ -47,11 +47,34 @@ foreach ($files as $file) {
         }
     }
 }
+// Small exact-version source windows for establishing the native bootstrap boundary.
+// Auditing stops before implementation if internal semantics differ.
+$windows = [
+    'actions/wp_ajax_wpai_run_preview_with_progress.php' => [1435, 1525],
+    'classes/cli.php' => [28, 95],
+    'wp-all-import-pro.php' => [1534, 1585],
+];
+$sourceWindows = [];
+foreach ($windows as $relative => [$first, $last]) {
+    $path = $root . '/' . $relative;
+    if (!is_file($path)) {
+        continue;
+    }
+    $lines = file($path, FILE_IGNORE_NEW_LINES);
+    if (!is_array($lines)) {
+        continue;
+    }
+    $sourceWindows[$relative] = [];
+    for ($line = $first; $line <= min($last, count($lines)); ++$line) {
+        $sourceWindows[$relative][] = sprintf('%04d %s', $line, $lines[$line - 1]);
+    }
+}
 $result = [
     'schema_version' => '1.0.0',
     'classification' => 'EXACT_INSTALLED_SOURCE_AUDIT_NOT_RUNTIME_PROOF',
     'plugin_root' => basename($root),
     'seams' => $matches,
+    'source_windows' => $sourceWindows,
     'bootstrap_disposition' => 'REQUIRES_SOURCE_REVIEW_AND_NATIVE_SAVED_RECORD_READBACK',
     'claims' => [
         'LAB_NATIVE_WPAI_EXECUTION' => 'NOT_PROVEN',
