@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_family": "WP_ALL_IMPORT_CI_LAB_V1_BINARY_FIXTURES",
+  "acquisition_policy": "REPOSITORY_TRACKED_EXACT_FIXTURES_NO_NETWORK_FALLBACK",
+  "production_equivalence": "NOT_PROVEN",
+  "packages": [
+    {
+      "id": "wp-all-import-pro",
+      "classification": "OWNER_SUPPLIED_SOURCE_PACKAGE",
+      "admission_role": "OWNER_SUPPLIED_LAB_CANDIDATE",
+      "filename": "wp-all-import-pro.zip",
+      "plugin_name": "WP All Import Pro",
+      "version": "5.1.0",
+      "size_bytes": 4370010,
+      "sha256": "8c38753da981293432c5ff2fff4124ccb9cf5c7f0a90e964f1fbb222c09772bb",
+      "expected_zip_root": "wp-all-import-pro/",
+      "expected_main_plugin_file": "wp-all-import-pro/wp-all-import-pro.php"
+    },
+    {
+      "id": "wpai-woocommerce-add-on",
+      "classification": "OWNER_SUPPLIED_SOURCE_PACKAGE",
+      "admission_role": "OWNER_SUPPLIED_LAB_CANDIDATE",
+      "filename": "wpai-woocommerce-add-on_4.0.6.zip",
+      "plugin_name": "WP All Import - WooCommerce Import Add-On Pro",
+      "version": "4.0.6",
+      "size_bytes": 437099,
+      "sha256": "6959464478610568937cc51d118a832ec3515ed501b3bb083dbe68894f8bda6a",
+      "expected_zip_root": "wpai-woocommerce-add-on/",
+      "expected_main_plugin_file": "wpai-woocommerce-add-on/wpai-woocommerce-add-on.php"
+    }
+  ]
+}
