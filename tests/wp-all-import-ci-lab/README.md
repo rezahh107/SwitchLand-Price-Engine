@@ -66,3 +66,7 @@ and references only the identical existing Git binary blobs.
 ## Bounded target configuration candidate qualification (PR #11)
 
 See [TARGET_CONFIG_QUALIFICATION.md](TARGET_CONFIG_QUALIFICATION.md) for historical/template/Owner/lab/fresh-export provenance boundaries, native simple and variation read-backs, intentional corruption controls, exact pinned versions and the remaining Production-equivalence/zero-variation gaps. This is CI-only test infrastructure. It does **not** activate the candidate mapping or qualify the exact current SwitchLand consumer.
+
+## Owner-reported October 4 Bundle (dated source, PR #12)
+
+See [DATED_BUNDLE_20261004_QUALIFICATION.md](DATED_BUNDLE_20261004_QUALIFICATION.md). Exact private ZIP bytes were not available in this run, so expected digests/counts and full exported options are **not verified**. The read-only [inspect-dated-bundle.py](inspect-dated-bundle.py) can verify the exact private file *locally without uploading it*. CI uses only synthetic source-shaped data for two native saved-import A/B comparisons and a distinct group-less variation scenario, with independently checked WooCommerce state, fail-closed mutation controls and evidence source classifications. Neither A (Owner-reported options reconstruction) nor B (approved Lab candidate) is certified to be the active production configuration. C1/C2 remain NOT_PROVEN.
