@@ -55,6 +55,20 @@ if ($stage === 'bootstrap') {
         'single_product_type' => 'simple',
         'single_product_sku' => '{sku[1]}',
         'single_product_regular_price' => '{regular_price[1]}',
+        // Source-backed bounded selective-update controls; never authorize
+        // unrelated product fields or custom meta to be overwritten.
+        'update_all_data' => 'no',
+        'is_update_title' => 0,
+        'is_update_content' => 0,
+        'is_update_categories' => 0,
+        'is_update_images' => 0,
+        'is_update_custom_fields' => 0,
+        'is_update_attributes' => 0,
+        'is_update_products' => 1,
+        'is_update_price' => 1,
+        'is_update_regular_price' => 1,
+        'is_update_sku' => 0,
+        'is_update_product_type' => 0,
     ];
     $options = array_replace($options, $mapping);
     $relPath = function_exists('wp_all_import_get_relative_path')
