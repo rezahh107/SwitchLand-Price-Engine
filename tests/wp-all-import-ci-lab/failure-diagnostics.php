@@ -4,10 +4,27 @@ $repo = getenv('GITHUB_WORKSPACE');
 $out = getenv('LAB_OUT');
 $idPath = $out . '/import-id.txt';
 $id = is_file($idPath) ? (int) trim(file_get_contents($idPath)) : 0;
+$uploads = wp_upload_dir();
+$logDir = $uploads['basedir'] . '/wpallimport/logs';
+$logMatches = [];
+if (is_dir($logDir)) {
+    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($logDir, FilesystemIterator::SKIP_DOTS));
+    foreach ($iterator as $logFile) {
+        if (!$logFile->isFile() || $logFile->getSize() > 500000 || !preg_match('/\\.html$/', $logFile->getFilename())) continue;
+        $text = strip_tags((string) file_get_contents($logFile->getPathname()));
+        foreach (preg_split('/\\R/', $text) as $line) {
+            if (preg_match('/regular|price|sku|skip|update|import|product/i', $line)) {
+                $logMatches[] = substr(trim($line), 0, 210);
+                if (count($logMatches) >= 36) break 2;
+            }
+        }
+    }
+}
 $data = [
     'classification' => 'FAILED_NATIVE_EXECUTION_DIAGNOSTIC',
     'import_id' => $id,
     'products_count' => count(get_posts(['post_type' => 'product', 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids'])),
+    'plugin_native_log_excerpts' => $logMatches,
     'pre_state' => is_file($out . '/pre-state.json') ? json_decode(file_get_contents($out . '/pre-state.json'), true) : null,
     'post_state' => is_file($out . '/post-state.json') ? json_decode(file_get_contents($out . '/post-state.json'), true) : null,
 ];
