@@ -44,15 +44,13 @@
     "C2_PROVIDER_NATIVE_XLSX": "NOT_PROVEN",
     "EXACT_IMPORT_CONFIGURATION": "PARTIALLY_PROVEN_BUT_MATERIALLY_INCOMPLETE",
     "OWNER_SERIALIZATION_DECISION_READY": "NO",
-    "SUCCESSOR_IMPLEMENTATION": "DO_NOT_START_YET",
-    "EXACT_SWITCHLAND_CONSUMER": "NOT_PROVEN",
-    "PRODUCTION_EQUIVALENCE": "NOT_PROVEN"
+    "SUCCESSOR_IMPLEMENTATION": "DO_NOT_START_YET"
   },
   "preserved_contracts": {
     "MST_007": "UNCHANGED",
     "active_wp_all_import_contract_v1_2_0": "UNCHANGED"
   },
-  "next_repository_engineering_action": "QUALIFY_EXACT_WPAI_TARGET_EXPORT_AND_VARIATION_CONSUMER_BEHAVIOR",
+  "next_repository_engineering_action": "QUALIFY_FRESH_WPAI_TARGET_EXPORT_AND_ZERO_PRICE_VARIATION_PRESENTATION",
   "governance_rebaseline": {
     "target_date": "2026-10-07",
     "status": "REBASELINED_CURRENT_DESTINATION_WITH_EXACT_PACKAGE_BYTES_ARCHIVED_AND_VERIFIED"
@@ -68,16 +66,19 @@
     },
     "target_configuration_v1": {
       "pr": 11,
-      "state": "QUALIFICATION_IN_PROGRESS_NOT_ACCEPTED",
+      "state": "LAB_CANDIDATE_RUNTIME_VERIFIED_EXACT_TARGET_NOT_PROVEN",
       "provenance": "LAB candidate on WP All Import Pro 5.1.0 and WooCommerce Add-On Pro 4.0.6, not production configuration",
-      "synthetic_95_column_fixture": "EXECUTED_IN_CI_SEPARATE_FROM_NATIVE_CONSUMER_PROOF",
-      "native_simple_product_target_candidate": "AWAITING_INDEPENDENT_READBACK_RECONCILIATION",
-      "variable_parent_variation": "NOT_PROVEN",
-      "zero_price_and_blank_product_behavior": "PARTIALLY_PROVEN_SYNTHETIC_ONLY_UNTIL_NATIVE_RECONCILIATION",
-      "exact_fresh_export": "NOT_AVAILABLE_IN_INSPECTED_EVIDENCE",
+      "synthetic_95_column_fixture": "CI_PASS_FOR_ORDER_BOM_MULTILINE_PERSIAN_ZERO_BLANK_AND_NEGATIVE_CONTROLS_NOT_NATIVE_CSV_IMPORT",
+      "native_simple_product_target_candidate": "NATIVE_IMPORT_WOO_READBACK_PASS_ID_PRICES_SALE_ZERO_HIDDEN_SKU_SENTINEL_NEGATIVE_CONTROLS",
+      "variable_parent_variation": "NATIVE_IMPORT_WOO_READBACK_PASS_TWO_PARENTS_FOUR_VARIATIONS_PERSISTENT_IDENTITIES_DISTINCT_GROUPS_REPEATED_IMPORT_NO_DUPLICATES_NEGATIVE_CONTROLS",
+      "zero_price_and_blank_product_behavior": "SIMPLE_ZERO_HIDDEN_SALE_BLANK_RUNTIME_PASS; VARIATION_ZERO_PRICE_WITH_ACTIVE_SIBLINGS_RUNTIME_PASS; VARIATION_INACTIVE_VISIBILITY_SEMANTICS_NOT_PROVEN; INPUT_BLANK_NOT_ZERO_SYNTHETIC_PASS",
+      "exact_fresh_export": "NOT_AVAILABLE_IN_INSPECTED_REPO_OR_DRIVE",
       "exact_switchland_consumer": "NOT_PROVEN",
       "historical_addon_version": "4.0.5",
-      "lab_addon_version": "4.0.6"
+      "lab_addon_version": "4.0.6",
+      "current_target_plugin_version": "NOT_PROVEN",
+      "production_equivalence": "NOT_PROVEN",
+      "last_verified_ci_run": "https://github.com/rezahh107/SwitchLand-Price-Engine/actions/runs/38073254974"
     }
   }
 }
