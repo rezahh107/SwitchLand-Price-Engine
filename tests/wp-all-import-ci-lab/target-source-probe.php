@@ -46,7 +46,7 @@ foreach (['core'=>'wp-all-import-pro', 'woocommerce_addon'=>'wpai-woocommerce-ad
         foreach ($lines as $i => $line) {
         // Extract quoted option identifiers only, never proprietary source text.
         if (stripos($line, 'visibility') !== false) {
-            if (preg_match_all('/[\\x27\\x22]([a-zA-Z0-9_-]*visibility[a-zA-Z0-9_-]*)[\\x27\\x22]/i', $line, $quoted)) {
+            if (preg_match_all('/[\x27\x22]([a-zA-Z0-9_-]*visibility[a-zA-Z0-9_-]*)[\x27\x22]/i', $line, $quoted)) {
                 foreach ($quoted[1] as $token) {
                     if (count($result['visibility_tokens'][$token] ?? []) >= 8) continue;
                     $result['visibility_tokens'][$token][] = [
