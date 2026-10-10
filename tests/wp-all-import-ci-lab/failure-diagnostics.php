@@ -8,6 +8,8 @@ $data = [
     'classification' => 'FAILED_NATIVE_EXECUTION_DIAGNOSTIC',
     'import_id' => $id,
     'products_count' => count(get_posts(['post_type' => 'product', 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids'])),
+    'pre_state' => is_file($out . '/pre-state.json') ? json_decode(file_get_contents($out . '/pre-state.json'), true) : null,
+    'post_state' => is_file($out . '/post-state.json') ? json_decode(file_get_contents($out . '/post-state.json'), true) : null,
 ];
 if ($id > 0) {
     $import = new PMXI_Import_Record();
