@@ -87,6 +87,7 @@ if($stage==='bootstrap') {
     $mode = $variant==='A' ? [
       // Explicitly Owner-REPORTED material options, NOT independent ZIP read-back.
       'is_product_visibility'=>'xpath',
+      'is_multiple_product_type'=>'no',
       'is_update_sku'=>1,'is_update_title'=>1,
       'is_update_custom_fields'=>1,'is_update_acf'=>1,
       'acf_update_logic'=>'full_update',
