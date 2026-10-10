@@ -40,6 +40,7 @@ $verify=static function(array $b,array $states,array $sources)use($expected):boo
         if($id<=0||($s['product_id']??0)!==$id
             ||($s['import_id']??0)!==$b['import_id']
             ||($s['sku']??'')!=='LAB-TARGET-SIMPLE'
+            ||($s['title']??'')!=='KEEP_OWNER_TITLE'
             ||($s['type']??'')!=='simple'
             ||($s['sentinel']??'')!=='DO_NOT_CHANGE'
             ||($s['source']??'')!=='WooCommerce CRUD read-back') return false;
@@ -62,6 +63,7 @@ if(!$verify($bootstrap,$states,$sources))throw new RuntimeException('TARGET_SIMP
 $mutations=[
     'parent_identity_replacement' => static function(&$b,&$s,&$src){$s['post']['product_id']++;},
     'protected_sku_changed' => static function(&$b,&$s,&$src){$s['post']['sku']='LAB-TARGET-SIMPLE-SOURCE-CHANGED';},
+    'protected_title_changed' => static function(&$b,&$s,&$src){$s['mid']['title']='OVERRIDDEN_BY_IMPORT';},
     'unrelated_sentinel_changed' => static function(&$b,&$s,&$src){$s['mid']['sentinel']='CORRUPTED';},
     'blank_masquerades_as_zero' => static function(&$b,&$s,&$src){$s['post']['regular_price']='';},
     'catalog_visibility_not_updated' => static function(&$b,&$s,&$src){$s['post']['catalog_visibility']='visible';},
