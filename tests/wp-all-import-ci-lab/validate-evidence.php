@@ -102,6 +102,12 @@ $req(($before['sentinel'] ?? null) === $f['sentinel_value']
     && ($after['sentinel'] ?? null) === $f['sentinel_value'], 'sentinel mutation');
 $req((int)($after['native_import_counters']['updated'] ?? 0) > 0, 'no native updated records');
 $req(($e['execution']['native_command'] ?? '') === 'wp all-import run ' . $id, 'not native run');
+$cliHelpPath = $out . '/native-cli-help.txt';
+$req(is_file($cliHelpPath) &&
+    ($e['execution']['native_cli_help_sha256'] ?? null) === hash_file('sha256', $cliHelpPath)
+    && preg_match('/^\\s+run\\b/m', (string)file_get_contents($cliHelpPath)) === 1
+    && preg_match('/^\\s+list\\b/m', (string)file_get_contents($cliHelpPath)) === 1,
+    'native CLI run/list availability detached');
 foreach (['initial'=>'native-initial-run.log', 'update'=>'native-update-run.log'] as $phase => $file) {
     $path = $out . '/' . $file;
     $req(is_file($path), 'missing native execution log');
