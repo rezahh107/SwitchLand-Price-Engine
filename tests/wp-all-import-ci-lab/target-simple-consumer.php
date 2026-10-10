@@ -71,6 +71,10 @@ if($stage==='bootstrap') {
         'single_product_regular_price'=>'{price[1]}',
         'single_product_sale_price'=>'{column10[1]}',
         'single_product_visibility'=>'{visibility[1]}',
+        // Source inventory (Add-On 4.0.6) exposes product_visibility_xpath.
+        // Qualify the candidate's XPath-mode binding with real Woo read-back.
+        'product_visibility'=>'xpath',
+        'product_visibility_xpath'=>'{visibility[1]}',
         'update_all_data'=>'no',
         'is_update_title'=>0,'is_update_content'=>0,'is_update_categories'=>0,
         'is_update_images'=>0,'is_update_custom_fields'=>0,'is_update_attributes'=>0,
