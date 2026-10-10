@@ -21,7 +21,18 @@ if ($id > 0) {
             try {
                 $chunk = new PMXI_Chunk($absolute, ['element' => (string)$import->root_element]);
                 $xml = $chunk->read();
-                $chunkData = [
+                if (is_string($xml)) {
+                    $dom = new DOMDocument();
+                    if (@$dom->loadXML('<?xml version="1.0" encoding="UTF-8"?>' . "\n" . $xml)) {
+                        $xpathProbe = new DOMXPath($dom);
+                        $chunkData = [
+                            'chunk_document_element' => $dom->documentElement->nodeName,
+                            'saved_xpath_matches' => $xpathProbe->query((string)$import->xpath)->length,
+                            'alternative_xpath_matches' => $xpathProbe->query('//product')->length,
+                        ];
+                    }
+                }
+                $chunkData += [
                     'first_chunk_bytes' => is_string($xml) ? strlen($xml) : null,
                     'first_chunk_sha256' => is_string($xml) ? hash('sha256', $xml) : null,
                     'chunk_root' => $import->root_element,
