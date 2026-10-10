@@ -75,7 +75,10 @@ $req($id > 0 && ($e['consumer_config']['import_id'] ?? null) === $id
     && ($b['import_id'] ?? null) === $id && ($after['import_id'] ?? null) === $id, 'import identity mismatch');
 $req(($e['consumer_config']['bootstrap_method'] ?? '') === 'PMXI_Import_Record::set/save + PMXI_File_Record + native getById', 'unverified bootstrap');
 $req(($e['consumer_config']['effective_saved_options_sha256'] ?? '') === ($b['effective_saved_options_sha256'] ?? null)
-    && ($e['consumer_config']['source_model_file_sha256'] ?? '') === ($b['source_model_file_sha256'] ?? null), 'native configuration/source digest mismatch');
+    && ($e['consumer_config']['source_model_file_sha256'] ?? '') === ($b['source_model_file_sha256'] ?? null)
+    && preg_match('/^[a-f0-9]{64}$/', (string)($b['addon_price_gate_source_sha256'] ?? '')) === 1
+    && ($e['consumer_config']['addon_price_gate_source_sha256'] ?? '') === ($b['addon_price_gate_source_sha256'] ?? null),
+    'native configuration/source digest mismatch');
 foreach (['initial'=>'initial', 'updated'=>'updated'] as $name=>$fixture) {
     $hash = hash_file('sha256', $repo . '/tests/wp-all-import-ci-lab/fixtures/' . $fixture . '.xml');
     $req(($e['fixture'][$name . '_xml_sha256'] ?? '') === $hash
