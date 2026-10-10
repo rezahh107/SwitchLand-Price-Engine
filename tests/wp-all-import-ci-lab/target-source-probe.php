@@ -12,6 +12,7 @@ $names = [
     'single_product_id_first_is_variation', 'single_product_first_is_parent_title_parent_sku',
     'create_new_product_if_no_parent', 'single_product_variable',
     'single_product_visibility', 'single_product_visibility_xpath', 'product_visibility', 'product_visibility_xpath',
+    'is_product_type','multiple_product_type','single_product_type','is_multiple_grouping_product',
     'is_update_catalog_visibility', 'is_update_sale_price', 'is_update_sku',
     'single_product_regular_price', 'single_product_sale_price',
 ];
