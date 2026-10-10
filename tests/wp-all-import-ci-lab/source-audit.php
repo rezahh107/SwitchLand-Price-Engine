@@ -76,7 +76,7 @@ $executeStarts = [];
 foreach ($recordLines as $index => $line) {
     if (preg_match('/function\\s+execute\\s*\\(/', $line)) {
         $executeStarts[] = $index + 1;
-        for ($j = $index; $j < min($index + 160, count($recordLines)); ++$j) {
+        for ($j = $index; $j < min($index + 410, count($recordLines)); ++$j) {
             $sourceWindows['models/import/record.php'][] = sprintf('%04d %s', $j + 1, $recordLines[$j]);
         }
         break;
