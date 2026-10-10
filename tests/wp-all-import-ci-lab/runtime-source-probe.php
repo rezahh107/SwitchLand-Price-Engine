@@ -51,6 +51,15 @@ $probe = [
         'update_all_data', 'update_products', 'is_update_categories',
         'post_type', 'is_update_post', 'update_post_title', 'update_post_meta',
     ])),
+    'core_update_options' => array_filter(
+        $options,
+        static function ($value, $key) { return strpos((string)$key, 'update') !== false || strpos((string)$key, 'match') !== false; },
+        ARRAY_FILTER_USE_BOTH
+    ),
+    'addon_update_options' => class_exists('PMWI_Plugin') && method_exists('PMWI_Plugin', 'get_default_import_options')
+        ? array_filter(PMWI_Plugin::get_default_import_options(), static function ($value, $key) {
+            return strpos((string)$key, 'update') !== false || strpos((string)$key, 'match') !== false;
+        }, ARRAY_FILTER_USE_BOTH) : 'NOT_AVAILABLE',
     'addon_defaults' => class_exists('PMWI_Plugin') && method_exists('PMWI_Plugin', 'get_default_import_options')
         ? array_intersect_key(PMWI_Plugin::get_default_import_options(), array_flip([
             'single_product_regular_price', 'single_product_sku', 'single_product_type'
