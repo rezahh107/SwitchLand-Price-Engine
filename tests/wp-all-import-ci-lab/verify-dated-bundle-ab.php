@@ -44,8 +44,15 @@ $verify=static function(array $data):bool {
     }
     $a=$data['A']['bootstrap']['tested_mapping'];
     $b=$data['B']['bootstrap']['tested_mapping'];
-    if($data['A']['bootstrap']['classification']!=='LAB_RECONSTRUCTED_FROM_OWNER_REPORTED_OPTIONS'
+    if($data['A']['bootstrap']['classification']!=='LAB_RECONSTRUCTED_FROM_EXACT_DATED_SOURCE_ALLOWLIST'
       ||$data['B']['bootstrap']['classification']!=='LAB_OWNER_APPROVED_TARGET_CANDIDATE'
+      ||($a['single_product_type']??null)!=='{column27[1]}'
+      ||($a['multiple_product_type']??null)!=='variable'
+      ||($a['is_multiple_product_type']??null)!=='no'
+      ||($a['first_is_parent']??null)!=='yes'
+      ||($a['single_product_id_first_is_variation']??null)!=='{column3[1]}'
+      ||($a['update_custom_fields_logic']??null)!=='full_update'
+      ||($a['update_acf_logic']??null)!=='full_update'
       ||($a['is_update_sku']??null)!==1 ||($a['is_update_title']??null)!==1
       ||($a['is_update_custom_fields']??null)!==1 ||($a['is_update_acf']??null)!==1
       ||($a['is_product_visibility']??null)!=='xpath'
@@ -95,7 +102,7 @@ foreach(['A','B'] as $v) {
 $summary=[
   'qualification'=>'OWNER_SUPPLIED_DATED_WPAI_BUNDLE_V1',
   'source_original_zip_access'=>'NOT_AVAILABLE',
-  'a_config_classification'=>'RECONSTRUCTED_FROM_OWNER_REPORTED_OPTIONS_NOT_EXACT_EXPORT',
+  'a_config_classification'=>'RECONSTRUCTED_FROM_EXACT_VERIFIED_DATED_ALLOWLIST_NOT_FULL_EXPORT',
   'b_config_classification'=>'OWNER_APPROVED_LAB_CANDIDATE_NOT_PRODUCTION',
   'native_plugin'=>'WP_ALL_IMPORT_PRO_5_1_0_WOO_ADDON_4_0_6',
   'outcome'=>'PASS_FOR_MEASURED_BOUNDED_LAB_BEHAVIOR',
