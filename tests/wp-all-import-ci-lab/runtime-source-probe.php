@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 // Called via WP-CLI eval-file, after activating the exact verified packages.
 // Probes the real native plugin classes without creating fake import state.
