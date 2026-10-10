@@ -1,100 +1,90 @@
-# WP All Import — Owner-supplied dated bundle qualification V1
+# WP All Import dated October 4 Bundle — qualification V1
 
-**Repository:** `rezahh107/SwitchLand-Price-Engine`  
-**Starting merged main:** `a3e687a0fd1ca09915eb65e63027ef0907d21245` (merged PR #11)  
-**PR:** #12, qualification-only Draft; **not merged**  
-**Source classification:** `OWNER_SUPPLIED_DATED_WPAI_IMPORT_BUNDLE`  
-**Dated filename:** `SLPE_RUN_20261004_001_FULL_DATASET_CORRECTED.csv.zip` (2026-10-04, NOT a live-site revision assertion)  
-**Source access:** `ORIGINAL_INPUT_UNAVAILABLE`. Neither the current conversation mounts, Library file search, nor accessible named Drive search exposed the exact file. A sanitized handoff or the request's observations are **not** byte evidence.
+**Status:** PRIVATE_STATIC_SOURCE_VERIFIED, LAB_NATIVE_CANDIDATE_PARTLY_VERIFIED, EXACT_PRODUCTION_CONSUMER_NOT_PROVEN  
+**Repository baseline:** `main@a3e687a0fd1ca09915eb65e63027ef0907d21245`; qualification-only Draft PR #12 (unmerged).  
+**Source class:** `OWNER_SUPPLIED_DATED_WPAI_IMPORT_BUNDLE`, dated **2026-10-04**, **not** evidence of current active saved configuration on 2026-10-10.  
+**Security:** original ZIP, original CSV rows, and original full 523-option template were examined only in an ephemeral private container. None was pushed to this public repository, nor to public CI/Actions artifacts. Only a limited **non-sensitive fingerprint/census/option allowlist** is published in [dated-20261004-static-attestation.json](dated-20261004-static-attestation.json).
 
-## 1. Private input identity gate — blocked, never substituted
+## 1. Source identity and independently verified census
 
-The following values are **Owner-expected, NOT executor-observed**:
+Observed **directly from exact Owner-supplied ZIP** (not from an earlier report or handoff):
 
-| Artifact | Expected SHA-256 / size | Execution result |
+| Check | Direct observed result |
+|---|---|
+| ZIP byte length | `77959` exactly |
+| ZIP SHA-256 | `6cb9f29fd4b798c38c8dcc05a3b28e01858c95f7847488fa9257bb91176a62c2` |
+| Embedded CSV SHA-256 | `626da8979ce64ec5703ff7172aa0870b46870bc6c6dd9fe72ca1dbe7332808f8` |
+| Embedded WP All Import template SHA-256 | `fa5af37b144c0f32d4a052672d1c406520c44d95da0f331039b2c70ea1ce121a` |
+| ZIP structure / integrity | 3 non-directory members (CSV, template, readme) + folder entry; ZIP CRC PASS; template valid JSON list with exactly 1 import and 523 option keys |
+| Encoding/serialization | UTF-8 BOM; semicolon delimiter; LF; no CRLF; valid 95-wide CSV records |
+| Dataset size | **95 columns, 876 records** |
+| Product types | 53 simple, 823 variable |
+| Zero and visibility | 355 `Price=0`, **all 355 `hidden`**; 0 nonzero-hidden source rows; 0 blank regular prices |
+| Sale Price | **876 blank** `Column10` rows |
+| Column1 identity | 0 blank and 0 duplicates |
+| Parent SKU | 822 nonblank `Column28`, **all match** `PARENT_` + `Column8` |
+| Exceptions | 1 variable row missing both Column8 and Column28; **1 simple row with nonblank Column8** (but no Parent SKU) |
+
+`inspect-dated-bundle.py` is a **private, local-only** reusable checksum/census/template gate. It runs against original exact bytes when provided privately. The CI unit tests for the inspector use independently fabricated ZIP archives only and **do not** re-inspect the original ZIP in GitHub.
+
+**Important schema discrepancy:** The actual third header is `Column۳` (Persian U+06F3), **not** `Column3` (ASCII U+0033). The exact exported option `single_product_id_first_is_variation={column3[1]}` references an ASCII digit. Also `tmp_unique_key` and `single_product_id_first_is_parent_title` use `{column3[1]}`. The private source has 281 distinct values under the Persian-digit header, so this is not safely interchangeable on raw CSV semantics. The exact WP All Import native parser may normalize field tokens; **do not assert runtime mismatch before testing that consumer**. A source-script mismatch exists regardless.
+
+## 2. Source-backed option reconciliation
+
+Unlike the initial PR #12 draft, the Oct 4 reported options have now been checked **directly against the exact embedded Template**. [The redacted 39-key allowlist](dated-20261004-static-attestation.json) binds these observations to the three verified file SHA-256s; `dated-reported-option-diff.py` reconciles this source-backed allowlist against active Import Contract v1.2.0 in CI. Values from omitted template options are **not** represented as exhaustive conformance.
+
+### Positive correspondences to Owner target
+
+| Exact exported option | Observed dated value |
+|---|---|
+| `unique_key` | `{column1[1]}` |
+| `single_product_sku` | `{column2[1]}` |
+| `single_product_id_first_is_parent_id` | `{column8[1]}` |
+| `single_product_first_is_parent_id_parent_sku` | `{column28[1]}` |
+| `single_product_regular_price` | `{price[1]}` |
+| `single_product_sale_price` | `{column10[1]}` |
+| `single_product_type` | `{column27[1]}` |
+| `is_product_visibility`, `single_product_visibility` | `xpath`, `{visibility[1]}` |
+| Native `grouping_indicator` | `xpath` |
+| Template Add-On version field | `woo_add_on_version=4.0.6` (**template metadata only**, not installed Production plugin proof) |
+
+### Material differences / hazardous effective modes
+
+| Option / family | Exact exported value | Owner-approved intended behavior |
 |---|---|---|
-| Original dated ZIP | `6cb9f29fd4b798c38c8dcc05a3b28e01858c95f7847488fa9257bb91176a62c2`; 77,959 bytes | **NOT VERIFIED — exact bytes unavailable** |
-| Embedded CSV | `626da8979ce64ec5703ff7172aa0870b46870bc6c6dd9fe72ca1dbe7332808f8` | NOT VERIFIED |
-| Embedded template | `fa5af37b144c0f32d4a052672d1c406520c44d95da0f331039b2c70ea1ce121a` | NOT VERIFIED |
+| `first_is_parent` | `yes` | `no`; do not implicitly treat first source row as parent |
+| `matching_parent` | `first_is_parent_id` | Conceptual explicit Parent SKU, with native `first_is_parent_id` allowed only when combined with proper Column8 grouping and Column28 Parent SKU native mappings; **not** a simple string-mismatch decision |
+| `variable_sku` | blank | `{column2[1]}` |
+| `single_product_id_first_is_variation` | `{column3[1]}` | B native candidate uses `{column2[1]}`; raw Column3 token mismatch requires an authentic CSV parser test |
+| `is_update_sku`, `is_update_title` | both `1` | both `0` for existing product |
+| `is_update_custom_fields`, `update_custom_fields_logic` | `1`, `full_update` | `0`: preserve unrelated custom fields |
+| `is_update_acf`, `update_acf_logic` | `1`, `full_update` | `0`: preserve unrelated ACF |
+| `is_multiple_product_type`, `multiple_product_type` | `no`, `variable` | Source-backed native B candidate requires explicit product-type modes for synthetic simple versus grouped variations |
+| `product_visibility_xpath` | **absent** | B explicitly binds `{visibility[1]}`; observed A synthetic simple-product output was nevertheless `hidden` |
+| `is_update_content`, `is_update_categories`, `is_update_parent`, `is_update_attributes` | all `1` | all `0` for protected existing fields |
+| `is_update_status`, `is_update_product_type`, `is_update_attachments` | all `1` | all `0` |
 
-Expected, not independently recalculated: 95 columns, 876 rows, 53 simple, 823 variable, 355 zero-price rows carrying `hidden`, no duplicate Column1, one variable row with both Column8 and Column28 blank, 822 nonblank Column28 matching `PARENT_` + Column8. **Do not mark these observed.**
+Additional Woo generalized option update flags in this export are broad. Exact effective update behavior must be resolved jointly with product modes and native plugin code. A few positive bindings do not make this template compliant.
 
-`inspect-dated-bundle.py` checks source ZIP identity, member integrity/bounds, both exact embedded digests, UTF-8 BOM / semicolon / LF, parsed 95-wide rows, identity collisions, zero/hidden, Parent SKU relation, group-less census and template JSON parse status. It emits aggregate-only evidence. Source bytes remain local/private; **no original archive/rows/settings may be passed to GitHub Actions or committed**. Synthetic archive mutation tests exercise checker behavior, not the original source.
+## 3. Group-less variable row — real source classification
 
-## 2. Authority and data provenance
+**Directly observed:** it is source data row **757** (CSV header excluded), not the first row; it has a nonblank unique SKU, positive regular price and `visible` status, but **no Column8 and no Column28**. Its SKU is neither prefixed `PARENT_` nor equal to any generated Parent SKU in the dated source. Therefore the dated row is **not an explicit parent anchor for the generated parent-SKU cohort**. It also does not meet the approved variation grouping invariant.
 
-Read `GOAL_AUTHORITY/CURRENT_DESTINATION_2026-10-07.md`, `PROJECT_STATE.json`, `references/current_package/v3.14.2/INDEX.md`, active Import Contract `1.2.0`, and previous `TARGET_CONFIG_QUALIFICATION.md`.
+Business classification: `UNRESOLVED_UNGROUPED_VARIABLE_REQUIRES_POLICY_DECISION`. An existing legacy standalone variable product or explicit exception is still conceivable; no private catalogue/Production identity evidence authorizes declaring it invalid, silently deleting it, auto-grouping it or admitting it as a parent. A separate synthetic native A/B diagnostic found a group-less input converted to simple/no parent while grouped sibling variations attached correctly elsewhere. **That synthetic observation is not the original row's final classification.**
 
-Four non-interchangeable classes:
-1. **`OWNER_SUPPLIED_DATED_WPAI_IMPORT_BUNDLE`**: original Oct 4 bytes unobserved; supplied checksums/counts unverified. Reported template Woo Add-On 4.0.6 is dated **template evidence only** and does not prove what is installed today, or the installed Core version.
-2. **`OWNER_REPORTED_OPTION_VALUES_NOT_ZIP_VERIFIED`**: material option observations from the Owner's task. These are the only basis for reconstructed variant A.
-3. **`OWNER_APPROVED_TARGET_SEMANTICS`**: current Master `1.14.3`, Rulebook `1.24.4`, Import Contract `1.2.0`, and fixed `MST-007`.
-4. **`LAB_SYNTHETIC_RECONSTRUCTED_CONFIGURATION`**: independent native saved-import/readback on **WP All Import Pro 5.1.0 + Woo Add-On 4.0.6**, pinned WooCommerce 10.2.2. Not a Production export, and not the original dated Bundle.
+**Related source exception:** one `simple` row unexpectedly has a populated Column8 but blank Column28; static classification requires reviewing the exact intended product-type/group relation before treating every nonblank Column8 as a valid Variation.
 
-The machine-readable CI artifact `dated-reported-options-comparison.json` stores redacted, source-labeled comparisons and checks active contract policy; `dated-ab-comparison.json` and `dated-group-less-evidence.json` store synthetic native run outcomes only.
+## 4. Native Lab execution — what it proves
 
-## 3. Material Owner-reported exported-vs-target differences
+Existing Lab and pinned source: WordPress 6.8.3, PHP 8.2.34, WooCommerce 10.2.2, WP All Import Pro 5.1.0, Woo Add-On 4.0.6. The existing source-backed grouped parent/variation tests and synthetic 95-column shape checks remain.
 
-**These A observations have not been verified against original ZIP bytes.** B values refer to the actual verified LAB candidate (not an activated Production config).
+A = **native saved-import reconstructed from the exact source's allowlisted dated options**, not raw 523-option Import restoration; B = Owner-approved target candidate. Both use disposable **synthetic 95-column-schema-derived XML**, not original CSV, not Production and not C1/C2 input. Native `wp all-import run <id>` executes first create and then update; independent Woo CRUD readback checks Product ID, SKU, independently edited title, price/sale, catalog visibility, custom/ACF-like metadata.
 
-| Material key / effective mode | A — Owner-reported Oct 4 | Owner target / qualified B LAB | Risk or finding |
-|---|---|---|---|
-| `first_is_parent` | `yes` | `no` | First-row-parent is not authorized target identity |
-| `matching_parent` | `first_is_parent_id` | Conceptual policy = explicit Parent SKU; native Add-On still uses `first_is_parent_id` **with explicit Column8 group & Column28 Parent SKU bindings** | String comparison alone does not prove mode |
-| `variable_sku` | blank | `{column2[1]}` | Child SKU identity needs explicit binding |
-| `is_update_sku` | 1 | 0 | A native import changed protected SKU |
-| `is_update_title` | 1 | 0 | A native import overwrote independently edited title |
-| `is_update_custom_fields` and update logic | 1, full update | 0 for existing record | A native test cleared custom sentinel; no unsanitized custom mappings used |
-| `is_update_acf` and update logic | 1, full update | 0 for existing record | A cleared ACF-*like* meta; actual ACF plugin/mapping path NOT exercised |
-| `is_multiple_product_type` | `no` | Native candidate uses explicit per-scenario `yes` + `multiple_product_type=simple/variable` | Actual product type depends on combined options, not one flag |
-| `is_product_visibility` | `xpath` | `xpath` | Selector alone insufficient for a universal claim |
-| `single_product_visibility` | `{visibility[1]}` | same | Positive binding correspondence |
-| `product_visibility_xpath` | reportedly absent | `{visibility[1]}` | B source-backed mode; **A did return hidden** for tested simple zero despite missing selector, so do not assert universal A visibility failure |
-| `unique_key` | `{column1[1]}` | same | Positive correspondence, tested for synthetic native matching |
-| `single_product_sku` | `{column2[1]}` | same | Positive correspondence |
-| Variation Group ID | `{column8[1]}` | same | Positive correspondence in native grouped B case |
-| Parent SKU | `{column28[1]}` | same expression (native `single_product_first_is_parent_id_parent_sku`) | Positive reported expression; actual dated raw setting not inspected |
-| Regular Price | `{price[1]}` | same | Positive correspondence |
-| Sale Price | `{column10[1]}` | same | Positive correspondence |
+At the earlier PR #12 CI checkpoint, with the Owner-reported subset, A changed protected SKU and title and cleared unrelated meta; B preserved them. Both made simple price `0`, blank sale, `hidden` catalog and stable Product ID. **Updated exact-source allowlist candidate run requires its own latest CI result; never transfer the previous result blindly to changed option projections.** The 12 falsification controls and separate group-less 6 negative controls guard those scenarios.
 
-**Limit:** This is all material *reported* options, not proof that every effective exported option has been enumerated. The exact template export is needed for exhaustive static reconciliation. No flag was normalized or silently changed in reconstructed A. Unknown original option paths are not invented.
+**Unverified even after a PASS:** exact 523-option template runtime, authentic original ZIP import, true ACF mapping, exact `Column۳` parser normalization, all source product types/exception effects, real zero-priced variation inactive/display semantics, native provider comma CSV C1 and native XLSX C2.
 
-## 4. Native paired experiment (distinct synthetic product identities)
-
-The original existing CI Lab was extended rather than duplicated. A and B use equivalent source semantics and isolated synthetic identities in the same disposable WordPress/WooCommerce runner, not two separately restored DB snapshots.
-
-Each variant uses a **synthetic 95-column schema projection to XML** because exact dated ZIP input is inaccessible. Saved import options are read back through `PMXI_Import_Record`; first run creates a product; owner title and metadata are seeded; source changes SKU, title, regular to zero, sale to blank, visibility to hidden; second native `wp all-import run <id>` processes; Woo CRUD and metadata are read back by Product ID.
-
-| Measured outcome | Reconstructed A | Approved B |
-|---|---|---|
-| Native CLI executed, Product ID stable | PASS | PASS |
-| Regular `0`, empty Sale | PASS | PASS |
-| Catalog `hidden` | PASS | PASS |
-| Incoming changed SKU applied? | **Yes — protected-field mutation** | No — preserved |
-| Independently edited title preserved? | **No — overwritten** | Yes |
-| Custom metadata sentinel preserved? | **No — cleared** | Yes |
-| ACF-like post-meta sentinel preserved? | **No — cleared** | Yes |
-
-**Evidence scope:** These are real native WP All Import and WooCommerce operations on local synthetic fixtures. Clearing `_dated_lab_acf_like_sentinel` is not an authentic ACF plugin integration test. The full multi-option dated template, plugin licensing/runtime parity and full 876-row original CSV were not exercised.
-
-An independent verifier rejects deliberate mismatched protected SKU, title, visibility, meta, Product ID, numeric zero, missing Sale clear, unexecuted update, mislabeled A source, wrong flag, and missing B XPath: **12 falsification controls**. Previous PR #10/#11 native Lab regression remains in the CI workflow.
-
-## 5. Group-less Variable row — separately tested, not discarded
-
-The original reported single variable row with Column8 and Column28 blank is **not accessible**. Its exact role remains:
-
-`UNRESOLVED_ORPHAN_VS_EXPLICIT_PARENT_ANCHOR_VS_LEGITIMATE_EXCEPTION`
-
-An independent synthetic 95-column-derived XML fixture includes an explicit group-less `variable` row **followed by two grouped variation rows**. Separate A and B native imports were executed. In both, the group-less candidate was created as a **simple** WooCommerce product with no Parent ID; its two group members attached to a distinct variable parent with matching `PARENT_<group>` SKU. This measured synthetic behavior **does not classify the actual dated row**. A successful Import CLI run is not a policy admission for an orphan or implicit first-row parent.
-
-Independent group-less evidence checks reject six fabricated identity, missing-row, invalid-mode and fake business-admission mutations.
-
-## 6. Security and claim ceiling
-
-- No original private ZIP, real product/price row, raw template, live site identifier, credential, database dump or proprietary plugin source was committed to the public PR/CI artifact.
-- Original source is never needed on the public CI runner. The local private inspector refuses wrong size/hash and unsafe ZIP member paths.
-- There was no Production connection, Import configuration activation, Master/PPS/Rulebook/GWOC/CURRENT_SET or operational package mutation.
-- `MST-007` and Import Contract `1.2.0` unchanged.
+## 5. Required claim ceiling, privacy and next step
 
 ```text
 EXACT_SWITCHLAND_CONSUMER = NOT_PROVEN
@@ -105,11 +95,6 @@ SUCCESSOR_IMPLEMENTATION = DO_NOT_START_YET
 PRODUCTION_EQUIVALENCE = NOT_PROVEN
 ```
 
-## 7. Exact blockers and smallest next step toward C1
+No source, public/Production import settings, active Contract v1.2.0, MST-007, Master/Rulebook/GWOC/CURRENT_SET or operational package changed. The main PR remains Draft.
 
-1. **Exact dated ZIP unavailable**: provide the complete original ZIP in a private ephemeral context; run `inspect-dated-bundle.py` locally, compare every exported material option, and examine the group-less variable row's actual surrounding source/parent semantics without publishing its raw values.
-2. **Fresh active-site configuration unproved**: obtain a new *currently saved* WP All Import export and independent installed Core + WooCommerce Add-On version proof, including native saved-options readback. The dated October 4 artifact is not enough.
-3. **Native CSV direct consumption/C1 remains open**: only after verified current settings and private-source review, execute the approved 95-column CSV through the exact consumer in a protected disposable WooCommerce instance and verify readback. Provider-native comma/XLSX must be separately tested; never infer them from synthetic XML or structural CSV round-trips.
-4. **ACF & zero-priced variation admission**: real ACF field mapping, blank-vs-zero final CSV, inactive child visibility/parent-catalog behavior, and group-less exception semantics require exact evidence.
-
-**No successor implementation or serialization change is authorized by this qualification.** Keep Draft PR open for review; do not merge without Owner authorization.
+**Smallest next step:** Reconcile the current active Import's *fresh saved export* and installed Core/Add-On version proof against this dated exact source. In a private disposable WP environment, exercise exact original Bundle ingestion and Column۳/Column3 mapping plus group-less/zero Variation outcome without exposing business records. Then separately test provider-native comma CSV C1; do not infer C1 from semicolon CSV parsing or XML-based Lab runs.
