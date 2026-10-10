@@ -16,9 +16,19 @@ ORIGINAL_BLOBS = {
     "wp-all-import-pro.zip": "7d22a2f2fc2c9b682457585cb95eb21ed1ddac5f",
     "wpai-woocommerce-add-on_4.0.6.zip": "43fc604ddf48e035ff90a9bdfd9f16744128dd46",
 }
-EXISTING_ARCHIVES = {
-    "backups/recovery/SLPE-RECOVERY-BUNDLE-20260813-001/SLPE-RECOVERY-BUNDLE-20260813-001.tar.gz",
-    "references/current_package/v3.14.2/SwitchLand_Price_Engine_GPT_Project_Package_v3.14.2(1).zip",
+LEGACY_ARCHIVES = {
+    # Original archive identities are recorded in the recovery bundle manifest
+    # and the v3.14.2 package INDEX.md, respectively.
+    "backups/recovery/SLPE-RECOVERY-BUNDLE-20260813-001/SLPE-RECOVERY-BUNDLE-20260813-001.tar.gz": (
+        1721593,
+        "01d194ad6b7386675c5b7daf4df7f6375f55395e88c04d96ed1e968d08e611fc",
+        "4f5205cd8c4827e839ebfbbd7b73b985d2e17c84",
+    ),
+    "references/current_package/v3.14.2/SwitchLand_Price_Engine_GPT_Project_Package_v3.14.2(1).zip": (
+        502115,
+        "23c89b374b2728bf2606a3770f2a6ff6bb16387294f83194a33b0d8b9b084c06",
+        "b2a91ca53bf34d40b30fd85699a78032507a3ad5",
+    ),
 }
 ARCHIVE_SUFFIXES = (".zip", ".phar", ".7z", ".tar", ".tar.gz")
 LOCKED = {
@@ -93,7 +103,8 @@ def main():
         if {p.get("id") for p in actual if isinstance(p, dict)} != set(LOCKED):
             errors.append("manifest IDs missing or duplicated")
     expected = {FIXTURE_PREFIX + data[0]: (data[1], data[2], ORIGINAL_BLOBS[data[0]]) for data in LOCKED.values()}
-    allowed_archives = set(expected) | EXISTING_ARCHIVES
+    archive_identities = {**expected, **LEGACY_ARCHIVES}
+    allowed_archives = set(archive_identities)
     required_paths = set(expected) | {FIXTURE_PREFIX + "manifest.json"}
     sizes = {v[0]: v[1] for v in expected.values()}
     try:
@@ -102,8 +113,8 @@ def main():
         errors.append("git index is not available: " + str(exc))
         tracked = []
 
-    for rel in set(expected) - set(tracked):
-        errors.append("required ZIP missing from Git index: " + rel)
+    for rel in set(archive_identities) - set(tracked):
+        errors.append("required archive missing from Git index: " + rel)
 
     for rel in tracked:
         path = ROOT / rel
@@ -113,24 +124,24 @@ def main():
             errors.append("archive outside explicit allowlist: " + rel)
         if rel.startswith(FIXTURE_PREFIX) and path.is_symlink():
             errors.append("fixture symlink forbidden: " + rel)
-        if rel in expected:
-            if not path.is_file():
-                errors.append("required fixture absent: " + rel)
+        if rel in archive_identities:
+            if not path.is_file() or path.is_symlink():
+                errors.append("required archive absent or not a regular file: " + rel)
                 continue
-            size, sha, blob = expected[rel]
+            size, sha, blob = archive_identities[rel]
             try:
                 if path.stat().st_size != size:
-                    errors.append("fixture size drift: " + rel)
+                    errors.append("archive size drift: " + rel)
                     continue
                 with path.open("rb") as handle:
                     actual = hashlib.file_digest(handle, "sha256").hexdigest()
                 if actual != sha:
-                    errors.append("fixture SHA drift: " + rel)
+                    errors.append("archive SHA drift: " + rel)
                 tracked_blob = subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", ":" + rel], text=True).strip()
                 if tracked_blob != blob:
-                    errors.append("fixture Git blob drift: " + rel)
+                    errors.append("archive Git blob drift: " + rel)
             except (OSError, subprocess.CalledProcessError) as exc:
-                errors.append("unreadable fixture: " + rel + " (" + str(exc) + ")")
+                errors.append("unreadable archive: " + rel + " (" + str(exc) + ")")
         elif path.is_symlink():
             # A Git-tracked symlink stores its target path, not archive bytes.
             continue

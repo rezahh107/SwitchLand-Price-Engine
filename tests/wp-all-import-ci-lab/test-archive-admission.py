@@ -123,5 +123,80 @@ class ArchiveAdmissionTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
 
 
+    # The two pre-existing allowlisted archives must be immutable at the
+    # admission boundary, not merely permitted because their paths match.
+    LEGACY_PROJECT_ZIP = (
+        "references/current_package/v3.14.2/"
+        "SwitchLand_Price_Engine_GPT_Project_Package_v3.14.2(1).zip"
+    )
+    LEGACY_RECOVERY_TAR = (
+        "backups/recovery/SLPE-RECOVERY-BUNDLE-20260813-001/"
+        "SLPE-RECOVERY-BUNDLE-20260813-001.tar.gz"
+    )
+
+    def mutate_legacy_and_assert_rejected(self, relative, replacement=None, *, untrack=False):
+        archive = ROOT / relative
+        original = archive.read_bytes()
+        original_index = subprocess.check_output(
+            ["git", "rev-parse", ":" + relative], cwd=ROOT, text=True,
+        ).strip()
+        self.assertEqual(self.run_guard().returncode, 0, "original four archives must pass")
+        try:
+            if untrack:
+                subprocess.run(["git", "rm", "--cached", "-q", "--", relative], cwd=ROOT, check=True)
+            elif replacement is None:
+                archive.unlink()
+            else:
+                archive.write_bytes(replacement)
+                subprocess.run(["git", "add", "-f", "--", relative], cwd=ROOT, check=True)
+            observed = self.run_guard()
+            self.assertNotEqual(observed.returncode, 0, relative)
+            self.assertIn("WPAI_FIXTURE_ADMISSION_FAIL", observed.stderr, relative)
+            self.assertIn(relative, observed.stderr, relative)
+        finally:
+            archive.write_bytes(original)
+            subprocess.run(["git", "add", "-f", "--", relative], cwd=ROOT, check=True)
+            restored_index = subprocess.check_output(
+                ["git", "rev-parse", ":" + relative], cwd=ROOT, text=True,
+            ).strip()
+            self.assertEqual(restored_index, original_index, "Git index archive identity restored")
+            self.assertEqual(
+                subprocess.run(["git", "diff", "--quiet", "--", relative], cwd=ROOT).returncode,
+                0, "working tree archive identity restored",
+            )
+            self.assertEqual(
+                subprocess.run(["git", "diff", "--cached", "--quiet", "--", relative], cwd=ROOT).returncode,
+                0, "staged archive identity restored",
+            )
+
+    def test_legacy_project_replaced_valid_zip(self):
+        # Other three admitted archives remain unchanged: same-root bypass check.
+        self.mutate_legacy_and_assert_rejected(self.LEGACY_PROJECT_ZIP, archive_bytes("zip"))
+
+    def test_legacy_recovery_replaced_valid_tar_gz(self):
+        # Other three admitted archives remain unchanged: inverse bypass check.
+        self.mutate_legacy_and_assert_rejected(self.LEGACY_RECOVERY_TAR, archive_bytes("tar-gz"))
+
+    def test_legacy_project_changed_bytes_same_path(self):
+        path = ROOT / self.LEGACY_PROJECT_ZIP
+        self.mutate_legacy_and_assert_rejected(self.LEGACY_PROJECT_ZIP, path.read_bytes() + b"changed")
+
+    def test_legacy_recovery_changed_bytes_same_path(self):
+        path = ROOT / self.LEGACY_RECOVERY_TAR
+        self.mutate_legacy_and_assert_rejected(self.LEGACY_RECOVERY_TAR, path.read_bytes() + b"changed")
+
+    def test_legacy_project_missing(self):
+        self.mutate_legacy_and_assert_rejected(self.LEGACY_PROJECT_ZIP)
+
+    def test_legacy_recovery_missing(self):
+        self.mutate_legacy_and_assert_rejected(self.LEGACY_RECOVERY_TAR)
+
+    def test_legacy_project_missing_from_index(self):
+        self.mutate_legacy_and_assert_rejected(self.LEGACY_PROJECT_ZIP, untrack=True)
+
+    def test_legacy_recovery_missing_from_index(self):
+        self.mutate_legacy_and_assert_rejected(self.LEGACY_RECOVERY_TAR, untrack=True)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
