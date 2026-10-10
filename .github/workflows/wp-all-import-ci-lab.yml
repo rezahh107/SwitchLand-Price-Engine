@@ -66,6 +66,8 @@ jobs:
           php tests/wp-all-import-ci-lab/verify-package-fixtures.php
           python3 tests/wp-all-import-ci-lab/test-archive-admission.py
           find tests/wp-all-import-ci-lab -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+          php tests/wp-all-import-ci-lab/target-fixture.php
+          test -s "$LAB_OUT/synthetic-95col-report.json"
 
       - name: Set up pinned WP CLI, WordPress, and WooCommerce
         shell: bash
@@ -104,6 +106,8 @@ jobs:
           php tests/wp-all-import-ci-lab/source-audit.php "$LAB_WP/wp-content/plugins/wp-all-import-pro" "$LAB_OUT/source-audit.json"
           cat "$LAB_OUT/source-audit.json"
           php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/runtime-source-probe.php --path="$LAB_WP"
+          php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-source-probe.php --path="$LAB_WP"
+          test -s "$LAB_OUT/target-source-probe.json"
 
       - name: Capture observed exact runtime identity
         shell: bash
@@ -149,6 +153,38 @@ jobs:
           php tests/wp-all-import-ci-lab/validate-evidence.php "$LAB_OUT/evidence.json" "$LAB_OUT"
           php tests/wp-all-import-ci-lab/falsify-evidence.php "$LAB_OUT"
           sha256sum "$LAB_OUT/evidence.json"
+
+      - name: Exercise separate saved target simple-product candidate using native importer
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB_STAGE=bootstrap php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-simple-consumer.php --path="$LAB_WP"
+          id="$(cat "$LAB_OUT/target-simple-import-id.txt")"
+          test "$id" -gt 0
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/target-native-initial.log"
+          LAB_STAGE=pre php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-simple-consumer.php --path="$LAB_WP"
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/target-native-updated.log"
+          LAB_STAGE=mid php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-simple-consumer.php --path="$LAB_WP"
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/target-native-zero.log"
+          LAB_STAGE=post php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-simple-consumer.php --path="$LAB_WP"
+          # Synthetic-only read-backs help diagnose a failing independent verifier.
+          php -r 'foreach (["target-simple-pre","target-simple-mid","target-simple-post"] as $name) { $data=json_decode(file_get_contents(getenv("LAB_OUT")."/".$name.".json"),true); echo $name,": ",json_encode($data,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES),"\n"; }'
+          php tests/wp-all-import-ci-lab/verify-target-simple.php "$LAB_OUT"
+          test -s "$LAB_OUT/target-simple-evidence.json"
+
+      - name: Qualify grouped variations and repeated native import against WooCommerce
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB_STAGE=bootstrap php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-variation-consumer.php --path="$LAB_WP"
+          id="$(cat "$LAB_OUT/target-variable-import-id.txt")"
+          test "$id" -gt 0
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/target-native-variation-initial.log"
+          LAB_STAGE=first php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-variation-consumer.php --path="$LAB_WP"
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/target-native-variation-repeat.log"
+          LAB_STAGE=second php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-variation-consumer.php --path="$LAB_WP"
+          php tests/wp-all-import-ci-lab/verify-target-variation.php "$LAB_OUT"
+          test -s "$LAB_OUT/target-variation-evidence.json"
 
       - name: Capture native import failure diagnostics without overriding failure
         if: failure()

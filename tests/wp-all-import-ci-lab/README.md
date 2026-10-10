@@ -62,3 +62,7 @@ plugin ZIP copies, Production data, credentials or WordPress DB dumps.
 Historical PR #8 stays closed and unmerged; historical availability of its
 objects remains `NOT_PROVEN_CLEARED`. This successor stays on PR #9's ancestry
 and references only the identical existing Git binary blobs.
+
+## Bounded target configuration candidate qualification (PR #11)
+
+See [TARGET_CONFIG_QUALIFICATION.md](TARGET_CONFIG_QUALIFICATION.md) for historical/template/Owner/lab/fresh-export provenance boundaries, native simple and variation read-backs, intentional corruption controls, exact pinned versions and the remaining Production-equivalence/zero-variation gaps. This is CI-only test infrastructure. It does **not** activate the candidate mapping or qualify the exact current SwitchLand consumer.

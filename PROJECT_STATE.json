@@ -1,7 +1,7 @@
 {
   "schema_version": "slpe-repository-governance-state.v2",
   "project_id": "switchland-price-engine",
-  "updated_at": "2026-10-07",
+  "updated_at": "2026-10-10",
   "repository_role": "VERSION_CONTROLLED_GOVERNANCE_AUTHORITY_REPRESENTATION_HISTORY_QUALIFICATION_REGRESSION_AND_CI_EVIDENCE",
   "owner_destination_authority": {
     "status": "ACTIVE_OWNER_DESTINATION",
@@ -50,10 +50,35 @@
     "MST_007": "UNCHANGED",
     "active_wp_all_import_contract_v1_2_0": "UNCHANGED"
   },
-  "next_repository_engineering_action": "WP_ALL_IMPORT_CI_LAB",
+  "next_repository_engineering_action": "QUALIFY_FRESH_WPAI_TARGET_EXPORT_AND_ZERO_PRICE_VARIATION_PRESENTATION",
   "governance_rebaseline": {
     "target_date": "2026-10-07",
     "status": "REBASELINED_CURRENT_DESTINATION_WITH_EXACT_PACKAGE_BYTES_ARCHIVED_AND_VERIFIED"
   },
-  "live_workspace_or_production_mutation_by_rebaseline": false
+  "live_workspace_or_production_mutation_by_rebaseline": false,
+  "wp_all_import_ci_lab": {
+    "v1_merged": {
+      "status": "NATIVE_SIMPLE_PRODUCT_RUNTIME_VERIFIED_IN_CI",
+      "merged_pr": 10,
+      "baseline_commit": "e479e6e90450840657b8237418ae48f2a8d916bb",
+      "scope": "synthetic XML simple product create/update, existing Product ID stable, unrelated metadata sentinel preserved, real WP All Import CLI and Woo CRUD read-back",
+      "production_equivalence": "NOT_PROVEN"
+    },
+    "target_configuration_v1": {
+      "pr": 11,
+      "state": "LAB_CANDIDATE_RUNTIME_VERIFIED_EXACT_TARGET_NOT_PROVEN",
+      "provenance": "LAB candidate on WP All Import Pro 5.1.0 and WooCommerce Add-On Pro 4.0.6, not production configuration",
+      "synthetic_95_column_fixture": "CI_PASS_FOR_ORDER_BOM_MULTILINE_PERSIAN_ZERO_BLANK_AND_NEGATIVE_CONTROLS_NOT_NATIVE_CSV_IMPORT",
+      "native_simple_product_target_candidate": "NATIVE_IMPORT_WOO_READBACK_PASS_ID_PRICES_SALE_ZERO_HIDDEN_SKU_SENTINEL_NEGATIVE_CONTROLS",
+      "variable_parent_variation": "NATIVE_IMPORT_WOO_READBACK_PASS_TWO_PARENTS_FOUR_VARIATIONS_PERSISTENT_IDENTITIES_DISTINCT_GROUPS_REPEATED_IMPORT_NO_DUPLICATES_NEGATIVE_CONTROLS",
+      "zero_price_and_blank_product_behavior": "SIMPLE_ZERO_HIDDEN_SALE_BLANK_RUNTIME_PASS; VARIATION_ZERO_PRICE_WITH_ACTIVE_SIBLINGS_RUNTIME_PASS; VARIATION_INACTIVE_VISIBILITY_SEMANTICS_NOT_PROVEN; INPUT_BLANK_NOT_ZERO_SYNTHETIC_PASS",
+      "exact_fresh_export": "NOT_AVAILABLE_IN_INSPECTED_REPO_OR_DRIVE",
+      "exact_switchland_consumer": "NOT_PROVEN",
+      "historical_addon_version": "4.0.5",
+      "lab_addon_version": "4.0.6",
+      "current_target_plugin_version": "NOT_PROVEN",
+      "production_equivalence": "NOT_PROVEN",
+      "last_verified_ci_run": "https://github.com/rezahh107/SwitchLand-Price-Engine/actions/runs/38073254974"
+    }
+  }
 }
