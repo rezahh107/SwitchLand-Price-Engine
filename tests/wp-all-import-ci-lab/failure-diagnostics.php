@@ -16,7 +16,22 @@ if ($id > 0) {
         $path = (string) $import->path;
         $absolute = function_exists('wp_all_import_get_absolute_path')
             ? wp_all_import_get_absolute_path($path) : $path;
+        $chunkData = [];
+        if (class_exists('PMXI_Chunk') && is_file($absolute)) {
+            try {
+                $chunk = new PMXI_Chunk($absolute, ['element' => (string)$import->root_element]);
+                $xml = $chunk->read();
+                $chunkData = [
+                    'first_chunk_bytes' => is_string($xml) ? strlen($xml) : null,
+                    'first_chunk_sha256' => is_string($xml) ? hash('sha256', $xml) : null,
+                    'chunk_root' => $import->root_element,
+                ];
+            } catch (Throwable $exception) {
+                $chunkData = ['native_chunk_error' => $exception->getMessage()];
+            }
+        }
         $data['import'] = [
+            'native_chunk_probe' => $chunkData,
             'path' => $path, 'absolute_path' => $absolute,
             'file_exists' => is_file($absolute),
             'file_size' => is_file($absolute) ? filesize($absolute) : null,
