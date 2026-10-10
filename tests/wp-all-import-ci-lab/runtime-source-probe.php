@@ -21,7 +21,7 @@ if (!is_array($options) || !$options) {
 }
 $model = new PMXI_Import_Record();
 foreach (['set', 'save', 'getById', 'isEmpty'] as $method) {
-    if (!method_exists($model, $method)) {
+    if (!is_callable([$model, $method])) {
         fwrite(STDERR, "WPAI_NATIVE_SEAM_MISSING: import model method $method\n");
         exit(1);
     }
