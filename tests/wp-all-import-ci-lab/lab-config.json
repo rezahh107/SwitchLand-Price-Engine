@@ -1,0 +1,36 @@
+{
+  "schema_version": "wpai-consumer-lab-v1.0",
+  "lab_id": "WP_ALL_IMPORT_CI_LAB_V1",
+  "environment_class": "LAB_INFRASTRUCTURE_SMOKE_NOT_PRODUCTION_BOUND",
+  "consumer_config_classification": "LAB_SYNTHETIC_WPAI_CONFIG",
+  "versions": {
+    "runner": "ubuntu-24.04",
+    "php": "8.2.34",
+    "wordpress": "6.8.3",
+    "mariadb": "11.4.8",
+    "wp_cli": "2.12.0",
+    "woocommerce": "10.2.2",
+    "wp_all_import_pro": "5.1.0",
+    "woocommerce_addon": "4.0.6"
+  },
+  "fixture": {
+    "sku": "LAB-SIMPLE-001",
+    "title": "LAB Synthetic Switch",
+    "start_regular_price": "12.00",
+    "expected_regular_price": "19.50",
+    "sentinel_meta_key": "_wpai_lab_unrelated_sentinel",
+    "sentinel_value": "LAB-SENTINEL-UNCHANGED"
+  },
+  "acquisition_policy": "REPOSITORY_TRACKED_EXACT_FIXTURES_NO_NETWORK_FALLBACK",
+  "claim_ceiling": {
+    "LAB_NATIVE_WPAI_EXECUTION": "NOT_PROVEN_UNTIL_EXECUTED",
+    "EXACT_SWITCHLAND_CONSUMER": "NOT_PROVEN",
+    "C1_PROVIDER_NATIVE_COMMA_CSV": "NOT_PROVEN",
+    "C2_PROVIDER_NATIVE_XLSX": "NOT_PROVEN",
+    "EXACT_IMPORT_CONFIGURATION": "PARTIALLY_PROVEN_BUT_MATERIALLY_INCOMPLETE",
+    "OWNER_SERIALIZATION_DECISION_READY": "NO",
+    "SUCCESSOR_IMPLEMENTATION": "DO_NOT_START_YET",
+    "PRODUCTION_EQUIVALENCE": "NOT_PROVEN",
+    "VARIABLE_PRODUCT_CONSUMER_PATH": "NOT_PROVEN_IN_V1"
+  }
+}
