@@ -178,12 +178,14 @@ class ArchiveAdmissionTests(unittest.TestCase):
         self.mutate_legacy_and_assert_rejected(self.LEGACY_RECOVERY_TAR, archive_bytes("tar-gz"))
 
     def test_legacy_project_changed_bytes_same_path(self):
-        path = ROOT / self.LEGACY_PROJECT_ZIP
-        self.mutate_legacy_and_assert_rejected(self.LEGACY_PROJECT_ZIP, path.read_bytes() + b"changed")
+        data = bytearray((ROOT / self.LEGACY_PROJECT_ZIP).read_bytes())
+        data[len(data) // 2] ^= 1  # Same size: prove identity, not size alone.
+        self.mutate_legacy_and_assert_rejected(self.LEGACY_PROJECT_ZIP, bytes(data))
 
     def test_legacy_recovery_changed_bytes_same_path(self):
-        path = ROOT / self.LEGACY_RECOVERY_TAR
-        self.mutate_legacy_and_assert_rejected(self.LEGACY_RECOVERY_TAR, path.read_bytes() + b"changed")
+        data = bytearray((ROOT / self.LEGACY_RECOVERY_TAR).read_bytes())
+        data[len(data) // 2] ^= 1  # Same size: prove identity, not size alone.
+        self.mutate_legacy_and_assert_rejected(self.LEGACY_RECOVERY_TAR, bytes(data))
 
     def test_legacy_project_missing(self):
         self.mutate_legacy_and_assert_rejected(self.LEGACY_PROJECT_ZIP)
