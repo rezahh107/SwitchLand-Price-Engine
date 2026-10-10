@@ -50,9 +50,9 @@ foreach ($files as $file) {
 // Small exact-version source windows for establishing the native bootstrap boundary.
 // Auditing stops before implementation if internal semantics differ.
 $windows = [
-    'actions/wp_ajax_wpai_run_preview_with_progress.php' => [1435, 1525],
-    'classes/cli.php' => [28, 95],
-    'wp-all-import-pro.php' => [1534, 1585],
+    'actions/wp_ajax_wpai_run_preview_with_progress.php' => [1520, 1555],
+    'classes/cli.php' => [95, 265],
+    'wp-all-import-pro.php' => [1650, 1730],
 ];
 $sourceWindows = [];
 foreach ($windows as $relative => [$first, $last]) {
