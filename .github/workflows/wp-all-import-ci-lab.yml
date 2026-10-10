@@ -172,6 +172,20 @@ jobs:
           php tests/wp-all-import-ci-lab/verify-target-simple.php "$LAB_OUT"
           test -s "$LAB_OUT/target-simple-evidence.json"
 
+      - name: Qualify grouped variations and repeated native import against WooCommerce
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB_STAGE=bootstrap php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-variation-consumer.php --path="$LAB_WP"
+          id="$(cat "$LAB_OUT/target-variable-import-id.txt")"
+          test "$id" -gt 0
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/target-native-variation-initial.log"
+          LAB_STAGE=first php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-variation-consumer.php --path="$LAB_WP"
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/target-native-variation-repeat.log"
+          LAB_STAGE=second php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-variation-consumer.php --path="$LAB_WP"
+          php tests/wp-all-import-ci-lab/verify-target-variation.php "$LAB_OUT"
+          test -s "$LAB_OUT/target-variation-evidence.json"
+
       - name: Capture native import failure diagnostics without overriding failure
         if: failure()
         shell: bash
