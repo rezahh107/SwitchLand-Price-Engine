@@ -104,6 +104,8 @@ jobs:
           php tests/wp-all-import-ci-lab/source-audit.php "$LAB_WP/wp-content/plugins/wp-all-import-pro" "$LAB_OUT/source-audit.json"
           cat "$LAB_OUT/source-audit.json"
           php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/runtime-source-probe.php --path="$LAB_WP"
+          php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-source-probe.php --path="$LAB_WP"
+          test -s "$LAB_OUT/target-source-probe.json"
 
       - name: Capture observed exact runtime identity
         shell: bash
