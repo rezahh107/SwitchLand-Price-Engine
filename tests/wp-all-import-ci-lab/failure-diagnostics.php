@@ -43,7 +43,23 @@ if ($id > 0) {
                 $chunkData = ['native_chunk_error' => $exception->getMessage()];
             }
         }
+        $historyRows = [];
+        $historyList = new PMXI_File_List();
+        $historyList->setColumns('id', 'name', 'registered_on', 'path')
+            ->getBy(['import_id' => $id], 'id DESC');
+        foreach ($historyList as $row) {
+            $hp = wp_all_import_get_absolute_path($row['path']);
+            $historyRows[] = [
+                'id' => $row['id'],
+                'path' => $row['path'],
+                'exists' => is_file($hp),
+                'sha256' => is_file($hp) ? hash_file('sha256', $hp) : null,
+                'size' => is_file($hp) ? filesize($hp) : null,
+            ];
+            if (count($historyRows) >= 5) break;
+        }
         $data['import'] = [
+            'file_history' => $historyRows,
             'native_chunk_probe' => $chunkData,
             'path' => $path, 'absolute_path' => $absolute,
             'file_exists' => is_file($absolute),
