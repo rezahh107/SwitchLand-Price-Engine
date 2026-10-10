@@ -69,12 +69,26 @@ foreach ($windows as $relative => [$first, $last]) {
         $sourceWindows[$relative][] = sprintf('%04d %s', $line, $lines[$line - 1]);
     }
 }
+// Pin the actual native execution function rather than reasoning from CLI exit.
+$recordSourcePath = $root . '/models/import/record.php';
+$recordLines = file($recordSourcePath, FILE_IGNORE_NEW_LINES);
+$executeStarts = [];
+foreach ($recordLines as $index => $line) {
+    if (preg_match('/function\\s+execute\\s*\\(/', $line)) {
+        $executeStarts[] = $index + 1;
+        for ($j = $index; $j < min($index + 160, count($recordLines)); ++$j) {
+            $sourceWindows['models/import/record.php'][] = sprintf('%04d %s', $j + 1, $recordLines[$j]);
+        }
+        break;
+    }
+}
 $result = [
     'schema_version' => '1.0.0',
     'classification' => 'EXACT_INSTALLED_SOURCE_AUDIT_NOT_RUNTIME_PROOF',
     'plugin_root' => basename($root),
     'seams' => $matches,
     'source_windows' => $sourceWindows,
+    'native_execute_definition_lines' => $executeStarts,
     'bootstrap_disposition' => 'REQUIRES_SOURCE_REVIEW_AND_NATIVE_SAVED_RECORD_READBACK',
     'claims' => [
         'LAB_NATIVE_WPAI_EXECUTION' => 'NOT_PROVEN',
