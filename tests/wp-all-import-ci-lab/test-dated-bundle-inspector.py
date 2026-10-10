@@ -80,6 +80,21 @@ class PrivateBundleInspectorTests(unittest.TestCase):
                 try:probe.inspect(str(f))
                 finally:probe.ZIP_SIZE=old
 
+    def test_uncompressed_zip_bomb_rejected_before_integrity_scan(self):
+        with tempfile.TemporaryDirectory() as d:
+            file=Path(d)/"oversized.zip"
+            with zipfile.ZipFile(file,"w",compression=zipfile.ZIP_DEFLATED) as z:
+                z.writestr("very-large.bin",b"A"*(probe.MAX_MEMBER_BYTES+1))
+            old=(probe.ZIP_SIZE,probe.ZIP_SHA)
+            try:
+                raw=file.read_bytes()
+                probe.ZIP_SIZE=len(raw)
+                probe.ZIP_SHA=hashlib.sha256(raw).hexdigest()
+                with self.assertRaisesRegex(ValueError,"ZIP_MEMBER_UNSAFE_OR_ENCRYPTED"):
+                    probe.inspect(str(file))
+            finally:
+                probe.ZIP_SIZE,probe.ZIP_SHA=old
+
     def test_duplicate_identity_and_parent_mismatch_detected(self):
         for kw,field in [(dict(duplicate_uid=True),"duplicate_column1"),
                           (dict(bad_parent=True),"parent_sku_relation_mismatches")]:
