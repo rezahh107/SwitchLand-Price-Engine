@@ -14,6 +14,7 @@ $mutations = [
     'missing_import_id' => static function (&$v): void {unset($v['consumer_config']['import_id']);},
     'wrong_plugin_digest' => static function (&$v): void {$v['packages']['wp-all-import-pro']['zip_sha256'] = str_repeat('0', 64);},
     'unexecuted_native_command' => static function (&$v): void {$v['execution']['native_command'] = 'wp eval fake-import';},
+    'missing_native_cli_help' => static function (&$v): void {unset($v['execution']['native_cli_help_sha256']);},
     'unupdated_product' => static function (&$v): void {$v['fixture']['after']['regular_price'] = $v['fixture']['before']['regular_price'];},
     'mutated_sentinel' => static function (&$v): void {$v['fixture']['after']['sentinel'] = 'UNRELATED-FIELD-CORRUPTED';},
     'missing_runtime_version' => static function (&$v): void {unset($v['environment']['php']);},
