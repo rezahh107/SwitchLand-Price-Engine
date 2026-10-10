@@ -133,6 +133,7 @@ if(!$p||!$p->is_type('simple'))throw new RuntimeException('TARGET_NATIVE_SIMPLE_
 $money=static fn($n) => $n===''?'':(is_numeric($n)?number_format((float)$n,2,'.',''):'NONNUMERIC');
 $state=[
     'product_id'=>$productId,'import_id'=>$id,'sku'=>$p->get_sku(),'type'=>$p->get_type(),
+    'title'=>$p->get_name(),
     'regular_price'=>$money($p->get_regular_price()),
     'sale_price'=>$money($p->get_sale_price()),
     'catalog_visibility'=>$p->get_catalog_visibility(),
@@ -142,13 +143,18 @@ $state=[
 ];
 if($stage==='pre') {
     update_post_meta($productId,$sentinel,'DO_NOT_CHANGE');
+    $titleSeed=wp_update_post(['ID'=>$productId,'post_title'=>'KEEP_OWNER_TITLE'],true);
+    if(is_wp_error($titleSeed)||$titleSeed!=$productId)throw new RuntimeException('TARGET_NATIVE_PROTECTED_TITLE_SEED_FAILED');
+    $freshProduct=wc_get_product($productId);
+    if(!$freshProduct||$freshProduct->get_name()!=='KEEP_OWNER_TITLE')throw new RuntimeException('TARGET_NATIVE_PROTECTED_TITLE_READBACK_FAILED');
+    $state['title']=$freshProduct->get_name();
     $state['sentinel']=get_post_meta($productId,$sentinel,true);
     $emit('target-simple-pre',$state);
     $repoint($id,'updated');
     echo "WPAI_TARGET_SIMPLE_PRE_READBACK\n";return;
 }
 $before=json_decode((string)file_get_contents($out.'/target-simple-pre.json'),true,512,JSON_THROW_ON_ERROR);
-if($state['product_id']!==$before['product_id']||$state['sku']!==$originalSku||$state['sentinel']!=='DO_NOT_CHANGE')
+if($state['product_id']!==$before['product_id']||$state['sku']!==$originalSku||$state['title']!=='KEEP_OWNER_TITLE'||$state['sentinel']!=='DO_NOT_CHANGE')
     throw new RuntimeException('TARGET_NATIVE_PROTECTED_IDENTITY_OR_META_CHANGED');
 if($stage==='mid') {
     $emit('target-simple-mid',$state);
