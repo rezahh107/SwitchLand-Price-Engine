@@ -92,7 +92,9 @@ jobs:
           php "$LAB_WP_CLI" plugin activate wp-all-import-pro wpai-woocommerce-add-on --path="$LAB_WP"
           test "$(php "$LAB_WP_CLI" plugin get wp-all-import-pro --field=version --path="$LAB_WP")" = '5.1.0'
           test "$(php "$LAB_WP_CLI" plugin get wpai-woocommerce-add-on --field=version --path="$LAB_WP")" = '4.0.6'
-          php "$LAB_WP_CLI" all-import --help --path="$LAB_WP"
+          php "$LAB_WP_CLI" all-import --help --path="$LAB_WP" | tee "$LAB_OUT/native-cli-help.txt"
+          grep -Eq '^[[:space:]]+run([[:space:]]|$)' "$LAB_OUT/native-cli-help.txt"
+          grep -Eq '^[[:space:]]+list([[:space:]]|$)' "$LAB_OUT/native-cli-help.txt"
           php "$LAB_WP_CLI" all-import list --path="$LAB_WP"
 
       - name: Audit exact plugin bootstrap and native execution seams
