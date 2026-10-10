@@ -18,6 +18,7 @@ $runtime = $read($out . '/runtime.json');
 $bootstrap = $read($out . '/bootstrap.json');
 $pre = $read($out . '/pre-state.json');
 $post = $read($out . '/post-state.json');
+$sourceSwitch = $read($out . '/updated-source.json');
 $initialLog = $out . '/native-initial-run.log';
 $updateLog = $out . '/native-update-run.log';
 if (!is_file($initialLog) || !is_file($updateLog)
@@ -37,7 +38,11 @@ $checks = [
     'config_identity' => ($runtime['config_sha256'] ?? null) === hash_file('sha256', $configPath)
         && ($bootstrap['config_sha256'] ?? null) === hash_file('sha256', $configPath),
     'input_identity' => ($bootstrap['input_initial_sha256'] ?? null) === hash_file('sha256', $repo . '/tests/wp-all-import-ci-lab/fixtures/initial.xml')
-        && ($bootstrap['input_updated_sha256'] ?? null) === hash_file('sha256', $repo . '/tests/wp-all-import-ci-lab/fixtures/updated.xml'),
+        && ($bootstrap['input_updated_sha256'] ?? null) === hash_file('sha256', $repo . '/tests/wp-all-import-ci-lab/fixtures/updated.xml')
+        && ($sourceSwitch['source_sha256'] ?? null) === $bootstrap['input_updated_sha256']
+        && ($sourceSwitch['source_fixture_sha256'] ?? null) === $bootstrap['input_updated_sha256']
+        && ($sourceSwitch['native_import_record_readback'] ?? null) === true
+        && ($sourceSwitch['import_id'] ?? null) === ($bootstrap['import_id'] ?? null),
     'authentic_saved_import' => $id > 0 && ($bootstrap['import_id'] ?? null) === $id
         && ($bootstrap['saved_import_readback'] ?? null) === true
         && ($post['import_id'] ?? null) === $id
@@ -92,6 +97,7 @@ $evidence = [
         'sku' => $f['sku'],
         'initial_xml_sha256' => $bootstrap['input_initial_sha256'],
         'updated_xml_sha256' => $bootstrap['input_updated_sha256'],
+        'updated_source_record' => $sourceSwitch,
         'before' => $pre,
         'after' => $post,
     ],
