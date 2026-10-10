@@ -47,49 +47,21 @@ foreach ($files as $file) {
         }
     }
 }
-// Small exact-version source windows for establishing the native bootstrap boundary.
-// Auditing stops before implementation if internal semantics differ.
-$windows = [
-    'actions/wp_ajax_wpai_run_preview_with_progress.php' => [1520, 1555],
-    'classes/cli.php' => [95, 265],
-    'wp-all-import-pro.php' => [1650, 1730],
-];
-$sourceWindows = [];
-foreach ($windows as $relative => [$first, $last]) {
-    $path = $root . '/' . $relative;
-    if (!is_file($path)) {
-        continue;
-    }
-    $lines = file($path, FILE_IGNORE_NEW_LINES);
-    if (!is_array($lines)) {
-        continue;
-    }
-    $sourceWindows[$relative] = [];
-    for ($line = $first; $line <= min($last, count($lines)); ++$line) {
-        $sourceWindows[$relative][] = sprintf('%04d %s', $line, $lines[$line - 1]);
-    }
-}
-// Pin the actual native execution function rather than reasoning from CLI exit.
+// Exact method provenance only. Never publish bundled third-party source excerpts.
 $recordSourcePath = $root . '/models/import/record.php';
-$recordLines = file($recordSourcePath, FILE_IGNORE_NEW_LINES);
-$executeStarts = [];
-foreach ($recordLines as $index => $line) {
-    if (preg_match('/function\\s+execute\\s*\\(/', $line)) {
-        $executeStarts[] = $index + 1;
-        for ($j = $index; $j < min($index + 410, count($recordLines)); ++$j) {
-            $sourceWindows['models/import/record.php'][] = sprintf('%04d %s', $j + 1, $recordLines[$j]);
-        }
-        break;
-    }
+$recordSource = file_get_contents($recordSourcePath);
+if ($recordSource === false || !preg_match('/function\\s+execute\\s*\\(/', $recordSource, $executeMatch, PREG_OFFSET_CAPTURE)) {
+    fwrite(STDERR, "WPAI_SOURCE_AUDIT_FAILURE: native execute method missing\\n");
+    exit(1);
 }
+$executeStarts = [substr_count($recordSource, "\\n", 0, $executeMatch[0][1]) + 1];
 $result = [
     'schema_version' => '1.0.0',
     'classification' => 'EXACT_INSTALLED_SOURCE_AUDIT_NOT_RUNTIME_PROOF',
     'plugin_root' => basename($root),
     'seams' => $matches,
-    'source_windows' => $sourceWindows,
     'native_execute_definition_lines' => $executeStarts,
-    'bootstrap_disposition' => 'REQUIRES_SOURCE_REVIEW_AND_NATIVE_SAVED_RECORD_READBACK',
+    'bootstrap_disposition' => 'NATIVE_SAVED_IMPORT_BOOTSTRAP_VERIFIED_SEPARATELY',
     'claims' => [
         'LAB_NATIVE_WPAI_EXECUTION' => 'NOT_PROVEN',
         'EXACT_SWITCHLAND_CONSUMER' => 'NOT_PROVEN',
