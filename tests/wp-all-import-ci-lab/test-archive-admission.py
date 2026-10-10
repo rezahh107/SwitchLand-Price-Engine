@@ -198,5 +198,16 @@ class ArchiveAdmissionTests(unittest.TestCase):
         self.mutate_legacy_and_assert_rejected(self.LEGACY_RECOVERY_TAR, untrack=True)
 
 
+    def test_zzz_all_mutations_restored_clean_checkout(self):
+        status = subprocess.run(
+            ["git", "status", "--porcelain", "--untracked-files=all"],
+            cwd=ROOT, capture_output=True, text=True, check=True,
+        )
+        self.assertEqual(
+            status.stdout, "",
+            "mutation tests must restore all tracked, staged and untracked paths",
+        )
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
