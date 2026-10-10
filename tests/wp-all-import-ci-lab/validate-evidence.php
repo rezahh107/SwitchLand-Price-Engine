@@ -22,6 +22,7 @@ $r = $read($out . '/runtime.json');
 $b = $read($out . '/bootstrap.json');
 $before = $read($out . '/pre-state.json');
 $after = $read($out . '/post-state.json');
+$switched = $read($out . '/updated-source.json');
 $manifest = $read($repo . '/tests/fixtures/wp-all-import-packages/manifest.json');
 $req = static function(bool $valid, string $reason) use ($reject): void {
     if (!$valid) $reject($reason);
@@ -81,6 +82,11 @@ foreach (['initial'=>'initial', 'updated'=>'updated'] as $name=>$fixture) {
         && ($r['fixture_source_sha256'][$name] ?? '') === $hash, 'source input digest mismatch');
 }
 $req(($e['fixture']['before'] ?? null) === $before && ($e['fixture']['after'] ?? null) === $after, 'WooCommerce read-back detached');
+$req(($e['fixture']['updated_source_record'] ?? null) === $switched
+    && ($switched['native_import_record_readback'] ?? null) === true
+    && ($switched['source_sha256'] ?? null) === $e['fixture']['updated_xml_sha256']
+    && ($switched['source_fixture_sha256'] ?? null) === $e['fixture']['updated_xml_sha256']
+    && ($switched['import_id'] ?? null) === $id, 'updated saved source read-back detached');
 $f = $c['fixture'];
 $req(($before['sku'] ?? null) === $f['sku'] && ($after['sku'] ?? null) === $f['sku']
     && ($before['type'] ?? null) === 'simple' && ($after['type'] ?? null) === 'simple'
