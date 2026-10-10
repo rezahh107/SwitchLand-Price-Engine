@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+  <product>
+    <synthetic_key>LAB-UNIQUE-001</synthetic_key>
+    <sku>LAB-SIMPLE-001</sku>
+    <title>LAB Synthetic Switch</title>
+    <regular_price>19.50</regular_price>
+  </product>
+</data>

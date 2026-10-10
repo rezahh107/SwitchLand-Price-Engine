@@ -1,0 +1,168 @@
+name: WP All Import reproducible consumer lab V1
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/wp-all-import-ci-lab.yml'
+      - 'tests/wp-all-import-ci-lab/**'
+      - 'tests/fixtures/wp-all-import-packages/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  consumer-lab:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    services:
+      mysql:
+        image: mariadb:11.4.8@sha256:bc474f00629f0123c10f9e1bca193a45d18af15a274cf0656acda64f1086c3b6
+        env:
+          MARIADB_ROOT_PASSWORD: wpai-lab-root
+          MARIADB_DATABASE: wordpress
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mariadb-admin ping -h 127.0.0.1 -uroot -pwpai-lab-root --silent"
+          --health-interval=5s --health-timeout=5s --health-retries=20
+    env:
+      LAB_WP: /tmp/wpai-ci-wordpress
+      LAB_OUT: /tmp/wpai-ci-artifacts
+      LAB_WP_CLI: /tmp/wpai-cli.phar
+      LAB_CONFIG: tests/wp-all-import-ci-lab/lab-config.json
+
+    steps:
+      - name: Checkout exact candidate head
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Bind exact repository and SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = 'rezahh107/SwitchLand-Price-Engine'
+          expected="${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
+          actual="$(git rev-parse HEAD)"
+          test "$expected" = "$actual"
+          echo "LAB_HEAD_SHA=$actual" >> "$GITHUB_ENV"
+          mkdir -p "$LAB_OUT"
+          printf '%s\n' "$actual" > "$LAB_OUT/head.txt"
+
+      - name: Install pinned PHP
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
+        with:
+          php-version: '8.2.34'
+          coverage: none
+          extensions: mysqli, xml, zip, mbstring, curl
+
+      - name: Verify tracked package identities before extraction
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(php -r 'echo PHP_VERSION;')" = '8.2.34'
+          python3 tests/wp-all-import-ci-lab/check-public-boundary.py
+          php tests/wp-all-import-ci-lab/verify-package-fixtures.php
+          python3 tests/wp-all-import-ci-lab/test-archive-admission.py
+          find tests/wp-all-import-ci-lab -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Set up pinned WP CLI, WordPress, and WooCommerce
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 -o "$LAB_WP_CLI" https://github.com/wp-cli/wp-cli/releases/download/v2.12.0/wp-cli-2.12.0.phar
+          echo "ce34ddd838f7351d6759068d09793f26755463b4a4610a5a5c0a97b68220d85c  $LAB_WP_CLI" | sha256sum -c -
+          php "$LAB_WP_CLI" --info
+          mkdir -p "$LAB_WP"
+          php "$LAB_WP_CLI" core download --path="$LAB_WP" --version=6.8.3
+          php "$LAB_WP_CLI" config create --path="$LAB_WP" --dbname=wordpress --dbuser=root --dbpass=wpai-lab-root --dbhost=127.0.0.1:3306 --skip-check
+          php "$LAB_WP_CLI" core install --path="$LAB_WP" --url=http://localhost:8080 --title='WPAI disposable lab' --admin_user=lab_admin --admin_password=synthetic-local-password --admin_email=lab-admin@example.invalid --skip-email
+          php "$LAB_WP_CLI" plugin install woocommerce --version=10.2.2 --activate --path="$LAB_WP"
+          test "$(php "$LAB_WP_CLI" core version --path="$LAB_WP")" = '6.8.3'
+          test "$(php "$LAB_WP_CLI" plugin get woocommerce --field=version --path="$LAB_WP")" = '10.2.2'
+
+      - name: Install exact repository-tracked WP All Import packages
+        shell: bash
+        run: |
+          set -euo pipefail
+          fixture="$GITHUB_WORKSPACE/tests/fixtures/wp-all-import-packages"
+          unzip -q "$fixture/wp-all-import-pro.zip" -d "$LAB_WP/wp-content/plugins"
+          unzip -q "$fixture/wpai-woocommerce-add-on_4.0.6.zip" -d "$LAB_WP/wp-content/plugins"
+          php "$LAB_WP_CLI" plugin activate wp-all-import-pro wpai-woocommerce-add-on --path="$LAB_WP"
+          test "$(php "$LAB_WP_CLI" plugin get wp-all-import-pro --field=version --path="$LAB_WP")" = '5.1.0'
+          test "$(php "$LAB_WP_CLI" plugin get wpai-woocommerce-add-on --field=version --path="$LAB_WP")" = '4.0.6'
+          php "$LAB_WP_CLI" all-import --help --path="$LAB_WP" | tee "$LAB_OUT/native-cli-help.txt"
+          grep -Eq '^[[:space:]]+run([[:space:]]|$)' "$LAB_OUT/native-cli-help.txt"
+          grep -Eq '^[[:space:]]+list([[:space:]]|$)' "$LAB_OUT/native-cli-help.txt"
+          php "$LAB_WP_CLI" all-import list --path="$LAB_WP"
+
+      - name: Audit exact plugin bootstrap and native execution seams
+        shell: bash
+        run: |
+          set -euo pipefail
+          php tests/wp-all-import-ci-lab/source-audit.php "$LAB_WP/wp-content/plugins/wp-all-import-pro" "$LAB_OUT/source-audit.json"
+          cat "$LAB_OUT/source-audit.json"
+          php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/runtime-source-probe.php --path="$LAB_WP"
+
+      - name: Capture observed exact runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/capture-runtime.php --path="$LAB_WP"
+          test -s "$LAB_OUT/runtime.json"
+
+      - name: Create and read back authentic native saved LAB import
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB_STAGE=bootstrap php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-consumer.php --path="$LAB_WP"
+          test -s "$LAB_OUT/bootstrap.json"
+          test -s "$LAB_OUT/import-id.txt"
+          php "$LAB_WP_CLI" all-import list --path="$LAB_WP" | tee "$LAB_OUT/native-import-list.txt"
+
+      - name: Execute first native import to create controlled baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          id="$(cat "$LAB_OUT/import-id.txt")"
+          test "$id" -gt 0
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/native-initial-run.log"
+          LAB_STAGE=pre php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-consumer.php --path="$LAB_WP"
+          test -s "$LAB_OUT/pre-state.json"
+
+      - name: Execute real native update and verify unrelated sentinel
+        shell: bash
+        run: |
+          set -euo pipefail
+          id="$(cat "$LAB_OUT/import-id.txt")"
+          test "$id" -gt 0
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/native-update-run.log"
+          LAB_STAGE=post php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-consumer.php --path="$LAB_WP"
+          test -s "$LAB_OUT/post-state.json"
+
+      - name: Compile and independently verify fail-closed evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          php tests/wp-all-import-ci-lab/build-evidence.php "$LAB_OUT"
+          php tests/wp-all-import-ci-lab/validate-evidence.php "$LAB_OUT/evidence.json" "$LAB_OUT"
+          php tests/wp-all-import-ci-lab/falsify-evidence.php "$LAB_OUT"
+          sha256sum "$LAB_OUT/evidence.json"
+
+      - name: Capture native import failure diagnostics without overriding failure
+        if: failure()
+        shell: bash
+        run: |
+          if [ -f "$LAB_WP/wp-config.php" ] && [ -f "$LAB_OUT/import-id.txt" ]; then
+            php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/failure-diagnostics.php --path="$LAB_WP" || true
+          fi
+
+      - name: Upload bounded diagnostics even on failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: wpai-consumer-lab-v1-evidence
+          path: /tmp/wpai-ci-artifacts/
+          if-no-files-found: warn
+          retention-days: 7
