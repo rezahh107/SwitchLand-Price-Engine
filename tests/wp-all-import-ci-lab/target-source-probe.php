@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 // LAB-ONLY source/option inventory. Never reads Production or writes a plugin.
 // Proprietary plugin text is not copied into the public repository or log.
 $root = WP_PLUGIN_DIR;
