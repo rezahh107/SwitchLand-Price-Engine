@@ -102,6 +102,8 @@ jobs:
           php tests/wp-all-import-ci-lab/source-audit.php "$LAB_WP/wp-content/plugins/wp-all-import-pro" "$LAB_OUT/source-audit.json"
           cat "$LAB_OUT/source-audit.json"
           php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/runtime-source-probe.php --path="$LAB_WP"
+          echo 'Exact Add-On selective price update source line inventory:'
+          grep -RInE 'is_update_regular_price|is_update_price|update_products_logic' "$LAB_WP/wp-content/plugins/wpai-woocommerce-add-on" --include='*.php' | head -70 || true
 
       - name: Capture observed exact runtime identity
         shell: bash
