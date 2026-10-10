@@ -19,6 +19,8 @@ $valid=static function(array $b,array $a,array $z):bool {
       ||($b['import_id']??0)<=0
       ||($b['mapping']['unique_key']??null)!=='{column1[1]}'
       ||($b['mapping']['single_product_sku']??null)!=='{column2[1]}'
+      ||($b['mapping']['is_multiple_product_type']??null)!=='yes'
+      ||($b['mapping']['multiple_product_type']??null)!=='variable'
       ||($b['mapping']['variable_sku']??null)!=='{column2[1]}'
       ||($b['mapping']['first_is_parent']??null)!=='no'
       ||($b['mapping']['matching_parent']??null)!=='first_is_parent_id'
@@ -73,6 +75,7 @@ $tests=[
  'missing_variation'=>static function(&$b,&$a,&$z){$z['records'][3]['product_id']=0;},
  'wrong_parent'=>static function(&$b,&$a,&$z){$z['records'][1]['parent_id']=$z['records'][2]['parent_id'];},
  'missing_native_parent_mapping'=>static function(&$b,&$a,&$z){unset($b['mapping']['single_product_first_is_parent_id_parent_sku']);},
+ 'missing_native_product_type'=>static function(&$b,&$a,&$z){unset($b['mapping']['multiple_product_type']);},
  'zero_misread_as_blank'=>static function(&$b,&$a,&$z){$z['records'][1]['regular_price']='';},
  'repeat_creates_new_parent'=>static function(&$b,&$a,&$z){$z['group_parents'][0]['product_id']++;},
  'repeat_creates_new_child'=>static function(&$b,&$a,&$z){$z['records'][0]['product_id']++;},
