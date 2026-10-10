@@ -102,6 +102,35 @@ jobs:
           cat "$LAB_OUT/source-audit.json"
           php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/runtime-source-probe.php --path="$LAB_WP"
 
+      - name: Create and read back authentic native saved LAB import
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB_STAGE=bootstrap php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-consumer.php --path="$LAB_WP"
+          test -s "$LAB_OUT/bootstrap.json"
+          test -s "$LAB_OUT/import-id.txt"
+          php "$LAB_WP_CLI" all-import list --path="$LAB_WP" | tee "$LAB_OUT/native-import-list.txt"
+
+      - name: Execute first native import to create controlled baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          id="$(cat "$LAB_OUT/import-id.txt")"
+          test "$id" -gt 0
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/native-initial-run.log"
+          LAB_STAGE=pre php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-consumer.php --path="$LAB_WP"
+          test -s "$LAB_OUT/pre-state.json"
+
+      - name: Execute real native update and verify unrelated sentinel
+        shell: bash
+        run: |
+          set -euo pipefail
+          id="$(cat "$LAB_OUT/import-id.txt")"
+          test "$id" -gt 0
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/native-update-run.log"
+          LAB_STAGE=post php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-consumer.php --path="$LAB_WP"
+          test -s "$LAB_OUT/post-state.json"
+
       - name: Upload bounded diagnostics even on failure
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
