@@ -65,6 +65,7 @@ jobs:
           python3 tests/wp-all-import-ci-lab/check-public-boundary.py
           php tests/wp-all-import-ci-lab/verify-package-fixtures.php
           python3 tests/wp-all-import-ci-lab/test-archive-admission.py
+          find tests/wp-all-import-ci-lab -type f -name '*.php' -print0 | xargs -0 -n1 php -l
 
       - name: Set up pinned WP CLI, WordPress, and WooCommerce
         shell: bash
@@ -102,6 +103,13 @@ jobs:
           cat "$LAB_OUT/source-audit.json"
           php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/runtime-source-probe.php --path="$LAB_WP"
 
+      - name: Capture observed exact runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/capture-runtime.php --path="$LAB_WP"
+          test -s "$LAB_OUT/runtime.json"
+
       - name: Create and read back authentic native saved LAB import
         shell: bash
         run: |
@@ -131,6 +139,15 @@ jobs:
           LAB_STAGE=post php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-consumer.php --path="$LAB_WP"
           test -s "$LAB_OUT/post-state.json"
 
+      - name: Compile and independently verify fail-closed evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          php tests/wp-all-import-ci-lab/build-evidence.php "$LAB_OUT"
+          php tests/wp-all-import-ci-lab/validate-evidence.php "$LAB_OUT/evidence.json" "$LAB_OUT"
+          php tests/wp-all-import-ci-lab/falsify-evidence.php "$LAB_OUT"
+          sha256sum "$LAB_OUT/evidence.json"
+
       - name: Capture native import failure diagnostics without overriding failure
         if: failure()
         shell: bash
@@ -143,7 +160,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: wpai-lab-source-audit
+          name: wpai-consumer-lab-v1-evidence
           path: /tmp/wpai-ci-artifacts/
           if-no-files-found: warn
           retention-days: 7
