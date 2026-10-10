@@ -21,7 +21,8 @@ $post = $read($out . '/post-state.json');
 $sourceSwitch = $read($out . '/updated-source.json');
 $initialLog = $out . '/native-initial-run.log';
 $updateLog = $out . '/native-update-run.log';
-if (!is_file($initialLog) || !is_file($updateLog)
+$cliHelp = $out . '/native-cli-help.txt';
+if (!is_file($initialLog) || !is_file($updateLog) || !is_file($cliHelp)
     || !is_file($out . '/native-import-list.txt')) $fail('native execution files absent');
 $idPath = $out . '/import-id.txt';
 if (!is_file($idPath)) $fail('saved Import ID absent');
@@ -47,6 +48,8 @@ $checks = [
         && ($bootstrap['saved_import_readback'] ?? null) === true
         && ($post['import_id'] ?? null) === $id
         && ($bootstrap['classification'] ?? null) === 'LAB_SYNTHETIC_WPAI_CONFIG',
+    'native_cli_available' => preg_match('/^\\s+run\\b/m', (string)file_get_contents($cliHelp)) === 1
+        && preg_match('/^\\s+list\\b/m', (string)file_get_contents($cliHelp)) === 1,
     'native_initial_execution' => strpos((string) file_get_contents($initialLog), 'Success: Import completed.') !== false,
     'native_update_execution' => strpos((string) file_get_contents($updateLog), 'Success: Import completed.') !== false,
     'pre_existing_simple_product' => ($pre['sku'] ?? null) === $f['sku']
@@ -104,6 +107,7 @@ $evidence = [
     ],
     'execution' => [
         'native_command' => 'wp all-import run ' . $id,
+        'native_cli_help_sha256' => hash_file('sha256', $cliHelp),
         'initial_cli_stdout_sha256' => hash_file('sha256', $initialLog),
         'update_cli_stdout_sha256' => hash_file('sha256', $updateLog),
         'import_list_sha256' => hash_file('sha256', $out . '/native-import-list.txt'),
