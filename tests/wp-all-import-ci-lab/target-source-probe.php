@@ -44,6 +44,17 @@ foreach (['core'=>'wp-all-import-pro', 'woocommerce_addon'=>'wpai-woocommerce-ad
         $lines = file($entry->getPathname());
         if ($lines === false) throw new RuntimeException('WPAI_TARGET_PROBE_SOURCE_UNREADABLE');
         foreach ($lines as $i => $line) {
+        if (preg_match('/matching_parent|grouping_indicator|first_is_parent/i', $line)) {
+            // Enumerate nearby quoted machine tokens, not licensed implementation text.
+            for ($j=max(0,$i-2);$j<=min(count($lines)-1,$i+2);$j++) {
+                if (!preg_match_all('/[\x27\x22]([a-z][a-z0-9_]{1,49})[\x27\x22]/i',$lines[$j],$tokens)) continue;
+                foreach ($tokens[1] as $token) {
+                    if (!isset($result['mode_tokens'][$token])) $result['mode_tokens'][$token]=[];
+                    if (count($result['mode_tokens'][$token])>=5) continue;
+                    $result['mode_tokens'][$token][]=['package'=>$package,'file'=>substr($entry->getPathname(),strlen($dir)+1),'line'=>$j+1];
+                }
+            }
+        }
         // Extract quoted option identifiers only, never proprietary source text.
         if (stripos($line, 'visibility') !== false) {
             if (preg_match_all('/[\x27\x22]([a-zA-Z0-9_-]*visibility[a-zA-Z0-9_-]*)[\x27\x22]/i', $line, $quoted)) {
@@ -78,4 +89,5 @@ echo "WPAI_TARGET_SOURCE_PROBE_AVAILABLE\n";
 echo wp_json_encode(['default_keys'=>$result['default_keys'],
   'key_source_occurrences'=>array_map('count',$result['seams']),
   'visibility_tokens'=>array_keys($result['visibility_tokens'] ?? []),
+  'mode_tokens'=>array_keys($result['mode_tokens'] ?? []),
   'source_file_sha256'=>hash_file('sha256',$dest)], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES), "\n";
