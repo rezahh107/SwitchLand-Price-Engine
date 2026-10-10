@@ -1,6 +1,7 @@
 <?php
 
 // Called via WP-CLI eval-file, after activating the exact verified packages.
+require_once ABSPATH . 'wp-admin/includes/plugin.php';
 // Probes the real native plugin classes without creating fake import state.
 $required = ['PMXI_Plugin', 'PMXI_Import_Record', 'PMXI_Cli'];
 foreach ($required as $class) {
@@ -44,6 +45,16 @@ $probe = [
             'single_product_type', 'post_type',
         ]
     )),
+    'candidate_default_values' => array_intersect_key($options, array_flip([
+        'wizard_type', 'custom_type', 'unique_key', 'title', 'single_product_regular_price',
+        'single_product_sku', 'single_product_type', 'is_update', 'is_update_all',
+        'update_all_data', 'update_products', 'is_update_categories',
+        'post_type', 'is_update_post', 'update_post_title', 'update_post_meta',
+    ])),
+    'addon_defaults' => class_exists('PMWI_Plugin') && method_exists('PMWI_Plugin', 'get_default_import_options')
+        ? array_intersect_key(PMWI_Plugin::get_default_import_options(), array_flip([
+            'single_product_regular_price', 'single_product_sku', 'single_product_type'
+        ])) : 'NOT_AVAILABLE',
     'bootstrap_disposition' => 'WPAI_AUTHENTIC_CONFIG_BOOTSTRAP_NOT_PROVEN',
 ];
 $out = getenv('LAB_OUT') . '/runtime-source-probe.json';
