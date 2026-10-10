@@ -131,6 +131,14 @@ jobs:
           LAB_STAGE=post php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-consumer.php --path="$LAB_WP"
           test -s "$LAB_OUT/post-state.json"
 
+      - name: Capture native import failure diagnostics without overriding failure
+        if: failure()
+        shell: bash
+        run: |
+          if [ -f "$LAB_WP/wp-config.php" ] && [ -f "$LAB_OUT/import-id.txt" ]; then
+            php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/failure-diagnostics.php --path="$LAB_WP" || true
+          fi
+
       - name: Upload bounded diagnostics even on failure
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
