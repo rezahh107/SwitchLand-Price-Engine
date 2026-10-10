@@ -30,6 +30,23 @@ WP All Import binaries, reads back native saved import state, runs the plugin's
 own `wp all-import run <id>`, reads WooCommerce results, and rejects incomplete
 or contradictory evidence rather than inferring success from CLI exit status.
 
+## Exact host seams exercised
+
+The LAB-only bootstrap uses the exact WP All Import Pro 5.1.0
+`PMXI_Import_Record::set()->save()` and native `getById()` read-back,
+together with `PMXI_File_Record` for the source file history. The source-backed
+precedent is `actions/wp_ajax_wpai_run_preview_with_progress.php`;
+`classes/cli.php` exposes the actual `all-import run` command, which calls
+`PMXI_Import_Record::execute()`. The `PMXI_Chunk` reader operates on
+individual `product` elements, so the synthetic XPath is `//product`.
+
+WooCommerce Add-On 4.0.6 chooses its field-scoped product update behavior in
+`src/XmlImportWooCommerceService.php` using the native
+`is_using_new_product_import_options` option. V1 enables that option,
+selectively enables regular-price updates, and disables unrelated custom-field
+updates. Neither a successful CLI exit nor its Updated counter is accepted
+without the WooCommerce before/after read-back.
+
 The first synthetic input is XML to isolate mechanical native execution. It
 does not establish provider-native comma CSV equivalence, XLSX parsing, exact
 SwitchLand Import configuration or Parent SKU/variation grouping.
