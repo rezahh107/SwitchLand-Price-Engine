@@ -112,11 +112,22 @@ if ($stage === 'bootstrap') {
     ])->save();
     $readback = new PMXI_Import_Record();
     $readback->getById($id);
-    if ($readback->isEmpty() || $readback->xpath !== '//product'
-        || ($readback->options['unique_key'] ?? '') !== $mapping['unique_key']
-        || ($readback->options['single_product_regular_price'] ?? '') !== $mapping['single_product_regular_price']
-        || !is_file($file)) {
+    if ($readback->isEmpty() || $readback->xpath !== '//product' || !is_file($file)) {
         throw new RuntimeException('WPAI_AUTHENTIC_CONFIG_BOOTSTRAP_NOT_PROVEN: native readback mismatch');
+    }
+    foreach ($mapping as $optionName => $expectedValue) {
+        if (!array_key_exists($optionName, $readback->options)
+            || $readback->options[$optionName] !== $expectedValue) {
+            throw new RuntimeException('WPAI_AUTHENTIC_CONFIG_BOOTSTRAP_NOT_PROVEN: saved option drift ' . $optionName);
+        }
+    }
+    $addonGateFile = WP_PLUGIN_DIR . '/wpai-woocommerce-add-on/src/XmlImportWooCommerceService.php';
+    $addonGateSource = is_file($addonGateFile) ? file_get_contents($addonGateFile) : false;
+    if (!is_string($addonGateSource)
+        || strpos($addonGateSource, 'is_using_new_product_import_options') === false
+        || strpos($addonGateSource, "'_regular_price'") === false
+        || strpos($addonGateSource, "'is_update_regular_price'") === false) {
+        throw new RuntimeException('WPAI_NATIVE_WOO_ADDON_PRICE_UPDATE_GATE_NOT_SOURCE_PROVEN');
     }
     if (file_put_contents($importIdFile, $id . "\n") === false) {
         throw new RuntimeException('WPAI_LAB_IMPORT_ID_WRITE_FAILED');
@@ -135,6 +146,7 @@ if ($stage === 'bootstrap') {
         'input_updated_sha256' => hash_file('sha256', $repo . '/tests/wp-all-import-ci-lab/fixtures/updated.xml'),
         'effective_saved_options_sha256' => hash('sha256', serialize($readback->options)),
         'source_model_file_sha256' => hash_file('sha256', WP_PLUGIN_DIR . '/wp-all-import-pro/models/import/record.php'),
+        'addon_price_gate_source_sha256' => hash_file('sha256', $addonGateFile),
     ]);
     echo "WPAI_AUTHENTIC_LAB_SAVED_IMPORT_ID=$id\n";
     return;
