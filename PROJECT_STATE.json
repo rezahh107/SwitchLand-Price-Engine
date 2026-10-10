@@ -1,7 +1,7 @@
 {
   "schema_version": "slpe-repository-governance-state.v2",
   "project_id": "switchland-price-engine",
-  "updated_at": "2026-10-07",
+  "updated_at": "2026-10-10",
   "repository_role": "VERSION_CONTROLLED_GOVERNANCE_AUTHORITY_REPRESENTATION_HISTORY_QUALIFICATION_REGRESSION_AND_CI_EVIDENCE",
   "owner_destination_authority": {
     "status": "ACTIVE_OWNER_DESTINATION",
@@ -44,16 +44,40 @@
     "C2_PROVIDER_NATIVE_XLSX": "NOT_PROVEN",
     "EXACT_IMPORT_CONFIGURATION": "PARTIALLY_PROVEN_BUT_MATERIALLY_INCOMPLETE",
     "OWNER_SERIALIZATION_DECISION_READY": "NO",
-    "SUCCESSOR_IMPLEMENTATION": "DO_NOT_START_YET"
+    "SUCCESSOR_IMPLEMENTATION": "DO_NOT_START_YET",
+    "EXACT_SWITCHLAND_CONSUMER": "NOT_PROVEN",
+    "PRODUCTION_EQUIVALENCE": "NOT_PROVEN"
   },
   "preserved_contracts": {
     "MST_007": "UNCHANGED",
     "active_wp_all_import_contract_v1_2_0": "UNCHANGED"
   },
-  "next_repository_engineering_action": "WP_ALL_IMPORT_CI_LAB",
+  "next_repository_engineering_action": "QUALIFY_EXACT_WPAI_TARGET_EXPORT_AND_VARIATION_CONSUMER_BEHAVIOR",
   "governance_rebaseline": {
     "target_date": "2026-10-07",
     "status": "REBASELINED_CURRENT_DESTINATION_WITH_EXACT_PACKAGE_BYTES_ARCHIVED_AND_VERIFIED"
   },
-  "live_workspace_or_production_mutation_by_rebaseline": false
+  "live_workspace_or_production_mutation_by_rebaseline": false,
+  "wp_all_import_ci_lab": {
+    "v1_merged": {
+      "status": "NATIVE_SIMPLE_PRODUCT_RUNTIME_VERIFIED_IN_CI",
+      "merged_pr": 10,
+      "baseline_commit": "e479e6e90450840657b8237418ae48f2a8d916bb",
+      "scope": "synthetic XML simple product create/update, existing Product ID stable, unrelated metadata sentinel preserved, real WP All Import CLI and Woo CRUD read-back",
+      "production_equivalence": "NOT_PROVEN"
+    },
+    "target_configuration_v1": {
+      "pr": 11,
+      "state": "QUALIFICATION_IN_PROGRESS_NOT_ACCEPTED",
+      "provenance": "LAB candidate on WP All Import Pro 5.1.0 and WooCommerce Add-On Pro 4.0.6, not production configuration",
+      "synthetic_95_column_fixture": "EXECUTED_IN_CI_SEPARATE_FROM_NATIVE_CONSUMER_PROOF",
+      "native_simple_product_target_candidate": "AWAITING_INDEPENDENT_READBACK_RECONCILIATION",
+      "variable_parent_variation": "NOT_PROVEN",
+      "zero_price_and_blank_product_behavior": "PARTIALLY_PROVEN_SYNTHETIC_ONLY_UNTIL_NATIVE_RECONCILIATION",
+      "exact_fresh_export": "NOT_AVAILABLE_IN_INSPECTED_EVIDENCE",
+      "exact_switchland_consumer": "NOT_PROVEN",
+      "historical_addon_version": "4.0.5",
+      "lab_addon_version": "4.0.6"
+    }
+  }
 }
