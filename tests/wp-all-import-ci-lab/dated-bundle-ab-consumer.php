@@ -85,13 +85,26 @@ if($stage==='bootstrap') {
       'is_update_content'=>0,'is_update_product_type'=>0
     ];
     $mode = $variant==='A' ? [
-      // Explicitly Owner-REPORTED material options, NOT independent ZIP read-back.
+      // Exact PRIVATE dated ZIP allowlist, reconstructed for LAB only;
+      // no credentials, private rows, or full exported settings are copied.
       'is_product_visibility'=>'xpath',
       'is_multiple_product_type'=>'no',
+      'multiple_product_type'=>'variable',
+      'single_product_type'=>'{column27[1]}',
+      'first_is_parent'=>'yes','matching_parent'=>'first_is_parent_id',
+      'variable_sku'=>'',
+      'single_product_id_first_is_parent_id'=>'{column8[1]}',
+      'single_product_first_is_parent_id_parent_sku'=>'{column28[1]}',
+      'single_product_id_first_is_variation'=>'{column3[1]}',
       'is_update_sku'=>1,'is_update_title'=>1,
       'is_update_custom_fields'=>1,'is_update_acf'=>1,
-      'acf_update_logic'=>'full_update',
-      // Missing product_visibility_xpath intentionally left at native defaults.
+      'update_custom_fields_logic'=>'full_update',
+      'update_acf_logic'=>'full_update',
+      'is_update_content'=>1,'is_update_categories'=>1,
+      'is_update_parent'=>1,'is_update_attributes'=>1,
+      'is_update_status'=>1,'is_update_product_type'=>1,
+      'is_update_attachments'=>1,
+      // Missing product_visibility_xpath is retained exactly as missing.
     ] : [
       'is_product_visibility'=>'xpath',
       'product_visibility_xpath'=>'{visibility[1]}',
@@ -125,7 +138,7 @@ if($stage==='bootstrap') {
     }
     file_put_contents($idFile,$id."\n");
     $emit('dated-'.$variant.'-bootstrap',[
-       'classification'=>$variant==='A'?'LAB_RECONSTRUCTED_FROM_OWNER_REPORTED_OPTIONS':'LAB_OWNER_APPROVED_TARGET_CANDIDATE',
+       'classification'=>$variant==='A'?'LAB_RECONSTRUCTED_FROM_EXACT_DATED_SOURCE_ALLOWLIST':'LAB_OWNER_APPROVED_TARGET_CANDIDATE',
        'import_id'=>$id,'native_save_readback'=>true,
        'tested_mapping'=>$mapping,'schema_headers'=>count($headers),
        'schema_source_row_identity'=>'SYNTHETIC_95COL_PROJECTED_TO_XML',
