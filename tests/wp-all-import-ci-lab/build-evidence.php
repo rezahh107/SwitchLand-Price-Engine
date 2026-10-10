@@ -92,6 +92,7 @@ $evidence = [
         'config_sha256' => $bootstrap['config_sha256'],
         'effective_saved_options_sha256' => $bootstrap['effective_saved_options_sha256'],
         'source_model_file_sha256' => $bootstrap['source_model_file_sha256'],
+        'addon_price_gate_source_sha256' => $bootstrap['addon_price_gate_source_sha256'],
     ],
     'fixture' => [
         'sku' => $f['sku'],
