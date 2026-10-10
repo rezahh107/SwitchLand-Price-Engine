@@ -35,9 +35,7 @@ def inspect(path):
     if sha256(raw) != ZIP_SHA:
         raise ValueError("ZIP_SHA256_MISMATCH")
     with zipfile.ZipFile(io.BytesIO(raw)) as archive:
-        errors = archive.testzip()
-        if errors:
-            raise ValueError("ZIP_MEMBER_INTEGRITY_ERROR")
+        # Bound decompression *before* testzip() or read(): fail closed on bombs.
         members = [i for i in archive.infolist() if not i.is_dir()]
         if not members or len(members) > 10:
             raise ValueError("ZIP_MEMBER_COUNT_INVALID")
@@ -46,6 +44,13 @@ def inspect(path):
                 raise ValueError("ZIP_MEMBER_UNSAFE_OR_ENCRYPTED")
             if item.filename.startswith("/") or any(seg == ".." for seg in item.filename.replace("\\", "/").split("/")):
                 raise ValueError("ZIP_MEMBER_PATH_UNSAFE")
+        if sum(i.file_size for i in members) > MAX_MEMBER_BYTES * 2:
+            raise ValueError("ZIP_TOTAL_UNCOMPRESSED_SIZE_TOO_LARGE")
+        if len({i.filename for i in members}) != len(members):
+            raise ValueError("ZIP_DUPLICATE_MEMBER_NAME")
+        errors = archive.testzip()
+        if errors:
+            raise ValueError("ZIP_MEMBER_INTEGRITY_ERROR")
         entries = [(i.filename, archive.read(i)) for i in members]
     candidates = {sha256(blob): (name, blob) for name, blob in entries}
     if CSV_SHA not in candidates or TEMPLATE_SHA not in candidates:
