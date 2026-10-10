@@ -172,9 +172,36 @@ if ($stage === 'pre') {
         'regular_price' => $price, 'sentinel' => $sentinel,
         'source' => 'WooCommerce CRUD read-back after first native import']);
     $updated = $repo . '/tests/wp-all-import-ci-lab/fixtures/updated.xml';
-    if (!copy($updated, $file) || hash_file('sha256', $updated) !== hash_file('sha256', $file)) {
+    $nextFile = $folder . '/lab-synthetic-products-updated.xml';
+    if (!copy($updated, $nextFile) || hash_file('sha256', $updated) !== hash_file('sha256', $nextFile)) {
         throw new RuntimeException('WPAI_LAB_INPUT_REPLACE_FAILED');
     }
+    // Native plugin models: switch the saved import to a new source identity
+    // rather than overwriting the old file while PMXI retains its chunk cache.
+    $nextRelative = wp_all_import_get_relative_path($nextFile);
+    $import->set([
+        'path' => $nextRelative,
+        'queue_chunk_number' => 0,
+        'processing' => 0,
+    ])->update();
+    $history = new PMXI_File_Record();
+    $history->getBy(['import_id' => $id], 'id DESC');
+    if ($history->isEmpty()) {
+        throw new RuntimeException('WPAI_LAB_NATIVE_IMPORT_FILE_HISTORY_MISSING');
+    }
+    $history->set(['path' => $nextRelative])->update();
+    $verify = new PMXI_Import_Record();
+    $verify->getById($id);
+    if ($verify->isEmpty() || $verify->path !== $nextRelative) {
+        throw new RuntimeException('WPAI_LAB_NATIVE_UPDATED_SOURCE_READBACK_FAILED');
+    }
+    $emit('updated-source', [
+        'import_id' => $id,
+        'source_relative_path' => $verify->path,
+        'source_sha256' => hash_file('sha256', $nextFile),
+        'source_fixture_sha256' => hash_file('sha256', $updated),
+        'native_import_record_readback' => true,
+    ]);
     echo "WPAI_PRE_IMPORT_STATE_CAPTURED\n";
     return;
 }
