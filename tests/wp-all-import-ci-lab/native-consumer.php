@@ -136,7 +136,13 @@ $product = $productId > 0 ? wc_get_product($productId) : false;
 if (!$product || !$product->is_type('simple') || $product->get_sku() !== $f['sku']) {
     throw new RuntimeException('WPAI_LAB_NATIVE_PRODUCT_NOT_FOUND');
 }
-$price = $product->get_regular_price();
+$priceRaw = $product->get_regular_price();
+if (!is_numeric($priceRaw)) {
+    throw new RuntimeException('WPAI_LAB_NONNUMERIC_NATIVE_REGULAR_PRICE');
+}
+// WooCommerce canonicalizes numeric prices (for example "12.00" to "12").
+// Compare numeric monetary identity without requiring textual scale equivalence.
+$price = number_format((float) $priceRaw, 2, '.', '');
 if ($stage === 'pre') {
     if ($price !== $f['start_regular_price']) {
         throw new RuntimeException('WPAI_LAB_INITIAL_NATIVE_PRICE_UNEXPECTED: ' . $price);
