@@ -51,10 +51,10 @@ foreach ($files as $file) {
 $recordSourcePath = $root . '/models/import/record.php';
 $recordSource = file_get_contents($recordSourcePath);
 if ($recordSource === false || !preg_match('/function\\s+execute\\s*\\(/', $recordSource, $executeMatch, PREG_OFFSET_CAPTURE)) {
-    fwrite(STDERR, "WPAI_SOURCE_AUDIT_FAILURE: native execute method missing\\n");
+    fwrite(STDERR, "WPAI_SOURCE_AUDIT_FAILURE: native execute method missing\n");
     exit(1);
 }
-$executeStarts = [substr_count($recordSource, "\\n", 0, $executeMatch[0][1]) + 1];
+$executeStarts = [substr_count($recordSource, "\n", 0, $executeMatch[0][1]) + 1];
 $result = [
     'schema_version' => '1.0.0',
     'classification' => 'EXACT_INSTALLED_SOURCE_AUDIT_NOT_RUNTIME_PROOF',
