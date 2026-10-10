@@ -69,6 +69,9 @@ if ($stage === 'bootstrap') {
         'is_update_regular_price' => 1,
         'is_update_sku' => 0,
         'is_update_product_type' => 0,
+        // Exact Add-On 4.0.6 src/XmlImportWooCommerceService.php
+        // selects its internal per-field update handling only with this flag.
+        'is_using_new_product_import_options' => 1,
     ];
     $options = array_replace($options, $mapping);
     $relPath = function_exists('wp_all_import_get_relative_path')
