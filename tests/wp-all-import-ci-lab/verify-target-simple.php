@@ -28,6 +28,8 @@ $verify=static function(array $b,array $states,array $sources)use($expected):boo
         ||($b['mapping']['single_product_regular_price']??null)!=='{price[1]}'
         ||($b['mapping']['single_product_sale_price']??null)!=='{column10[1]}'
         ||($b['mapping']['single_product_visibility']??null)!=='{visibility[1]}'
+        ||($b['mapping']['is_product_visibility']??null)!=='xpath'
+        ||($b['mapping']['product_visibility_xpath']??null)!=='{visibility[1]}'
         ||($b['mapping']['is_update_sku']??null)!==0
         ||($b['mapping']['is_update_catalog_visibility']??null)!==1
         ||($b['mapping']['is_update_regular_price']??null)!==1
@@ -65,6 +67,8 @@ $mutations=[
     'catalog_visibility_not_updated' => static function(&$b,&$s,&$src){$s['post']['catalog_visibility']='visible';},
     'sale_price_not_updated' => static function(&$b,&$s,&$src){$s['mid']['sale_price']='10.00';},
     'saved_field_missing' => static function(&$b,&$s,&$src){unset($b['mapping']['single_product_sale_price']);},
+    'missing_visibility_mode' => static function(&$b,&$s,&$src){unset($b['mapping']['is_product_visibility']);},
+    'wrong_visibility_xpath' => static function(&$b,&$s,&$src){$b['mapping']['product_visibility_xpath']='{column8[1]}';},
     'native_source_readback_missing' => static function(&$b,&$s,&$src){$src['zero']['path_readback']=false;},
     'native_update_not_executed' => static function(&$b,&$s,&$src){$s['mid']['import_counters']['updated']=0;},
 ];
