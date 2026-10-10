@@ -71,7 +71,7 @@ jobs:
           python3 -m py_compile tests/wp-all-import-ci-lab/inspect-dated-bundle.py
           python3 tests/wp-all-import-ci-lab/test-dated-bundle-inspector.py
           python3 tests/wp-all-import-ci-lab/dated-reported-option-diff.py
-          test -s "$LAB_OUT/dated-reported-options-comparison.json"
+          test -s "$LAB_OUT/dated-verified-options-comparison.json"
 
       - name: Set up pinned WP CLI, WordPress, and WooCommerce
         shell: bash
