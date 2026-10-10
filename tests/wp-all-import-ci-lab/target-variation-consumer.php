@@ -130,7 +130,11 @@ foreach(['PARENT_LAB-GROUP-A','PARENT_LAB-GROUP-B'] as $parentSku) {
     $p=$id>0?wc_get_product($id):false;
     $groupParents[]=['sku'=>$parentSku,'product_id'=>$id,'type'=>$p?$p->get_type():null];
 }
-$allParents=get_posts(['post_type'=>'product','posts_per_page'=>-1,'fields'=>'ids']);
+$allProducts=get_posts(['post_type'=>'product','post_status'=>'any','posts_per_page'=>-1,'fields'=>'ids']);
+$allParents=array_values(array_filter($allProducts,static function($candidateId) {
+    $candidate=wc_get_product((int)$candidateId);
+    return $candidate && $candidate->is_type('variable');
+}));
 $variations=get_posts(['post_type'=>'product_variation','posts_per_page'=>-1,'fields'=>'ids','post_status'=>'any']);
 $state=[
   'classification'=>'AUTHENTIC_WOOCOMMERCE_READBACK_VARIATION_CANDIDATE',
