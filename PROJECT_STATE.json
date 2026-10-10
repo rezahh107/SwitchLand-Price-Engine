@@ -50,7 +50,7 @@
     "MST_007": "UNCHANGED",
     "active_wp_all_import_contract_v1_2_0": "UNCHANGED"
   },
-  "next_repository_engineering_action": "OBTAIN_PRIVATE_DATED_WPAI_BUNDLE_AND_FRESH_SAVED_ACTIVE_IMPORT_EXPORT_FOR_C1_QUALIFICATION",
+  "next_repository_engineering_action": "OBTAIN_FRESH_ACTIVE_SITE_WPAI_EXPORT_PLUGIN_VERSION_PROOF_AND_QUALIFY_NATIVE_COLUMN3_CSV_PARSER",
   "governance_rebaseline": {
     "target_date": "2026-10-07",
     "status": "REBASELINED_CURRENT_DESTINATION_WITH_EXACT_PACKAGE_BYTES_ARCHIVED_AND_VERIFIED"
@@ -84,22 +84,29 @@
       "pr": 12,
       "source_classification": "OWNER_SUPPLIED_DATED_WPAI_IMPORT_BUNDLE",
       "dated_source": "2026-10-04",
-      "exact_owner_bundle_access": "NOT_AVAILABLE",
-      "zip_size_and_three_sha256": "OWNER_EXPECTED_NOT_INDEPENDENTLY_VERIFIED",
-      "original_95col_876row_census": "OWNER_REPORTED_NOT_INDEPENDENTLY_RECALCULATED",
-      "reported_dated_option_values": "OWNER_REPORTED_NOT_EXPORTED_TEMPLATE_READBACK",
+      "exact_owner_bundle_access": "PRIVATE_EXACT_BYTES_AVAILABLE_AND_STATICALLY_INSPECTED",
+      "zip_size_and_three_sha256": "INDEPENDENTLY_VERIFIED_EXACT_MATCH",
+      "original_95col_876row_census": "INDEPENDENTLY_VERIFIED_WITH_COUNTS_53_SIMPLE_823_VARIABLE_355_ZERO_HIDDEN_822_PARENT_RELATIONS",
+      "reported_dated_option_values": "39_ALLOWLISTED_OPTIONS_DIRECT_READBACK_FROM_EXACT_PRIVATE_EXPORT",
       "lab_version": "WP_ALL_IMPORT_PRO_5.1.0_WOO_ADDON_4.0.6",
-      "lab_a": "NATIVE_EXECUTED_RECONSTRUCTED_REPORTED_OPTIONS_PROTECTED_SKU_AND_TITLE_MUTATED_CUSTOM_AND_ACF_LIKE_META_CLEARED",
+      "lab_a": "NATIVE_LAB_CANDIDATE_RECONSTRUCTED_FROM_EXACT_DATED_SOURCE_ALLOWLIST_NEW_RUN_SUBJECT_TO_VERIFICATION",
       "lab_b": "NATIVE_EXECUTED_OWNER_APPROVED_CANDIDATE_SKU_TITLE_CUSTOM_AND_ACF_LIKE_META_PRESERVED_ZERO_SALE_BLANK_HIDDEN",
       "lab_visibility": "A_AND_B_SIMPLE_ZERO_HIDDEN_OBSERVED_NOT_UNIVERSAL_EXPORT_CONFORMANCE",
       "synthetic_groupless": "A_B_GROUPLESS_ROW_CREATED_AS_SIMPLE_CHILDREN_ATTACHED_TO_SEPARATE_PARENT_OWNER_ROW_CLASSIFICATION_NOT_PROVEN",
       "native_original_csv": "NOT_EXECUTED",
-      "full_original_export_option_inventory": "NOT_PROVEN",
+      "full_original_export_option_inventory": "PRIVATE_RAW_TEMPLATE_INSPECTED_PUBLIC_39_OPTION_ALLOWLIST_ONLY_RUNTIME_NOT_PROVEN",
       "real_acf_plugin_mapping": "NOT_PROVEN",
       "exact_switchland_consumer": "NOT_PROVEN",
       "production_equivalence": "NOT_PROVEN",
       "latest_verified_native_ci": "https://github.com/rezahh107/SwitchLand-Price-Engine/actions/runs/38083149495",
-      "report": "tests/wp-all-import-ci-lab/DATED_BUNDLE_20261004_QUALIFICATION.md"
+      "report": "tests/wp-all-import-ci-lab/DATED_BUNDLE_20261004_QUALIFICATION.md",
+      "original_template_option_count": 523,
+      "original_template_addon_version": "4.0.6_TEMPLATE_METADATA_ONLY",
+      "column3_schema_mismatch": "STATIC_VERIFIED_COLUMN_PERSIAN_DIGIT_THREE_VS_TEMPLATE_ASCII_COLUMN3_NATIVE_PARSER_BEHAVIOR_NOT_PROVEN",
+      "groupless_real_source": "ROW_757_NOT_FIRST_NO_GROUP_NO_PARENT_NONZERO_VISIBLE_SKU_NOT_GENERATED_PARENT_REQUIRES_CLASSIFICATION",
+      "simple_with_nonblank_group_count": 1,
+      "original_sale_price_blank_count": 876,
+      "private_source_attestation": "tests/wp-all-import-ci-lab/dated-20261004-static-attestation.json"
     }
   }
 }
