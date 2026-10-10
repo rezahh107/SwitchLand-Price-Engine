@@ -71,9 +71,10 @@ if($stage==='bootstrap') {
         'single_product_regular_price'=>'{price[1]}',
         'single_product_sale_price'=>'{column10[1]}',
         'single_product_visibility'=>'{visibility[1]}',
-        // Source inventory (Add-On 4.0.6) exposes product_visibility_xpath.
+        // Installed Add-On 4.0.6 default is_product_visibility=visible;
+        // product_visibility_xpath exists in installed source; both are needed.
         // Qualify the candidate's XPath-mode binding with real Woo read-back.
-        'product_visibility'=>'xpath',
+        'is_product_visibility'=>'xpath',
         'product_visibility_xpath'=>'{visibility[1]}',
         'update_all_data'=>'no',
         'is_update_title'=>0,'is_update_content'=>0,'is_update_categories'=>0,
@@ -99,6 +100,10 @@ if($stage==='bootstrap') {
     $history->set(['import_id'=>$id,'name'=>basename($file),'path'=>$rel,
         'registered_on'=>date('Y-m-d H:i:s')])->save();
     $got=$readImport($id);
+    $nativeDefaults=PMWI_Plugin::get_default_import_options();
+    if(($nativeDefaults['is_product_visibility'] ?? null) !== 'visible') {
+        throw new RuntimeException('TARGET_NATIVE_VISIBILITY_MODE_VERSION_DRIFT');
+    }
     foreach($mapping as $key=>$val) {
         if(!array_key_exists($key,$got->options)||$got->options[$key]!==$val) {
             throw new RuntimeException('TARGET_NATIVE_OPTION_READBACK_MISMATCH:'.$key);
