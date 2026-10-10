@@ -154,6 +154,22 @@ jobs:
           php tests/wp-all-import-ci-lab/falsify-evidence.php "$LAB_OUT"
           sha256sum "$LAB_OUT/evidence.json"
 
+      - name: Exercise separate saved target simple-product candidate using native importer
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB_STAGE=bootstrap php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-simple-consumer.php --path="$LAB_WP"
+          id="$(cat "$LAB_OUT/target-simple-import-id.txt")"
+          test "$id" -gt 0
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/target-native-initial.log"
+          LAB_STAGE=pre php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-simple-consumer.php --path="$LAB_WP"
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/target-native-updated.log"
+          LAB_STAGE=mid php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-simple-consumer.php --path="$LAB_WP"
+          php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" 2>&1 | tee "$LAB_OUT/target-native-zero.log"
+          LAB_STAGE=post php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/target-simple-consumer.php --path="$LAB_WP"
+          php tests/wp-all-import-ci-lab/verify-target-simple.php "$LAB_OUT"
+          test -s "$LAB_OUT/target-simple-evidence.json"
+
       - name: Capture native import failure diagnostics without overriding failure
         if: failure()
         shell: bash
