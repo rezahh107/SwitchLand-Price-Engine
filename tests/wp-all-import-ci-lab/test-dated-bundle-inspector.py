@@ -19,22 +19,36 @@ spec.loader.exec_module(probe)
 
 class PrivateBundleInspectorTests(unittest.TestCase):
     def generate(self, folder, *, bad_parent=False, duplicate_uid=False):
-        headers = ["Column1", "Column2", "Column8", "Column27", "Column28",
-                   "Price", "visibility"] + [f"Synthetic_{i}" for i in range(88)]
+        headers = ["Column1", "Column2", "Column۳", "Column8", "Column27", "Column28",
+                   "Price", "visibility"] + [f"Synthetic_{i}" for i in range(87)]
         self.assertEqual(len(headers),95)
         out = io.StringIO(newline="")
         w=csv.writer(out,delimiter=";",lineterminator="\n")
         w.writerow(headers)
         rows = [
-          ["id-1","sku-1","","simple","","13","visible"],
-          ["id-2","sku-2","A","variable","PARENT_A","0","hidden"],
-          ["id-2" if duplicate_uid else "id-3","sku-3","A","variable",
+          ["id-1","sku-1","Synthetic Label","","simple","","13","visible"],
+          ["id-2","sku-2","Synthetic Label","A","variable","PARENT_A","0","hidden"],
+          ["id-2" if duplicate_uid else "id-3","sku-3","Synthetic Label","A","variable",
            "PARENT_X" if bad_parent else "PARENT_A","22","visible"],
-          ["id-4","sku-4","","variable","","12","visible"],
+          ["id-4","sku-4","Synthetic Label","","variable","","12","visible"],
         ]
-        for row in rows:w.writerow(row+[""]*88)
+        for row in rows:w.writerow(row+[""]*87)
         csv_data=b"\xef\xbb\xbf"+out.getvalue().encode("utf-8")
-        template=json.dumps({"synthetic":True}).encode("utf-8")
+        template=json.dumps([{"synthetic":True,"options":{
+          "unique_key":"{column1[1]}",
+          "single_product_sku":"{column2[1]}",
+          "single_product_id_first_is_parent_id":"{column8[1]}",
+          "single_product_first_is_parent_id_parent_sku":"{column28[1]}",
+          "single_product_id_first_is_variation":"{column3[1]}",
+          "first_is_parent":"yes","matching_parent":"first_is_parent_id",
+          "variable_sku":"","is_update_sku":"1","is_update_title":"1",
+          "is_update_custom_fields":"1","update_custom_fields_logic":"full_update",
+          "is_update_acf":"1","update_acf_logic":"full_update",
+          "is_multiple_product_type":"no","multiple_product_type":"variable",
+          "single_product_type":"{column27[1]}","is_product_visibility":"xpath",
+          "single_product_visibility":"{visibility[1]}",
+          "woo_add_on_version":"4.0.6",
+        }}]).encode("utf-8")
         file=Path(folder)/"synthetic-test.zip"
         with zipfile.ZipFile(file,"w",compression=zipfile.ZIP_DEFLATED) as z:
             z.writestr("synthetic.csv",csv_data)
@@ -94,6 +108,16 @@ class PrivateBundleInspectorTests(unittest.TestCase):
                     probe.inspect(str(file))
             finally:
                 probe.ZIP_SIZE,probe.ZIP_SHA=old
+
+    def test_ascii_column3_header_not_equivalent_to_persian_digit(self):
+        with tempfile.TemporaryDirectory() as d:
+            f,c,t=self.generate(d)
+            changed=c.replace("Column۳".encode("utf-8"),b"Column3",1)
+            with zipfile.ZipFile(f,"w",compression=zipfile.ZIP_DEFLATED) as z:
+                z.writestr("synthetic.csv",changed)
+                z.writestr("synthetic-template.txt",t)
+            with self.assertRaisesRegex(ValueError,"DATED_THIRD_COLUMN_IDENTITY_DRIFT"):
+                self.run_probe(f,changed,t)
 
     def test_duplicate_identity_and_parent_mismatch_detected(self):
         for kw,field in [(dict(duplicate_uid=True),"duplicate_column1"),
