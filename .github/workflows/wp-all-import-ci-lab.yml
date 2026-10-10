@@ -66,6 +66,8 @@ jobs:
           php tests/wp-all-import-ci-lab/verify-package-fixtures.php
           python3 tests/wp-all-import-ci-lab/test-archive-admission.py
           find tests/wp-all-import-ci-lab -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+          php tests/wp-all-import-ci-lab/target-fixture.php
+          test -s "$LAB_OUT/synthetic-95col-report.json"
 
       - name: Set up pinned WP CLI, WordPress, and WooCommerce
         shell: bash
