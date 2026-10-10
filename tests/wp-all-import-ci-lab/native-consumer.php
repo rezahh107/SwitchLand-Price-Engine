@@ -67,7 +67,7 @@ if ($stage === 'bootstrap') {
         'feed_type' => '',
         'path' => $relPath,
         'root_element' => 'product',
-        'xpath' => '/data/product',
+        'xpath' => '//product',
         'options' => $options,
         'count' => 1,
         'parent_import_id' => 0,
@@ -95,7 +95,7 @@ if ($stage === 'bootstrap') {
     ])->save();
     $readback = new PMXI_Import_Record();
     $readback->getById($id);
-    if ($readback->isEmpty() || $readback->xpath !== '/data/product'
+    if ($readback->isEmpty() || $readback->xpath !== '//product'
         || ($readback->options['unique_key'] ?? '') !== $mapping['unique_key']
         || ($readback->options['single_product_regular_price'] ?? '') !== $mapping['single_product_regular_price']
         || !is_file($file)) {
