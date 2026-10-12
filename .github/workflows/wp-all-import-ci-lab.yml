@@ -14,7 +14,7 @@ permissions:
 jobs:
   consumer-lab:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 50
     services:
       mysql:
         image: mariadb:11.4.8@sha256:bc474f00629f0123c10f9e1bca193a45d18af15a274cf0656acda64f1086c3b6
@@ -218,6 +218,42 @@ jobs:
             LAB_VARIANT="$variant" LAB_STAGE=readback php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/dated-group-less-consumer.php --path="$LAB_WP"
           done
           php tests/wp-all-import-ci-lab/verify-dated-group-less.php "$LAB_OUT"
+
+      - name: Qualify exact native CSV Column۳ versus Column3 header resolution
+        shell: bash
+        run: |
+          set -euo pipefail
+          php tests/wp-all-import-ci-lab/native-csv-fixture.php
+          test -s "$LAB_OUT/native-csv-fixtures.json"
+          for variant in persian ascii; do
+            for expression in ascii persian; do
+              for mode in simple variation; do
+                key="$variant-$expression-$mode"
+                LAB_CSV_VARIANT="$variant" LAB_CSV_EXPRESSION="$expression" LAB_CSV_MODE="$mode" LAB_STAGE=bootstrap \
+                  php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-csv-header-consumer.php --path="$LAB_WP"
+                id="$(cat "$LAB_OUT/native-csv-$key-id.txt")"
+                test "$id" -gt 0
+                set +e
+                php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" >"$LAB_OUT/native-csv-$key-first.log" 2>&1
+                first=$?
+                set -e
+                LAB_CSV_VARIANT="$variant" LAB_CSV_EXPRESSION="$expression" LAB_CSV_MODE="$mode" LAB_STAGE=first \
+                  php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-csv-header-consumer.php --path="$LAB_WP"
+                set +e
+                php "$LAB_WP_CLI" all-import run "$id" --path="$LAB_WP" >"$LAB_OUT/native-csv-$key-second.log" 2>&1
+                second=$?
+                set -e
+                LAB_CSV_VARIANT="$variant" LAB_CSV_EXPRESSION="$expression" LAB_CSV_MODE="$mode" LAB_STAGE=second \
+                  php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-csv-header-consumer.php --path="$LAB_WP"
+                printf '{"cli_exit_codes":{"first":%d,"second":%d}}\\n' "$first" "$second" >"$LAB_OUT/native-csv-$key-status.json"
+                LAB_CSV_VARIANT="$variant" LAB_CSV_EXPRESSION="$expression" LAB_CSV_MODE="$mode" LAB_STAGE=clear \
+                  php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-csv-header-consumer.php --path="$LAB_WP"
+                printf 'NATIVE_CSV_CASE=%s FIRST_EXIT=%s SECOND_EXIT=%s\\n' "$key" "$first" "$second"
+              done
+            done
+          done
+          php tests/wp-all-import-ci-lab/verify-native-csv-header.php "$LAB_OUT"
+          test -s "$LAB_OUT/native-csv-qualification.json"
 
       - name: Capture native import failure diagnostics without overriding failure
         if: failure()
