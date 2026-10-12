@@ -245,10 +245,10 @@ jobs:
                 set -e
                 LAB_CSV_VARIANT="$variant" LAB_CSV_EXPRESSION="$expression" LAB_CSV_MODE="$mode" LAB_STAGE=second \
                   php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-csv-header-consumer.php --path="$LAB_WP"
-                printf '{"cli_exit_codes":{"first":%d,"second":%d}}\\n' "$first" "$second" >"$LAB_OUT/native-csv-$key-status.json"
+                printf '{"cli_exit_codes":{"first":%d,"second":%d}}\n' "$first" "$second" >"$LAB_OUT/native-csv-$key-status.json"
                 LAB_CSV_VARIANT="$variant" LAB_CSV_EXPRESSION="$expression" LAB_CSV_MODE="$mode" LAB_STAGE=clear \
                   php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-csv-header-consumer.php --path="$LAB_WP"
-                printf 'NATIVE_CSV_CASE=%s FIRST_EXIT=%s SECOND_EXIT=%s\\n' "$key" "$first" "$second"
+                printf 'NATIVE_CSV_CASE=%s FIRST_EXIT=%s SECOND_EXIT=%s\n' "$key" "$first" "$second"
               done
             done
           done
