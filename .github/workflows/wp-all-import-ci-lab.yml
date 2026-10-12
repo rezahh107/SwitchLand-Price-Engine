@@ -252,6 +252,24 @@ jobs:
               done
             done
           done
+          # Bounded synthetic-only read-back for debugging rejected positive controls.
+          php -r '
+            $out=getenv("LAB_OUT");
+            foreach(["persian","ascii"] as $variant)foreach(["ascii","persian"] as $expr)foreach(["simple","variation"] as $mode){
+              $key="$variant-$expr-$mode";
+              $read=static fn($s)=>json_decode(file_get_contents("$out/native-csv-$key-$s.json"),true);
+              $b=$read("bootstrap");$f=$read("first");$z=$read("second");
+              $summarize=static fn($state)=>array_map(static fn($p)=>[
+                "sku"=>$p["sku"],"id"=>$p["product_id"],"type"=>$p["type"],
+                "title"=>$p["title"],"parent"=>$p["actual_parent_sku"],
+                "price"=>$p["regular_price"]
+              ],$state["woocommerce"]["records"]);
+              echo "NATIVE_CSV_DIAG ",json_encode(["case"=>$key,"parsed_column3"=>$b["native_parser_values"],
+                "fields"=>array_values(array_filter($b["native_parser_fields"],static fn($x)=>str_starts_with($x,"column3")||$x==="column")),
+                "first"=>$summarize($f),"second"=>$summarize($z),
+                "first_counters"=>$f["counters"],"second_counters"=>$z["counters"]
+              ],JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES),"\\n";
+            }'
           php tests/wp-all-import-ci-lab/verify-native-csv-header.php "$LAB_OUT"
           test -s "$LAB_OUT/native-csv-qualification.json"
 
