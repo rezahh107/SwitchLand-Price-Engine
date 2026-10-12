@@ -187,6 +187,11 @@ foreach (['persian','ascii'] as $variant) foreach (['ascii','persian','missing']
         'native_parser_field_names'=>$bootstrap['native_parser_fields'],
         'native_parser_selected_field_values'=>$bootstrap['native_parser_values'],
         'native_options_sha256'=>$bootstrap['effective_saved_options_sha256'],
+        'native_saved_readback'=>$bootstrap['saved_readback'],
+        'native_saved_mapping'=>$mapping,
+        'saved_source_path'=>$bootstrap['saved_import_path'],
+        'first_source_path'=>$first['native_saved_path'],
+        'second_source_path'=>$second['native_saved_path'],
         'native_log_sha256'=>[
             'first'=>hash_file('sha256',$out.'/native-csv-'.$key.'-first.log'),
             'second'=>hash_file('sha256',$out.'/native-csv-'.$key.'-second.log')
@@ -229,13 +234,14 @@ $classification = $targetSimple && $targetVariation && $targetVariationExpressio
 $report = [
     'schema_version'=>'native-column3-csv-parser-qualification-v1',
     'status'=>'EXECUTED_WITH_INDEPENDENT_POSITIVE_CONTROL',
+    'lookup_qualification_result'=>($classification==='PINNED_LAB_HARMLESS_NORMALIZATION_OBSERVED' ? 'PASS' : 'FAIL'),
     'classification'=>$classification,
     'target_ascii_expression_against_persian_header'=>[
         'simple_expression_resolves_and_creates_correct_titles'=>$targetSimple,
         'variation_expression_resolves'=>$targetVariationExpressionResolves,
         'variation_grouping_and_sku_based_product_creation_observed'=>$targetVariation
     ],
-    'unresolved_field_is_not_silent_success'=>true,
+    'missing_simple_title_lookup_skips_four_rows_without_product_creation'=>true,
     'persian_digit_explicit_expression'=>[
         'persian_header'=>$results['persian-persian-simple']['mapping_and_identity_ok'],
         'ascii_header'=>$results['ascii-persian-simple']['mapping_and_identity_ok']
@@ -256,14 +262,24 @@ $mutations=[
  'blank_expected_title'=>static function(&$d){$d['ascii-ascii-simple']['first_woocommerce']['records'][0]['title']='';},
  'collapsed_identity'=>static function(&$d){$d['ascii-ascii-variation']['first_woocommerce']['records'][1]['product_id']=$d['ascii-ascii-variation']['first_woocommerce']['records'][0]['product_id'];},
  'cross_group_parent'=>static function(&$d){$d['ascii-ascii-variation']['first_woocommerce']['records'][2]['parent_id']=$d['ascii-ascii-variation']['first_woocommerce']['records'][0]['parent_id'];},
- 'missing_readback'=>static function(&$d){unset($d['ascii-ascii-variation']['second_woocommerce']);}
+ 'missing_readback'=>static function(&$d){unset($d['ascii-ascii-variation']['second_woocommerce']);},
+ 'fabricated_saved_readback'=>static function(&$d){$d['ascii-ascii-simple']['native_saved_readback']=false;},
+ 'altered_native_saved_mapping'=>static function(&$d){$d['ascii-ascii-variation']['native_saved_mapping']['single_product_id_first_is_variation']='{arbitrary[1]}';},
+ 'altered_source_path'=>static function(&$d){$d['ascii-ascii-simple']['second_source_path']='/fabricated/path';},
+ 'silent_missing_field'=>static function(&$d){$d['persian-missing-simple']['first_woocommerce']['records'][0]['product_id']=12345;}
 ];
 // Independent adversarial result-level check, including missing readback and identity.
 $validControl=static function(array $r)use($expected):bool{
     foreach(['ascii-ascii-simple','ascii-ascii-variation'] as $key){
         $c=$r[$key]??null;
         if(!$c||!isset($c['first_woocommerce'],$c['second_woocommerce'])
-          ||($c['csv_variant']??null)!=='ascii')return false;
+          ||($c['csv_variant']??null)!=='ascii'
+          ||($c['native_saved_readback']??false)!==true
+          ||($c['native_saved_mapping']['unique_key']??null)!=='{column1[1]}'
+          ||($c['native_saved_mapping'][$key==='ascii-ascii-simple' ? 'title' : 'single_product_id_first_is_variation']??null)!=='{column3[1]}'
+          ||($c['saved_source_path']??null)!==($c['first_source_path']??null)
+          ||($c['saved_source_path']??null)!==($c['second_source_path']??null)
+          ||!in_array('column3',$c['native_parser_field_names']??[],true))return false;
         foreach(['first_woocommerce','second_woocommerce'] as $phase){
             $w=$c[$phase];
             if(count($w['records']??[])!==4)return false;
@@ -283,6 +299,9 @@ $validControl=static function(array $r)use($expected):bool{
         }
     }
     if(($r['persian-ascii-simple']['csv_variant']??null)!=='persian')return false;
+    foreach($r['persian-missing-simple']['first_woocommerce']['records']??[] as $p) {
+        if(($p['product_id']??-1)!==0)return false;
+    }
     return true;
 };
 $require($validControl($results), 'base falsification checks invalid');
@@ -291,4 +310,6 @@ foreach($mutations as $name=>$change) {
     $change($modified);
     $require(!$validControl($modified), 'falsification mutation passed: '.$name);
 }
-echo "NATIVE_CSV_QUALIFICATION_VERIFIED ".$classification."\n";
+$report['negative_controls_rejected']=array_keys($mutations);
+file_put_contents($targetFile, json_encode($report,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_THROW_ON_ERROR)."\n");
+echo "NATIVE_CSV_QUALIFICATION_VERIFIED ".$classification." / ".$report['lookup_qualification_result']."\n";
