@@ -202,9 +202,14 @@ foreach (['persian','ascii'] as $variant) foreach (['ascii','persian','missing']
 foreach (['persian-missing-simple','ascii-missing-simple',
           'persian-ascii-simple','persian-persian-simple','ascii-persian-simple'] as $caseKey) {
     $case=$results[$caseKey];
-    $require(($case['expression_field_exists_in_native_parser']??true)===false
-        && ($case['mapping_and_identity_ok']??true)===false,
-        'missing native expression incorrectly resolved '.$caseKey);
+    $require(($case['expression_field_exists_in_native_parser']??true)===false,
+        'absent expression unexpectedly found in parser fields '.$caseKey.' '.json_encode([
+            'expression'=>$case['expression'],'has_field'=>$case['expression_field_exists_in_native_parser'],
+        ]));
+    $require(($case['mapping_and_identity_ok']??true)===false,
+        'unresolved expression unexpectedly produced correct Woo identity '.$caseKey.' '.json_encode([
+            'mapping_and_identity_ok'=>$case['mapping_and_identity_ok'],
+        ]));
     foreach (['first_woocommerce','second_woocommerce'] as $stateKey) {
         foreach ($case[$stateKey]['records']??[] as $record) {
             $require(($record['product_id']??-1)===0 && array_key_exists('title',$record) && $record['title']===null,
