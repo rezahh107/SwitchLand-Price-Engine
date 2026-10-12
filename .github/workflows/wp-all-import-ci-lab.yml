@@ -226,8 +226,9 @@ jobs:
           php tests/wp-all-import-ci-lab/native-csv-fixture.php
           test -s "$LAB_OUT/native-csv-fixtures.json"
           for variant in persian ascii; do
-            for expression in ascii persian; do
+            for expression in ascii persian missing; do
               for mode in simple variation; do
+                if [ "$expression" = "missing" ] && [ "$mode" = "variation" ]; then continue; fi
                 key="$variant-$expression-$mode"
                 LAB_CSV_VARIANT="$variant" LAB_CSV_EXPRESSION="$expression" LAB_CSV_MODE="$mode" LAB_STAGE=bootstrap \
                   php "$LAB_WP_CLI" eval-file tests/wp-all-import-ci-lab/native-csv-header-consumer.php --path="$LAB_WP"
@@ -255,7 +256,8 @@ jobs:
           # Bounded synthetic-only read-back for debugging rejected positive controls.
           php -r '
             $out=getenv("LAB_OUT");
-            foreach(["persian","ascii"] as $variant)foreach(["ascii","persian"] as $expr)foreach(["simple","variation"] as $mode){
+            foreach(["persian","ascii"] as $variant)foreach(["ascii","persian","missing"] as $expr)foreach(["simple","variation"] as $mode){
+              if($expr==="missing"&&$mode==="variation")continue;
               $key="$variant-$expr-$mode";
               $read=static fn($s)=>json_decode(file_get_contents("$out/native-csv-$key-$s.json"),true);
               $b=$read("bootstrap");$f=$read("first");$z=$read("second");
