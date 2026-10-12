@@ -1,7 +1,7 @@
 {
   "schema_version": "slpe-repository-governance-state.v2",
   "project_id": "switchland-price-engine",
-  "updated_at": "2026-10-10",
+  "updated_at": "2026-10-12",
   "repository_role": "VERSION_CONTROLLED_GOVERNANCE_AUTHORITY_REPRESENTATION_HISTORY_QUALIFICATION_REGRESSION_AND_CI_EVIDENCE",
   "owner_destination_authority": {
     "status": "ACTIVE_OWNER_DESTINATION",
@@ -57,6 +57,27 @@
   },
   "live_workspace_or_production_mutation_by_rebaseline": false,
   "wp_all_import_ci_lab": {
+    "native_csv_column3_parser_v1": {
+      "pr": 13,
+      "source_classification": "SYNTHETIC_95_COLUMN_PINNED_WPAI_NATIVE_SEMICOLON_CSV_LAB_ONLY",
+      "lookup_qualification_result": "FAIL_MATERIAL_NATIVE_HEADER_TOKEN_MISMATCH",
+      "exact_source_header": "Column۳",
+      "saved_ascii_expression": "{column3[1]}",
+      "native_parser_persian_header_field": "column",
+      "native_parser_ascii_header_field": "column3",
+      "native_ascii_expression_against_persian_header": "UNRESOLVED_SIMPLE_4_SKIPPED_0_CREATED_DESPITE_CLI_EXIT_0",
+      "explicit_persian_digit_expression": "UNRESOLVED",
+      "missing_field_negative_control": "NATIVE_SIMPLE_4_SKIPPED_0_CREATED",
+      "variation_woo_result": "TWO_PARENTS_FOUR_DISTINCT_GROUPED_VARIATIONS_STABLE_REPEATED_IDS_NO_OBSERVED_CROSS_GROUP_OR_DUPLICATE",
+      "native_variation_expression_resolution": "UNRESOLVED_FIELD_TOKEN",
+      "full_variation_identity_and_production_equivalence": "NOT_PROVEN",
+      "verified_code_head": "50a3d04995bd5ec9e69d5c92c423f54ac26ee52f",
+      "native_ci_run": "https://github.com/rezahh107/SwitchLand-Price-Engine/actions/runs/38254241122",
+      "public_boundary_ci_run": "https://github.com/rezahh107/SwitchLand-Price-Engine/actions/runs/38254241170",
+      "report": "tests/wp-all-import-ci-lab/NATIVE_CSV_COLUMN3_QUALIFICATION.md",
+      "exact_switchland_consumer": "NOT_PROVEN",
+      "production_equivalence": "NOT_PROVEN"
+    },
     "v1_merged": {
       "status": "NATIVE_SIMPLE_PRODUCT_RUNTIME_VERIFIED_IN_CI",
       "merged_pr": 10,
