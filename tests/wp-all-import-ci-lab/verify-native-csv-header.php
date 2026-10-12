@@ -136,7 +136,7 @@ foreach (['persian','ascii'] as $variant) foreach (['ascii','persian','missing']
     $goodSimple = static function(array $state) use ($expected): bool {
         foreach ($state['woocommerce']['records'] as $i=>$p) {
             if (($p['product_id']??0)<=0 || ($p['type']??'')!=='simple'
-                || ($p['title']??null)!==$expected[$i][3] || ($p['parent_id']??-1)!==null) return false;
+                || ($p['title']??null)!==$expected[$i][3] || (!array_key_exists('parent_id',$p) || $p['parent_id'] !== null)) return false;
         }
         return true;
     };
@@ -202,7 +202,7 @@ foreach (['persian-missing-simple','ascii-missing-simple',
         'missing native expression incorrectly resolved '.$caseKey);
     foreach (['first_woocommerce','second_woocommerce'] as $stateKey) {
         foreach ($case[$stateKey]['records']??[] as $record) {
-            $require(($record['product_id']??-1)===0 && ($record['title']??false)===null,
+            $require(($record['product_id']??-1)===0 && array_key_exists('title',$record) && $record['title']===null,
                 'missing field silently created blank/wrong product '.$caseKey);
         }
     }
