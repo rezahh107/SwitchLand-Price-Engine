@@ -136,7 +136,7 @@ foreach (['persian','ascii'] as $variant) foreach (['ascii','persian','missing']
     $goodSimple = static function(array $state) use ($expected): bool {
         foreach ($state['records'] as $i=>$p) {
             if (($p['product_id']??0)<=0 || ($p['type']??'')!=='simple'
-                || ($p['title']??null)!==$expected[$i][3] || (!array_key_exists('parent_id',$p) || $p['parent_id'] !== null)) return false;
+                || ($p['title']??null)!==$expected[$i][3] || ($p['parent_id']??-1)!==0) return false;
         }
         return true;
     };
