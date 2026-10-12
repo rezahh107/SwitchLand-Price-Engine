@@ -134,22 +134,22 @@ foreach (['persian','ascii'] as $variant) foreach (['ascii','persian','missing']
         $require(is_int($statusCode) && $statusCode>=0, 'native CLI status missing '.$key);
     }
     $goodSimple = static function(array $state) use ($expected): bool {
-        foreach ($state['woocommerce']['records'] as $i=>$p) {
+        foreach ($state['records'] as $i=>$p) {
             if (($p['product_id']??0)<=0 || ($p['type']??'')!=='simple'
                 || ($p['title']??null)!==$expected[$i][3] || (!array_key_exists('parent_id',$p) || $p['parent_id'] !== null)) return false;
         }
         return true;
     };
     $goodVariation = static function(array $state) use ($expected): bool {
-        if (($state['woocommerce']['owned_variation_count']??-1)!==4) return false;
+        if (($state['owned_variation_count']??-1)!==4) return false;
         $parents=[];
-        foreach ($state['woocommerce']['parents'] as $p) {
+        foreach ($state['parents'] as $p) {
             if (($p['type']??null)!=='variable'||($p['product_id']??0)<=0) return false;
             $parents[$p['sku']]=$p['product_id'];
         }
         if (count($parents)!==2 || $parents['PARENT_LAB-C3-G-A']===$parents['PARENT_LAB-C3-G-B']) return false;
         $ids=[];
-        foreach ($state['woocommerce']['records'] as $i=>$p) {
+        foreach ($state['records'] as $i=>$p) {
             $parentSku='PARENT_'.$expected[$i][2];
             if (($p['product_id']??0)<=0 || ($p['type']??'')!=='variation'
                 || ($p['parent_id']??0)!==$parents[$parentSku]
