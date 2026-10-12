@@ -50,7 +50,8 @@ $asciiRecords = (string) file_get_contents($out.'/native-csv-ascii.csv');
 $persianRecords = (string) file_get_contents($out.'/native-csv-persian.csv');
 $require(substr($asciiRecords, strpos($asciiRecords, "\n")+1) ===
     substr($persianRecords, strpos($persianRecords, "\n")+1), 'pair semantic data drift');
-foreach (['persian','ascii'] as $variant) foreach (['ascii','persian'] as $expression) foreach (['simple','variation'] as $mode) {
+foreach (['persian','ascii'] as $variant) foreach (['ascii','persian','missing'] as $expression) foreach (['simple','variation'] as $mode) {
+    if ($expression === 'missing' && $mode === 'variation') continue;
     $key = $variant.'-'.$expression.'-'.$mode;
     $bootstrap = $load('native-csv-'.$key.'-bootstrap');
     $first = $load('native-csv-'.$key.'-first');
@@ -58,7 +59,7 @@ foreach (['persian','ascii'] as $variant) foreach (['ascii','persian'] as $expre
     $status = $load('native-csv-'.$key.'-status');
     $clear = $load('native-csv-'.$key.'-clear');
     $mapping = $bootstrap['mapping'] ?? [];
-    $expr = $expression==='ascii' ? '{column3[1]}' : "{column\u{06F3}[1]}";
+    $expr = $expression==='ascii' ? '{column3[1]}' : ($expression==='persian' ? "{column\u{06F3}[1]}" : '{nonexistent_sentinel_field[1]}');
     $id = $bootstrap['import_id'] ?? 0;
     $require(($bootstrap['classification']??null)==='PINNED_LAB_NATIVE_CSV_SAVED_IMPORT'
         && ($bootstrap['case']??null)===$key
@@ -76,9 +77,17 @@ foreach (['persian','ascii'] as $variant) foreach (['ascii','persian'] as $expre
         && count($bootstrap['native_parser_values']??[])===4
         && count($bootstrap['native_parser_fields']??[])===95,
         'native parser origin/width missing '.$key);
+    $nativeFields = $bootstrap['native_parser_fields'];
+    $parserTag = $variant === 'persian' ? 'column' : 'column3';
+    $require(in_array($parserTag, $nativeFields, true)
+        && !in_array($variant==='persian' ? 'column3' : 'column', $nativeFields, true)
+        && !in_array("column\u{06F3}", $nativeFields, true),
+        'unexpected native parser field token shape '.$key);
     foreach ($bootstrap['native_parser_values'] as $i=>$record) {
-        $require(($record['uid']??null)===$expected[$i][0],
-            'native parser lost row identity '.$key);
+        $require(($record['uid']??null)===$expected[$i][0]
+            && ($record[$variant==='persian' ? 'stripped_token' : 'ascii_token']??null)===$expected[$i][3]
+            && ($record[$variant==='persian' ? 'ascii_token' : 'stripped_token']??null)===null,
+            'native parser lost identity or altered third-field token '.$key);
     }
     $require(($mapping['unique_key']??null)==='{column1[1]}'
         && ($mapping['single_product_sku']??null)==='{column2[1]}'
@@ -127,7 +136,7 @@ foreach (['persian','ascii'] as $variant) foreach (['ascii','persian'] as $expre
     $goodSimple = static function(array $state) use ($expected): bool {
         foreach ($state['woocommerce']['records'] as $i=>$p) {
             if (($p['product_id']??0)<=0 || ($p['type']??'')!=='simple'
-                || ($p['title']??null)!==$expected[$i][3] || ($p['parent_id']??-1)!==0) return false;
+                || ($p['title']??null)!==$expected[$i][3] || ($p['parent_id']??-1)!==null) return false;
         }
         return true;
     };
@@ -166,7 +175,11 @@ foreach (['persian','ascii'] as $variant) foreach (['ascii','persian'] as $expre
             if ($p['product_id']!==$second['woocommerce']['parents'][$i]['product_id']) $good=false;
         }
     }
+    $parserResolves = in_array($expression === 'ascii' ? 'column3'
+        : ($expression === 'persian' ? "column\u{06F3}" : 'nonexistent_sentinel_field'),
+        $nativeFields, true);
     $results[$key] = ['mapping_and_identity_ok'=>$good,
+        'expression_field_exists_in_native_parser'=>$parserResolves,
         'csv_variant'=>$variant,'expression'=>$expr,'mode'=>$mode,
         'first_cli_exit'=>$status['cli_exit_codes']['first'],
         'second_cli_exit'=>$status['cli_exit_codes']['second'],
@@ -179,6 +192,28 @@ foreach (['persian','ascii'] as $variant) foreach (['ascii','persian'] as $expre
             'second'=>hash_file('sha256',$out.'/native-csv-'.$key.'-second.log')
         ]];
 }
+// Missing and spelling-mismatch controls must FAIL CLOSED: no blank-title product.
+// A successful CLI exit or skipped row is not considered a resolved value.
+foreach (['persian-missing-simple','ascii-missing-simple',
+          'persian-ascii-simple','persian-persian-simple','ascii-persian-simple'] as $caseKey) {
+    $case=$results[$caseKey];
+    $require(($case['expression_field_exists_in_native_parser']??true)===false
+        && ($case['mapping_and_identity_ok']??true)===false,
+        'missing native expression incorrectly resolved '.$caseKey);
+    foreach (['first_woocommerce','second_woocommerce'] as $stateKey) {
+        foreach ($case[$stateKey]['records']??[] as $record) {
+            $require(($record['product_id']??-1)===0 && ($record['title']??false)===null,
+                'missing field silently created blank/wrong product '.$caseKey);
+        }
+    }
+    $caseFirst=$load('native-csv-'.$caseKey.'-first');
+    $require(($caseFirst['counters']['skipped']??-1)===4
+        && ($caseFirst['counters']['created']??-1)===0,
+        'missing field did not skip all four native source rows '.$caseKey);
+}
+$require($results['ascii-ascii-simple']['expression_field_exists_in_native_parser']===true
+    && $results['ascii-ascii-variation']['expression_field_exists_in_native_parser']===true,
+    'ASCII/ASCII parser lookup positive control absent');
 // Controls must prove that the lab can resolve ordinary ASCII against ASCII.
 // If they cannot, the target case cannot be interpreted, regardless of importer exit codes.
 $require($results['ascii-ascii-simple']['mapping_and_identity_ok']
@@ -186,7 +221,8 @@ $require($results['ascii-ascii-simple']['mapping_and_identity_ok']
     'positive ASCII/ASCII control did not establish authentic import baseline');
 $targetSimple = $results['persian-ascii-simple']['mapping_and_identity_ok'];
 $targetVariation = $results['persian-ascii-variation']['mapping_and_identity_ok'];
-$classification = $targetSimple && $targetVariation
+$targetVariationExpressionResolves = $results['persian-ascii-variation']['expression_field_exists_in_native_parser'];
+$classification = $targetSimple && $targetVariation && $targetVariationExpressionResolves
     ? 'PINNED_LAB_HARMLESS_NORMALIZATION_OBSERVED'
     : (!$targetSimple ? 'PINNED_LAB_MATERIAL_COLUMN3_MAPPING_DEFECT_OBSERVED'
                       : 'PINNED_LAB_VARIATION_IDENTITY_OR_GROUPING_DEFECT_OBSERVED');
@@ -196,8 +232,10 @@ $report = [
     'classification'=>$classification,
     'target_ascii_expression_against_persian_header'=>[
         'simple_expression_resolves_and_creates_correct_titles'=>$targetSimple,
-        'variation_identity_grouping_and_woocommerce_outcome_correct'=>$targetVariation
+        'variation_expression_resolves'=>$targetVariationExpressionResolves,
+        'variation_grouping_and_sku_based_product_creation_observed'=>$targetVariation
     ],
+    'unresolved_field_is_not_silent_success'=>true,
     'persian_digit_explicit_expression'=>[
         'persian_header'=>$results['persian-persian-simple']['mapping_and_identity_ok'],
         'ascii_header'=>$results['ascii-persian-simple']['mapping_and_identity_ok']
