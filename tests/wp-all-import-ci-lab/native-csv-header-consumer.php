@@ -9,7 +9,7 @@ $expression = getenv('LAB_CSV_EXPRESSION');
 $mode = getenv('LAB_CSV_MODE');
 if (!$repo || !$out || !in_array($stage, ['bootstrap','first','second','clear'], true)
     || !in_array($variant, ['persian','ascii'], true)
-    || !in_array($expression, ['ascii','persian'], true)
+    || !in_array($expression, ['ascii','persian','missing'], true)
     || !in_array($mode, ['simple','variation'], true)) {
     throw new RuntimeException('NATIVE_CSV_PROBE_INVALID_ENVIRONMENT');
 }
@@ -20,7 +20,7 @@ $csvFile = $out . '/' . $fixture['variants'][$variant]['filename'];
 if (hash_file('sha256', $csvFile) !== $fixture['variants'][$variant]['sha256']) {
     throw new RuntimeException('NATIVE_CSV_WRONG_VARIANT_OR_SOURCE_DIGEST');
 }
-$expectedExpression = $expression === 'ascii' ? '{column3[1]}' : "{column\u{06F3}[1]}";
+$expectedExpression = $expression === 'ascii' ? '{column3[1]}' : ($expression === 'persian' ? "{column\u{06F3}[1]}" : '{nonexistent_sentinel_field[1]}');
 $emit = static function (string $suffix, array $evidence) use ($out, $key): void {
     if (file_put_contents($out . '/native-csv-' . $key . '-' . $suffix . '.json',
         wp_json_encode($evidence, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES)."\n") === false) {
